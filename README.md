@@ -21,28 +21,84 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+### 3. Install Composer Dependencies
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Whenever you clone a new Laravel project you must now install all of the project dependencies. This is what actually
+installs Laravel itself, among other necessary packages to get started.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+When we run composer, it checks the composer.json file which is submitted to the github repo and lists all of the
+composer (PHP) packages that your repo requires. Because these packages are constantly changing, the source code is
+generally not submitted to github, but instead we let composer handle these updates. So to install all this source code
+we run composer with the following command.
 
-## Laravel Sponsors
+```shell script
+$ composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 4. Create a copy of your .env file
 
-### Premium Partners
+`.env` files are not generally committed to source control for security reasons. But there is a `.env.example` which is
+a template of the `.env` file that the project expects us to have. So we will make a copy of the `.env.example` file and
+create a `.env` file that we can start to fill out to do things like database configuration in the next few steps.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+```shell script
+$ cp .env.example .env
+```
+
+This will create a copy of the `.env.example` file in your project and name the copy simply `.env`.
+
+### 5. Generate an app encryption key
+
+Laravel requires you to have an app encryption key which is generally randomly generated and stored in your `.env` file.
+app will use this encryption key to encode various elements of your application from cookies to password hashes and
+more.
+
+``` shell script
+$ php artisan key:generate
+```
+
+If you check the `.env` file again, you will see that it now has a long random string of characters in the `APP_KEY`
+field. We now have a valid app encryption key.
+
+### 6. In the .env file, add database information to allow Laravel to connect to the database
+
+We will want to allow Laravel to connect to the database that you just created in the previous step. To do this, we must
+add the connection credentials in the `.env` file and Laravel will handle the connection from there.
+
+In the `.env` file fill in the `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD` options to match
+the credentials of the database you want to connect to. This will allow us to run migrations and seed the database in
+the next step.
+
+### 7. Migrate the database
+
+Once your credentials are in the `.env` file, now you can migrate your database.
+
+``` shell script
+$ php artisan migrate
+```
+
+It’s not a bad idea to check your database to make sure everything migrated the way you expected.
+
+### 8. Seed the database
+
+The repository has a seeding file setup, then now is the time to run the seed, which fills your database with starter or
+dummy data.
+
+After the migrations are complete and you have the database structure required, then you can seed the database (which
+means add dummy data to it).
+
+``` shell script
+$ php artisan db:seed
+```
+## Authors
+
+* **Damian Breuer** - *Student* - [kvherwijnen](https://github.com/)
+* **Ivy Dekker** - *Student* - [kvherwijnen](https://github.com/)
+* **Jos Geerink** - *Student* - [jos-hz](https://github.com/Jos-HZ)
+* **Kevin van Herwijnen** - *Student* - [kvherwijnen](https://github.com/kvherwijnen)
+* **Diego Punte** - *Student* - [kvherwijnen](https://github.com/)
+
+See also the list of [contributors](url-to-project-contributors-page) who participated in this project.
 
 ## Contributing
 
