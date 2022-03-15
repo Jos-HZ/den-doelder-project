@@ -92,11 +92,11 @@ $ php artisan db:seed
 ```
 ## Authors
 
-* **Damian Breuer** - *Student* - [kvherwijnen](https://github.com/)
-* **Ivy Dekker** - *Student* - [kvherwijnen](https://github.com/)
+* **Damian Breuer** - *Student* - [damianbreuer](https://github.com/damianbreuer)
+* **Ivy Dekker** - *Student* - [ivydk](https://github.com/ivydk)
 * **Jos Geerink** - *Student* - [jos-hz](https://github.com/Jos-HZ)
 * **Kevin van Herwijnen** - *Student* - [kvherwijnen](https://github.com/kvherwijnen)
-* **Diego Punte** - *Student* - [kvherwijnen](https://github.com/)
+* **Diego Punte** - *Student* - [Shadowblack03](https://github.com/Shadowblack03)
 
 See also the list of [contributors](url-to-project-contributors-page) who participated in this project.
 
