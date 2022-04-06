@@ -1,10 +1,17 @@
-// Configures
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Font Awesome
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 // Variables
-@import 'variable';
+@import '_variable';
 
-// FontAwesome
-@import '~@fortawesome/fontawesome-free/css/all.min.css';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
 
-// Bulma
-@import "~bulma/bulma.sass";
+// AdminLTE
+@import '~admin-lte/dist/css/adminlte.css';
