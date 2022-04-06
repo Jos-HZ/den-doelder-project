@@ -17,6 +17,3 @@ Route::get('/', function () {
     return view('bulma');
 });
 
-Route::get('admin', function () {
-    return view('admin');
-});
