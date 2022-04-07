@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\BacklogController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\QualityControlController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('bulma');
+    return view();
 });
+
+Route::resource('/', WelcomeController::class);
+Route::resource('/Order', OrderController::class);
+Route::resource('/Backlog', BacklogController::class);
+Route::resource('/QualityController', QualityControlController::class);
 
