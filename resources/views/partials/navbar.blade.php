@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-brand">
             <a href="/" class="navbar-item">
-                <img src="./img/logo-den-doelder.jpeg" alt="Logo Den Doelder">
+                <img src="./img/logo-den-doelder.png" alt="Logo Den Doelder">
             </a>
         </div>
         <div class="navbar-menu" id="navMenu">
@@ -20,16 +20,3 @@
         </div>
     </div>
 </nav>
-
-{{--<a href="{{ route('orders.index') }}"--}}
-{{--   class="navbar-item {{ Request::route()->getName() === 'orders.index' ? "is-active" : "" }}">--}}
-{{--    Orders--}}
-{{--</a>--}}
-{{--<a href="{{ route('backlog.index') }}"--}}
-{{--   class="navbar-item {{ Request::route()->getName() === 'backlog.index' ? "is-active" : "" }}">--}}
-{{--    Backlog--}}
-{{--</a>--}}
-{{--<a href="{{ route('qualityControl.index') }}"--}}
-{{--   class="navbar-item {{ Request::route()->getName() === 'qualityControl.index' ? "is-active" : "" }}">--}}
-{{--    Quality--}}
-{{--</a>--}}
