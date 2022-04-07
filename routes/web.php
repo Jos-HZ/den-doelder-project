@@ -17,12 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view();
-});
-
 Route::resource('/', WelcomeController::class);
-Route::resource('/Order', OrderController::class);
-Route::resource('/Backlog', BacklogController::class);
-Route::resource('/QualityController', QualityControlController::class);
+Route::resource('/order', OrderController::class);
+Route::resource('/backlog', BacklogController::class);
+Route::resource('/qualityControl', QualityControlController::class);
 

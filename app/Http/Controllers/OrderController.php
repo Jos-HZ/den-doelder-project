@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -10,11 +13,11 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function index()
     {
-        //
+        return view('orders.index');
     }
 
     /**

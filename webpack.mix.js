@@ -12,6 +12,5 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .copy('node_modules/admin-lte/dist/img', 'public/dist/img')
     .sass('resources/sass/app.scss', 'public/css', [
     ]);
