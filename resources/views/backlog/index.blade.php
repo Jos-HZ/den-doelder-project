@@ -7,7 +7,7 @@
                 Hello World
             </h1>
             <p class="subtitle">
-                My first website with nigger <strong>Bulma</strong>!
+                My first website with  <strong>Bulma</strong>!
             </p>
         </div>
     </section>
