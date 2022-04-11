@@ -34,7 +34,7 @@ class QualityControlController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -45,7 +45,7 @@ class QualityControlController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\QualityControl  $qualityControl
+     * @param \App\Models\QualityControl $qualityControl
      * @return Response
      */
     public function show(QualityControl $qualityControl)
@@ -56,7 +56,7 @@ class QualityControlController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\QualityControl  $qualityControl
+     * @param \App\Models\QualityControl $qualityControl
      * @return Response
      */
     public function edit(QualityControl $qualityControl)
@@ -67,8 +67,8 @@ class QualityControlController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\QualityControl  $qualityControl
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\QualityControl $qualityControl
      * @return Response
      */
     public function update(Request $request, QualityControl $qualityControl)
@@ -79,7 +79,7 @@ class QualityControlController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\QualityControl  $qualityControl
+     * @param \App\Models\QualityControl $qualityControl
      * @return Response
      */
     public function destroy(QualityControl $qualityControl)

@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Production extends Model
 {
     use HasFactory;
 
-    public function production()
+    public function orders()
     {
-        return $this->belongsTo(Production::class);
+        return $this->hasMany(Order::class);
     }
 }
