@@ -4,7 +4,7 @@
     <section class="section">
         <div class="container">
             <div class="field">
-                <label class="label">Order ...</label>
+                <label class="label">Order </label>
             </div>
 
             <div class="field">
