@@ -3,88 +3,85 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <div class="field">
-                <label class="label">Order .. </label>
-            </div>
-
-            <form method="POST" action="{{ route('error.store') }}">
+        {{-- TODO: make ordernumber dynamic --}}
+           <h1>Order ... </h1>
+            <form method="POST" action="{{route('error.store')}}">
                 @csrf
-            <div class="field">
-                <label class="label">Ordernumber</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input
-                        class="input"
-                        type="text"
-                        id="ordernumber"
-                        name="ordernumber"
-                        placeholder="Ordernumber"
-                    >
-                </div>
-            </div>
 
-            <div class="field">
-                <label class="label">Date</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input
-                        class="input"
-                        type="text"
-                        placeholder="Date"
-                        id="date"
-                        name="date"
-                    >
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="label">Time</label>
-                <div class="control">
-                    <input
-                        class="input"
-                        type="time"
-                        placeholder="Time"
-                        id="time"
-                        name="time"
-                    >
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="label">Subject</label>
-                <div class="control">
-                    <div class="select">
-                        <select
-                        id="subject"
-                        name="subject"
-                        >
-                            <option>Select dropdown</option>
-                            <option>Technical Error</option>
-                            <option>Material Error</option>
-                        </select>
+                <label for="order_id">Order id:</label><br>
+                <div class="label">
+                    <div class="control has-icons-left has-icons-right">
+                <input
+                    class="input @error('order_id') is-danger @enderror"
+                    type="text"
+                    id="order_id"
+                    name="order_id"
+                    value="{{$errors->any() ? old('order_id') : ''}}"
+                //required
                     </div>
+                <br>
+                @error('order_id')
+                <p class="help is-danger">This is a required field</p>
+                @enderror
                 </div>
-            </div>
+                <br>
 
-            <div class="field">
-                <label class="label">Message</label>
-                <div class="control">
-                    <textarea
-                        class="textarea"
-                        placeholder="Textarea"
-                        id="description"
-                        name="description"
-                    ></textarea>
+                <label for="time">Time:</label><br>
+                <div class="label">
+                    <div class="control has-icons-left has-icons-right">
+                        <input
+                            class="input @error('time') is-danger @enderror"
+                            type="time"
+                            id="time"
+                            name="time"
+                            value="{{$errors->any() ? old('time') : ''}}"
+                        //required
+                    </div>
+                    <br>
+                    @error('time')
+                    <p class="help is-danger">This is a required field</p>
+                    @enderror
                 </div>
-            </div>
+                <br>
 
-            <div class="field is-grouped">
-                <div class="control">
-                    {{--                    TODO: Add link to backlog --}}
-                    <button class="button is-link">Submit</button>
+                <label for="date">Date:</label><br>
+                <div class="label">
+                    <div class="control has-icons-left has-icons-right">
+                        <input
+                            class="input @error('date') is-danger @enderror"
+                            type="date"
+                            id="date"
+                            name="date"
+                            value="{{$errors->any() ? old('date') : ''}}"
+                        //required
+                    </div>
+                    <br>
+                    @error('date')
+                    <p class="help is-danger">This is a required field</p>
+                    @enderror
                 </div>
-                <div class="control">
-                    <button class="button is-link is-light">Cancel</button>
+                <br>
+
+                <label for="description">Description:</label><br>
+                <div class="label">
+                    <div class="control has-icons-left has-icons-right">
+                        <textarea
+                            class="input @error('description') is-danger @enderror"
+                            id="description"
+                            name="description"
+                            value="{{$errors->any() ? old('description') : ''}}"
+                        //required
+                        ></textarea>
+                    </div>
+                    <br>
+                    @error('description')
+                    <p class="help is-danger">This is a required field</p>
+                    @enderror
                 </div>
-            </div>
+
+                <input type="submit" value="Submit" class="button is-link">
+                <a href="{{route('error.index')}}"><button type="button" class="button is-link-light">Cancel</button></a>
+
             </form>
         </div>
     </section>
