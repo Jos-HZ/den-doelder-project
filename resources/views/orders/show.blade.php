@@ -32,7 +32,7 @@
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <a href="{{ route('error.index') }}">
+                    <a href="{{ route('error.create', $order)}}">
                         <article class="tile is-child box has-background-danger">
                             <p class="title text-lg-center">Error</p>
                         </article>

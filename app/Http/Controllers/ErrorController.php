@@ -21,7 +21,7 @@ class ErrorController extends Controller
      */
     public function index()
     {
-        $errors = Error::all();
+        $errors = Error::orderBy('time', 'desc')->get();
         $orders = Order::all();
 
         return view('errors.index', compact('errors', 'orders'));
@@ -32,9 +32,9 @@ class ErrorController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create()
+    public function create(Order $order)
     {
-        return \view('errors.create');
+        return \view('errors.create', $order);
     }
 
     /**
@@ -45,6 +45,8 @@ class ErrorController extends Controller
      */
     public function store(Request $request)
     {
+        Error::create($this->validatedError($request));
+
         return redirect(route('errors.index'));
     }
 
@@ -93,5 +95,21 @@ class ErrorController extends Controller
         $error->delete();
 
         return redirect(route('orders.index'));
+    }
+
+    /**
+     * Validates the Error
+     *
+     * @param Request $request
+     * @return array
+     */
+    public function validatedError(Request $request)
+    {
+        return request()->validate([
+            'order_id' => 'required',
+            'time' => 'required',
+            'date' => 'required',
+            'description' => 'required'
+        ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ErrorFactory extends Factory
@@ -14,7 +15,10 @@ class ErrorFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'order_id' => Order::inRandomOrder()->first()->ordernumber,
+            'time' => $this->faker->time(),
+            'date' => $this->faker->date(),
+            'description'=> $this->faker->text()
         ];
     }
 }

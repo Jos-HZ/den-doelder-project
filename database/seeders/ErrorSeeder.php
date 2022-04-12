@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Error;
 use Illuminate\Database\Seeder;
 
 class ErrorSeeder extends Seeder
@@ -13,6 +14,8 @@ class ErrorSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Error::factory()
+            ->count(20)
+            ->create();
     }
 }

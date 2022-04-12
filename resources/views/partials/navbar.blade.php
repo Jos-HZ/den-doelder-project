@@ -10,7 +10,7 @@
                 <a class="navbar-item {{ Request::path() === 'orders' ? 'active' : '' }}" href="{{ url('/order') }}">
                     Order
                 </a>
-                <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}" href="{{ url('/backlog') }}">
+                <a class="navbar-item {{ Request::path() === 'error' ? 'active' : '' }}" href="{{ url('/error') }}">
                     Back-log
                 </a>
             </div>
