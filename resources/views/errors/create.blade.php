@@ -4,6 +4,7 @@
     <section class="section">
         <div class="container">
             {{-- TODO: make ordernumber dynamic --}}
+
             <h1>Order ... </h1>
             <form method="POST" action="{{route('error.store')}}">
                 @csrf

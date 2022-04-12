@@ -3,8 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            {{-- TODO: make ordernumber dynamic --}}
-            <h1>Order ... </h1>
+            <h1>Order {{ $error->order_id }} </h1>
             <form method="POST" action="{{route('error.update', $error)}}">
                 @csrf
                 @method('PUT')

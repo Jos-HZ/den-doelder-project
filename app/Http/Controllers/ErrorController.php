@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\DB;
 
 // TODO: waarom is het twee keer error.index ipv errors.index?
 
@@ -33,9 +34,11 @@ class ErrorController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create(Order $order)
+    public function create(): View|Factory|Application
     {
-        return \view('errors.create', $order);
+//        return \view('errors.create', ['order' => DB::table('orders')->where('id', $order_id)->first()]);
+
+        return \view('errors.create');
     }
 
     /**
@@ -44,7 +47,7 @@ class ErrorController extends Controller
      * @param Request $request
      * @return Application|RedirectResponse|Redirector
      */
-    public function store(Request $request)
+    public function store(Request $request): Redirector|RedirectResponse|Application
     {
         Error::create($this->validatedError($request));
 
@@ -57,7 +60,7 @@ class ErrorController extends Controller
      * @param Request $request
      * @return array
      */
-    public function validatedError(Request $request)
+    public function validatedError(Request $request): array
     {
         return request()->validate([
             'order_id' => 'required',
