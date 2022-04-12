@@ -11,6 +11,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 
+// TODO: waarom is het twee keer error.index ipv errors.index?
+
 class ErrorController extends Controller
 {
     /**
@@ -46,7 +48,7 @@ class ErrorController extends Controller
     {
         Error::create($this->validatedError($request));
 
-        return redirect(route('error.index'));
+        return redirect(route('errors.index'));
     }
 
     /**
@@ -73,7 +75,7 @@ class ErrorController extends Controller
      */
     public function show(Error $error)
     {
-        return view('error.show', compact('error'));
+        return view('errors.show', compact('error'));
     }
 
     /**
@@ -84,7 +86,7 @@ class ErrorController extends Controller
      */
     public function edit(Error $error)
     {
-        return view('error.edit', compact('error'));
+        return view('errors.edit', compact('error'));
     }
 
     /**
@@ -96,7 +98,9 @@ class ErrorController extends Controller
      */
     public function update(Request $request, Error $error)
     {
-        return redirect(route('order.show', $error));
+        $error->update($this->validatedError($request));
+
+        return redirect(route('error.index'));
     }
 
     /**
