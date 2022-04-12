@@ -58,7 +58,7 @@ class ErrorController extends Controller
      */
     public function show(Error $error)
     {
-        return view('errors.show', compact('error'));
+        return view('error.show', compact('error'));
     }
 
     /**
@@ -69,7 +69,7 @@ class ErrorController extends Controller
      */
     public function edit(Error $error)
     {
-        return view('errors.edit', compact('error'));
+        return view('error.edit', compact('error'));
     }
 
     /**
@@ -81,7 +81,7 @@ class ErrorController extends Controller
      */
     public function update(Request $request, Error $error)
     {
-        return redirect(route('orders.show', $error));
+        return redirect(route('order.show', $error));
     }
 
     /**
@@ -94,8 +94,10 @@ class ErrorController extends Controller
     {
         $error->delete();
 
-        return redirect(route('orders.index'));
+//        return redirect(route('order.index'));
+        return redirect(route('error.index'));
     }
+
 
     /**
      * Validates the Error

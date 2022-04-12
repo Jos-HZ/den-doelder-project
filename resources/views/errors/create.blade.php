@@ -3,26 +3,26 @@
 @section('content')
     <section class="section">
         <div class="container">
-        {{-- TODO: make ordernumber dynamic --}}
-           <h1>Order ... </h1>
+            {{-- TODO: make ordernumber dynamic --}}
+            <h1>Order ... </h1>
             <form method="POST" action="{{route('error.store')}}">
                 @csrf
 
                 <label for="order_id">Order id:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
-                <input
-                    class="input @error('order_id') is-danger @enderror"
-                    type="text"
-                    id="order_id"
-                    name="order_id"
-                    value="{{$errors->any() ? old('order_id') : ''}}"
-                //required
+                        <input
+                            class="input @error('order_id') is-danger @enderror"
+                            type="text"
+                            id="order_id"
+                            name="order_id"
+                            value="{{$errors->any() ? old('order_id') : ''}}"
+                        //required
                     </div>
-                <br>
-                @error('order_id')
-                <p class="help is-danger">This is a required field</p>
-                @enderror
+                    <br>
+                    @error('order_id')
+                    <p class="help is-danger">This is a required field</p>
+                    @enderror
                 </div>
                 <br>
 
@@ -80,7 +80,9 @@
                 </div>
 
                 <input type="submit" value="Submit" class="button is-link">
-                <a href="{{route('error.index')}}"><button type="button" class="button is-link-light">Cancel</button></a>
+                <a href="{{route('error.index')}}">
+                    <button type="button" class="button is-link-light">Cancel</button>
+                </a>
 
             </form>
         </div>

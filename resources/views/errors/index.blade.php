@@ -9,6 +9,7 @@
                 <th><abbr title="time">Time</abbr></th>
                 <th><abbr title="date">Date</abbr></th>
                 <th><abbr title="description">Description</abbr></th>
+                <th><abbr title="delete-buttons"></abbr></th>
             </tr>
             </thead>
             <tbody>
@@ -19,6 +20,18 @@
                         <td>{{ $error->time }}</td>
                         <td>{{ $error->date }}</td>
                         <td>{{ $error->description }}</td>
+                        <td>
+
+                            <form method="POST" action="{{route('error.destroy', $error)}}">
+                                @csrf
+                                @method('DELETE')
+                                {{-- TODO: change confirm message --}}
+                                <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Weet je zeker dat je deze error wilt verwijderen?')">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 </a>
             @endforeach

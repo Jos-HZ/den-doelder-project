@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Symfony\Component\Console\Input\Input;
 
 class Error extends Model
 {
@@ -15,7 +14,7 @@ class Error extends Model
         'time',
         'date',
         'description'
-        ];
+    ];
 
     public function order()
     {
