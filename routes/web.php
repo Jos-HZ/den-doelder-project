@@ -23,4 +23,6 @@ Route::resource('/order', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
 Route::resource('/qualityControl', QualityControlController::class);
+Route::resource('/qualityControl', ControlListController::class);
+Route::resource('/qualityControl', OrderDetailController::class);
 
