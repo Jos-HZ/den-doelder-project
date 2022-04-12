@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Error;
+use App\Models\Order;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -21,8 +22,9 @@ class ErrorController extends Controller
     public function index()
     {
         $errors = Error::all();
+        $orders = Order::all();
 
-        return view('errors.index', compact('errors'));
+        return view('errors.index', compact('errors', 'orders'));
     }
 
     /**

@@ -13,4 +13,9 @@ class Order extends Model
     {
         return $this->belongsTo(Production::class);
     }
+
+    public function error()
+    {
+        return $this->hasMany(Error::class);
+    }
 }

@@ -15,6 +15,10 @@ class CreateErrorsTable extends Migration
     {
         Schema::create('errors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id');
+            $table->time('time');
+            $table->date('date');
+            $table->text('description');
             $table->timestamps();
         });
     }

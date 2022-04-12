@@ -32,9 +32,11 @@
                     </article>
                 </div>
                 <div class="tile is-parent">
+                    <a href="{{ route('error.index') }}">
                         <article class="tile is-child box has-background-danger">
                             <p class="title text-lg-center">Error</p>
                         </article>
+                    </a>
                 </div>
             </div>
         </div>
