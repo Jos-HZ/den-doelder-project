@@ -32,9 +32,9 @@
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <article class="tile is-child box has-background-danger">
-                        <p class="title text-lg-center">Error</p>
-                    </article>
+                        <article class="tile is-child box has-background-danger">
+                            <p class="title text-lg-center">Error</p>
+                        </article>
                 </div>
             </div>
         </div>

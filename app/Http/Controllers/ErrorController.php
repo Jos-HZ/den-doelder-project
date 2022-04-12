@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use App\Models\Production;
+use App\Models\Error;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 
-class OrderController extends Controller
+class ErrorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,10 +20,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
-        $productions = Production::all();
+        $errors = Error::all();
 
-        return view('orders.index', compact('orders', 'productions'));
+        return view('errors.index', compact('errors'));
     }
 
     /**
@@ -33,7 +32,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('orders.create');
+        return \view('errors.create');
     }
 
     /**
@@ -44,54 +43,52 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // need to validate this later
-        return redirect(route('orders.index'));
+        return redirect(route('errors.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Order $order
+     * @param Error $error
      * @return Application|Factory|View
      */
-    public function show(Order $order)
+    public function show(Error $error)
     {
-        return view('orders.show', compact('order'));
+        return view('errors.show', compact('error'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Order $order
+     * @param Error $error
      * @return Application|Factory|View
      */
-    public function edit(Order $order)
+    public function edit(Error $error)
     {
-        return view('orders.edit', compact('order'));
+        return view('errors.edit', compact('error'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Order $order
+     * @param Error $error
      * @return Application|Redirector|RedirectResponse
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Error $error)
     {
-        //validate this later
-        return redirect(route('orders.show', $order));
+        return redirect(route('orders.show', $error));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Order $order
+     * @param Error $error
      * @return Application|Redirector|RedirectResponse
      */
-    public function destroy(Order $order)
+    public function destroy(Error $error)
     {
-        $order->delete();
+        $error->delete();
 
         return redirect(route('orders.index'));
     }
