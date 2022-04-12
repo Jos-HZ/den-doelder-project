@@ -18,10 +18,10 @@
             </div>
 {{--            TODO make dynamic--}}
             @foreach($orders as $order)
-                <a href="{{ route('order.show', $order) }}">
+                <a href="{{ route('orders.show', $order) }}">
                     <article class="tile is-child notification has-background-grey-lighter">
                         <p class="title text-bold">{{ $order -> id }}</p>
-                        <p class="subtitle has text-success"> this is the note section</p>
+                        <p class="subtitle has text-success">{{ $order->notes }}</p>
                     </article>
                 </a>
                 <br>
