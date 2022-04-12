@@ -9,7 +9,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 
 class ErrorController extends Controller
@@ -48,6 +47,22 @@ class ErrorController extends Controller
         Error::create($this->validatedError($request));
 
         return redirect(route('error.index'));
+    }
+
+    /**
+     * Validates the Error
+     *
+     * @param Request $request
+     * @return array
+     */
+    public function validatedError(Request $request)
+    {
+        return request()->validate([
+            'order_id' => 'required',
+            'time' => 'required',
+            'date' => 'required',
+            'description' => 'required'
+        ]);
     }
 
     /**
@@ -96,22 +111,5 @@ class ErrorController extends Controller
 
 //        return redirect(route('order.index'));
         return redirect(route('error.index'));
-    }
-
-
-    /**
-     * Validates the Error
-     *
-     * @param Request $request
-     * @return array
-     */
-    public function validatedError(Request $request)
-    {
-        return request()->validate([
-            'order_id' => 'required',
-            'time' => 'required',
-            'date' => 'required',
-            'description' => 'required'
-        ]);
     }
 }
