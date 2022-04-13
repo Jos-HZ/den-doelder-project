@@ -5,25 +5,20 @@
         <div class="container">
             {{-- TODO: make ordernumber dynamic --}}
 
-            <h1>Order ... </h1>
+            <h1>Order {{ app('request')->input('ordernumber') }} </h1>
             <form method="POST" action="{{route('error.store')}}">
                 @csrf
 
-                <label for="order_id">Order id:</label><br>
+                <label for="order_id"></label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
                             class="input @error('order_id') is-danger @enderror"
-                            type="text"
+                            type="hidden"
                             id="order_id"
                             name="order_id"
-                            value="{{$errors->any() ? old('order_id') : ''}}"
-                        //required
+                            value="{{ app('request')->input('ordernumber') }}"
                     </div>
-                    <br>
-                    @error('order_id')
-                    <p class="help is-danger">This is a required field</p>
-                    @enderror
                 </div>
                 <br>
 

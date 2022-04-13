@@ -51,7 +51,7 @@ class ErrorController extends Controller
     {
         Error::create($this->validatedError($request));
 
-        return redirect(route('errors.index'));
+        return redirect(route('error.index'));
     }
 
     /**
