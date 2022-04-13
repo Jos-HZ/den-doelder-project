@@ -66,7 +66,8 @@ class ErrorController extends Controller
             'order_id' => 'required',
             'time' => 'required',
             'date' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'category' => 'required'
         ]);
     }
 

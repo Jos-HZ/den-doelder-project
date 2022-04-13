@@ -56,6 +56,25 @@
                 </div>
                 <br>
 
+                <label for="category">Error category:</label><br>
+                <div class="label">
+                    <div class="select">
+                        <select
+                            class="input @error('category') is-danger @enderror"
+                            type="category"
+                            id="category"
+                            name="category"
+                        >
+                            <option value="mechanical">Mechanical error</option>
+                            <option value="technical">Technical error</option>
+                        </select>
+                    </div>
+                    <br>
+                    @error('category')
+                    <p class="help is-danger">This is a required field</p>
+                    @enderror
+                </div>
+
                 <label for="description">Description:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">

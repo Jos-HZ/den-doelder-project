@@ -13,7 +13,8 @@ class Error extends Model
         'order_id',
         'time',
         'date',
-        'description'
+        'description',
+        'category'
     ];
 
     public function order()
