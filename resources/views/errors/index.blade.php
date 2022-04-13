@@ -2,54 +2,47 @@
 
 @section('content')
     <section class="section">
-        <div class="container">
-            <div class="field">
-                <label class="label">Order </label>
-            </div>
-
-            <div class="field">
-                <label class="label">Date</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" placeholder="Date">
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="label">Time</label>
-                <div class="control">
-                    <input class="input" type="time" placeholder="Time">
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="label">Subject</label>
-                <div class="control">
-                    <div class="select">
-                        <select>
-                            <option>Select dropdown</option>
-                            <option>Technical Error</option>
-                            <option>Material Error</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="label">Message</label>
-                <div class="control">
-                    <textarea class="textarea" placeholder="Textarea"></textarea>
-                </div>
-            </div>
-
-            <div class="field is-grouped">
-                <div class="control">
-{{--                    TODO: Add link to backlog --}}
-                    <button class="button is-link">Submit</button>
-                </div>
-                <div class="control">
-                    <button class="button is-link is-light">Cancel</button>
-                </div>
-            </div>
-        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th><abbr title="order_id">Order</abbr></th>
+                <th><abbr title="production_line">Cape</abbr></th>
+                <th><abbr title="time">Time</abbr></th>
+                <th><abbr title="date">Date</abbr></th>
+                <th><abbr title="description">Description</abbr></th>
+                <th><abbr title="edit-button"></abbr></th>
+                <th><abbr title="delete-buttons"></abbr></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($errors as $error)
+                    <tr>
+                        <th>{{ $error->order_id }}</th>
+                        {{-- TODO: connect error->production_line --}}
+                        <th>1/2/5</th>
+                        <td>{{ $error->time }}</td>
+                        <td>{{ $error->date }}</td>
+                        <td>{{ $error->description }}</td>
+                        <td>
+                            <a href="{{route('error.edit', $error)}}">
+                                <button class="btn btn-default" type="button">Edit</button>
+                            </a>
+                        </td>
+                        <td>
+                            <form method="POST" action="{{route('error.destroy', $error)}}">
+                                @csrf
+                                @method('DELETE')
+                                {{-- TODO: change confirm message --}}
+                                <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Weet je zeker dat je deze error wilt verwijderen?')">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+            @endforeach
+            </tbody>
+        </table>
     </section>
+
 @endsection
