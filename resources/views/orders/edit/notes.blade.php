@@ -3,8 +3,13 @@
 @section('notes')
     <div class="tile is-parent is-8">
         <article class="tile is-child box has-background-success">
-            <p class="title">Notes</p>
-            <input type="submit" form="notes" value="floppy disk svg"/>
+            <div class="notesTitle">
+                <p class="title">Notes</p>
+                <div class="notesButton">
+                    <a href="javascript:document.getElementById('notes').submit()"><img src="/img/save.svg"></a>
+                    {{-- <input type="submit" form="notes" value="floppy disk svg"/> --}}
+                </div>
+            </div>
             <div class="content">
                 <form id="notes" method="post" action="edit">
                     @csrf
