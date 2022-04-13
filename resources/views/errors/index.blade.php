@@ -4,8 +4,13 @@
     <section class="section">
 
         <form method="get" action="{{ route('error.index') }}">
-            <input type="text" id="txtSearch" name="category" class="searchInput" value="" />
-            <input type="submit"/>
+            <div class="select">
+                <select id="txtSearch" name="category" >
+                    <option value="mechanical" <?php if (app('request')->input('category') === 'mechanical') echo "selected";?>>Mechanical</option>
+                    <option value="technical" <?php if (app('request')->input('category') === 'technical') echo "selected";?>>Technical</option>
+                </select>
+            </div>
+            <input type="submit" value="Filter" class="btn btn-default"/>
         </form>
 
         <table class="table">
