@@ -21,13 +21,18 @@ class ErrorController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $errors = Error::orderBy('time', 'desc')->get();
+        $errors = Error::filter($request)->get();
         $orders = Order::all();
 
         return view('errors.index', compact('errors', 'orders'));
     }
+
+//    public function index (Request $request)
+//    {
+//        return Error::filter($request)->get();
+//    }
 
     /**
      * Show the form for creating a new resource.
@@ -66,7 +71,8 @@ class ErrorController extends Controller
             'order_id' => 'required',
             'time' => 'required',
             'date' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'category' => 'required'
         ]);
     }
 

@@ -18,7 +18,8 @@ class ErrorFactory extends Factory
             'order_id' => Order::inRandomOrder()->first()->ordernumber,
             'time' => $this->faker->time(),
             'date' => $this->faker->date(),
-            'description' => $this->faker->text()
+            'description' => $this->faker->text(),
+            'category' => $this->faker->randomElement(['mechanical', 'technical'])
         ];
     }
 }
