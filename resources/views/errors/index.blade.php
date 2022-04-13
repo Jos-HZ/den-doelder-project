@@ -2,6 +2,12 @@
 
 @section('content')
     <section class="section">
+
+        <form method="get" action="{{ route('error.index') }}">
+            <input type="text" id="txtSearch" name="category" class="searchInput" value="" />
+            <input type="submit"/>
+        </form>
+
         <table class="table">
             <thead>
             <tr>
