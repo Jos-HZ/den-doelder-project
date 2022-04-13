@@ -9,8 +9,10 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\DB;
+
+// TODO: waarom is het twee keer error.index ipv errors.index?
 
 class ErrorController extends Controller
 {
@@ -21,7 +23,7 @@ class ErrorController extends Controller
      */
     public function index()
     {
-        $errors = Error::all();
+        $errors = Error::orderBy('time', 'desc')->get();
         $orders = Order::all();
 
         return view('errors.index', compact('errors', 'orders'));
@@ -32,8 +34,10 @@ class ErrorController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create()
+    public function create(): View|Factory|Application
     {
+//        return \view('errors.create', ['order' => DB::table('orders')->where('id', $order_id)->first()]);
+
         return \view('errors.create');
     }
 
@@ -43,9 +47,27 @@ class ErrorController extends Controller
      * @param Request $request
      * @return Application|RedirectResponse|Redirector
      */
-    public function store(Request $request)
+    public function store(Request $request): Redirector|RedirectResponse|Application
     {
-        return redirect(route('errors.index'));
+        Error::create($this->validatedError($request));
+
+        return redirect(route('error.index'));
+    }
+
+    /**
+     * Validates the Error
+     *
+     * @param Request $request
+     * @return array
+     */
+    public function validatedError(Request $request): array
+    {
+        return request()->validate([
+            'order_id' => 'required',
+            'time' => 'required',
+            'date' => 'required',
+            'description' => 'required'
+        ]);
     }
 
     /**
@@ -79,7 +101,9 @@ class ErrorController extends Controller
      */
     public function update(Request $request, Error $error)
     {
-        return redirect(route('orders.show', $error));
+        $error->update($this->validatedError($request));
+
+        return redirect(route('error.index'));
     }
 
     /**
@@ -92,6 +116,7 @@ class ErrorController extends Controller
     {
         $error->delete();
 
-        return redirect(route('orders.index'));
+//        return redirect(route('order.index'));
+        return redirect(route('error.index'));
     }
 }

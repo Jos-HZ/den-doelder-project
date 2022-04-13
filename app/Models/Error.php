@@ -9,6 +9,13 @@ class Error extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'order_id',
+        'time',
+        'date',
+        'description'
+    ];
+
     public function order()
     {
         return $this->belongsTo(Order::class);
