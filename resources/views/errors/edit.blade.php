@@ -8,23 +8,17 @@
                 @csrf
                 @method('PUT')
 
-                <label for="order_id">Order id:</label><br>
+                <label for="order_id"></label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
                             class="input @error('order_id') is-danger @enderror"
-                            type="text"
+                            type="hidden"
                             id="order_id"
                             name="order_id"
-                            value="{{$errors->any() ? old('order_id') : $error->order_id}}"
-                        //required
+                            value="{{ $error->order_id }}"
                     </div>
-                    <br>
-                    @error('order_id')
-                    <p class="help is-danger">This is a required field</p>
-                    @enderror
                 </div>
-                <br>
 
                 <label for="time">Time:</label><br>
                 <div class="label">
