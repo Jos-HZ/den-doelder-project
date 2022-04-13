@@ -20,7 +20,6 @@
                             value="{{ app('request')->input('ordernumber') }}"
                     </div>
                 </div>
-                <br>
 
                 <label for="time">Time:</label><br>
                 <div class="label">
@@ -31,14 +30,13 @@
                             id="time"
                             name="time"
                             value="{{$errors->any() ? old('time') : ''}}"
-                            >
+                        >
                     </div>
                     <br>
                     @error('time')
                     <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
-                <br>
 
                 <label for="date">Date:</label><br>
                 <div class="label">

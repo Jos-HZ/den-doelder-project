@@ -6,6 +6,7 @@
             <thead>
             <tr>
                 <th><abbr title="order_id">Order</abbr></th>
+                <th><abbr title="production_line">Cape</abbr></th>
                 <th><abbr title="time">Time</abbr></th>
                 <th><abbr title="date">Date</abbr></th>
                 <th><abbr title="description">Description</abbr></th>
@@ -17,6 +18,8 @@
             @foreach($errors as $error)
                     <tr>
                         <th>{{ $error->order_id }}</th>
+                        {{-- TODO: connect error->production_line --}}
+                        <th>1/2/5</th>
                         <td>{{ $error->time }}</td>
                         <td>{{ $error->date }}</td>
                         <td>{{ $error->description }}</td>
