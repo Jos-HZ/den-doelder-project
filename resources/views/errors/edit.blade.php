@@ -17,6 +17,7 @@
                             id="order_id"
                             name="order_id"
                             value="{{ $error->order_id }}"
+                            >
                     </div>
                 </div>
 

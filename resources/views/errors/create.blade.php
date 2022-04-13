@@ -31,7 +31,7 @@
                             id="time"
                             name="time"
                             value="{{$errors->any() ? old('time') : ''}}"
-                        //required
+                            >
                     </div>
                     <br>
                     @error('time')
