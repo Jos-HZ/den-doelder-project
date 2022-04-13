@@ -20,6 +20,7 @@
                 <th><abbr title="production_line">Cape</abbr></th>
                 <th><abbr title="time">Time</abbr></th>
                 <th><abbr title="date">Date</abbr></th>
+                <th><abbr title="category">Category</abbr></th>
                 <th><abbr title="description">Description</abbr></th>
                 <th><abbr title="edit-button"></abbr></th>
                 <th><abbr title="delete-buttons"></abbr></th>
@@ -33,6 +34,12 @@
                         <th>1/2/5</th>
                         <td>{{ $error->time }}</td>
                         <td>{{ $error->date }}</td>
+                        <td>@if($error->category === 'technical')
+                            T
+                            @else
+                            M
+                            @endif
+                        </td>
                         <td>{{ $error->description }}</td>
                         <td>
                             <a href="{{route('error.edit', $error)}}">
