@@ -2,16 +2,20 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
 {
     /**
      * Handle an incoming request.
+     * Redirects users when user is logged in. It redirects the user and admin
+     * to their own dashboard
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param \Closure $next
      * @param string|null ...$guards
      * @return mixed
@@ -22,10 +26,23 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+
+                /**
+                 * @var User $user
+                 */
+                $user = Auth::guard($guard);
+
+                // to admin dashboard
+                if ($user->hasRole('admin')) {
+                    return redirect(route('admin_dashboard'));
+                }
+
+                // to user dashboard
+                if ($user->hasRole('user')) {
+                    return redirect(route('dashboard'));
+                }
             }
         }
-
         return $next($request);
     }
 }
