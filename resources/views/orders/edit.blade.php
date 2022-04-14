@@ -1,7 +1,8 @@
-@extends('layout.master')
+@extends('orders.show')
 @yield('title')
 @section('content')
-    <section class="section">
+    <p>test</p>
+    {{-- <section class="section">
         <div class="modal">
             <div class="modal-background"></div>
             <div class="modal-card">
@@ -22,5 +23,5 @@
                 </footer>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection

@@ -15,6 +15,7 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
+            'notes' => $this->faker->paragraph(10),
             'ordernumber' => $this->faker->numberBetween(1111, 99999),
             'production_id' => $this->faker->numberBetween(1, 5)
         ];

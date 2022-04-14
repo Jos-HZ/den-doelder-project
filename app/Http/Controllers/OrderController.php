@@ -65,8 +65,11 @@ class OrderController extends Controller
      * @param Order $order
      * @return Application|Factory|View
      */
-    public function edit(Order $order)
+    public function edit(Order $order, Request $request)
     {
+        if ($request->query('field') === 'notes') {
+            return view('orders.edit.notes', compact('order'));
+        }
         return view('orders.edit', compact('order'));
     }
 
@@ -80,6 +83,8 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         //validate this later
+        $order->notes = $request->notes;
+        $order->save();
         return redirect(route('orders.show', $order));
     }
 

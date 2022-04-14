@@ -22,24 +22,20 @@
                     @endif
                 </ul>
             </div>
-
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    @if($orders)
-                        @foreach($orders as $order)
-                            <div role="tabpanel" class="tab-pane active" id="{{ $production->production_line }}">
-                            <a href="{{ route('order.show', $order) }}">
-                                <article class="tile is-child notification has-background-grey-lighter">
-                                    <p class="title text-bold">order {{ $order -> ordernumber }}</p>
-                                    <p class="subtitle has text-success"> this is the note section</p>
-                                </article>
-                            </a>
-                            </div>
-                        @endforeach
-                    @endif
-
-                </div>
-
+            <!-- Tab panes -->
+        <div class="tab-content">
+            @if($orders)
+                @foreach($orders as $order)
+                    <div role="tabpanel" class="tab-pane active" id="{{ $production->production_line }}">
+                    <a href="{{ route('order.show', $order) }}">
+                        <article class="tile is-child notification has-background-grey-lighter">
+                            <p class="title text-bold">order {{ $order -> ordernumber }}</p>
+                            <p class="subtitle has text-success"> this is the note section</p>
+                        </article>
+                    </a>
+                    </div>
+                @endforeach
+            @endif
         </div>
     </section>
 @endsection
