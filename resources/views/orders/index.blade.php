@@ -29,10 +29,12 @@
                         @foreach($orders as $order)
                             <div role="tabpanel" class="tab-pane active" id="{{ $production->production_line }}">
                             <a href="{{ route('order.show', $order) }}">
+                                <div class="m-3">
                                 <article class="tile is-child notification has-background-grey-lighter">
                                     <p class="title text-bold">order {{ $order -> ordernumber }}</p>
                                     <p class="subtitle has text-success"> this is the note section</p>
                                 </article>
+                                </div>
                             </a>
                             </div>
                         @endforeach
