@@ -33,7 +33,7 @@ class BacklogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -44,7 +44,7 @@ class BacklogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Backlog  $backlog
+     * @param \App\Models\Backlog $backlog
      * @return \Illuminate\Http\Response
      */
     public function show(Backlog $backlog)
@@ -55,7 +55,7 @@ class BacklogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Backlog  $backlog
+     * @param \App\Models\Backlog $backlog
      * @return \Illuminate\Http\Response
      */
     public function edit(Backlog $backlog)
@@ -66,8 +66,8 @@ class BacklogController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Backlog  $backlog
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Backlog $backlog
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Backlog $backlog)
@@ -78,7 +78,7 @@ class BacklogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Backlog  $backlog
+     * @param \App\Models\Backlog $backlog
      * @return \Illuminate\Http\Response
      */
     public function destroy(Backlog $backlog)

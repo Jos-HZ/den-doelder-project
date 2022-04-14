@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Production;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 
 class OrderController extends Controller
@@ -21,18 +21,19 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
+        $productions = Production::all();
 
-        return view('orders.index', compact('orders'));
+        return view('orders.index', compact('orders', 'productions'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return string
+     * @return Application|Factory|View
      */
     public function create()
     {
-        return('orders.create');
+        return view('orders.create');
     }
 
     /**
@@ -99,5 +100,4 @@ class OrderController extends Controller
 
         return redirect(route('orders.index'));
     }
-
 }

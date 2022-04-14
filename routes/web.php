@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BacklogController;
+use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\QualityControlController;
 use App\Http\Controllers\WelcomeController;
@@ -23,5 +24,8 @@ Route::put('/orders/{order}/edit', [OrderController::class, 'update'])->name('or
 // Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 Route::resource('/orders', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
+Route::resource('/error', ErrorController::class);
 Route::resource('/qualityControl', QualityControlController::class);
+Route::resource('/qualityControl', ControlListController::class);
+Route::resource('/qualityControl', OrderDetailController::class);
 
