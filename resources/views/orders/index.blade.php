@@ -11,15 +11,15 @@
             <div class="tabs is-centered">
                 <!-- Nav tabs -->
                 <div role="tablist" aria-label="Cape tabs">
-                    <button role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1" tabindex="0">
+                    <span role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1" tabindex="0">
                         Cape 1
-                    </button>
-                    <button role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2" tabindex="-1">
+                    </span>
+                    <span role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2" tabindex="-1">
                         Cape 2
-                    </button>
-                    <button role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3" tabindex="-1">
+                    </span>
+                    <span role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3" tabindex="-1">
                         Cape 5
-                    </button>
+                    </span>
                 </div>
 
                 <!-- Tab content -->
