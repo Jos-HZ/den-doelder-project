@@ -7,11 +7,11 @@
     {{--            TODO make dynamic --}}
     <section class="section">
         <div class="container">
-
-            <div class="hero-foot">
-                <nav class="tabs is-boxed is-fullwidth is-large">
+            <div class="mb-0">
+                <nav class="tabs is-boxed is-fullwidth is-medium">
                     <div class="container">
                         <ul>
+                            {{--  TODO: find alternative for event  --}}
                             <li class="tab is-active" onclick="openTab(event,'cape-1')"><a>Cape 1</a></li>
                             <li class="tab" onclick="openTab(event,'cape-2')"><a>Cape 2</a></li>
                             <li class="tab" onclick="openTab(event,'cape-5')"><a>Cape 3</a></li>
