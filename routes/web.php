@@ -19,7 +19,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('/', WelcomeController::class);
-Route::resource('/order', OrderController::class);
+// orderS, MEERVOUD!!!
+Route::put('/orders/{order}/edit', [OrderController::class, 'update'])->name('orders.update');
+// Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+Route::resource('/orders', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
 Route::resource('/qualityControl', QualityControlController::class);
