@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BacklogController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\QualityControlController;
-use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +17,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/', WelcomeController::class);
+Route::get('/', function () {
+    return view('auth.login');
+});
+
+Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/order', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
-Route::resource('/qualityControl', QualityControlController::class);
-Route::resource('/qualityControl', ControlListController::class);
-Route::resource('/qualityControl', OrderDetailController::class);
 
+
+// user dashboard
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'production'])->name('dashboard');
+
+// admin dashboard
+Route::get('/admin_dashboard', function () {
+   return view('admin_dashboard');
+})->middleware(['auth', 'admin'])->name('admin_dashboard');
+
+Route::get('/driver_dashboard', function () {
+   return view('driver_dashboard');
+})->middleware(['auth', 'driver'])->name('driver_dashboard');
+
+require __DIR__.'/auth.php';
+
+
+//// user protected routes
+//Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {
+//    Route::get('/', 'HomeController@index')->name('user_dashboard');
+//    Route::get('/list', 'UserController@list')->name('user_list');
+//});
+//
+//// admin protected routes
+//Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
+//    Route::get('/', 'HomeController@index')->name('admin_dashboard');
+//    Route::get('/users', 'AdminUserController@list')->name('admin_users');
+//});
