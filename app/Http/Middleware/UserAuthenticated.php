@@ -31,7 +31,7 @@ class UserAuthenticated
             }
 
             // allow admin to proceed with request
-            else if ( $user->hasRole('user') ) {
+            else if ( $user->hasRole('production') ) {
                 return $next($request);
             }
         }

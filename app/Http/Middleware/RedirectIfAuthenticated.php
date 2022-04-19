@@ -38,8 +38,12 @@ class RedirectIfAuthenticated
                 }
 
                 // to user dashboard
-                if ($user->hasRole('user')) {
+                if ($user->hasRole('production')) {
                     return redirect(route('dashboard'));
+                }
+
+                if ($user->hasRole('driver')) {
+                    return redirect(route('driver_dashboard'));
                 }
             }
         }

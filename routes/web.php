@@ -13,19 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 // user dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'user'])->name('dashboard');
+})->middleware(['auth', 'production'])->name('dashboard');
 
 // admin dashboard
 Route::get('/admin_dashboard', function () {
    return view('admin_dashboard');
 })->middleware(['auth', 'admin'])->name('admin_dashboard');
+
+Route::get('/driver_dashboard', function () {
+   return view('driver_dashboard');
+})->middleware(['auth', 'driver'])->name('driver_dashboard');
 
 require __DIR__.'/auth.php';
 

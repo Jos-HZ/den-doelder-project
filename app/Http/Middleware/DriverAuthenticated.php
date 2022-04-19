@@ -2,12 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminAuthenticated
+class DriverAuthenticated
 {
     /**
      * Handle an incoming request.
@@ -18,22 +17,17 @@ class AdminAuthenticated
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check())
-        {
-            /**
-             * @var User $user
-             */
+        if (Auth::check() ) {
             $user = Auth::user();
 
-            //if user is not admin take him to his dashboard
-            if ($user->hasRole('production')) {
-                return redirect(route('dashboard'));
+            if ($user->hasRole('admin') ) {
+                return redirect(route('admin_dashboard'));
             }
-            // allow admin to proceed with request
-            else if ($user->hasRole('admin')) {
+
+            elseif ($user->hasRole('driver')) {
                 return $next($request);
             }
         }
-        abort(403); // permission denied error
+        return $next($request);
     }
 }
