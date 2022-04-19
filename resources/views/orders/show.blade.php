@@ -23,25 +23,29 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent is-8">
                     <article class="tile is-child box has-background-success">
-                        <p class="title">Notes</p>
-                        @if(true)
-                            @if (Request::query('field') === 'notes')
-                                <input type="submit" form="notes" value="floppy disk svg"/>
-                                <div class="content">
-                                    <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <textarea type="text" id="notes" name="notes">{{ $order->notes }}</textarea>
-                                    </form>
-                                </div>
-                            @else\
-                                <a href="{{ Request::url() }}/edit?field=notes"><img src="/img/svg/{{ (isset($order->notes) ? 'edit' : 'create') }}.svg"></a>
-                                {{--                        TODO add here the note dynamic--}}
-                                <div class="content">
-                                    <p>{{ $order->notes }}</p>
-                                </div>
+                        <div class="notesTitle">
+                            <p class="title">Notes</p>
+                            @if(true)
+                                @if (Request::query('field') === 'notes')
+                                    <input type="submit" form="notes" value="floppy disk svg"/>
+                                    <div class="content">
+                                        <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <textarea type="text" id="notes" name="notes">{{ $order->notes }}</textarea>
+                                        </form>
+                                    </div>
+                                @else
+                                    <div class="notesButton">
+                                        <a href="{{ Request::url() }}/edit?field=notes"><img src="/img/svg/{{ (isset($order->notes) ? 'edit' : 'create') }}.svg"></a>
+                                    </div>
+                                    {{--                        TODO add here the note dynamic--}}
+                                    <div class="content">
+                                        <p>{{ $order->notes }}</p>
+                                    </div>
+                                @endif
                             @endif
-                        @endif
+                        </div>
                     </article>
                 </div>
                 <div class="tile is-parent">
