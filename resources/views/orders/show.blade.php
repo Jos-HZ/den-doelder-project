@@ -24,19 +24,24 @@
                 <div class="tile is-parent is-8">
                     <article class="tile is-child box has-background-success">
                         <p class="title">Notes</p>
-                        <a href="{{ Request::url() }}/edit?field=notes">edit</a>
-                        <input type="submit" form="notes" value="floppy disk svg"/>
-                        <div class="content">
-                            <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
-                                @csrf
-                                @method('PUT')
-                                <textarea type="text" id="notes" name="notes">{{ $order->notes }}</textarea>
-                            </form>
-                        </div>
-                        {{--                        TODO add here the note dynamic--}}
-                        <div class="content">
-                            <p>{{ $order->notes }}</p>
-                        </div>
+                        @if(true)
+                            @if (Request::query('field') === 'notes')
+                                <input type="submit" form="notes" value="floppy disk svg"/>
+                                <div class="content">
+                                    <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <textarea type="text" id="notes" name="notes">{{ $order->notes }}</textarea>
+                                    </form>
+                                </div>
+                            @else
+                                <a href="{{ Request::url() }}/edit?field=notes">{{ (isset($order->notes) ? 'edit' : 'create') }}</a>
+                                {{--                        TODO add here the note dynamic--}}
+                                <div class="content">
+                                    <p>{{ $order->notes }}</p>
+                                </div>
+                            @endif
+                        @endif
                     </article>
                 </div>
                 <div class="tile is-parent">
