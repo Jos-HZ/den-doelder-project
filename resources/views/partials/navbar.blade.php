@@ -13,6 +13,10 @@
                 <a class="navbar-item {{ Request::path() === 'error' ? 'active' : '' }}" href="{{ url('/error') }}">
                     Back-log
                 </a>
+
+                <a class="navbar-item {{ Request::path() === 'logout' ? 'active' : '' }}" href="{{ url('/logout') }}">
+                    Logout
+                </a>
             </div>
         </div>
     </div>

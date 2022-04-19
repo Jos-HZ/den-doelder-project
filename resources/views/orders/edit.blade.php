@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @yield('title')
 @section('content')
     <section class="section">

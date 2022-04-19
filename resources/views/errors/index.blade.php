@@ -1,13 +1,17 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('content')
     <section class="section">
 
         <form method="get" action="{{ route('error.index') }}">
             <div class="select">
-                <select id="txtSearch" name="category" >
-                    <option value="mechanical" <?php if (app('request')->input('category') === 'mechanical') echo "selected";?>>Mechanical</option>
-                    <option value="technical" <?php if (app('request')->input('category') === 'technical') echo "selected";?>>Technical</option>
+                <select id="txtSearch" name="category">
+                    <option value="mechanical" <?php if (app('request')->input('category') === 'mechanical') echo "selected";?>>
+                        Mechanical
+                    </option>
+                    <option value="technical" <?php if (app('request')->input('category') === 'technical') echo "selected";?>>
+                        Technical
+                    </option>
                 </select>
             </div>
             <input type="submit" value="Filter" class="btn btn-default"/>
@@ -28,36 +32,36 @@
             </thead>
             <tbody>
             @foreach($errors as $error)
-                    <tr>
-                        <th>{{ $error->order_id }}</th>
-                        {{-- TODO: connect error->production_line --}}
-                        <th>1/2/5</th>
-                        <td>{{ $error->time }}</td>
-                        <td>{{ $error->date }}</td>
-                        <td>@if($error->category === 'technical')
+                <tr>
+                    <th>{{ $error->order_id }}</th>
+                    {{-- TODO: connect error->production_line --}}
+                    <th>1/2/5</th>
+                    <td>{{ $error->time }}</td>
+                    <td>{{ $error->date }}</td>
+                    <td>@if($error->category === 'technical')
                             T
-                            @else
+                        @else
                             M
-                            @endif
-                        </td>
-                        <td>{{ $error->description }}</td>
-                        <td>
-                            <a href="{{route('error.edit', $error)}}">
-                                <button class="btn btn-default" type="button">Edit</button>
-                            </a>
-                        </td>
-                        <td>
-                            <form method="POST" action="{{route('error.destroy', $error)}}">
-                                @csrf
-                                @method('DELETE')
-                                {{-- TODO: change confirm message --}}
-                                <button type="submit" class="btn btn-danger"
-                                        onclick="return confirm('Weet je zeker dat je deze error wilt verwijderen?')">
-                                    Delete
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
+                        @endif
+                    </td>
+                    <td>{{ $error->description }}</td>
+                    <td>
+                        <a href="{{route('error.edit', $error)}}">
+                            <button class="btn btn-default" type="button">Edit</button>
+                        </a>
+                    </td>
+                    <td>
+                        <form method="POST" action="{{route('error.destroy', $error)}}">
+                            @csrf
+                            @method('DELETE')
+                            {{-- TODO: change confirm message --}}
+                            <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Weet je zeker dat je deze error wilt verwijderen?')">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
             @endforeach
             </tbody>
         </table>

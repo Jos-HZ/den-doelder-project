@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('head')
     <script src="js/tabs.js"></script>
 @endsection

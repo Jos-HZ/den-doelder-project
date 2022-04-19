@@ -16,5 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call(OrderSeeder::class);
         $this->call(ProductionSeeder::class);
         $this->call(ErrorSeeder::class);
+        $this->call(DriverTableSeeder::class);
+        $this->call(ProductionTableSeeder::class);
+        $this->call(AdminTableSeeder::class);
     }
 }
