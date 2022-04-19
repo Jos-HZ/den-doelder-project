@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/', AuthenticatedSessionController::class);
-Route::resource('/order', OrderController::class);
+Route::resource('/orders', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
 

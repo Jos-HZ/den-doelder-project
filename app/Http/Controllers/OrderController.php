@@ -67,7 +67,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        return view('orders.edit', compact('order'));
+        return view('orders.show', compact('order'));
     }
 
     /**
@@ -80,6 +80,8 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         //validate this later
+        $order->notes = $request->notes;
+        $order->save();
         return redirect(route('orders.show', $order));
     }
 
