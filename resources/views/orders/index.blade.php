@@ -21,50 +21,20 @@
             </div>
 
             <div class="container section">
-                <div id="cape-1" class="content-tab">
-                    @foreach($orders as $order)
-                        @if($order->production_id === 1)
-                            <div class="my-3">
-                                <a href="{{ route('order.show', $order) }}">
-                                    <article class="tile is-child notification has-background-grey-lighter">
-                                        <p class="title text-bold">order {{ $order -> ordernumber }}</p>
-                                        <p class="subtitle has text-success"> this is the note section</p>
-                                    </article>
-                                </a>
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-
-                <div id="cape-2" class="content-tab" style="display:none">
-                    @foreach($orders as $order)
-                        @if($order->production_id === 2)
-                            <div class="my-3">
-                                <a href="{{ route('orders.show', $order) }}">
-                                    <article class="tile is-child notification has-background-grey-lighter">
-                                        <p class="title text-bold">Order: {{ $order->ordernumber }}</p>
-                                        <p class="subtitle has text-success">{{ $order->notes }}</p>
-                                    </article>
-                                </a>
-
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-
-                <div id="cape-5" class="content-tab" style="display:none">
-                    @foreach($orders as $order)
-                        @if($order->production_id === 5)
-                            <div class="my-3">
-                                <a href="{{ route('order.show', $order) }}">
-                                    <article class="tile is-child notification has-background-grey-lighter">
-                                        <p class="title text-bold">order {{ $order -> ordernumber }}</p>
-                                        <p class="subtitle has text-success"> this is the note section</p>
-                                    </article>
-                                </a>
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
+                @foreach ([1, 2, 5] as $production_idKey=>$production_id)
+                    <div id="cape-{{ $production_id }}" class="content-tab" {{ $production_id === 1 ? '' : 'style="display:none"'}}>
+                        @foreach ($orders as $orderKey=>$order)
+                            @if ($order->production_id === $production_id)
+                                <div class="my-3">
+                                    <a href="{{ route('orders.show', $order) }}">
+                                        <article class="tile is-child notification has-background-grey-lighter">
+                                            <p class="title text-bold">Order: {{ $order->ordernumber }}</p>
+                                            <p class="subtitle has text-success">{{ $order->notes }}</p>
+                                        </article>
+                                    </a>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                @endforeach
             </div>
-n
