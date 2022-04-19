@@ -34,8 +34,8 @@
                                         <textarea type="text" id="notes" name="notes">{{ $order->notes }}</textarea>
                                     </form>
                                 </div>
-                            @else
-                                <a href="{{ Request::url() }}/edit?field=notes">{{ (isset($order->notes) ? 'edit' : 'create') }}</a>
+                            @else\
+                                <a href="{{ Request::url() }}/edit?field=notes"><img src="/img/svg/{{ (isset($order->notes) ? 'edit' : 'create') }}.svg"></a>
                                 {{--                        TODO add here the note dynamic--}}
                                 <div class="content">
                                     <p>{{ $order->notes }}</p>
