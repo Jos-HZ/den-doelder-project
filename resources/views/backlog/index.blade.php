@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @yield('title')
 @section('content')
     <section class="section">
@@ -7,7 +7,7 @@
                 Hello World
             </h1>
             <p class="subtitle">
-                My first website with  <strong>Bulma</strong>!
+                My first website with <strong>Bulma</strong>!
             </p>
         </div>
     </section>

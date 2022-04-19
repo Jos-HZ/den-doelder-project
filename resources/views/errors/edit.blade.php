@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('content')
     <section class="section">
@@ -12,12 +12,12 @@
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
-                            class="input @error('order_id') is-danger @enderror"
-                            type="hidden"
-                            id="order_id"
-                            name="order_id"
-                            value="{{ $error->order_id }}"
-                            >
+                                class="input @error('order_id') is-danger @enderror"
+                                type="hidden"
+                                id="order_id"
+                                name="order_id"
+                                value="{{ $error->order_id }}"
+                        >
                     </div>
                 </div>
 
@@ -25,11 +25,11 @@
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
-                            class="input @error('time') is-danger @enderror"
-                            type="time"
-                            id="time"
-                            name="time"
-                            value="{{$errors->any() ? old('time') : $error->time}}"
+                                class="input @error('time') is-danger @enderror"
+                                type="time"
+                                id="time"
+                                name="time"
+                                value="{{$errors->any() ? old('time') : $error->time}}"
                         //required
                     </div>
                     <br>
@@ -43,11 +43,11 @@
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
-                            class="input @error('date') is-danger @enderror"
-                            type="date"
-                            id="date"
-                            name="date"
-                            value="{{$errors->any() ? old('date') : $error->date}}"
+                                class="input @error('date') is-danger @enderror"
+                                type="date"
+                                id="date"
+                                name="date"
+                                value="{{$errors->any() ? old('date') : $error->date}}"
                         //required
                     </div>
                     <br>
@@ -61,11 +61,11 @@
                 <div class="label">
                     <div class="select">
                         <select
-                            class="input @error('category') is-danger @enderror"
-                            type="category"
-                            id="category"
-                            name="category"
-                            value="{{$errors->any() ? old('category') : $error->category}}"
+                                class="input @error('category') is-danger @enderror"
+                                type="category"
+                                id="category"
+                                name="category"
+                                value="{{$errors->any() ? old('category') : $error->category}}"
                         >
                             <option value="mechanical">Mechanical error</option>
                             <option value="technical">Technical error</option>
@@ -81,10 +81,10 @@
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
-                            class="input @error('description') is-danger @enderror"
-                            id="description"
-                            name="description"
-                            value="{{$errors->any() ? old('description') : $error->description}}"
+                                class="input @error('description') is-danger @enderror"
+                                id="description"
+                                name="description"
+                                value="{{$errors->any() ? old('description') : $error->description}}"
                         //required
                         >{{$errors->any() ? old('description') : $error->description}}</textarea>
                     </div>

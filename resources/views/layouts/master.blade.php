@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-    <script type="text/javascript" src="public/js/"></script>
+    <script type="text/javascript" src="../../../public/js"></script>
     @yield('head')
 
     <link href="{{ asset('sass/app.scss') }}" rel="stylesheet">
