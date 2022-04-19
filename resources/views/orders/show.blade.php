@@ -27,7 +27,9 @@
                             <p class="title">Notes</p>
                             @if(true)
                                 @if (Request::query('field') === 'notes')
-                                    <input type="submit" form="notes" value="floppy disk svg"/>
+                                    <div class="notesButton">
+                                        <a href="javascript:document.getElementById('notes').submit()"><img src="/img/svg/save.svg"></a>
+                                    </div>
                                 @else
                                     <div class="notesButton">
                                         <a href="{{ Request::url() }}/edit?field=notes"><img src="/img/svg/{{ (isset($order->notes) ? 'edit' : 'create') }}.svg"></a>
