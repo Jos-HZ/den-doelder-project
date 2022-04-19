@@ -22,7 +22,7 @@
 
             <div class="container section">
                 @foreach ([1, 2, 5] as $production_idKey=>$production_id)
-                    <div id="cape-{{ $production_id }}" class="content-tab" {{ $production_id === 1 ? '' : 'style="display:none"'}}>
+                    <div id="cape-{{ $production_id }}" class="content-tab" style="{{ $production_id === 1 ? '' : 'display:none'}}">
                         @foreach ($orders as $orderKey=>$order)
                             @if ($order->production_id === $production_id)
                                 <div class="my-3">
