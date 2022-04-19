@@ -22,13 +22,13 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::resource('/', AuthenticatedSessionController::class);
+//Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/order', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
 
 
-// user dashboard
+//user dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'production'])->name('dashboard');
@@ -49,14 +49,26 @@ Route::group(['middleware' => ['auth']], function () {
         ->name('logout.perform');
 });
 
-//// user protected routes
-//Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {
-//    Route::get('/', 'HomeController@index')->name('user_dashboard');
-//    Route::get('/list', 'UserController@list')->name('user_list');
-//});
-//
-//// admin protected routes
-//Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
-//    Route::get('/', 'HomeController@index')->name('admin_dashboard');
-//    Route::get('/users', 'AdminUserController@list')->name('admin_users');
-//});
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Production Routes
+|--------------------------------------------------------------------------
+*/
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Driver Routes
+|--------------------------------------------------------------------------
+*/
+
+
