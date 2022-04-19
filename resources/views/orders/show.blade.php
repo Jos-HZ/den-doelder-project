@@ -43,7 +43,18 @@
                                     <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
                                         @csrf
                                         @method('PUT')
-                                        <textarea type="text" id="notes" name="notes">{{ $order->notes }}</textarea>
+                                        <div class="grow-wrap">
+                                            <textarea name="notes" oninput="this.parentNode.dataset.replicatedValue = this.value" class="is-focused has-background-success">{{ $order->notes }}</textarea>
+                                            <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
+                                            {{-- <textarea name="notes" oninput="this.parentNode.dataset.replicatedValue = this.value">{{ $order->notes }}</textarea>
+                                            <script>
+                                                const textarea = document.querySelector('#notes > div > textarea');
+                                                textarea.parentNode.dataset.replicatedValue = textarea.value;
+                                                textarea.className = 'is-focused has-background-success';
+                                                textarea.parentNode.dataset.className = 'textarea is-focused has-background-success';
+                                            </script> --}}
+                                        </div>
+                                        {{-- <textarea type="text" id="notes" name="notes">{{ $order->notes }}</textarea> --}}
                                     </form>
                                 </div>
                             @else
