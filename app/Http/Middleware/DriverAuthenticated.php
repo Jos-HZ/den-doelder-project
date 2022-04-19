@@ -21,13 +21,13 @@ class DriverAuthenticated
             $user = Auth::user();
 
             if ($user->hasRole('admin') ) {
-                return redirect(route('admin_dashboard'));
+                return redirect(('admin_dashboard'));
             }
 
             elseif ($user->hasRole('driver')) {
                 return $next($request);
             }
         }
-        return $next($request);
+        abort(403);  // permission denied error
     }
 }
