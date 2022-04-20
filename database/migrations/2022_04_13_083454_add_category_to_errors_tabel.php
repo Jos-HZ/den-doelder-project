@@ -14,7 +14,7 @@ class AddCategoryToErrorsTabel extends Migration
     public function up()
     {
         Schema::table('errors', function (Blueprint $table) {
-            $table->set('category', ['technical', 'mechanical']);
+            $table->set('category', ['technical', 'mechanical']); // waarom set als je er EEN MOET kiezen, zou enum niet beter geweest zijn dan?
         });
     }
 

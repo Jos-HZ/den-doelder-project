@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('content')
     <section class="section">
@@ -6,7 +6,7 @@
             {{-- TODO: make ordernumber dynamic --}}
 
             <h1>Order {{ app('request')->input('ordernumber') }} </h1>
-            <form method="POST" action="{{route('error.store')}}">
+            <form method="POST" action="{{ route('error.store') }}">
                 @csrf
 
                 <label for="order_id"></label>
@@ -18,6 +18,7 @@
                             id="order_id"
                             name="order_id"
                             value="{{ app('request')->input('ordernumber') }}"
+                        >
                     </div>
                 </div>
 
@@ -25,16 +26,16 @@
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
-                            class="input @error('time') is-danger @enderror"
-                            type="time"
-                            id="time"
-                            name="time"
-                            value="{{$errors->any() ? old('time') : ''}}"
+                                class="input @error('time') is-danger @enderror"
+                                type="time"
+                                id="time"
+                                name="time"
+                                value="{{ $errors->any() ? old('time') : '' }}"
                         >
                     </div>
                     <br>
                     @error('time')
-                    <p class="help is-danger">This is a required field</p>
+                        <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
 
@@ -46,32 +47,32 @@
                             type="date"
                             id="date"
                             name="date"
-                            value="{{$errors->any() ? old('date') : ''}}"
-                        //required
+                            value="{{ $errors->any() ? old('date') : '' }}"
+                        >
+                        {{-- required --}}
                     </div>
                     <br>
                     @error('date')
-                    <p class="help is-danger">This is a required field</p>
+                        <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
                 <br>
 
-                <label for="category">Error category:</label><br>
+                <label class="is-danger" for="category">Error category:</label><br>
                 <div class="label">
-                    <div class="select">
-                        <select
-                            class="input @error('category') is-danger @enderror"
-                            type="category"
-                            id="category"
-                            name="category"
-                        >
-                            <option value="mechanical">Mechanical error</option>
-                            <option value="technical">Technical error</option>
-                        </select>
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="category" value="mechanical">
+                            Mechanical error
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="category"value="technical">
+                            Technical error
+                        </label>
                     </div>
                     <br>
                     @error('category')
-                    <p class="help is-danger">This is a required field</p>
+                        <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
 
@@ -82,13 +83,14 @@
                             class="input @error('description') is-danger @enderror"
                             id="description"
                             name="description"
-                            value="{{$errors->any() ? old('description') : ''}}"
-                        //required
-                        ></textarea>
+                            value="{{ $errors->any() ? old('description') : '' }}"
+                        >
+                        {{-- required --}}
+                        </textarea>
                     </div>
                     <br>
                     @error('description')
-                    <p class="help is-danger">This is a required field</p>
+                        <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
 
