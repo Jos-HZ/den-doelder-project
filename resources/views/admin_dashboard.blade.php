@@ -4,7 +4,7 @@
         <div class="container">
             <div class="tile is-ancestor">
                 <div class="tile is-parent is-vertical">
-                    <a href="{{ route('order.index')  }}">
+                    <a href="{{ route('orders.index')  }}">
                         <article class="tile is-child box">
                             <p class="title text-lg-center">Orders</p>
                         </article>

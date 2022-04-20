@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,11 +21,7 @@ class DriverAuthenticated
         if (Auth::check() ) {
             $user = Auth::user();
 
-            if ($user->hasRole('admin') ) {
-                return redirect(('admin_dashboard'));
-            }
-
-            elseif ($user->hasRole('driver')) {
+            if ($user->hasRole('driver')) {
                 return $next($request);
             }
         }

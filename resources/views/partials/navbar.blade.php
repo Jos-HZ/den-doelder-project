@@ -7,9 +7,9 @@
         </div>
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-start">
-                <a class="navbar-item {{ Request::path() === 'orders' ? 'active' : '' }}" href="{{ url(route('orders.index')) }}">
-                    Order
-                </a>
+                    <a class="navbar-item {{ Request::path() === 'orders' ? 'active' : '' }}" href="{{ url(route('orders.index')) }}">
+                        Order
+                    </a>
                 <a class="navbar-item {{ Request::path() === 'error' ? 'active' : '' }}" href="{{ url('/error') }}">
                     Back-log
                 </a>

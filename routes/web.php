@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BacklogController;
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ErrorController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,11 +26,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::resource('/', AuthenticatedSessionController::class);
-Route::resource('/orders', OrderController::class);
+Route::get('redirects', [HomeController::class, 'index']);
 
-Route::resource('/backlog', BacklogController::class);
-Route::resource('/error', ErrorController::class);
+Route::resource('/', AuthenticatedSessionController::class);
+
+
 
 require __DIR__.'/auth.php';
 
@@ -37,30 +41,45 @@ Route::group(['middleware' => ['auth']], function () {
 
 /*
 |--------------------------------------------------------------------------
-| Admin Routes
+| Driver Routes +
+| good
 |--------------------------------------------------------------------------
 */
-//Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {});
-Route::get('/admin_dashboard', function () {
-    return view('admin_dashboard');
-})->middleware(['auth', 'admin'])->name('admin_dashboard');
+
+Route::middleware(['auth', 'driver'])->group(function () {
+    Route::get('/driver_dashboard', [DriverController::class, 'dashboard']);
+    Route::resource('/orders', OrderController::class);
+    Route::resource('/backlog', BacklogController::class);
+    Route::resource('/error', ErrorController::class);
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+| getting 302 by the orders/backlog/error route
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'dashboard']);
+    Route::resource('/orders', OrderController::class);
+    Route::resource('/backlog', BacklogController::class);
+    Route::resource('/error', ErrorController::class);
+
+});
 
 /*
 |--------------------------------------------------------------------------
 | Production Routes
+| getting 403 'no permission' by the other pages
 |--------------------------------------------------------------------------
 */
-//Route::group(['middleware' => ['auth', 'production'], 'prefix' => 'production'], function () {});
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'production'])->name('dashboard');
 
-/*
-|--------------------------------------------------------------------------
-| Driver Routes
-|--------------------------------------------------------------------------
-*/
-//Route::group(['middleware' => ['auth', 'driver'], 'prefix' => 'driver'], function () {});
-Route::get('/driver_dashboard', function () {
-    return view('driver_dashboard');
-})->middleware(['auth', 'driver'])->name('driver_dashboard');
+Route::middleware(['auth', 'production'])->group(function () {
+    Route::get('/dashboard', [ProductionController::class, 'dashboard']);
+    Route::resource('/orders', OrderController::class);
+    Route::resource('/backlog', BacklogController::class);
+    Route::resource('/error', ErrorController::class);
+
+});
+
