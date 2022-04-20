@@ -64,10 +64,6 @@ container.list {
 
 container.horizontal.flexContainer {
     margin-top: 2vh;
-    /* background-color: var(--background-color); */
-    /* background-color: red; */
-    /* margin: 0 10vw; */
-    /* column-gap: 20vw; */
     width: 100%;
     overflow-x: scroll;
     overflow-y: visible;
@@ -75,21 +71,7 @@ container.horizontal.flexContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    /* align-items: stretch; */
-    /* align-content: stretch; */
-    /* justify-content: stretch; */
-    /* align-items: space-evenly; */
-    /* align-content: space-evenly; */
-    /* justify-content: space-evenly; */
-    /* align-items: center; */
-    /* align-content: center; */
-    /* justify-content: center; */
     align-items: flex-start;
-    /* align-content: flex-start; */
-    /* justify-content: flex-start; */
-    /* align-items: baseline; */
-    /* align-content: baseline; */
-    /* justify-content: baseline; */
 }
 container.vertical.flexContainer {
     margin: 0vh 10vw;
@@ -104,21 +86,7 @@ container.vertical.flexContainer {
     display: inline-flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    /* align-items: stretch; */
-    /* align-content: stretch; */
-    /* justify-content: stretch; */
-    /* align-items: space-evenly; */
-    /* align-content: space-evenly; */
-    /* justify-content: space-between; */
-    /* align-items: center; */
-    /* align-content: center; */
-    /* justify-content: center; */
     align-items: flex-start;
-    /* align-content: flex-start; */
-    /* justify-content: flex-start; */
-    /* align-items: baseline; */
-    /* align-content: baseline; */
-    /* justify-content: baseline; */
 }
 
 /* card.card {
@@ -148,21 +116,8 @@ container.vertical.flexContainer {
     display: inline-flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    /* align-items: stretch; */
-    /* align-content: stretch; */
-    /* justify-content: stretch; */
-    /* align-items: space-evenly; */
-    /* align-content: space-evenly; */
     justify-content: space-between;
-    /* align-items: center; */
-    /* align-content: center; */
-    /* justify-content: center; */
     align-items: flex-start;
-    /* align-content: flex-start; */
-    /* justify-content: flex-start; */
-    /* align-items: baseline; */
-    /* align-content: baseline; */
-    /* justify-content: baseline; */
 }
 
 .grow-wrap {

@@ -37,16 +37,6 @@
                                 @endif
                             @endif
                         </div>
-                        {{-- @switch(true)
-                            @case (Request::query('field') === 'notes')
-                                @break
-                            @case ($user->hasRole('admin'))
-                                @break
-                            @default
-                                <div class="content">
-                                    <p>{{ $order->notes }}</p>
-                                </div>
-                        @endswitch --}}
                         @if (Request::query('field') === 'notes')
                             @if ($user->hasRole('admin'))
                                 <div class="content">
@@ -56,20 +46,11 @@
                                         <div class="grow-wrap">
                                             <textarea name="notes" oninput="this.parentNode.dataset.replicatedValue = this.value" class="is-focused has-background-success">{{ $order->notes }}</textarea>
                                             <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
-                                            {{-- <textarea name="notes" oninput="this.parentNode.dataset.replicatedValue = this.value">{{ $order->notes }}</textarea>
-                                            <script>
-                                                const textarea = document.querySelector('#notes > div > textarea');
-                                                textarea.parentNode.dataset.replicatedValue = textarea.value;
-                                                textarea.className = 'is-focused has-background-success';
-                                                textarea.parentNode.dataset.className = 'textarea is-focused has-background-success';
-                                            </script> --}}
                                         </div>
-                                        {{-- <textarea type="text" id="notes" name="notes">{{ $order->notes }}</textarea> --}}
                                     </form>
                                 </div>
                             @endif
                         @else
-                            {{--                        TODO add here the note dynamic--}}
                             <div class="content">
                                 <p>{{ $order->notes }}</p>
                             </div>
