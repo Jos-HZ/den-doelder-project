@@ -14,7 +14,7 @@
                         <input
                             @class ([
                                 'input',
-                                'is-danger' => $errors->any(),
+                                'is-danger' => $errors->get('time'),
                             ])
                             type="hidden"
                             id="order_id"
@@ -30,7 +30,7 @@
                         <input
                             @class ([
                                 'input',
-                                'is-danger' => $errors->any(),
+                                'is-danger' => $errors->get('time'),
                             ])
                             type="time"
                             id="time"
@@ -49,7 +49,7 @@
                         <input
                             @class ([
                                 'input',
-                                'is-danger' => $errors->any(),
+                                'is-danger' => $errors->get('date'),
                             ])
                             type="date"
                             id="date"
@@ -87,7 +87,7 @@
                             <textarea
                                 @class ([
                                     'input',
-                                    'is-danger' => $errors->any()
+                                    'is-danger' => $errors->get('description'),
                                 ])
                                 id="description"
                                 name="description"
@@ -99,7 +99,7 @@
                         <textarea
                             @class ([
                                 'input',
-                                'is-danger' => $errors->any(),
+                                'is-danger' => $errors->get('description'),
                             ])
                             id="description"
                             name="description"
