@@ -27,21 +27,6 @@ Route::resource('/order', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
 
-
-//user dashboard
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'production'])->name('dashboard');
-
-// admin dashboard
-Route::get('/admin_dashboard', function () {
-   return view('admin_dashboard');
-})->middleware(['auth', 'admin'])->name('admin_dashboard');
-
-Route::get('/driver_dashboard', function () {
-   return view('driver_dashboard');
-})->middleware(['auth', 'driver'])->name('driver_dashboard');
-
 require __DIR__.'/auth.php';
 
 Route::group(['middleware' => ['auth']], function () {
@@ -54,21 +39,27 @@ Route::group(['middleware' => ['auth']], function () {
 | Admin Routes
 |--------------------------------------------------------------------------
 */
-
-
+//Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {});
+Route::get('/admin_dashboard', function () {
+    return view('admin_dashboard');
+})->middleware(['auth', 'admin'])->name('admin_dashboard');
 
 /*
 |--------------------------------------------------------------------------
 | Production Routes
 |--------------------------------------------------------------------------
 */
-
-
+//Route::group(['middleware' => ['auth', 'production'], 'prefix' => 'production'], function () {});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'production'])->name('dashboard');
 
 /*
 |--------------------------------------------------------------------------
 | Driver Routes
 |--------------------------------------------------------------------------
 */
-
-
+//Route::group(['middleware' => ['auth', 'driver'], 'prefix' => 'driver'], function () {});
+Route::get('/driver_dashboard', function () {
+    return view('driver_dashboard');
+})->middleware(['auth', 'driver'])->name('driver_dashboard');
