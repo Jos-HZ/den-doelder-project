@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -56,7 +57,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('orders.show', compact('order'));
+        $user = Auth::user();
+        return view('orders.show', ['order' => $order, 'user' => $user]);
     }
 
     /**
@@ -67,7 +69,8 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        return view('orders.edit', compact('order'));
+        $user = Auth::user();
+        return view('orders.show', ['order' => $order, 'user' => $user]);
     }
 
     /**
@@ -80,6 +83,8 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         //validate this later
+        $order->notes = $request->notes;
+        $order->save();
         return redirect(route('orders.show', $order));
     }
 

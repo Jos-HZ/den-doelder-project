@@ -10,3 +10,21 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " is-active";
 }
+
+function XcrollBy(param) {
+    const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    document.querySelector('container.horizontal.flexContainer').scrollBy({
+        top: 0,
+        left: param * viewportWidth,
+        behavior: 'smooth'
+    });
+}   
+
+function XcrollTo(param) {
+    const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    document.querySelector('container.horizontal.flexContainer').scrollTo({
+        top: 0,
+        left: param * viewportWidth,
+        behavior: 'smooth'
+    });
+}
