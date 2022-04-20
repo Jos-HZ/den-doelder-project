@@ -85,28 +85,17 @@
                     <div class="control has-icons-left has-icons-right">
                         <div class="grow-wrap">
                             <textarea
-                                @class ([
+                                {{-- @class ([
                                     'input',
                                     'is-danger' => $errors->get('description'),
-                                ])
+                                ]) --}}
                                 id="description"
                                 name="description"
-                                oninput="this.parentNode.dataset.replicatedValue = this.value">
-                                    {{ $errors->any() ? old('description') : '' }}
-                            </textarea>
+                                oninput="this.parentNode.dataset.replicatedValue = this.value">{{
+                                ($errors->any() ? old('description') : '')
+                            }}</textarea>
                             <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
                         </div>
-                        <textarea
-                            @class ([
-                                'input',
-                                'is-danger' => $errors->get('description'),
-                            ])
-                            id="description"
-                            name="description"
-                            value="{{ $errors->any() ? old('description') : '' }}"
-                        >
-                        {{-- required --}}
-                        </textarea>
                     </div>
                     @error('description')
                     <p class="help is-danger">{{ $errors->get('description')[0] }}</p>
