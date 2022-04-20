@@ -1,3 +1,131 @@
+:root {
+    --card-color: rgb(255, 255, 255);
+    --background-color: #f8f9fc;
+    --shadow: 0px 0px 10px 0px #dddddd;
+}
+
+html, body {
+    /* overflow-y: scroll; */
+    scrollbar-width: none;
+    background-color: var(--background-color) !important;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+container.tabs {
+    display: block;
+    position: sticky;
+    top: 2vh;
+    background-color: #7a7a7a;
+    box-shadow: var(--shadow);
+    color: white;
+    margin: 0 !important;
+    border-radius: 100vw;
+    margin: 2vh 10vw 0 10vw !important;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-content: stretch;
+    align-items: flex-start;
+
+}
+
+tab.tab {
+    display: inline-block;
+    flex: 1 0 auto;
+    text-align: center;
+    padding: 2vh;
+}
+
+card.order {
+    /* flex: 0 1 100vw; */
+    background-color: var(--card-color);
+    box-shadow: var(--shadow);
+    border-radius: 20px;
+    padding: 2vh;
+    width: 80vw;
+    /* margin: 5vh; */
+}
+
+a > card.order {
+    display: block;
+    border-radius: 20px;
+    padding: 2vh;
+    /* margin: 2vh 10vw; */
+}
+
+container.list {
+    /* background-color: var(--background-color); */
+}
+
+container.horizontal.flexContainer {
+    margin-top: 2vh;
+    /* background-color: var(--background-color); */
+    /* background-color: red; */
+    /* margin: 0 10vw; */
+    /* column-gap: 20vw; */
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* align-items: stretch; */
+    /* align-content: stretch; */
+    /* justify-content: stretch; */
+    /* align-items: space-evenly; */
+    /* align-content: space-evenly; */
+    /* justify-content: space-evenly; */
+    /* align-items: center; */
+    /* align-content: center; */
+    /* justify-content: center; */
+    align-items: flex-start;
+    /* align-content: flex-start; */
+    /* justify-content: flex-start; */
+    /* align-items: baseline; */
+    /* align-content: baseline; */
+    /* justify-content: baseline; */
+}
+container.vertical.flexContainer {
+    margin: 0vh 10vw;
+    /* flex: 1 0 100vh; */
+    background-color: var(--background-color);
+    /* background-color: green; */
+    row-gap: 5vh;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    width: 100vw;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    /* align-items: stretch; */
+    /* align-content: stretch; */
+    /* justify-content: stretch; */
+    /* align-items: space-evenly; */
+    /* align-content: space-evenly; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* align-content: center; */
+    /* justify-content: center; */
+    align-items: flex-start;
+    /* align-content: flex-start; */
+    /* justify-content: flex-start; */
+    /* align-items: baseline; */
+    /* align-content: baseline; */
+    /* justify-content: baseline; */
+}
+
+/* card.card {
+    box-sizing: border-box;
+    width: 100vw;
+} */
+
 .notesTitle > div {
     width: 2rem;
 }

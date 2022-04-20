@@ -25,7 +25,7 @@
                     <article class="tile is-child box has-background-success">
                         <div class="notesTitle">
                             <p class="title">Notes</p>
-                            @if(true)
+                            @if ($user->hasRole('admin'))
                                 @if (Request::query('field') === 'notes')
                                     <div class="notesButton">
                                         <a href="javascript:document.getElementById('notes').submit()"><img src="/img/svg/save.svg"></a>
@@ -37,8 +37,18 @@
                                 @endif
                             @endif
                         </div>
-                        @if(true)
-                            @if (Request::query('field') === 'notes')
+                        {{-- @switch(true)
+                            @case (Request::query('field') === 'notes')
+                                @break
+                            @case ($user->hasRole('admin'))
+                                @break
+                            @default
+                                <div class="content">
+                                    <p>{{ $order->notes }}</p>
+                                </div>
+                        @endswitch --}}
+                        @if (Request::query('field') === 'notes')
+                            @if ($user->hasRole('admin'))
                                 <div class="content">
                                     <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
                                         @csrf
@@ -57,12 +67,12 @@
                                         {{-- <textarea type="text" id="notes" name="notes">{{ $order->notes }}</textarea> --}}
                                     </form>
                                 </div>
-                            @else
-                                {{--                        TODO add here the note dynamic--}}
-                                <div class="content">
-                                    <p>{{ $order->notes }}</p>
-                                </div>
                             @endif
+                        @else
+                            {{--                        TODO add here the note dynamic--}}
+                            <div class="content">
+                                <p>{{ $order->notes }}</p>
+                            </div>
                         @endif
                     </article>
                 </div>
