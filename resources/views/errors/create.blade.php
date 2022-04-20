@@ -3,7 +3,6 @@
 @section('content')
     <section class="section">
         <div class="container">
-            {{-- TODO: make ordernumber dynamic --}}
 
             <h1>Order {{ app('request')->input('ordernumber') }} </h1>
             <form method="POST" action="{{ route('error.store') }}">
@@ -39,7 +38,8 @@
                             value="{{ $errors->any() ? old('time') : '' }}">
                     </div>
                     @error('time')
-                        <p class="help is-danger">This is a required field</p>
+                        <p class="help is-danger">{{ $errors->get('time')[0] }}</p>
+                        {{-- <p class="help is-danger">{{ $errors->getMessages()['time'][0] }}</p> --}}
                     @enderror
                 </div>
 
@@ -59,7 +59,7 @@
                         {{-- required --}}
                     </div>
                     @error('date')
-                        <p class="help is-danger">This is a required field</p>
+                    <p class="help is-danger">{{ $errors->get('date')[0] }}</p>
                     @enderror
                 </div>
 
@@ -76,7 +76,7 @@
                         </label>
                     </div>
                     @error('category')
-                        <p class="help is-danger">This is a required field</p>
+                    <p class="help is-danger">{{ $errors->get('category')[0] }}</p>
                     @enderror
                 </div>
 
@@ -109,7 +109,7 @@
                         </textarea>
                     </div>
                     @error('description')
-                        <p class="help is-danger">This is a required field</p>
+                    <p class="help is-danger">{{ $errors->get('description')[0] }}</p>
                     @enderror
                 </div>
 
