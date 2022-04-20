@@ -13,7 +13,10 @@
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
-                            class="input @error('order_id') is-danger @enderror"
+                            @class ([
+                                'input',
+                                'is-danger' => $errors->any(),
+                            ])
                             type="hidden"
                             id="order_id"
                             name="order_id"
@@ -26,14 +29,15 @@
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
-                                class="input @error('time') is-danger @enderror"
-                                type="time"
-                                id="time"
-                                name="time"
-                                value="{{ $errors->any() ? old('time') : '' }}"
-                        >
+                            @class ([
+                                'input',
+                                'is-danger' => $errors->any(),
+                            ])
+                            type="time"
+                            id="time"
+                            name="time"
+                            value="{{ $errors->any() ? old('time') : '' }}">
                     </div>
-                    <br>
                     @error('time')
                         <p class="help is-danger">This is a required field</p>
                     @enderror
@@ -43,7 +47,10 @@
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
-                            class="input @error('date') is-danger @enderror"
+                            @class ([
+                                'input',
+                                'is-danger' => $errors->any(),
+                            ])
                             type="date"
                             id="date"
                             name="date"
@@ -51,14 +58,12 @@
                         >
                         {{-- required --}}
                     </div>
-                    <br>
                     @error('date')
                         <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
-                <br>
 
-                <label class="is-danger" for="category">Error category:</label><br>
+                <label class="i forgor" for="category">Error category:</label><br>
                 <div class="label">
                     <div class="control">
                         <label class="radio">
@@ -66,11 +71,10 @@
                             Mechanical error
                         </label>
                         <label class="radio">
-                            <input type="radio" name="category"value="technical">
+                            <input type="radio" name="category" value="technical">
                             Technical error
                         </label>
                     </div>
-                    <br>
                     @error('category')
                         <p class="help is-danger">This is a required field</p>
                     @enderror
@@ -79,8 +83,24 @@
                 <label for="description">Description:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
+                        <div class="grow-wrap">
+                            <textarea
+                                @class ([
+                                    'input',
+                                    'is-danger' => $errors->any()
+                                ])
+                                id="description"
+                                name="description"
+                                oninput="this.parentNode.dataset.replicatedValue = this.value">
+                                    {{ $errors->any() ? old('description') : '' }}
+                            </textarea>
+                            <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
+                        </div>
                         <textarea
-                            class="input @error('description') is-danger @enderror"
+                            @class ([
+                                'input',
+                                'is-danger' => $errors->any(),
+                            ])
                             id="description"
                             name="description"
                             value="{{ $errors->any() ? old('description') : '' }}"
@@ -88,14 +108,13 @@
                         {{-- required --}}
                         </textarea>
                     </div>
-                    <br>
                     @error('description')
                         <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
 
                 <input type="submit" value="Submit" class="button is-link">
-                <a href="{{route('error.index')}}">
+                <a href="{{ route('error.index') }}">
                     <button type="button" class="button is-link-light">Cancel</button>
                 </a>
 
