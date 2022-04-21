@@ -49,6 +49,11 @@ Route::group(['middleware' => ['auth']], function () {
         ->name('logout.perform');
 });
 
+// driver order show
+Route::get('/driver/orders/{id}', [OrderController::class, 'showDriver'] );
+
+Route::get('redirects', [\App\Http\Controllers\HomeController::class, 'index']);
+
 //// user protected routes
 //Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {
 //    Route::get('/', 'HomeController@index')->name('user_dashboard');

@@ -55,10 +55,19 @@ class OrderController extends Controller
      * @param Order $order
      * @return Application|Factory|View
      */
-    public function show(Order $order)
+    public function show(Order $order, Request $request)
     {
-        $user = Auth::user();
-        return view('orders.show', ['order' => $order, 'user' => $user]);
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            if ($user->hasRole('admin') || $user->hasRole('production')) {
+                return view('orders.show', ['order' => $order, 'user' => $user]);
+            } else if ($user->hasRole('driver')) {
+                return view('orders.driver.show', ['order' => $order, 'user' => $user]);
+            }
+        }
+
+        abort(403);
     }
 
     /**
