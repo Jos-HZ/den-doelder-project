@@ -13,7 +13,7 @@
                 {{-- <tab @class(['tab', 'is-active']) onCLick="XcrollBy(-1)">Left</tab>
                 <tab @class(['tab', 'is-active']) onCLick="XcrollBy(1)">Right</tab> --}}
                 @foreach ($capeArray as $production_idKey=>$production_id)
-                <tab @class(['tab', 'current' => $loop->first]) onCLick="scrollX(this, true, {{ $production_idKey }})">Cape {{ $production_id }}</tab>
+                <tab @class(['tab', 'current' => $loop->first]) onCLick="xOnClick({{ $production_idKey }})">Cape {{ $production_id }}</tab>
                 {{-- <a @class(['tab', 'is-active' => $loop->first]) href="#cape-{{ $production_id }}">Cape {{ $production_id }}</a> --}}
             @endforeach
         </container>
