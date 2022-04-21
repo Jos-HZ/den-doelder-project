@@ -4,8 +4,8 @@
 
 namespace App\Filters;
 
-use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 abstract class AbstractFilter
 {
@@ -17,10 +17,10 @@ abstract class AbstractFilter
     {
         $this->request = $request;
     }
+
     public function filter(Builder $builder): Builder
     {
-        foreach($this->getFilters() as $filter => $value)
-        {
+        foreach ($this->getFilters() as $filter => $value) {
             $this->resolveFilter($filter)->filter($builder, $value);
         }
         return $builder;

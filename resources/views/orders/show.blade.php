@@ -29,11 +29,13 @@
                             @if(true)
                                 @if (Request::query('field') === 'notes')
                                     <div class="notesButton">
-                                        <a href="javascript:document.getElementById('notes').submit()"><img src="/img/svg/save.svg"></a>
+                                        <a href="javascript:document.getElementById('notes').submit()"><img
+                                                src="/img/svg/save.svg"></a>
                                     </div>
                                 @else
                                     <div class="notesButton">
-                                        <a href="{{ Request::url() }}/edit?field=notes"><img src="/img/svg/{{ (isset($order->notes) ? 'edit' : 'create') }}.svg"></a>
+                                        <a href="{{ Request::url() }}/edit?field=notes"><img
+                                                src="/img/svg/{{ (isset($order->notes) ? 'edit' : 'create') }}.svg"></a>
                                     </div>
                                 @endif
                             @endif
@@ -45,7 +47,9 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="grow-wrap">
-                                            <textarea name="notes" oninput="this.parentNode.dataset.replicatedValue = this.value" class="is-focused has-background-success">{{ $order->notes }}</textarea>
+                                            <textarea name="notes"
+                                                      oninput="this.parentNode.dataset.replicatedValue = this.value"
+                                                      class="is-focused has-background-success">{{ $order->notes }}</textarea>
                                             <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
                                             {{-- <textarea name="notes" oninput="this.parentNode.dataset.replicatedValue = this.value">{{ $order->notes }}</textarea>
                                             <script>

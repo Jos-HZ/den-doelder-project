@@ -10,7 +10,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\DB;
 
 // TODO: waarom is het twee keer error.index ipv errors.index?
 
@@ -35,18 +34,6 @@ class ErrorController extends Controller
 //    }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Application|Factory|View
-     */
-    public function create(): View|Factory|Application
-    {
-//        return \view('errors.create', ['order' => DB::table('orders')->where('id', $order_id)->first()]);
-
-        return \view('errors.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
@@ -57,6 +44,18 @@ class ErrorController extends Controller
         Error::create($this->validatedError($request));
 
         return redirect(route('error.index'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Application|Factory|View
+     */
+    public function create(): View|Factory|Application
+    {
+//        return \view('errors.create', ['order' => DB::table('orders')->where('id', $order_id)->first()]);
+
+        return \view('errors.create');
     }
 
     /**
