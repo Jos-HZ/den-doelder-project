@@ -32,7 +32,7 @@ Route::resource('/error', ErrorController::class);
 require __DIR__ . '/auth.php';
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('authenticatedSession.destroy');
 });
 
