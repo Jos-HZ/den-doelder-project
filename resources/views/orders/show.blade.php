@@ -32,7 +32,7 @@
                                     </div>
                                 @else
                                     <div class="notesButton">
-                                        <a href="/orders/{{ $order->id }}/edit?field=notes"><img src="/img/svg/{{ (isset($order->notes) ? 'edit' : 'create') }}.svg"></a>
+                                        <a href="{{ request()->fullUrlWithQuery(['field' => 'notes']) }}"><img src="/img/svg/{{ (isset($order->notes) ? 'edit' : 'create') }}.svg"></a>
                                     </div>
                                 @endif
                         </div>
