@@ -79,7 +79,8 @@ class OrderController extends Controller
     public function edit(Order $order)
     {
         $user = Auth::user();
-        return view('orders.show', ['order' => $order, 'user' => $user]);
+//        return view('orders.show', ['order' => $order, 'user' => $user]);
+        return redirect(route('orders.show', ['order' => $order, 'user' => $user]));
     }
 
     /**

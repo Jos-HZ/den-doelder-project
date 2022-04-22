@@ -26,6 +26,7 @@ Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/orders', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
+Route::resource('quality-control', \App\Http\Controllers\QualityControlController::class);
 
 
 // user dashboard

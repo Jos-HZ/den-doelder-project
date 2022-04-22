@@ -25,20 +25,18 @@
                     <article class="tile is-child box has-background-success">
                         <div class="notesTitle">
                             <p class="title">Notes</p>
-                            @if ($user->hasRole('admin'))
+
                                 @if (Request::query('field') === 'notes')
                                     <div class="notesButton">
                                         <a href="javascript:document.getElementById('notes').submit()"><img src="/img/svg/save.svg"></a>
                                     </div>
                                 @else
                                     <div class="notesButton">
-                                        <a href="{{ Request::url() }}/edit?field=notes"><img src="/img/svg/{{ (isset($order->notes) ? 'edit' : 'create') }}.svg"></a>
+                                        <a href="/orders/{{ $order->id }}/edit?field=notes"><img src="/img/svg/{{ (isset($order->notes) ? 'edit' : 'create') }}.svg"></a>
                                     </div>
                                 @endif
-                            @endif
                         </div>
                         @if (Request::query('field') === 'notes')
-                            @if ($user->hasRole('admin'))
                                 <div class="content">
                                     <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
                                         @csrf
@@ -49,7 +47,6 @@
                                         </div>
                                     </form>
                                 </div>
-                            @endif
                         @else
                             <div class="content">
                                 <p>{{ $order->notes }}</p>
