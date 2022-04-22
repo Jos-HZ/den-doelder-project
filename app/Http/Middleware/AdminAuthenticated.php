@@ -19,12 +19,9 @@ class AdminAuthenticated
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            /**
-             * @var User $user
-             */
+
             $user = Auth::user();
 
-            // allow admin to proceed with request
             if ($user->hasRole('admin')) {
                 return $next($request);
             }

@@ -21,11 +21,13 @@
             <a class="navbar-link has-text-white">
                 Settings
             </a>
-
             <div class="navbar-dropdown">
-                <a class="navbar-item" href="{{ url('/logout') }}">
-                    Logout
-                </a>
+                <form action="{{ route('destroy', 'logout') }}" method="POST">
+                    @csrf
+                    <button class="navbar-item" type="submit">
+                        Logout
+                    </button>
+                </form>
             </div>
         </div>
     </div>
