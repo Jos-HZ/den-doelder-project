@@ -442,7 +442,7 @@
                     @break
                     @default
                 @endswitch --}}
-                <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+                {{-- <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
                 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
                 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
                 <script>
@@ -523,7 +523,7 @@
                         </span>
                     </span>
                     <br>
-                @endforeach
+                @endforeach --}}
                 @foreach ($fields as $section)
                     <div class="checlistSection">
                         <div class="checklistSectionTitle">{{ $section['content'] }}</div>
