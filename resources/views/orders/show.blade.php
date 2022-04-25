@@ -25,8 +25,7 @@
                     <article class="tile is-child box has-background-success">
                         <div class="notesTitle">
                             <p class="title">Notes</p>
-
-                                @if (Request::query('field') === 'notes')
+                                @if (request()->query('field') === 'notes')
                                     <div class="notesButton">
                                         <a href="javascript:document.getElementById('notes').submit()"><img src="/img/svg/save.svg"></a>
                                     </div>
@@ -36,7 +35,7 @@
                                     </div>
                                 @endif
                         </div>
-                        @if (Request::query('field') === 'notes')
+                        @if (request()->query('field') === 'notes')
                                 <div class="content">
                                     <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
                                         @csrf

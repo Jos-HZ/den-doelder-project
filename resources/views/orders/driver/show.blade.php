@@ -19,7 +19,7 @@
                     <div class="tile is-child box">
                         <p class="title">Note</p>
                         <div class="notesTitle">
-                            @if (Request::query('a') === 'edit')
+                            @if (request()->query('a') === 'edit')
                                 <div class="notesButton">
                                     <a href="javascript:document.getElementById('notes').submit()"><img
                                             src="/img/svg/save.svg"></a>
@@ -32,7 +32,7 @@
                                 </div>
                             @endif
                         </div>
-                        @if (Request::query('a') === 'edit')
+                        @if (request()->query('a') === 'edit')
                             <div class="content">
                                 <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
                                     @csrf
