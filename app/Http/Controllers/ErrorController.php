@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Gate;
 
 // TODO: waarom is het twee keer error.index ipv errors.index?
 
@@ -27,11 +28,6 @@ class ErrorController extends Controller
 
         return view('errors.index', compact('errors', 'orders'));
     }
-
-//    public function index (Request $request)
-//    {
-//        return Error::filter($request)->get();
-//    }
 
     /**
      * Store a newly created resource in storage.
@@ -53,8 +49,6 @@ class ErrorController extends Controller
      */
     public function create(): View|Factory|Application
     {
-//        return \view('errors.create', ['order' => DB::table('orders')->where('id', $order_id)->first()]);
-
         return \view('errors.create');
     }
 
@@ -119,9 +113,16 @@ class ErrorController extends Controller
      */
     public function destroy(Error $error)
     {
-        $error->delete();
+        if (Gate::allows('is_production')) {
+            $error->delete();
+            return redirect(route('error.index'));
+        } else {
+           abort(403);
+        }
+
+
 
 //        return redirect(route('order.index'));
-        return redirect(route('error.index'));
+
     }
 }

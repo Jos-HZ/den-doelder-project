@@ -33,7 +33,7 @@ class RedirectIfAuthenticated
 
                 // to admin dashboard
                 if ($user->hasRole('admin')) {
-                    return redirect(route('admin'));
+                    return redirect(route('dashboard'));
                 }
 
                 // to user dashboard

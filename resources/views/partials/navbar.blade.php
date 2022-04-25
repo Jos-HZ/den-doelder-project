@@ -1,7 +1,7 @@
 <nav class="navbar is-dark  has-text-white">
     <div class="container">
         <div class="navbar-brand">
-            <a class="navbar-item">
+            <a class="navbar-item" href="/redirects">
                 <img src="/img/logo-den-doelder.png" alt="Logo Den Doelder">
             </a>
         </div>
@@ -11,9 +11,15 @@
                    href="{{ url(route('orders.index')) }}">
                     Order
                 </a>
-                <a class="navbar-item {{ Request::path() === 'error' ? 'active' : '' }}" href="{{ url('/error') }}">
-                    Back-log
-                </a>
+                @can('is_admin')
+                    <a class="navbar-item {{ Request::path() === 'error' ? 'active' : '' }}" href="{{ url('/error') }}">
+                        Back-log
+                    </a>
+                @elsecan('is_production')
+                    <a class="navbar-item {{ Request::path() === 'error' ? 'active' : '' }}" href="{{ url('/error') }}">
+                        Back-log
+                    </a>
+                @endcan
             </div>
         </div>
 
