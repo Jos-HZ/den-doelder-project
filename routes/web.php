@@ -28,6 +28,11 @@ Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
 
 
+Route::get('/checklist', function () {
+    return view('checklist');
+})->name('checklist');
+
+
 // user dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
