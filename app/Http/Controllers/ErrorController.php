@@ -10,7 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 // TODO: waarom is het twee keer error.index ipv errors.index?
 
@@ -113,16 +113,18 @@ class ErrorController extends Controller
      */
     public function destroy(Error $error)
     {
-        if (Gate::allows('is_production')) {
+        // check logged in user
+        $user = Auth::user();
+
+        if ($user->can('delete', $error)) {
             $error->delete();
-            return redirect(route('error.index'));
         } else {
-           abort(403);
+            abort(403);
         }
 
-
+      ;
 
 //        return redirect(route('order.index'));
-
+        return redirect(route('error.index'));
     }
 }
