@@ -1,3 +1,56 @@
+/* .containerQaz {
+    width: max-content;
+    background: green;
+    height: max-content;
+    margin: 5vh;
+}
+
+.exclusiveButton {
+    box-sizing: border-box;
+    padding: 12px;
+    margin: 1vh;
+    display: inline-block;
+    background-color: red;
+} */
+
+.io-toggler{
+    cursor:pointer;
+    display:inline-block;
+    position:relative;
+    font:20px/1.5 sans-serif;
+    background:url(http://i.stack.imgur.com/XVCAQ.png);
+    color:#fff;
+    border:4px solid transparent;
+    border-radius: 50px;
+    user-select:none;
+    -webkit-user-select:none;
+    -webkit-touch-callout:none;
+  }
+  .io-options{
+    border-radius:50px;
+    top:0;
+    left:0;
+    overflow:hidden;
+  }
+  .io-options span{
+    position:relative;
+    text-align:center;
+    display:inline-block;
+    padding: 3px 35px;
+  }
+
+  /* the jQ clone */
+  .io-options + .io-options{
+    position:absolute;
+    background:#fff;
+    width:50%;
+    height:100%;
+    white-space:nowrap;
+  }
+  .io-options + .io-options span{
+    color:#006cff;
+  }
+
 :root {
     --card-color: rgb(255, 255, 255);
     --background-color: #f8f9fc;
@@ -15,6 +68,51 @@ body::-webkit-scrollbar {
     height: 0;
     display: none;
 }
+
+.toggle {
+    --width: 40px;
+    --height: calc(var(--width) / 2);
+    --border-radius: calc(var(--height) / 2);
+
+    display: inline-block;
+    cursor: pointer;
+}
+
+.toggle__input {
+    display: none;
+}
+
+.toggle__fill {
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--border-radius);
+    background: #dddddd;
+    transition: background 0.2s;
+}
+
+.toggle__fill::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: var(--height);
+    width: var(--height);
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: var(--border-radius);
+    transition: transform 0.2s;
+}
+
+.toggle__input:checked ~ .toggle__fill {
+    background: #009578;
+}
+
+.toggle__input:checked ~ .toggle__fill::after {
+    transform: translateX(var(--height));
+}
+
+
 
 container.tabs {
     display: block;
