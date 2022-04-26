@@ -31,10 +31,9 @@ function xOnScroll() {
     const element = document.querySelector('container.horizontal.flexContainer');
     const currentPage = Math.round(element.scrollLeft / element.clientWidth);
     changeUrl(changeClass(currentPage));
-    console.log(999);
 }
 
-window.addEventListener('load', function() {
+window.addEventListener('DOMContentLoaded', function() {
     // console.log((new URL(document.location)).searchParams.get('cape'))
     if ((new URL(document.location)).searchParams.get('cape') !== null) {
         const cape = (new URL(document.location)).searchParams.get('cape');
