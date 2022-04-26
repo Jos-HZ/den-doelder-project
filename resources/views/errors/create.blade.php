@@ -65,15 +65,17 @@
 
                 <label class="i forgor" for="category">Error category:</label><br>
                 <div class="label">
-                    <div class="control">
-                        <label class="radio">
-                            <input type="radio" name="category" value="mechanical">
-                            Mechanical error
-                        </label>
-                        <label class="radio">
-                            <input type="radio" name="category" value="technical">
-                            Technical error
-                        </label>
+
+                    <div class="select">
+                        <select
+                            class="input @error('category') is-danger @enderror"
+                            type="category"
+                            id="category"
+                            name="category"
+                        >
+                            <option value="mechanical">Mechanical error</option>
+                            <option value="technical">Technical error</option>
+                        </select>
                     </div>
                     @error('category')
                     <p class="help is-danger">{{ $errors->get('category')[0] }}</p>
@@ -91,9 +93,9 @@
                                 ]) --}}
                                 id="description"
                                 name="description"
-                                oninput="this.parentNode.dataset.replicatedValue = this.value">{{
-                                ($errors->any() ? old('description') : '')
-                            }}</textarea>
+                                oninput="this.parentNode.dataset.replicatedValue = this.value">
+                                {{ ($errors->any() ? old('description') : '') }}
+                            </textarea>
                             <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
                         </div>
                     </div>

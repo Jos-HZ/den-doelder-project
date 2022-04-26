@@ -11,20 +11,16 @@ class DriverAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() ) {
+        if (Auth::check()) {
             $user = Auth::user();
 
-            if ($user->hasRole('admin') ) {
-                return redirect(('admin_dashboard'));
-            }
-
-            elseif ($user->hasRole('driver')) {
+            if ($user->hasRole('driver')) {
                 return $next($request);
             }
         }

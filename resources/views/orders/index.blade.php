@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('head')
-    <script src="js/tabs.js"></script>
+    <script src="public/js/tabs.js"></script>
 @endsection
 
 @section('content')
@@ -36,4 +36,5 @@
             @endforeach
         </container>
     </container>
+
 @endsection
