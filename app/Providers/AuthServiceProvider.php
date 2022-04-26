@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Error;
+use App\Policies\ErrorPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -13,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Error::class => ErrorPolicy::class,
     ];
 
     /**
@@ -24,6 +28,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('is_admin', function($user) {
+            return $user->role == 'admin';
+        });
+
+        Gate::define('is_production', function($user) {
+            return $user->role == 'production';
+        });
+
+        Gate::define('is_driver', function($user) {
+            return $user->role == 'driver';
+        });
     }
 }

@@ -12,25 +12,21 @@ class UserAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
     {
-        if( Auth::check() )
-        {
-            /**
-             * @var User $user
-             */
+        if (Auth::check()) {
+
             $user = Auth::user();
 
-            // allow admin to proceed with request
-            if ( $user->hasRole('production') ) {
+            if ($user->hasRole('production')) {
+
                 return $next($request);
             }
         }
-
         abort(403);  // permission denied error
     }
 }

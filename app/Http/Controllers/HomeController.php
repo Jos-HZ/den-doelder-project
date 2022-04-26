@@ -14,7 +14,8 @@ class HomeController extends Controller
         $checkrole = explode(',', $role);
 
         if (in_array('admin', $checkrole)) {
-            return redirect('/admin_dashboard');
+
+            return redirect('/dashboard');
         }
 
         if (in_array('production', $checkrole)) {

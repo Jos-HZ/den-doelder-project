@@ -3,6 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
+            <h1 class="title has-text-centered">Order {{ $order->ordernumber }}</h1>
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
@@ -25,13 +26,16 @@
                     <article class="tile is-child box has-background-success">
                         <div class="notesTitle">
                             <p class="title">Notes</p>
+
                                 @if (request()->query('field') === 'notes')
                                     <div class="notesButton">
-                                        <a href="javascript:document.getElementById('notes').submit()"><img src="/img/svg/save.svg"></a>
+                                        <a href="javascript:document.getElementById('notes').submit()"><img
+                                                src="/img/svg/save.svg"></a>
                                     </div>
                                 @else
                                     <div class="notesButton">
                                         <a href="{{ request()->fullUrlWithQuery(['field' => 'notes']) }}"><img src="/img/svg/{{ (isset($order->notes) ? 'edit' : 'create') }}.svg"></a>
+
                                     </div>
                                 @endif
                         </div>
@@ -41,7 +45,9 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="grow-wrap">
-                                            <textarea name="notes" oninput="this.parentNode.dataset.replicatedValue = this.value" class="is-focused has-background-success">{{ $order->notes }}</textarea>
+                                            <textarea name="notes"
+                                                      oninput="this.parentNode.dataset.replicatedValue = this.value"
+                                                      class="is-focused has-background-success">{{ $order->notes }}</textarea>
                                             <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
                                         </div>
                                     </form>

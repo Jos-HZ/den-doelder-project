@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use App\Filters\CategoryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
-use App\Filters\CategoryFilter;
 
 class Error extends Model
 {

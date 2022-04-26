@@ -1,22 +1,39 @@
 <nav class="navbar is-dark  has-text-white">
     <div class="container">
         <div class="navbar-brand">
-            <a href="/" class="navbar-item">
+            <a class="navbar-item" href="/redirects">
                 <img src="/img/logo-den-doelder.png" alt="Logo Den Doelder">
             </a>
         </div>
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-start">
-                <a class="navbar-item {{ Request::path() === 'orders' ? 'active' : '' }}" href="{{ url(route('orders.index')) }}">
+                <a class="navbar-item {{ Request::path() === 'orders' ? 'active' : '' }}"
+                   href="{{ url(route('orders.index')) }}">
                     Order
                 </a>
-                <a class="navbar-item {{ Request::path() === 'error' ? 'active' : '' }}" href="{{ url('/error') }}">
-                    Back-log
-                </a>
+                @can('is_admin')
+                    <a class="navbar-item {{ Request::path() === 'error' ? 'active' : '' }}" href="{{ url('/error') }}">
+                        Back-log
+                    </a>
+                @elsecan('is_production')
+                    <a class="navbar-item {{ Request::path() === 'error' ? 'active' : '' }}" href="{{ url('/error') }}">
+                        Back-log
+                    </a>
+                @endcan
+            </div>
+        </div>
 
-                <a class="navbar-item {{ Request::path() === 'logout' ? 'active' : '' }}" href="{{ url('/logout') }}">
-                    Logout
-                </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link has-text-white">
+                Settings
+            </a>
+            <div class="navbar-dropdown">
+                <form action="{{ route('destroy', 'logout') }}" method="POST">
+                    @csrf
+                    <button class="navbar-item" type="submit">
+                        Logout
+                    </button>
+                </form>
             </div>
         </div>
     </div>
