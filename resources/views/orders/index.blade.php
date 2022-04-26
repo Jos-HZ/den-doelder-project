@@ -10,12 +10,16 @@
 
     <container class="lists">
         <container class="tabs">
-                {{-- <tab @class(['tab', 'is-active']) onCLick="XcrollBy(-1)">Left</tab>
-                <tab @class(['tab', 'is-active']) onCLick="XcrollBy(1)">Right</tab> --}}
-                @foreach ($capeArray as $production_idKey=>$production_id)
-                    <tab @class(['tab', 'current' => $loop->first]) onCLick="xOnClick({{ $production_idKey }})">Cape {{ $production_id }}</tab>
-                    {{-- <a @class(['tab', 'is-active' => $loop->first]) href="#cape-{{ $production_id }}">Cape {{ $production_id }}</a> --}}
+                @foreach ($capeArray as $production_id)
+                    <tab
+                        @class(['tab', 'current' => app('request')->input('cape') == false ? $loop->first : app('request')->input('cape') == $production_id])
+                        onCLick="xOnClick({{ $loop->index }}, this)"
+                        data-cape="{{ $production_id }}"
+                        >Cape {{ $production_id }}
+                    </tab>
+                    {{-- <a @class(['tab', 'current' => $loop->first]) href="#cape-{{ $production_id }}">Cape {{ $production_id }}</a> --}}
                 @endforeach
+                {{-- <tab @class(['tab', 'current']) onCLick="XcrollBy(1)">Right</tab> --}}
         </container>
         <container class="horizontal flexContainer" dir="ltr">
             @foreach ($capeArray as $production_idKey=>$production_id)
