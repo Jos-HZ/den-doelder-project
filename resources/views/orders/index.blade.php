@@ -17,9 +17,7 @@
                         data-cape="{{ $production_id }}"
                         >Cape {{ $production_id }}
                     </tab>
-                    {{-- <a @class(['tab', 'current' => $loop->first]) href="#cape-{{ $production_id }}">Cape {{ $production_id }}</a> --}}
                 @endforeach
-                {{-- <tab @class(['tab', 'current']) onCLick="XcrollBy(1)">Right</tab> --}}
         </container>
         <container class="horizontal flexContainer" dir="ltr">
             @foreach ($capeArray as $production_idKey=>$production_id)
