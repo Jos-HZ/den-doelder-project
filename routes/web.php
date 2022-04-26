@@ -22,13 +22,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/orders', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
-Route::resource('/qualityControl', QualityControlController::class);
+Route::resource('/quality-control', QualityControlController::class);
+
 
 require __DIR__ . '/auth.php';
 
@@ -67,5 +66,3 @@ Route::middleware(['auth'])->group(function () {
 | Production Routes
 |--------------------------------------------------------------------------
 */
-
-

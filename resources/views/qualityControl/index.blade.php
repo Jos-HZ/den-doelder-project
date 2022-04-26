@@ -1,4 +1,11 @@
 @extends("layouts.master")
 @section('content')
-    <h1>Halloooo Wereld</h1>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Quality control
+            </h1>
+
+        </div>
+    </section>
 @endsection

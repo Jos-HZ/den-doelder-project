@@ -98,7 +98,7 @@ $ php artisan db:seed
 
 * **Damian Breuer** - *Student* - [damianbreuer](https://github.com/damianbreuer)
 * **Ivy Dekker** - *Student* - [ivydk](https://github.com/ivydk)
-* **Jos Geerink** - *Student* - [jos-hz](https://github.com/Jos-HZ)
+* **Jos Geerink** - *Student* - [Jos-HZ](https://github.com/Jos-HZ)
 * **Kevin van Herwijnen** - *Student* - [kvherwijnen](https://github.com/kvherwijnen)
 * **Diego Punte** - *Student* - [Shadowblack03](https://github.com/Shadowblack03)
 

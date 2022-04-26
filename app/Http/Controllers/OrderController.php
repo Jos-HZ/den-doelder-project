@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -54,9 +55,19 @@ class OrderController extends Controller
      * @param Order $order
      * @return Application|Factory|View
      */
-    public function show(Order $order)
+    public function show(Order $order, Request $request)
     {
-        return view('orders.show', compact('order'));
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            if ($user->hasRole('admin') || $user->hasRole('production')) {
+                return view('orders.show', ['order' => $order, 'user' => $user]);
+            } else if ($user->hasRole('driver')) {
+                return view('orders.driver.show', ['order' => $order, 'user' => $user]);
+            }
+        }
+
+        abort(403);
     }
 
     /**
@@ -67,7 +78,9 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        return view('orders.show', compact('order'));
+        $user = Auth::user();
+//        return view('orders.show', ['order' => $order, 'user' => $user]);
+        return redirect(route('orders.show', ['order' => $order, 'user' => $user]));
     }
 
     /**

@@ -19,16 +19,14 @@ class UserAuthenticated
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            /**
-             * @var User $user
-             */
+
             $user = Auth::user();
 
             if ($user->hasRole('production')) {
+
                 return $next($request);
             }
         }
-
         abort(403);  // permission denied error
     }
 }
