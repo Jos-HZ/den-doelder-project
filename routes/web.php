@@ -7,7 +7,6 @@ use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductionController;
 use App\Http\Controllers\QualityControlController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,8 +27,11 @@ Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
 Route::resource('/qualityControl', QualityControlController::class);
 
+Route::get('/checklist', function () {
+    return view('checklist');
+})->name('checklist');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
 
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
@@ -39,9 +41,13 @@ Route::group(['middleware' => ['auth']], function () {
 
 /*
 |--------------------------------------------------------------------------
-| Driver Routes +
-| good
+| Driver Routes
 |--------------------------------------------------------------------------
+|
+| Here is where you can driver web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "driver" middleware group. Now create something great!
+|
 */
 
 Route::middleware(['driver'])->group(function () {
@@ -51,9 +57,12 @@ Route::middleware(['driver'])->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Admin, Production Routes
+| Admin
 |--------------------------------------------------------------------------
 |
+| Here is where you can register admin routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "admin" middleware group. Now create something great!
 |
 */
 
@@ -65,4 +74,12 @@ Route::middleware(['auth'])->group(function () {
 |--------------------------------------------------------------------------
 | Production Routes
 |--------------------------------------------------------------------------
+|
+| Here is where you can register production routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "production" middleware group. Now create something great!
+|
 */
+Route::middleware(['production'])->group(function () {
+
+});
