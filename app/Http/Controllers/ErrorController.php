@@ -10,7 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 // TODO: waarom is het twee keer error.index ipv errors.index?
 
@@ -29,23 +29,6 @@ class ErrorController extends Controller
         return view('errors.index', compact('errors', 'orders'));
     }
 
-//    public function index (Request $request)
-//    {
-//        return Error::filter($request)->get();
-//    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Application|Factory|View
-     */
-    public function create(): View|Factory|Application
-    {
-//        return \view('errors.create', ['order' => DB::table('orders')->where('id', $order_id)->first()]);
-
-        return \view('errors.create');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -57,6 +40,16 @@ class ErrorController extends Controller
         Error::create($this->validatedError($request));
 
         return redirect(route('error.index'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Application|Factory|View
+     */
+    public function create(): View|Factory|Application
+    {
+        return \view('errors.create');
     }
 
     /**
@@ -120,7 +113,16 @@ class ErrorController extends Controller
      */
     public function destroy(Error $error)
     {
-        $error->delete();
+        // check logged in user
+        $user = Auth::user();
+
+        if ($user->can('delete', $error)) {
+            $error->delete();
+        } else {
+            abort(403);
+        }
+
+      ;
 
 //        return redirect(route('order.index'));
         return redirect(route('error.index'));

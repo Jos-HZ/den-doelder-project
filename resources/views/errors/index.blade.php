@@ -6,10 +6,12 @@
         <form method="get" action="{{ route('error.index') }}">
             <div class="select">
                 <select id="txtSearch" name="category">
-                    <option value="mechanical" <?php if (app('request')->input('category') === 'mechanical') echo "selected";?>>
+                    <option
+                        value="mechanical" <?php if (app('request')->input('category') === 'mechanical') echo "selected";?>>
                         Mechanical
                     </option>
-                    <option value="technical" <?php if (app('request')->input('category') === 'technical') echo "selected";?>>
+                    <option
+                        value="technical" <?php if (app('request')->input('category') === 'technical') echo "selected";?>>
                         Technical
                     </option>
                 </select>
