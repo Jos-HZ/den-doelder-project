@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('head')
-    <script src="public/js/tabs.js"></script>
+    <script src="/js/tabs.js"></script>
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
                     </tab>
                 @endforeach
         </container>
-        <container class="horizontal flexContainer" dir="ltr">
+        <container class="horizontal flexContainer" dir="ltr" onscroll="xOnScroll()">
             @foreach ($capeArray as $production_idKey=>$production_id)
                 <container class="vertical flexContainer" id="cape-{{ $production_id }}">
                     @foreach ($orders as $order)

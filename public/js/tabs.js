@@ -7,8 +7,7 @@ function changeClass(current) {
     return tabs[current].dataset.cape;
 }
 
-function xOnClick(tabIndex, tabElement) {
-    const cape = tabElement.dataset.cape;
+function xOnClick(tabIndex) {
     xScrollTo(tabIndex);
 }
 
@@ -32,16 +31,19 @@ function xOnScroll() {
     const element = document.querySelector('container.horizontal.flexContainer');
     const currentPage = Math.round(element.scrollLeft / element.clientWidth);
     changeUrl(changeClass(currentPage));
+    console.log(999);
 }
 
 window.addEventListener('load', function() {
-    const cape = (new URL(document.location)).searchParams.get('cape');
-    const element = document.querySelector(`[data-cape="${cape}"]`);
-    const array = new Array().slice.call(element.parentElement.children)
-    scrollStop(xOnScroll, 66);
-    xScrollTo(array.indexOf(element), 'instant');
+    // console.log((new URL(document.location)).searchParams.get('cape'))
+    if ((new URL(document.location)).searchParams.get('cape') !== null) {
+        const cape = (new URL(document.location)).searchParams.get('cape');
+        const element = document.querySelector(`[data-cape="${cape}"]`);
+        const array = new Array().slice.call(element.parentElement.children)
+        scrollStop(xOnScroll, 66);
+        xScrollTo(array.indexOf(element), 'instant');
+    }
 });
-
 /*!
  * Run a callback function after scrolling has stopped
  * (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
