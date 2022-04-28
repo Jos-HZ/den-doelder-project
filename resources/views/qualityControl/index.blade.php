@@ -20,9 +20,6 @@
                 </thead>
                 <tbody>
                 @foreach($qualities as $quality)
-
-                    <!--- !if statement! uit de orders haal je de ID van de orders, via daar haal je de ordernummer vandaan -->
-
                     <tr>
                         <th>{{ $quality->time }}</th>
                         <td>{{ $quality->name_pallet }}</td>
@@ -36,13 +33,10 @@
                             </a>
                         </td>
                     </tr>
-
                 @endforeach
                 </tbody>
             </table>
-            <a href="{{ route('qualityControl.create') }}">
-                <button class="btn btn-success ">Create</button>
-            </a>
+
 
     </section>
 
