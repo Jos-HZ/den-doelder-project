@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('head')
-    <script src="public/js/tabs.js"></script>
+    <script src="/js/tabs.js"></script>
 @endsection
 
 @section('content')
@@ -10,11 +10,16 @@
 
     <container class="lists">
         <container class="tabs">
-                @foreach ($capeArray as $production_idKey=>$production_id)
-                <tab @class(['tab', 'is-active' => $loop->first]) onCLick="XcrollTo({{ $production_idKey }})">Cape {{ $production_id }}</tab>
-            @endforeach
+                @foreach ($capeArray as $production_id)
+                    <tab
+                        @class(['tab', 'current' => app('request')->input('cape') == false ? $loop->first : app('request')->input('cape') == $production_id])
+                        onCLick="xOnClick({{ $loop->index }}, this)"
+                        data-cape="{{ $production_id }}"
+                        >Cape {{ $production_id }}
+                    </tab>
+                @endforeach
         </container>
-        <container class="horizontal flexContainer" dir="ltr">
+        <container class="horizontal flexContainer" dir="ltr" onscroll="xOnScroll()">
             @foreach ($capeArray as $production_idKey=>$production_id)
                 <container class="vertical flexContainer" id="cape-{{ $production_id }}">
                     @foreach ($orders as $order)

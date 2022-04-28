@@ -58,13 +58,19 @@ class OrderController extends Controller
     public function show(Order $order, Request $request)
     {
         if (Auth::check()) {
-            $user = Auth::user();
-
-            if ($user->hasRole('admin') || $user->hasRole('production')) {
-                return view('orders.show', ['order' => $order, 'user' => $user]);
-            } else if ($user->hasRole('driver')) {
-                return view('orders.driver.show', ['order' => $order, 'user' => $user]);
-            }
+            return view(str_replace('-ternary-', (Auth::user()->hasRole('driver') ? Auth::user()->role.'.' : ''), 'orders.-ternary-show'), compact('order'));
+            // $user = Auth::user();
+            // return view(str_replace('-ternary-', (Auth::user()->role === 'driver'
+            //     ? 'driver.'
+            //     : '')
+            //     , 'orders.-ternary-show'), compact('order'));
+        
+            // $user = Auth::user();
+            // if ($user->hasRole('admin') || $user->hasRole('production')) {
+            //     return view('orders.show', compact('order'));
+            // } else if ($user->hasRole('driver')) {
+            //     return view('orders.driver.show', ['order' => $order, 'user' => $user]);
+            // }
         }
 
         abort(403);
@@ -79,7 +85,7 @@ class OrderController extends Controller
     public function edit(Order $order)
     {
         $user = Auth::user();
-//        return view('orders.show', ['order' => $order, 'user' => $user]);
+        // return view('orders.show', ['order' => $order, 'user' => $user]);
         return redirect(route('orders.show', ['order' => $order, 'user' => $user]));
     }
 
