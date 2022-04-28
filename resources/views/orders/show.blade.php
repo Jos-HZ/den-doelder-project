@@ -46,10 +46,12 @@
                                             @csrf
                                             @method('PUT')
                                             <div class="grow-wrap">
-                                                <textarea name="notes"
-                                                        oninput="this.parentNode.dataset.replicatedValue = this.value"
-                                                        class="is-focused has-background-success">{{ $order->notes }}</textarea>
-                                                <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
+                                                <textarea
+                                                    name="notes"
+                                                    oninput="textareaOnInput(this)"
+                                                    class="is-focused has-background-success">{{
+                                                        $order->notes
+                                                }}</textarea>
                                             </div>
                                         </form>
                                     </div>
