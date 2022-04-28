@@ -15,6 +15,11 @@
                         <p class="title text-lg-center">Order details</p>
                     </article>
                 </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <p class="title text-lg-center">Quality control</p>
+                    </article>
+                </div>
             </div>
             <div class="tile is-ancestor">
                 <div class="tile is-parent is-8">
