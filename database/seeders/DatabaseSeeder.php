@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\QualityControl;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DriverTableSeeder::class);
         $this->call(ProductionTableSeeder::class);
         $this->call(AdminTableSeeder::class);
+        $this->call(QualityControlSeeder::class);
     }
 }

@@ -18,4 +18,10 @@ class Order extends Model
     {
         return $this->hasMany(Error::class);
     }
+
+    public function quality()
+    {
+        return $this->hasMany(QualityControl::class);
+    }
 }
+
