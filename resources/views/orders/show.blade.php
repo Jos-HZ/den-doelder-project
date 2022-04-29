@@ -29,37 +29,46 @@
                     <article class="tile is-child box has-background-success">
                         <div class="notesTitle">
                             <p class="title">Notes</p>
-
-                                @if (request()->query('field') === 'notes')
-                                    <div class="notesButton">
-                                        <a href="javascript:document.getElementById('notes').submit()"><img
-                                                src="/img/svg/save.svg"></a>
-                                    </div>
-                                @else
-                                    <div class="notesButton">
-                                        <a href="{{ request()->fullUrlWithQuery(['field' => 'notes']) }}"><img src="/img/svg/{{ (isset($order->notes) ? 'edit' : 'create') }}.svg"></a>
-
-                                    </div>
-                                @endif
-                        </div>
-                        @if (request()->query('field') === 'notes')
-                                <div class="content">
-                                    <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="grow-wrap">
-                                            <textarea name="notes"
-                                                      oninput="this.parentNode.dataset.replicatedValue = this.value"
-                                                      class="is-focused has-background-success">{{ $order->notes }}</textarea>
-                                            <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
-                                        </div>
-                                    </form>
-                                </div>
-                        @else
-                            <div class="content">
-                                <p>{{ $order->notes }}</p>
+                            <div class="notesButton">
+                                @can('is_admin')
+                                <a href="{{
+                                    (request()->query('field') === 'notes'
+                                    ? 'javascript:document.getElementById(\'notes\').submit()'
+                                    : request()->fullUrlWithQuery(['field' => 'notes']))
+                                    }}">
+                                        <img src="/img/svg/{{
+                                            (request()->query('field') === 'notes'
+                                                ? 'save'
+                                                : (isset($order->notes)
+                                                    ? 'edit'
+                                                    : 'create'))
+                                        }}.svg">
+                                    </a>
+                                @endcan
                             </div>
-                        @endif
+                        </div>
+                            @if (request()->query('field') === 'notes')
+                                @can('is_admin')
+                                    <div class="content">
+                                        <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="grow-wrap">
+                                                <textarea
+                                                    name="notes"
+                                                    oninput="textareaOnInput(this)"
+                                                    class="is-focused has-background-success">{{
+                                                        $order->notes
+                                                }}</textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                @endcan
+                            @else
+                                <div class="content">
+                                    <p>{{ $order->notes }}</p>
+                                </div>
+                            @endif
                     </article>
                 </div>
                 <div class="tile is-parent">
