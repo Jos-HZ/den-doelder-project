@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\QualityControl;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 
 class QualityControlController extends Controller
 {
@@ -18,72 +21,101 @@ class QualityControlController extends Controller
      */
     public function index()
     {
-        return view('qualityControl.index');
+        $qualities = QualityControl::all();
+
+        return view('qualityControl.index', compact('qualities'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View
      */
     public function create()
     {
-        //
+        return view('qualityControl.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return Response
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
      */
     public function store(Request $request)
     {
-        //
+        QualityControl::create($this->validateQuality($request));
+
+        return redirect(route('qualityControl.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\QualityControl $qualityControl
-     * @return Response
+     * @param QualityControl $qualityControl
+     * @return Application|Factory|View
      */
     public function show(QualityControl $qualityControl)
     {
-        //
+        return view('qualityControl.show', compact('qualityControl'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\QualityControl $qualityControl
-     * @return Response
+     * @param QualityControl $qualityControl
+     * @return Application|Factory|View
      */
     public function edit(QualityControl $qualityControl)
     {
-        //
+        return view('qualityControl.edit', compact('qualityControl'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\QualityControl $qualityControl
-     * @return Response
+     * @param Request $request
+     * @param QualityControl $qualityControl
+     * @return Application|RedirectResponse|Redirector
      */
     public function update(Request $request, QualityControl $qualityControl)
     {
-        //
+        $qualityControl->update($this->validateQuality($request));
+
+        return redirect(route('qualityControl.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\QualityControl $qualityControl
-     * @return Response
+     * @param QualityControl $qualityControl
+     * @return Application|RedirectResponse|Redirector
      */
     public function destroy(QualityControl $qualityControl)
     {
-        //
+        $qualityControl->delete();
+
+        return redirect(route('qualityControl.index'));
+    }
+
+    /**
+     * Validates the qualityControl
+     *
+     * @param Request $request
+     * @return array
+     *
+     */
+    public function validateQuality(Request $request): array
+    {
+        return request()->validate([
+            'order_id' => 'required',
+            'name_pallet' => 'required',
+            'time' => 'required',
+            'extra_info' => 'required',
+            'action' => 'required',
+            'approved_by' => 'required',
+            'production_line_id' => 'required',
+            'deviation' => 'required',
+        ]);
     }
 }

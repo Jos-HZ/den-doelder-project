@@ -15,6 +15,12 @@ class CreateQualityControlsTable extends Migration
     {
         Schema::create('quality_controls', function (Blueprint $table) {
             $table->id();
+            $table->string('name_pallet');
+            $table->time('time');
+            $table->boolean('def_nr');
+            $table->text('action')->nullable();
+            $table->text('deviation')->nullable();
+            $table->text('extra_info')->nullable();
             $table->timestamps();
         });
     }

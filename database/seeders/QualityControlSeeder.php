@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\QualityControl;
 use Illuminate\Database\Seeder;
 
 class QualityControlSeeder extends Seeder
@@ -13,6 +14,8 @@ class QualityControlSeeder extends Seeder
      */
     public function run()
     {
-        //
+        QualityControl::factory()
+            ->count(15)
+            ->create();
     }
 }

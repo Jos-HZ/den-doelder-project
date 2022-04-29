@@ -48,8 +48,12 @@
 
             <!-- choose role -->
             <div class="mt-4">
-                <x-label for="option" :value="__('Choose your role')"/>
-                <x-input id="role" class="block mt-1 w-full" type="role" name="role" required/>
+                <x-label for="option" required />
+                <select name="role" id="role">
+                    <option value="admin">administrative worker</option>
+                    <option value="production">production worker</option>
+                    <option value="driver">forklift driver</option>
+                </select>
             </div>
 
             <div class="flex items-center justify-end mt-4">

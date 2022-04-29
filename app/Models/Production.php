@@ -13,4 +13,9 @@ class Production extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    public function quality()
+    {
+        return $this->hasMany(QualityControl::class);
+    }
 }

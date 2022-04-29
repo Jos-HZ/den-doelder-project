@@ -16,9 +16,12 @@
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <article class="tile is-child box">
-                        <p class="title text-lg-center">Quality control</p>
-                    </article>
+                    <a href="{{ route("qualityControl.index", ['ordernumber' => $order->ordernumber]) }}">
+                        <article class="tile is-child box">
+                            <p class="title text-lg-center">Quality control</p>
+                        </article>
+                    </a>
+
                 </div>
             </div>
             <div class="tile is-ancestor">
