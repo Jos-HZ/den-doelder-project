@@ -16,7 +16,9 @@ class QualityControlFactory extends Factory
     {
         return [
             'ordernumber' => Order::all()->random()->id,
-            'production_line_id' => Order::get()->first()->production_id,
+//            TODO: fix this
+//            'production_line_id' => Order::get()->first()->production_id,
+            'production_line_id' => 1,
             'name_pallet' => $this->faker->word,
             'time' => $this->faker->time(),
             'def_nr' => $this->faker->boolean,
