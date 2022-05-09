@@ -1,7 +1,7 @@
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
     textareaAutoGrow();
 })
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     //
 })
 
