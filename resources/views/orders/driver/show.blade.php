@@ -56,13 +56,21 @@
 
             <div class="tile is-ancestor">
 
-                <div class="tile is-parent">
+                <div class="tile is-parent is-8">
                     <div class="tile is-child box">
                         <p class="title">Material checklist</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
                             pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat
                             facilisis.</p>
                     </div>
+                </div>
+
+                <div class="tile is-parent">
+                    <a href="">
+                        <div class="tile is-child box has-background-primary">
+                            <p class="title">DONE</p>
+                        </div>
+                    </a>
                 </div>
             </div>
 
