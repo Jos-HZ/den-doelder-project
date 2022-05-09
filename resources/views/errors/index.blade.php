@@ -2,8 +2,8 @@
 
 @section('content')
     <section class="section">
-
         <form method="get" action="{{ route('error.index') }}">
+            <a href="{{ URL::previous() }}" ><img src="/img/svg/back-arrow.svg" width="35" height="35"></a>
             <div class="select">
                 <select id="txtSearch" name="category">
                     <option
@@ -18,7 +18,6 @@
             </div>
             <input type="submit" value="Filter" class="btn btn-default"/>
         </form>
-
         <table class="table">
             <thead>
             <tr>

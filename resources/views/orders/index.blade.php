@@ -7,7 +7,7 @@
     @php
         $capeArray = [1, 2, 5];
     @endphp
-
+    <a href="{{ URL::previous() }}" ><img src="/img/svg/back-arrow.svg" width="35" height="35"></a>
     <container class="lists">
         <container class="tabs">
                 @foreach ($capeArray as $production_id)
