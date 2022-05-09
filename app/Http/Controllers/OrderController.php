@@ -64,7 +64,7 @@ class OrderController extends Controller
             //     ? 'driver.'
             //     : '')
             //     , 'orders.-ternary-show'), compact('order'));
-        
+
             // $user = Auth::user();
             // if ($user->hasRole('admin') || $user->hasRole('production')) {
             //     return view('orders.show', compact('order'));
@@ -115,5 +115,20 @@ class OrderController extends Controller
         $order->delete();
 
         return redirect(route('orders.index'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function driverDone(Request $request)
+    {
+        $order = Order::find($request->id);
+        //validate this later
+        $order->driver_done = 1;
+        $order->save();
+        return redirect(route('orders.show', $order));
     }
 }

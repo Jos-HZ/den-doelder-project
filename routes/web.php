@@ -27,6 +27,8 @@ Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
 Route::resource('/qualityControl', QualityControlController::class);
 
+Route::put('/orders/{id}/driver_done', [OrderController::class, 'driverDone'])->name('orders.driverDone');
+
 Route::get('/checklist', function () {
     return view('checklist');
 })->name('checklist');
