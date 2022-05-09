@@ -14,7 +14,7 @@ class AddDriverDoneToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->boolean('driver_done');
+            $table->boolean('driver_done')->default(0);
         });
     }
 

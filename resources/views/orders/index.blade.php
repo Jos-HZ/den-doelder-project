@@ -20,10 +20,10 @@
                 @endforeach
         </container>
         <container class="horizontal flexContainer" dir="ltr" onscroll="xOnScroll()">
-            @foreach ($capeArray as $production_idKey=>$production_id)
+            @foreach ($capeArray as $production_line_idKey=>$production_id)
                 <container class="vertical flexContainer" id="cape-{{ $production_id }}">
                     @foreach ($orders as $order)
-                        @if ($order->production_id === $production_id)
+                        @if ($order->production_line_id === $production_id)
                             <a href="{{ route('orders.show', $order) }}">
                                 <card class="order">
                                     <p class="title text-bold">Order: {{ $order->ordernumber }}</p>
