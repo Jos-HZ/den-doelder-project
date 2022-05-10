@@ -5,8 +5,10 @@
 
 @section('content')
     @php
-        $capeArray = [1, 2, 5];
+        $capeArray = [1, 2, 5]
     @endphp
+    <div>
+    </div>
 
     <container class="lists">
         <container class="tabs">
