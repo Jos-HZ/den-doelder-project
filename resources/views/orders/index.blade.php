@@ -38,7 +38,7 @@
                                             <div class="step-counter"></div>
                                             <div class="step-name">Driver</div>
                                         </div>
-                                        <div class="stepper-item active" id="production">
+                                        <div class="stepper-item active {{ $order->production_done ? 'completed' : 'active' }} "  id="production">
                                             <div class="step-counter"></div>
                                             <div class="step-name">Production</div>
                                         </div>
