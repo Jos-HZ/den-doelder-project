@@ -2,7 +2,6 @@
 
 @section('content')
     <section class="section">
-
         <form method="get" action="{{ route('error.index') }}">
             <div class="select">
                 <select id="txtSearch" name="category">
@@ -18,7 +17,6 @@
             </div>
             <input type="submit" value="Filter" class="btn btn-default"/>
         </form>
-
         <table class="table">
             <thead>
             <tr>
