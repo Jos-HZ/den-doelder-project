@@ -131,4 +131,19 @@ class OrderController extends Controller
         $order->save();
         return redirect(route('orders.show', $order));
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function productionDone (Request $request)
+    {
+        $order = Order::find($request->id);
+        //validate this later
+        $order->production_done = 1;
+        $order->save();
+        return redirect(route('orders.show', $order));
+    }
 }
