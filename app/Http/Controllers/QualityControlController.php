@@ -108,13 +108,10 @@ class QualityControlController extends Controller
     public function validateQuality(Request $request): array
     {
         return request()->validate([
-            'order_id' => 'required',
             'name_pallet' => 'required',
             'time' => 'required',
             'extra_info' => 'required',
             'action' => 'required',
-            'approved_by' => 'required',
-            'production_line_id' => 'required',
             'deviation' => 'required',
         ]);
     }

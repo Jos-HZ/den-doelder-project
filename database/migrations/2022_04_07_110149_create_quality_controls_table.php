@@ -17,7 +17,7 @@ class CreateQualityControlsTable extends Migration
             $table->id();
             $table->string('name_pallet');
             $table->time('time');
-            $table->boolean('def_nr');
+            $table->boolean('def_nr')->default(1);
             $table->text('action')->nullable();
             $table->text('deviation')->nullable();
             $table->text('extra_info')->nullable();

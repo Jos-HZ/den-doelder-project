@@ -40,7 +40,6 @@
                     </div>
                     @error('time')
                     <p class="help is-danger">{{ $errors->get('time')[0] }}</p>
-                    {{-- <p class="help is-danger">{{ $errors->getMessages()['time'][0] }}</p> --}}
                     @enderror
                 </div>
 
@@ -57,7 +56,7 @@
                             name="date"
                             value={{date(' Y-m-d')}}
                         >
-                        {{-- required --}}
+
                     </div>
                     @error('date')
                     <p class="help is-danger">{{ $errors->get('date')[0] }}</p>

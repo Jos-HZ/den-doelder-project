@@ -14,11 +14,11 @@ class QualityControlFactory extends Factory
      */
     public function definition()
     {
+        $order = Order::all()->random();
+
         return [
-            'ordernumber' => Order::all()->random()->id,
-//            TODO: fix this
-//            'production_line_id' => Order::get()->first()->production_id,
-            'production_line_id' => 1,
+            'ordernumber' => $order->id,
+            'production_line_id' => $order->production_line_id,
             'name_pallet' => $this->faker->word,
             'time' => $this->faker->time(),
             'def_nr' => $this->faker->boolean,
