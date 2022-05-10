@@ -7,17 +7,19 @@
     @php
         $capeArray = [1, 2, 5];
     @endphp
-    <a href="{{ URL::previous() }}" ><img src="/img/svg/back-arrow.svg" width="35" height="35"></a>
+    <div>
+    </div>
+
     <container class="lists">
         <container class="tabs">
-                @foreach ($capeArray as $production_id)
-                    <tab
-                        @class(['tab', 'current' => app('request')->input('cape') == false ? $loop->first : app('request')->input('cape') == $production_id])
-                        onCLick="xOnClick({{ $loop->index }}, this)"
-                        data-cape="{{ $production_id }}"
-                        >Cape {{ $production_id }}
-                    </tab>
-                @endforeach
+            @foreach ($capeArray as $production_id)
+                <tab
+                    @class(['tab', 'current' => app('request')->input('cape') == false ? $loop->first : app('request')->input('cape') == $production_id])
+                    onCLick="xOnClick({{ $loop->index }}, this)"
+                    data-cape="{{ $production_id }}"
+                >Cape {{ $production_id }}
+                </tab>
+            @endforeach
         </container>
         <container class="horizontal flexContainer" dir="ltr" onscroll="xOnScroll()">
             @foreach ($capeArray as $production_idKey=>$production_id)
