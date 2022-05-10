@@ -2,7 +2,6 @@
 
 @section('content')
     <section class="section">
-
         <form method="get" action="{{ route('error.index') }}">
             <div class="select">
                 <select id="txtSearch" name="category">
@@ -18,7 +17,6 @@
             </div>
             <input type="submit" value="Filter" class="btn btn-default"/>
         </form>
-
         <table class="table">
             <thead>
             <tr>
@@ -29,7 +27,9 @@
                 <th><abbr title="category">Category</abbr></th>
                 <th><abbr title="description">Description</abbr></th>
                 <th><abbr title="edit-button"></abbr></th>
+                @can('is_production', 'is_driver')
                 <th><abbr title="delete-buttons"></abbr></th>
+                @endcan()
             </tr>
             </thead>
             <tbody>
@@ -52,6 +52,7 @@
                             <button class="btn btn-default" type="button">Edit</button>
                         </a>
                     </td>
+                    @can('is_production', 'is_driver')
                     <td>
                         <form method="POST" action="{{route('error.destroy', $error)}}">
                             @csrf
@@ -63,6 +64,7 @@
                             </button>
                         </form>
                     </td>
+                        @endcan
                 </tr>
             @endforeach
             </tbody>

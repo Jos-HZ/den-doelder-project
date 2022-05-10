@@ -3,6 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
+            <a href="{{ URL::previous() }}"><img src="/img/svg/back-arrow.svg" width="35" height="35"></a>
             <h1 class="title has-text-centered">Order {{ $order->ordernumber }}</h1>
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
@@ -31,7 +32,7 @@
                             <p class="title">Notes</p>
                             <div class="notesButton">
                                 @can('is_admin')
-                                <a href="{{
+                                    <a href="{{
                                     (request()->query('field') === 'notes'
                                     ? 'javascript:document.getElementById(\'notes\').submit()'
                                     : request()->fullUrlWithQuery(['field' => 'notes']))
@@ -47,28 +48,28 @@
                                 @endcan
                             </div>
                         </div>
-                            @if (request()->query('field') === 'notes')
-                                @can('is_admin')
-                                    <div class="content">
-                                        <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
-                                            @csrf
-                                            @method('PUT')
-                                            <div class="grow-wrap">
+                        @if (request()->query('field') === 'notes')
+                            @can('is_admin')
+                                <div class="content">
+                                    <form id="notes" method="post" action="{{ route('orders.update', $order->id) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="grow-wrap">
                                                 <textarea
                                                     name="notes"
                                                     oninput="textareaOnInput(this)"
                                                     class="is-focused has-background-success">{{
                                                         $order->notes
                                                 }}</textarea>
-                                            </div>
-                                        </form>
-                                    </div>
-                                @endcan
-                            @else
-                                <div class="content">
-                                    <p>{{ $order->notes }}</p>
+                                        </div>
+                                    </form>
                                 </div>
-                            @endif
+                            @endcan
+                        @else
+                            <div class="content">
+                                <p>{{ $order->notes }}</p>
+                            </div>
+                        @endif
                     </article>
                 </div>
                 <div class="tile is-parent">

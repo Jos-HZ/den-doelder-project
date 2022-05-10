@@ -3,8 +3,9 @@
 @section('content')
     <section class="section">
         <div class="container">
+            <h1>Order {{ app('request')->input('ordernumber') }}
+              </h1>
 
-            <h1>Order {{ app('request')->input('ordernumber') }} </h1>
             <form method="POST" action="{{ route('error.store') }}">
                 @csrf
 
@@ -35,11 +36,10 @@
                             type="time"
                             id="time"
                             name="time"
-                            value="{{ $errors->any() ? old('time') : '' }}">
+                            value={{date(' H:i')}}>
                     </div>
                     @error('time')
-                        <p class="help is-danger">{{ $errors->get('time')[0] }}</p>
-                        {{-- <p class="help is-danger">{{ $errors->getMessages()['time'][0] }}</p> --}}
+                    <p class="help is-danger">{{ $errors->get('time')[0] }}</p>
                     @enderror
                 </div>
 
@@ -54,9 +54,9 @@
                             type="date"
                             id="date"
                             name="date"
-                            value="{{ $errors->any() ? old('date') : '' }}"
+                            value={{date(' Y-m-d')}}
                         >
-                        {{-- required --}}
+
                     </div>
                     @error('date')
                     <p class="help is-danger">{{ $errors->get('date')[0] }}</p>
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     @error('description')
-                        <p class="help is-danger">{{ $errors->get('description')[0] }}</p>
+                    <p class="help is-danger">{{ $errors->get('description')[0] }}</p>
                     @enderror
                 </div>
 

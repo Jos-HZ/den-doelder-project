@@ -10,6 +10,16 @@ class ErrorPolicy
 {
     use HandlesAuthorization;
 
+    /**
+     * Create a new policy instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
     public function view(User $user, Error $error)
     {
         return TRUE;
@@ -23,15 +33,5 @@ class ErrorPolicy
     public function delete(User $user, Error $error)
     {
         return $user->role === 'production';
-    }
-
-    /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
     }
 }

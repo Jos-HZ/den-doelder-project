@@ -47,7 +47,7 @@ class ErrorController extends Controller
      */
     public function create(): View|Factory|Application
     {
-        return \view('errors.create');
+        return view('errors.create');
     }
 
     /**
@@ -118,9 +118,7 @@ class ErrorController extends Controller
             $error->delete();
         } else {
             abort(403);
-        }
-
-      ;
+        };
 
 //        return redirect(route('order.index'));
         return redirect(route('error.index'));

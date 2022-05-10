@@ -20,21 +20,5 @@ class HomeController extends Controller
             default:
                 return 403;
         }
-        // $role = Auth::user()->role;
-        // $checkrole = explode(',', $role);
-
-        // if (in_array('admin', $checkrole)) {
-        //     return redirect('/dashboard');
-        // }
-
-        // if (in_array('production', $checkrole)) {
-        //     return redirect('/dashboard');
-        // }
-
-        // if (in_array('driver', $checkrole)) {
-        //     return redirect('/driver_dashboard');
-        // }
-
-        // return 403;
     }
 }
