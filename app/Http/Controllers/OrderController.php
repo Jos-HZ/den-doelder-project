@@ -58,13 +58,13 @@ class OrderController extends Controller
     public function show(Order $order, Request $request)
     {
         if (Auth::check()) {
-            return view(str_replace('-ternary-', (Auth::user()->hasRole('driver') ? Auth::user()->role.'.' : ''), 'orders.-ternary-show'), compact('order'));
+            return view(str_replace('-ternary-', (Auth::user()->hasRole('driver') ? Auth::user()->role . '.' : ''), 'orders.-ternary-show'), compact('order'));
             // $user = Auth::user();
             // return view(str_replace('-ternary-', (Auth::user()->role === 'driver'
             //     ? 'driver.'
             //     : '')
             //     , 'orders.-ternary-show'), compact('order'));
-        
+
             // $user = Auth::user();
             // if ($user->hasRole('admin') || $user->hasRole('production')) {
             //     return view('orders.show', compact('order'));

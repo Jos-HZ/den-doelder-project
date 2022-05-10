@@ -5,6 +5,7 @@
         <div class="container">
             <h1 class="title has-text-centered">Order {{ app('request')->input('ordernumber') }}</h1>
         </div>
+
         <table class="table">
             <thead>
             <tr>

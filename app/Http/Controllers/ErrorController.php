@@ -120,9 +120,7 @@ class ErrorController extends Controller
             $error->delete();
         } else {
             abort(403);
-        }
-
-      ;
+        };
 
 //        return redirect(route('order.index'));
         return redirect(route('error.index'));
