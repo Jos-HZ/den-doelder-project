@@ -48,7 +48,7 @@
 
             <!-- choose role -->
             <div class="mt-4">
-                <x-label for="option" required />
+                <x-label for="option" required/>
                 <select name="role" id="role">
                     <option value="admin">administrative worker</option>
                     <option value="production">production worker</option>

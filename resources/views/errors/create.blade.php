@@ -39,8 +39,8 @@
                             value={{date(' H:i')}}>
                     </div>
                     @error('time')
-                        <p class="help is-danger">{{ $errors->get('time')[0] }}</p>
-                        {{-- <p class="help is-danger">{{ $errors->getMessages()['time'][0] }}</p> --}}
+                    <p class="help is-danger">{{ $errors->get('time')[0] }}</p>
+                    {{-- <p class="help is-danger">{{ $errors->getMessages()['time'][0] }}</p> --}}
                     @enderror
                 </div>
 
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     @error('description')
-                        <p class="help is-danger">{{ $errors->get('description')[0] }}</p>
+                    <p class="help is-danger">{{ $errors->get('description')[0] }}</p>
                     @enderror
                 </div>
 

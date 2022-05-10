@@ -33,7 +33,7 @@ function xOnScroll() {
     changeUrl(changeClass(currentPage));
 }
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
     // console.log((new URL(document.location)).searchParams.get('cape'))
     if ((new URL(document.location)).searchParams.get('cape') !== null) {
         const cape = (new URL(document.location)).searchParams.get('cape');
@@ -43,29 +43,30 @@ window.addEventListener('DOMContentLoaded', function() {
         xScrollTo(array.indexOf(element), 'instant');
     }
 });
+
 /*!
  * Run a callback function after scrolling has stopped
  * (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
  * @param  {Function} callback The callback function to run after scrolling
  * @param  {Integer}  refresh  How long to wait between scroll events [optional]
  */
-function scrollStop (callback, refresh = 66) {
+function scrollStop(callback, refresh = 66) {
 
-	// Make sure a valid callback was provided
-	if (!callback || typeof callback !== 'function') return;
+    // Make sure a valid callback was provided
+    if (!callback || typeof callback !== 'function') return;
 
-	// Setup scrolling variable
-	let isScrolling;
+    // Setup scrolling variable
+    let isScrolling;
 
-	// Listen for scroll events
+    // Listen for scroll events
     document.querySelector('container.horizontal.flexContainer').addEventListener('scroll', function (event) {
 
-		// Clear our timeout throughout the scroll
-		window.clearTimeout(isScrolling);
+        // Clear our timeout throughout the scroll
+        window.clearTimeout(isScrolling);
 
-		// Set a timeout to run after scrolling ends
-		isScrolling = setTimeout(callback, refresh);
+        // Set a timeout to run after scrolling ends
+        isScrolling = setTimeout(callback, refresh);
 
-	}, false);
+    }, false);
 
 }

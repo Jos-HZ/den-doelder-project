@@ -31,7 +31,7 @@ Route::get('/checklist', function () {
     return view('checklist');
 })->name('checklist');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
