@@ -30,6 +30,7 @@
                             id="time"
                             name="time"
                             value="{{$errors->any() ? old('time') : $error->time}}"
+                            >
                         //required
                     </div>
                     <br>
@@ -48,6 +49,7 @@
                             id="date"
                             name="date"
                             value="{{$errors->any() ? old('date') : $error->date}}"
+                            >
                         //required
                     </div>
                     <br>
@@ -85,8 +87,9 @@
                             id="description"
                             name="description"
                             value="{{$errors->any() ? old('description') : $error->description}}"
+                            >
                         //required
-                        >{{$errors->any() ? old('description') : $error->description}}</textarea>
+                        {{$errors->any() ? old('description') : $error->description}}</textarea>
                     </div>
                     <br>
                     @error('description')
