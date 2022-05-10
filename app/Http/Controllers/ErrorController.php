@@ -12,8 +12,6 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
-// TODO: waarom is het twee keer error.index ipv errors.index?
-
 class ErrorController extends Controller
 {
     /**
