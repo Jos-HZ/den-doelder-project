@@ -36,5 +36,8 @@
                 </form>
             </div>
         </div>
+        <a class="navbar-item" href="/profile">
+            <img src="/img/profile-avatar.png" alt="profielfoto">
+        </a>
     </div>
 </nav>

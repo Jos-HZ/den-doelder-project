@@ -8,6 +8,7 @@ use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\QualityControlController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,7 @@ Route::resource('/orders', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
 Route::resource('/qualityControl', QualityControlController::class);
+Route::resource('/profile', ProfileController::class);
 
 Route::get('/checklist', function () {
     return view('checklist');
