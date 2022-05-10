@@ -100,7 +100,9 @@ $ php artisan db:seed
 * **Ivy Dekker** - *Student* - [ivydk](https://github.com/ivydk)
 * **Jos Geerink** - *Student* - [Jos-HZ](https://github.com/Jos-HZ)
 * **Kevin van Herwijnen** - *Student* - [kvherwijnen](https://github.com/kvherwijnen)
-* **Diego Punte** - *Student* - [Shadowblack03](https://github.com/Shadowblack03)
+* **Diego Ponte** - *Student* - [Shadowblack03](https://github.com/Shadowblack03)
+* **Niek Schlooz** - *Student* - [schl0014](https://github.com/schl0014)
+* **Jochem Dijkdrent ** - *Student* - [Jochem-D](https://github.com/Jochem-D)
 
 See also the list of [contributors](url-to-project-contributors-page) who participated in this project.
 
