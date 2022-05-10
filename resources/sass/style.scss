@@ -1,0 +1,95 @@
+/*
+ |--------------------------------------------------------------------------
+ | BULMA COLORS
+ | https://bulma.io/documentation/helpers/color-helpers/
+ |--------------------------------------------------------------------------
+ */
+$black: hsl(0, 0%, 4%);
+$dark: hsl(0, 0%, 21%);
+$grey-lighter: hsl(0, 0%, 86%);
+$light: hsl(0, 0%, 96%);
+$danger: hsl(348, 100%, 61%);
+$success: hsl(141, 71%, 48%);
+$success-light: hsl(142, 52%, 96%);
+
+/*
+ |--------------------------------------------------------------------------
+ | PROGRESS BAR
+ |--------------------------------------------------------------------------
+ */
+.stepper-wrapper {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stepper-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+}
+
+.stepper-item::before {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid $grey-lighter;
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 2;
+}
+
+.stepper-item::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid $grey-lighter;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 2;
+}
+
+.stepper-item .step-counter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: $grey-lighter;
+    margin-bottom: 6px;
+}
+
+.stepper-item {
+    color: $dark;
+}
+
+.stepper-item.completed .step-counter {
+    background-color: $success;
+}
+
+.stepper-item.completed::after {
+    position: absolute;
+    content: "";
+    top: 20px;
+    left: 50%;
+    z-index: 3;
+    width: 100%;
+    border-bottom: 2px solid $success;
+}
+
+.stepper-item:first-child::before {
+    content: none;
+}
+
+.stepper-item:last-child::after {
+    content: none;
+}

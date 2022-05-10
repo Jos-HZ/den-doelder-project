@@ -116,4 +116,19 @@ class OrderController extends Controller
 
         return redirect(route('orders.index'));
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function driverDone(Request $request)
+    {
+        $order = Order::find($request->id);
+        //validate this later
+        $order->driver_done = 1;
+        $order->save();
+        return redirect(route('orders.show', $order));
+    }
 }
