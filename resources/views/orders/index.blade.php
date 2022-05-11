@@ -22,14 +22,30 @@
             @endforeach
         </container>
         <container class="horizontal flexContainer" dir="ltr" onscroll="xOnScroll()">
-            @foreach ($capeArray as $production_idKey=>$production_id)
+            @foreach ($capeArray as $production_line_idKey=>$production_id)
                 <container class="vertical flexContainer" id="cape-{{ $production_id }}">
                     @foreach ($orders as $order)
-                        @if ($order->production_id === $production_id)
+                        @if ($order->production_line_id === $production_id)
                             <a href="{{ route('orders.show', $order) }}">
                                 <card class="order">
                                     <p class="title text-bold">Order: {{ $order->ordernumber }}</p>
                                     <p class="order">{{ $order->notes }}</p>
+
+                                    <div class="stepper-wrapper">
+                                        <div class="stepper-item completed" >
+                                            <div class="step-counter"></div>
+                                            <div class="step-name">Admin</div>
+                                        </div>
+                                        <div class="stepper-item {{ $order->driver_done ? 'completed' : 'active' }}" id="driver">
+                                            <div class="step-counter"></div>
+                                            <div class="step-name">Driver</div>
+                                        </div>
+                                        <div class="stepper-item active {{ $order->production_done ? 'completed' : 'active' }} "  id="production">
+                                            <div class="step-counter"></div>
+                                            <div class="step-name">Production</div>
+                                        </div>
+                                    </div>
+
                                 </card>
                             </a>
                         @endif

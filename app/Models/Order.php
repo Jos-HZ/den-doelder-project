@@ -23,5 +23,9 @@ class Order extends Model
     {
         return $this->hasMany(QualityControl::class);
     }
+    public function backlog()
+    {
+        return $this->hasMany(Backlog::class);
+    }
 }
 

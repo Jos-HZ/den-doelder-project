@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Backlog;
 use Illuminate\Database\Seeder;
 
 class BacklogSeeder extends Seeder
@@ -13,6 +14,8 @@ class BacklogSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Backlog::factory()
+            ->count(20)
+            ->create();
     }
 }

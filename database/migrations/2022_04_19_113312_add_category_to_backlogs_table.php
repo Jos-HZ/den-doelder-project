@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCategoryToErrorsTabel extends Migration
+class AddCategoryToBacklogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddCategoryToErrorsTabel extends Migration
      */
     public function up()
     {
-        Schema::table('errors', function (Blueprint $table) {
+        Schema::table('backlogs', function (Blueprint $table) {
             $table->set('category', ['technical', 'mechanical']); // waarom set als je er ÉÉN MOET kiezen, zou enum niet beter geweest zijn dan?
+
         });
     }
 
@@ -25,7 +26,7 @@ class AddCategoryToErrorsTabel extends Migration
      */
     public function down()
     {
-        Schema::table('errors', function (Blueprint $table) {
+        Schema::table('backlogs', function (Blueprint $table) {
             //
         });
     }
