@@ -76,7 +76,7 @@
                 </div>
                 <div class="tile is-parent is-vertical">
                     <div class="tile is-child box">
-                    <a href="{{ route('qualityControl.create')}}">
+                    <a href="{{ route('qualityControl.create', ['ordernumber' => $order->ordernumber ])}}">
                             <p class="title text-lg-center">Create quality control</p>
                     </a>
                     </div>

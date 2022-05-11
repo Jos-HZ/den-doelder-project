@@ -20,6 +20,8 @@
             </thead>
             <tbody>
             @foreach($qualities as $quality)
+                @if(DB::table('orders')
+                            ->where('ordernumber', app('request')->input('ordernumber'))->pluck('id')->first() === $quality->ordernumber)
                 <tr>
                     <th>{{ $quality->time }}</th>
                     <td>{{ $quality->name_pallet }}</td>
@@ -33,6 +35,7 @@
                         </a>
                     </td>
                 </tr>
+                @endif
             @endforeach
             </tbody>
         </table>

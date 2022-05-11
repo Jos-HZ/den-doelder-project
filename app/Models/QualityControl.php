@@ -15,7 +15,8 @@ class QualityControl extends Model
         'def_nr',
         'action',
         'deviation',
-        'extra_info'
+        'extra_info',
+        'ordernumber'
     ];
 
     public function order()

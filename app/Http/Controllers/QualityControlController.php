@@ -113,6 +113,7 @@ class QualityControlController extends Controller
             'extra_info' => 'required',
             'action' => 'required',
             'deviation' => 'required',
+            'ordernumber' => 'required'
         ]);
     }
 }
