@@ -73,7 +73,7 @@
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <a href="{{ route('error.create', ['ordernumber' => $order->ordernumber ])}}">
+                    <a href="{{ route('backlog.create', ['ordernumber' => $order->ordernumber ])}}">
                         <article class="tile is-child box has-background-danger">
                             <p class="title text-lg-center">Error</p>
                         </article>
