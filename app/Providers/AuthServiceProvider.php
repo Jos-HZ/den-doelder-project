@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Error;
-use App\Policies\ErrorPolicy;
+use App\Policies\BacklogPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-        Error::class => ErrorPolicy::class,
+        Error::class => BacklogPolicy::class,
     ];
 
     /**

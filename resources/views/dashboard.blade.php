@@ -16,7 +16,7 @@
 
                 <div class="tile is-ancestor">
                     <div class="tile is-parent is-vertical">
-                        <a href="{{ route('error.index')  }}">
+                        <a href="{{ route('backlog.index')  }}">
                             <article class="tile is-child box">
                                 <p class="title text-lg-center">Backlog</p>
                             </article>

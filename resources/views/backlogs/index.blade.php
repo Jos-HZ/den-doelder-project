@@ -2,10 +2,21 @@
 
 @section('content')
     <section class="section">
-        <div class="container">
-            <h1 class="title has-text-centered">Order {{}}</h1>
-        </div>
-
+        <form method="get" action="{{ route('backlog.index') }}">
+            <div class="select">
+                <select id="txtSearch" name="category">
+                    <option
+                        value="mechanical" <?php if (app('request')->input('category') === 'mechanical') echo "selected";?>>
+                        Mechanical
+                    </option>
+                    <option
+                        value="technical" <?php if (app('request')->input('category') === 'technical') echo "selected";?>>
+                        Technical
+                    </option>
+                </select>
+            </div>
+            <input type="submit" value="Filter" class="btn btn-default"/>
+        </form>
         <table class="table">
             <thead>
             <tr>
@@ -40,7 +51,7 @@
                         </a>
                     </td>
                     <td>
-                        <form method="POST" action="{{route('$backlog.destroy', $backlog)}}">
+                        <form method="POST" action="{{route('backlog.destroy', $backlog)}}">
                             @csrf
                             @method('DELETE')
                             {{-- TODO: change confirm message --}}

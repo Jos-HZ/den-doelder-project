@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BacklogFactory extends Factory
@@ -14,7 +15,11 @@ class BacklogFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'order_id' => Order::inRandomOrder()->first()->ordernumber,
+            'time' => $this->faker->time(),
+            'date' => $this->faker->date(),
+            'description' => $this->faker->text(),
+            'category' => $this->faker->randomElement(['mechanical', 'technical'])
         ];
     }
 }
