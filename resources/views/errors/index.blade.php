@@ -28,23 +28,29 @@
                 <th><abbr title="description">Description</abbr></th>
                 <th><abbr title="edit-button"></abbr></th>
                 @can('is_production', 'is_driver')
-                <th><abbr title="delete-buttons"></abbr></th>
+                    <th><abbr title="delete-buttons"></abbr></th>
                 @endcan()
             </tr>
             </thead>
             <tbody>
             @foreach($errors as $error)
                 <tr>
+                    {{-- TODO: change order_id to order_number --}}
                     <th>{{ $error->order_id }}</th>
-                    {{-- TODO: connect error->production_line --}}
-                    <th>1/2/5</th>
+                    <th>{{ DB::table('productions')
+                            ->where('id', DB::table('orders')
+                                ->where('ordernumber', $error->order_id)
+                                ->pluck('production_line_id')
+                                ->first())
+                                ->pluck('production_line')
+                            ->first() }}</th>
                     <td>{{ $error->time }}</td>
                     <td>{{ $error->date }}</td>
                     <td>@if($error->category === 'technical')
                             T
                         @else
                             M
-                        @endif
+                        @endif 
                     </td>
                     <td>{{ $error->description }}</td>
                     <td>
@@ -53,18 +59,18 @@
                         </a>
                     </td>
                     @can('is_production', 'is_driver')
-                    <td>
-                        <form method="POST" action="{{route('error.destroy', $error)}}">
-                            @csrf
-                            @method('DELETE')
-                            {{-- TODO: change confirm message --}}
-                            <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Weet je zeker dat je deze error wilt verwijderen?')">
-                                Delete
-                            </button>
-                        </form>
-                    </td>
-                        @endcan
+                        <td>
+                            <form method="POST" action="{{route('error.destroy', $error)}}">
+                                @csrf
+                                @method('DELETE')
+                                {{-- TODO: change confirm message --}}
+                                <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Weet je zeker dat je deze error wilt verwijderen?')">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    @endcan
                 </tr>
             @endforeach
             </tbody>
