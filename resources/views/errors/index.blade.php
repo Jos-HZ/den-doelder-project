@@ -28,7 +28,7 @@
                 <th><abbr title="description">Description</abbr></th>
                 <th><abbr title="edit-button"></abbr></th>
                 @can('is_production', 'is_driver')
-                <th><abbr title="delete-buttons"></abbr></th>
+                    <th><abbr title="delete-buttons"></abbr></th>
                 @endcan()
             </tr>
             </thead>
@@ -53,18 +53,18 @@
                         </a>
                     </td>
                     @can('is_production', 'is_driver')
-                    <td>
-                        <form method="POST" action="{{route('error.destroy', $error)}}">
-                            @csrf
-                            @method('DELETE')
-                            {{-- TODO: change confirm message --}}
-                            <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Weet je zeker dat je deze error wilt verwijderen?')">
-                                Delete
-                            </button>
-                        </form>
-                    </td>
-                        @endcan
+                        <td>
+                            <form method="POST" action="{{route('error.destroy', $error)}}">
+                                @csrf
+                                @method('DELETE')
+                                {{-- TODO: change confirm message --}}
+                                <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Weet je zeker dat je deze error wilt verwijderen?')">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    @endcan
                 </tr>
             @endforeach
             </tbody>

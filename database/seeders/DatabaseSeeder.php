@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\QualityControl;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

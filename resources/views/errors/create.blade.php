@@ -4,7 +4,7 @@
     <section class="section">
         <div class="container">
             <h1>Order {{ app('request')->input('ordernumber') }}
-              </h1>
+            </h1>
 
             <form method="POST" action="{{ route('error.store') }}">
                 @csrf

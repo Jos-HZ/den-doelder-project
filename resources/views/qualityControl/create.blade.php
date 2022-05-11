@@ -5,7 +5,7 @@
         <div class="container">
 
             <h1> Order {{ app('request')->input('ordernumber') }}</h1>
-            <form method="POST" action="{{ route('qualityControl.store') }}" >
+            <form method="POST" action="{{ route('qualityControl.store') }}">
                 @csrf
 
                 <label for="ordernumber"></label>
