@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <a href="{{ URL::previous() }}"><img src="/img/svg/back-arrow.svg" width="35" height="35"></a>
+            <a href="{{ route("orders.index") }}"><img src="/img/svg/back-arrow.svg" width="35" height="35"></a>
             <h1 class="title has-text-centered">Order {{ $order->ordernumber }}</h1>
             <div class="tile is-ancestor">
                 <div class="tile is-parent">

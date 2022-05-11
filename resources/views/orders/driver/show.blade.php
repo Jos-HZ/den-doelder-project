@@ -3,7 +3,6 @@
 @section('content')
     <section class="section">
         <div class="container">
-
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <div class="tile is-child box">
@@ -56,7 +55,7 @@
 
             <div class="tile is-ancestor">
 
-                <div class="tile is-parent">
+                <div class="tile is-parent is-8">
                     <div class="tile is-child box">
                         <p class="title">Material checklist</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
@@ -64,8 +63,22 @@
                             facilisis.</p>
                     </div>
                 </div>
-            </div>
 
+                {{--       TODO: fix tile / button size         --}}
+                <div class="tile is-parent">
+                    <div class="tile is-child box {{ $order->driver_done ? 'has-background-success' : ''}}">
+                        <form method="POST" action="{{ route('orders.driverDone', $order )}}">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="btn btn-pink" onclick="return confirm('Are you really done?')"><i
+                                    class="fas fa-check"></i>
+                                <p class="title">DONE</p>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 @endsection

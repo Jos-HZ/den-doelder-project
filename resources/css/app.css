@@ -119,7 +119,6 @@ body::-webkit-scrollbar {
     transform: translateX(var(--height));
 }
 
-
 container.tabs {
     display: block;
     position: sticky;

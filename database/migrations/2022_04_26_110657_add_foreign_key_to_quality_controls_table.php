@@ -14,10 +14,10 @@ class AddForeignKeyToQualityControlsTable extends Migration
     public function up()
     {
         Schema::table('quality_controls', function (Blueprint $table) {
-            $table->unsignedBigInteger('ordernumber');
+            $table->unsignedBigInteger('ordernumber')->nullable();
             $table->foreign('ordernumber')->references('id')->on('orders');
 
-            $table->unsignedBigInteger('production_line_id');
+            $table->unsignedBigInteger('production_line_id')->nullable();
             $table->foreign('production_line_id')->references('id')->on('productions');
         });
     }

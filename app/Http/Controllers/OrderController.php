@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    //    TODO: validation
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +47,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // need to validate this later
         return redirect(route('orders.index'));
     }
 
@@ -58,19 +59,7 @@ class OrderController extends Controller
     public function show(Order $order, Request $request)
     {
         if (Auth::check()) {
-            return view(str_replace('-ternary-', (Auth::user()->hasRole('driver') ? Auth::user()->role . '.' : ''), 'orders.-ternary-show'), compact('order'));
-            // $user = Auth::user();
-            // return view(str_replace('-ternary-', (Auth::user()->role === 'driver'
-            //     ? 'driver.'
-            //     : '')
-            //     , 'orders.-ternary-show'), compact('order'));
-
-            // $user = Auth::user();
-            // if ($user->hasRole('admin') || $user->hasRole('production')) {
-            //     return view('orders.show', compact('order'));
-            // } else if ($user->hasRole('driver')) {
-            //     return view('orders.driver.show', ['order' => $order, 'user' => $user]);
-            // }
+            return view(str_replace('-ternary-', (Auth::user()->hasRole('driver') ? Auth::user()->role.'.' : ''), 'orders.-ternary-show'), compact('order'));
         }
 
         abort(403);
@@ -85,7 +74,6 @@ class OrderController extends Controller
     public function edit(Order $order)
     {
         $user = Auth::user();
-        // return view('orders.show', ['order' => $order, 'user' => $user]);
         return redirect(route('orders.show', ['order' => $order, 'user' => $user]));
     }
 
@@ -98,7 +86,6 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //validate this later
         $order->notes = $request->notes;
         $order->save();
         return redirect(route('orders.show', $order));
@@ -115,5 +102,33 @@ class OrderController extends Controller
         $order->delete();
 
         return redirect(route('orders.index'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function driverDone(Request $request)
+    {
+        $order = Order::find($request->id);
+        $order->driver_done = 1;
+        $order->save();
+        return redirect(route('orders.show', $order));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function productionDone (Request $request)
+    {
+        $order = Order::find($request->id);
+        $order->production_done = 1;
+        $order->save();
+        return redirect(route('orders.show', $order));
     }
 }
