@@ -6,8 +6,10 @@ use App\Models\Backlog;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
 class BacklogController extends Controller
@@ -15,9 +17,10 @@ class BacklogController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return Application|Factory|View
      */
-    public function index(Request $request)
+    public function index(Request $request): View|Factory|Application
     {
         $backlogs = Backlog::filter($request)->get();
         $orders = Backlog::all();
@@ -28,9 +31,9 @@ class BacklogController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View
      */
-    public function create()
+    public function create(): View|Factory|Application
     {
         return \view('backlogs.create');
     }
@@ -38,10 +41,10 @@ class BacklogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return Response
+     * @param Request $request
+     * @return Application|Redirector|RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): Redirector|RedirectResponse|Application
     {
         Backlog::create($this->validatedBacklog($request));
 
@@ -92,9 +95,9 @@ class BacklogController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param Backlog $backlog
-     * @return Response
+     * @return Application|Redirector|RedirectResponse
      */
     public function update(Request $request, Backlog $backlog)
     {
@@ -107,7 +110,7 @@ class BacklogController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Backlog $backlog
-     * @return Response
+     * @return Application|RedirectResponse|Redirector
      */
     public function destroy(Backlog $backlog)
     {
