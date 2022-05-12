@@ -21,7 +21,7 @@ class ErrorController extends Controller
      */
     public function index(Request $request)
     {
-        $errors = Error::filter($request)->get();
+        $errors = Error::filter($request)->get()->sortDesc() ;
         $orders = Order::all();
 
         return view('errors.index', compact('errors', 'orders'));
