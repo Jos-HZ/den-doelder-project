@@ -2870,8 +2870,8 @@ select {
 }
 @media (min-width: 1024px) {
 
-  .lg\:px-8 {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+    .lg\:px-8 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 }
