@@ -14,11 +14,11 @@
 
                         <input type="hidden"
                                id="ordernumber"
-                               name="ordernumber"
-                               value="{{ DB::table('orders')
-                            ->where('ordernumber', app('request')->input('ordernumber'))->pluck('id')->first() }}">
+                               class="input @error('time') is-danger @enderror"
+                               value="{{ app('request')->input('ordernumber') }}">
                     </div>
                 </div>
+
 
                 <label for="time">Time:</label>
                 <div class="label">

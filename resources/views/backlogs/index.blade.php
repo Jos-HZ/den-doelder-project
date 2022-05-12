@@ -27,27 +27,18 @@
                 <th><abbr title="category">Category</abbr></th>
                 <th><abbr title="description">Description</abbr></th>
                 <th><abbr title="edit-button"></abbr></th>
-                @can('is_production', 'is_driver')
-                    <th><abbr title="delete-buttons"></abbr></th>
-                @endcan()
-
+                <th><abbr title="delete-buttons"></abbr></th>
             </tr>
             </thead>
             <tbody>
             @foreach($backlogs as $backlog)
                 <tr>
-                    {{-- TODO: change order_id to order_number --}}
-                    <th>{{ $error->order_id }}</th>
-                    <th>{{ DB::table('productions')
-                            ->where('id', DB::table('orders')
-                                ->where('ordernumber', $error->order_id)
-                                ->pluck('production_line_id')
-                                ->first())
-                                ->pluck('production_line')
-                            ->first() }}</th>
-                    <td>{{ $error->time }}</td>
-                    <td>{{ $error->date }}</td>
-                    <td>@if($error->category === 'technical')
+                    <th>{{ $backlog->order_id }}</th>
+                    {{-- TODO: connect error->production_line --}}
+                    <th>1/2/5</th>
+                    <td>{{ $backlog->time }}</td>
+                    <td>{{ $backlog->date }}</td>
+                    <td>@if($backlog->category === 'technical')
                             T
                         @else
                             M
@@ -59,8 +50,6 @@
                             <button class="btn btn-default" type="button">Edit</button>
                         </a>
                     </td>
-
-                    @can('is_production', 'is_driver')
                     <td>
                         <form method="POST" action="{{route('backlog.destroy', $backlog)}}">
                             @csrf
@@ -72,8 +61,6 @@
                             </button>
                         </form>
                     </td>
-                    @endcan
-
                 </tr>
             @endforeach
             </tbody>
