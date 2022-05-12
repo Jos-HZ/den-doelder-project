@@ -5,7 +5,7 @@
         <div class="container">
 
             <h1> Order {{ app('request')->input('ordernumber') }}</h1>
-            <form method="POST" action="{{ route('qualityControl.store') }}" >
+            <form method="POST" action="{{ route('qualityControl.store') }}">
                 @csrf
 
                 <label for="ordernumber"></label>
@@ -14,11 +14,11 @@
 
                         <input type="hidden"
                                id="ordernumber"
-                               name="ordernumber"
-                               value="{{ DB::table('orders')
-                            ->where('ordernumber', app('request')->input('ordernumber'))->pluck('id')->first() }}">
+                               class="input @error('time') is-danger @enderror"
+                               value="{{ app('request')->input('ordernumber') }}">
                     </div>
                 </div>
+
 
                 <label for="time">Time:</label>
                 <div class="label">
@@ -27,7 +27,7 @@
                                class="input @error('time') is-danger @enderror"
                                id="time"
                                name="time"
-                               value="{{ $errors->any() ? old('time') : '' }}">
+                               value={{date(' H:i')}}>
                     </div>
                     @error('time')
                     <p class="help is-danger"> This is a required field</p>

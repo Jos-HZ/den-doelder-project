@@ -35,7 +35,7 @@
                             type="time"
                             id="time"
                             name="time"
-                            value={{date(' H:i')}}>
+                            value={{ date(' H:i') }}>
                     </div>
                     @error('time')
                     <p class="help is-danger">{{ $errors->get('time')[0] }}</p>
