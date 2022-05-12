@@ -12,11 +12,13 @@
                     Order
                 </a>
                 @can('is_admin')
-                    <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}" href="{{ url('/backlog') }}">
+                    <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"
+                       href="{{ url('/backlog') }}">
                         Back-log
                     </a>
                 @elsecan('is_production')
-                    <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}" href="{{ url('/backlog') }}">
+                    <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"
+                       href="{{ url('/backlog') }}">
                         Back-log
                     </a>
                 @endcan

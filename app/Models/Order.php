@@ -23,6 +23,7 @@ class Order extends Model
     {
         return $this->hasMany(QualityControl::class);
     }
+
     public function backlog(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Backlog::class);
