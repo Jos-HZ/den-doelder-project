@@ -17,12 +17,13 @@
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <a href="{{ route("qualityControl.index", ['ordernumber' => $order->ordernumber]) }}">
-                        <article class="tile is-child box">
-                            <p class="title text-lg-center">Quality control</p>
-                        </article>
-                    </a>
-
+                    <div class="tile is-child box">
+                        <a href="{{ route("qualityControl.index", ['ordernumber' => $order->ordernumber]) }}">
+                            <article>
+                                <p class="title text-lg-center">Quality control</p>
+                            </article>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="tile is-ancestor">
@@ -72,12 +73,18 @@
                         @endif
                     </article>
                 </div>
-                <div class="tile is-parent">
-                    <a href="{{ route('backlog.create', ['ordernumber' => $order->ordernumber ])}}">
-                        <article class="tile is-child box has-background-danger">
+                <div class="tile is-parent is-vertical">
+                    <div class="tile is-child box">
+                        <a href="{{ route('qualityControl.create', ['ordernumber' => $order->ordernumber ])}}">
+                            <p class="title text-lg-center">Create quality control</p>
+                        </a>
+                    </div>
+
+                    <div class="tile is-child box has-background-danger">
+                        <a href="{{ route('backlog.create', ['ordernumber' => $order->ordernumber ])}}">
                             <p class="title text-lg-center">Error</p>
-                        </article>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
