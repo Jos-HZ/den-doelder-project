@@ -84,9 +84,8 @@
                             class="input @error('description') is-danger @enderror"
                             id="description"
                             name="description"
-                            value="{{$errors->any() ? old('description') : $backlog->description}}"
-                        //required
-                        >{{$errors->any() ? old('description') : $backlog->description}}</textarea>
+                            value="{{$errors->any() ? old('description') : $backlog->description}}">
+                        {{$errors->any() ? old('description') : $backlog->description}}</textarea>
                     </div>
                     <br>
                     @error('description')

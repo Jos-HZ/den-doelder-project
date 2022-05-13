@@ -59,9 +59,6 @@ class QualityControlController extends Controller
         return request()->validate([
             'name_pallet' => 'required',
             'time' => 'required',
-            'extra_info' => 'required',
-            'action' => 'required',
-            'deviation' => 'required',
         ]);
     }
 
