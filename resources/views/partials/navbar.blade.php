@@ -36,7 +36,7 @@
                 </form>
             </div>
         </div>
-        <a class="navbar-item" href="/profile">
+        <a class="navbar-item" href="{{ url(route('profile.index')) }}">
             <img src="/img/profile-avatar.png" alt="profielfoto">
         </a>
     </div>
