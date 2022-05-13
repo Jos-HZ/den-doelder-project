@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <a href="{{ URL::previous() }}"><img src="/img/svg/back-arrow.svg" width="35" height="35"></a>
+            <a href="{{ route("orders.index") }}"><img src="/img/svg/back-arrow.svg" width="35" height="35"></a>
             <h1 class="title has-text-centered">Order {{ $order->ordernumber }}</h1>
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
@@ -17,13 +17,11 @@
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <div class="tile is-child box">
                     <a href="{{ route("qualityControl.index", ['ordernumber' => $order->ordernumber]) }}">
-                        <article >
+                        <article class="tile is-child box">
                             <p class="title text-lg-center">Quality control</p>
                         </article>
                     </a>
-                    </div>
 
                 </div>
             </div>
@@ -74,22 +72,13 @@
                         @endif
                     </article>
                 </div>
-                <div class="tile is-parent is-vertical">
-                    <div class="tile is-child box">
-                    <a href="{{ route('qualityControl.create', ['ordernumber' => $order->ordernumber ])}}">
-                            <p class="title text-lg-center">Create quality control</p>
-                    </a>
-                    </div>
-
-                    <div class="tile is-child box has-background-danger">
-                        <a href="{{ route('error.create', ['ordernumber' => $order->ordernumber ])}}">
+                <div class="tile is-parent">
+                    <a href="{{ route('backlog.create', ['ordernumber' => $order->ordernumber ])}}">
+                        <article class="tile is-child box has-background-danger">
                             <p class="title text-lg-center">Error</p>
-                        </a>
-                    </div>
+                        </article>
+                    </a>
                 </div>
-
-
-
             </div>
         </div>
     </section>

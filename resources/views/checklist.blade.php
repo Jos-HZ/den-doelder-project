@@ -4,7 +4,7 @@
     <section class="section">
         <div class="container">
             <h1>Order {{ app('request')->input('ordernumber') }} </h1>
-            <form method="POST" action="{{ route('error.store') }}">
+            <form method="POST" action="{{ route('backlog.store') }}">
                 @csrf
                 @php
                     // 'bottom_deck' => [ // mutueel exclusief? radio of checkboxes i.i.g.?
@@ -553,12 +553,12 @@
                                                 <input
                                                     @class ([
                                                         'input',
-                                                        'is-danger' => $errors->get($field['name']),
+                                                        'is-danger' => $backlogs->get($field['name']),
                                                     ])
                                                     type="{{ $fieldTypes[$field['type']]['type'] }}"
                                                     id="{{ $field['name'] }}"
                                                     name="{{ $field['name'] }}"
-                                                    value="{{ $errors->any() ? old($field['name']) : '' }}"
+                                                    value="{{ $backlogs->any() ? old($field['name']) : '' }}"
                                                 >
                                                 @break
                                                 @case ('textarea')
@@ -566,12 +566,12 @@
                                                         <textarea
                                                             @class ([
                                                                 '{{ $fieldTypes[$field["type"]] }}',
-                                                                'is-danger' => $errors->get($field['name']),
+                                                                'is-danger' => $backlogs->get($field['name']),
                                                             ])
                                                             id="{{ $field['name'] }}"
                                                             name="{{ $field['name'] }}"
                                                             oninput="this.parentNode.dataset.replicatedValue = this.value">
-                                                            {{ ($errors->any() ? old($field['name']) : '') }}
+                                                            {{ ($backlogs->any() ? old($field['name']) : '') }}
                                                         </textarea>
                                                     <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
                                                 </div>
@@ -694,7 +694,7 @@
                                         @endforelse --}}
                                     </div>
                                     @error($field['name'])
-                                    @foreach ($errors->get($field['name']) as $ewwor)
+                                    @foreach ($backlogs->get($field['name']) as $ewwor)
                                         <p class="help is-danger">{{ $ewwor[$loop->index] }}</p>
                                     @endforeach
                                     @enderror
@@ -735,7 +735,7 @@
                 </div> --}}
 
                 <input type="submit" value="Submit" class="button is-link">
-                <a href="{{route('error.index')}}">
+                <a href="{{route('backlog.index')}}">
                     <button type="button" class="button is-link-light">Cancel</button>
                 </a>
 

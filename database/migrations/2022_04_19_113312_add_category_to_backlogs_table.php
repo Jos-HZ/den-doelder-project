@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateErrorsTable extends Migration
+class AddCategoryToBacklogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateErrorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('errors', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('order_id');
-            $table->time('time');
-            $table->date('date');
-            $table->text('description');
-            $table->timestamps();
+        Schema::table('backlogs', function (Blueprint $table) {
+            $table->set('category', ['technical', 'mechanical']); // waarom set als je er ÉÉN MOET kiezen, zou enum niet beter geweest zijn dan?
+
         });
     }
 
@@ -30,6 +26,8 @@ class CreateErrorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('errors');
+        Schema::table('backlogs', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -4,7 +4,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BacklogController;
 use App\Http\Controllers\DriverController;
-use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\QualityControlController;
@@ -24,20 +23,16 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/orders', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
-Route::resource('/error', ErrorController::class);
+//Route::resource('/error', ErrorController::class);
+Route::resource('/backlog', BacklogController::class);
 Route::resource('/qualityControl', QualityControlController::class);
-
-Route::put('/orders/{id}/driver_done', [OrderController::class, 'driverDone'])->name('orders.driverDone');
 
 Route::get('/checklist', function () {
     return view('checklist');
 })->name('checklist');
 
-require __DIR__ . '/auth.php';
-
 Route::group(['middleware' => ['auth']], function () {
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('authenticatedSession.destroy');
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
     Route::get('redirects', [HomeController::class, 'index']);
 });
 
@@ -54,6 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::middleware(['driver'])->group(function () {
     Route::get('/driver_dashboard', [DriverController::class, 'dashboard']);
+    Route::put('/orders/{id}/driver_done', [OrderController::class, 'driverDone'])->name('orders.driverDone');
 
 });
 
@@ -85,3 +81,5 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['production'])->group(function () {
 
 });
+
+require __DIR__ . '/auth.php';

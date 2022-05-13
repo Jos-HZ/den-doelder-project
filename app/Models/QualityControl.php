@@ -12,11 +12,6 @@ class QualityControl extends Model
     protected $fillable = [
         'name_pallet',
         'time',
-        'def_nr',
-        'action',
-        'deviation',
-        'extra_info',
-        'ordernumber'
     ];
 
     public function order()

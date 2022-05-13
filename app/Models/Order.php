@@ -14,14 +14,19 @@ class Order extends Model
         return $this->belongsTo(Production::class);
     }
 
-    public function error()
+    public function error(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Error::class);
     }
 
-    public function quality()
+    public function quality(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(QualityControl::class);
+    }
+
+    public function backlog(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Backlog::class);
     }
 }
 

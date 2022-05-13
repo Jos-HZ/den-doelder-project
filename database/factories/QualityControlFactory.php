@@ -22,7 +22,7 @@ class QualityControlFactory extends Factory
             'name_pallet' => $this->faker->word,
             'time' => $this->faker->time(),
             'def_nr' => $this->faker->boolean,
-            'action' => $this->faker->sentence,
+            'action' => $this->faker->boolean(0, 1),
             'deviation' => $this->faker->word,
             'extra_info' => $this->faker->sentence,
         ];

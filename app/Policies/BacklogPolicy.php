@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
+use App\Models\Backlog;
 use App\Models\User;
-use App\Models\Error;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ErrorPolicy
+class BacklogPolicy
 {
     use HandlesAuthorization;
 
@@ -20,17 +20,17 @@ class ErrorPolicy
         //
     }
 
-    public function view(User $user, Error $error)
+    public function view(User $user, Backlog $backlog)
     {
         return TRUE;
     }
 
-    public function edit(User $user, Error $error)
+    public function edit(User $user, Backlog $backlog)
     {
         return $user->role === 'production';
     }
 
-    public function delete(User $user, Error $error)
+    public function delete(User $user, Backlog $backlog)
     {
         return $user->role === 'production';
     }

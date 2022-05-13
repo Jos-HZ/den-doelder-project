@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use App\Models\QualityControl;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 
 class QualityControlController extends Controller
@@ -27,16 +25,6 @@ class QualityControlController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Application|Factory|View
-     */
-    public function create()
-    {
-        return view('qualityControl.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
@@ -48,6 +36,31 @@ class QualityControlController extends Controller
 
         // TODO: ordernumber mee geven aan de index
         return redirect(route('qualityControl.index'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Application|Factory|View
+     */
+    public function create()
+    {
+        return view('qualityControl.create');
+    }
+
+    /**
+     * Validates the qualityControl
+     *
+     * @param Request $request
+     * @return array
+     *
+     */
+    public function validateQuality(Request $request): array
+    {
+        return request()->validate([
+            'name_pallet' => 'required',
+            'time' => 'required',
+        ]);
     }
 
     /**
@@ -97,24 +110,5 @@ class QualityControlController extends Controller
         $qualityControl->delete();
 
         return redirect(route('qualityControl.index'));
-    }
-
-    /**
-     * Validates the qualityControl
-     *
-     * @param Request $request
-     * @return array
-     *
-     */
-    public function validateQuality(Request $request): array
-    {
-        return request()->validate([
-            'name_pallet' => 'required',
-            'time' => 'required',
-            'extra_info' => 'required',
-            'action' => 'required',
-            'deviation' => 'required',
-            'ordernumber' => 'required'
-        ]);
     }
 }

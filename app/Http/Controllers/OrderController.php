@@ -59,7 +59,7 @@ class OrderController extends Controller
     public function show(Order $order, Request $request)
     {
         if (Auth::check()) {
-            return view(str_replace('-ternary-', (Auth::user()->hasRole('driver') ? Auth::user()->role.'.' : ''), 'orders.-ternary-show'), compact('order'));
+            return view(str_replace('-ternary-', (Auth::user()->hasRole('driver') ? Auth::user()->role . '.' : ''), 'orders.-ternary-show'), compact('order'));
         }
 
         abort(403);
@@ -124,7 +124,7 @@ class OrderController extends Controller
      * @param Request $request
      * @return Application|Redirector|RedirectResponse
      */
-    public function productionDone (Request $request)
+    public function productionDone(Request $request)
     {
         $order = Order::find($request->id);
         $order->production_done = 1;
