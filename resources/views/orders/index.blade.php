@@ -6,7 +6,7 @@
 @section('content')
     <container class="lists">
         <container class="tabs">
-            @foreach ($orders->groupBy('production_line_id')->sortKeys() as $orderGroupKey=>$orderGroup)
+            @foreach ($orders->groupBy('production_line')->sortKeys() as $orderGroupKey=>$orderGroup)
                 <tab
                     @class(['tab', 'current' => app('request')->input('cape') == false ? $loop->first : app('request')->input('cape') == $orderGroupKey])
                     onCLick="xOnClick({{ $loop->index }}, this)"
@@ -16,7 +16,7 @@
             @endforeach
         </container>
         <container class="horizontal flexContainer" dir="ltr" onscroll="xOnScroll()">
-            @foreach ($orders->groupBy('production_line_id')->sortKeys() as $orderGroupKey=>$orderGroup)
+            @foreach ($orders->groupBy('production_line')->sortKeys() as $orderGroupKey=>$orderGroup)
                 <container class="vertical flexContainer" id="cape-{{ $orderGroupKey }}">
                     @foreach ($orderGroup as $order)
                         <a href="{{ route('orders.show', $order) }}">

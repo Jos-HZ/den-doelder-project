@@ -15,13 +15,13 @@ class CreateProductionsTable extends Migration
     {
         Schema::create('productions', function (Blueprint $table) {
             $table->id();
-            $table->text('production_line');
+            $table->unsignedBigInteger('production_line')->unique();
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations.j
      *
      * @return void
      */
