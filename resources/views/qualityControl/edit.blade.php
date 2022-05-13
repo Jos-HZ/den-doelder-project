@@ -65,8 +65,8 @@
                             class="input @error('action') is-danger @enderror"
                             id="action"
                             name="action"
-                            value="{{$errors->any() ? old('action') : ''}}"
-                        >{{ $errors->any() ? old('action') : ''}}</textarea>
+                            value="{{$errors->any() ? old('action') : $qualityControl->action}}"
+                        >{{ $errors->any() ? old('action') : $qualityControl->action}}</textarea>
                     </div>
                     <br>
                     @error('action')
@@ -81,8 +81,8 @@
                             class="input @error('deviation') is-danger @enderror"
                             id="deviation"
                             name="deviation"
-                            value="{{$errors->any() ? old('deviation') : ''}}"
-                        >{{$errors->any() ? old('deviation') : ''}}</textarea>
+                            value="{{$errors->any() ? old('deviation') : $qualityControl->deviation}}"
+                        >{{$errors->any() ? old('deviation') : $qualityControl->deviation}}</textarea>
                     </div>
                     <br>
                     @error('deviation')
@@ -98,7 +98,7 @@
                             id="extra_info"
                             name="extra_info"
                             oninput="textareaOnInput(this)"
-                        >{{$errors->any() ? old('extra_info') : ''}}</textarea>
+                        >{{$errors->any() ? old('extra_info') : $qualityControl->extra_info}}</textarea>
                     </div>
                     <br>
                     @error('extra_info')
