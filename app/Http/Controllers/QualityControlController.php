@@ -21,7 +21,7 @@ class QualityControlController extends Controller
      */
     public function index()
     {
-        $qualities = QualityControl::all();
+        $qualities = QualityControl::all()->sortDesc() ;
 
         return view('qualityControl.index', compact('qualities'));
     }
@@ -46,6 +46,7 @@ class QualityControlController extends Controller
     {
         QualityControl::create($this->validateQuality($request));
 
+        // TODO: ordernumber mee geven aan de index
         return redirect(route('qualityControl.index'));
     }
 
