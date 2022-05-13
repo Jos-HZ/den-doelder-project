@@ -17,7 +17,7 @@
         </container>
         <container class="horizontal flexContainer" dir="ltr" onscroll="xOnScroll()">
             @foreach ($orders->groupBy('production_line_id') as $orderGroupKey=>$orderGroup)
-                <container class="vertical flexContainer" id="cape-{{ $orderGroup }}">
+                <container class="vertical flexContainer" id="cape-{{ $orderGroupKey }}">
                     @foreach ($orderGroup as $order)
                         <a href="{{ route('orders.show', $order) }}">
                             <card class="order">

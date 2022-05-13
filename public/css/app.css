@@ -1,4 +1,4 @@
-/* /*
+/*
 ! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com
 *//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -2838,3 +2838,5 @@ select {
     padding-right: 2rem;
   }
 }
+
+
