@@ -52,8 +52,8 @@
                         <select name="def_nr"
                                 id="def_nr"
                                 class="input @error('def_nr') is-danger @enderror">
-                            <option value="">0</option>
-                            <option value="">1</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
                         </select>
                     </div>
                 </div>
