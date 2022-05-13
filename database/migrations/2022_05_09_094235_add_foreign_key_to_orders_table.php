@@ -27,8 +27,8 @@ class AddForeignKeyToOrdersTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->dropForeign(['production_line_id']);
-            $table->dropColumn('production_line_id');
+            $table->dropForeign(['production_line']);
+            $table->dropColumn('production_line');
         });
     }
 }

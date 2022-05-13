@@ -30,8 +30,8 @@ class AddForeignKeyToQualityControlsTable extends Migration
     public function down()
     {
         Schema::table('quality_controls', function (Blueprint $table) {
-            $table->dropForeign(['ordernumber', 'production_line_id']);
-            $table->dropColumn('ordernumber', 'production_line_id');
+            $table->dropForeign(['ordernumber', 'production_line']);
+            $table->dropColumn('ordernumber', 'production_line');
         });
     }
 }
