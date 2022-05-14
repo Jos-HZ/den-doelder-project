@@ -16,6 +16,14 @@
                        href="{{ url('/backlog') }}">
                         Back-log
                     </a>
+                    <a class="navbar-item {{ Request::path() === 'users' ? 'active' : '' }}"
+                        href="{{ route('user.index') }}">
+                        Manage Users
+                    </a>
+                    <a class="navbar-item {{ Request::path() === 'roles' ? 'active' : '' }}"
+                        href="{{ route('roles.index') }}">
+                        Manage Role
+                    </a>
                 @elsecan('is_production')
                     <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"
                        href="{{ url('/backlog') }}">
