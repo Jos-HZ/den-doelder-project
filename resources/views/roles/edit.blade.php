@@ -49,5 +49,4 @@
     </div>
     {!! Form::close() !!}
 
-
 @endsection

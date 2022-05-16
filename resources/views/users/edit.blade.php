@@ -62,5 +62,4 @@
     </div>
     {!! Form::close() !!}
 
-
-    @endsection
+@endsection
