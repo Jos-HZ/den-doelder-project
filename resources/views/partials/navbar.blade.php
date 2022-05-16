@@ -8,6 +8,26 @@
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-start">
                 <a class="navbar-item {{ Request::path() === 'orders' ? 'active' : '' }}"
+                   href="javascript:void(0)">
+                    @if (Request::fullUrl() === Request::url())
+                        {{-- {{ dd(Request::fullUrl()) }} --}}
+                        <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
+                    @else
+                        <img src="/img/svg/back-arrow.svg" onclick="this.parentElement.href = {{ Request::url() }}" width="35" height="35">
+                    @endif
+                    {{-- {{ dd(Request::fullUrl()) }} --}}
+                    {{-- {{ dd(Request::fullUrlWithQuery()) }} --}}
+                    {{-- {{ dd(Request::fullUrlWithoutQuery()) }} --}}
+                    {{-- {{ dd(Request::url()) }} --}}
+                    {{-- {{ dd(Request::path()) }} --}}
+                    {{-- {{ dd(Request::dump()) }} --}}
+                    {{-- {{ dd(Request::dump()->) }} --}}
+                    {{-- {{ dd($_GET) }} --}}
+                    {{-- {{ dd(Request::all()) }} --}}
+                    {{-- {{ dd(Request::getPathInfo()) }} --}}
+                    {{-- {{ dd($app->request->query->getParameters()) }} --}}
+                </a>
+                <a class="navbar-item {{ Request::path() === 'orders' ? 'active' : '' }}"
                    href="{{ url(route('orders.index')) }}">
                     Order
                 </a>
