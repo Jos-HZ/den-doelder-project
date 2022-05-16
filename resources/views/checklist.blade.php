@@ -553,12 +553,12 @@
                                                 <input
                                                     @class ([
                                                         'input',
-                                                        'is-danger' => $backlogs->get($field['name']),
+                                                        'is-danger' => $errors->get($field['name']),
                                                     ])
                                                     type="{{ $fieldTypes[$field['type']]['type'] }}"
                                                     id="{{ $field['name'] }}"
                                                     name="{{ $field['name'] }}"
-                                                    value="{{ $backlogs->any() ? old($field['name']) : '' }}"
+                                                    value="{{ $errors->any() ? old($field['name']) : '' }}"
                                                 >
                                                 @break
                                                 @case ('textarea')
@@ -566,12 +566,12 @@
                                                         <textarea
                                                             @class ([
                                                                 '{{ $fieldTypes[$field["type"]] }}',
-                                                                'is-danger' => $backlogs->get($field['name']),
+                                                                'is-danger' => $errors->get($field['name']),
                                                             ])
                                                             id="{{ $field['name'] }}"
                                                             name="{{ $field['name'] }}"
                                                             oninput="this.parentNode.dataset.replicatedValue = this.value">
-                                                            {{ ($backlogs->any() ? old($field['name']) : '') }}
+                                                            {{ ($errors->any() ? old($field['name']) : '') }}
                                                         </textarea>
                                                     <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
                                                 </div>
@@ -694,7 +694,7 @@
                                         @endforelse --}}
                                     </div>
                                     @error($field['name'])
-                                    @foreach ($backlogs->get($field['name']) as $ewwor)
+                                    @foreach ($errors->get($field['name']) as $ewwor)
                                         <p class="help is-danger">{{ $ewwor[$loop->index] }}</p>
                                     @endforeach
                                     @enderror

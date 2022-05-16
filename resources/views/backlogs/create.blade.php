@@ -36,7 +36,7 @@
                             type="time"
                             id="time"
                             name="time"
-                            value={{ date(' H:i') }}>
+                            value={{$errors->any() ? old('time') : date(' H:i') }}>
                     </div>
                     @error('time')
                     <p class="help is-danger">{{ $errors->get('time')[0] }}</p>
@@ -55,8 +55,7 @@
                             type="date"
                             id="date"
                             name="date"
-                            value={{date(' Y-m-d')}}
-                        >
+                            value={{$errors->any() ? old('date') : date(' Y-m-d') }}>
                         {{-- required --}}
                     </div>
                     @error('date')
@@ -96,7 +95,7 @@
                         </div>
                     </div>
                     @error('description')
-                    <p class="help is-danger">{{ $backlogs->get('description')[0] }}</p>
+                    <p class="help is-danger">{{ $errors->get('description')[0] }}</p>
                     @enderror
                 </div>
 

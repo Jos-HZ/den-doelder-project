@@ -28,7 +28,7 @@
                                class="input @error('time') is-danger @enderror"
                                id="time"
                                name="time"
-                               value={{date(' H:i')}}>
+                               value={{$errors->any() ? old('time') : date(' H:i') }}>
                     </div>
                     @error('time')
                     <p class="help is-danger"> This is a required field</p>
