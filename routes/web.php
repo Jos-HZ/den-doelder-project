@@ -24,7 +24,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/orders', OrderController::class);
+
 Route::resource('/backlog', BacklogController::class);
+
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/qualityControl', QualityControlController::class);
 

@@ -18,7 +18,7 @@ class QualityControlFactory extends Factory
 
         return [
             'ordernumber' => $order->id,
-            'production_line_id' => $order->production_line_id,
+            'production_line' => $order->production_line,
             'name_pallet' => $this->faker->word,
             'time' => $this->faker->time(),
             'def_nr' => $this->faker->boolean,
