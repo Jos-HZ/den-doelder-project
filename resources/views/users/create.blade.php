@@ -53,24 +53,11 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Role:</strong>
-                {{ dd($roles) }}
-                {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
-
-
-{{--                <div class="select">--}}
-{{--                    <select--}}
-{{--                        type="category"--}}
-{{--                        id="category"--}}
-{{--                        name="category"--}}
-{{--                    >--}}
-{{--                        <option value="Admin">Administrative worker</option>--}}
-{{--                        <option value="driver">Forklift driver</option>--}}
-{{--                        <option value="production">Production</option>--}}
-{{--                    </select>--}}
-{{--                </div>--}}
-
+                {!! Form::select('role[]', $roles,[], array('class' => 'form-control','multiple')) !!}
+                
             </div>
         </div>
+
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
