@@ -10,6 +10,9 @@
 
                 <label for="order_id"></label>
                 <div class="label">
+
+                {{-- TODO: type order_id and production_line_id to "hidden"  --}}
+
                     <div class="control">
 
                         <input type="text"
