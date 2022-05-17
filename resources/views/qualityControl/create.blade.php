@@ -22,6 +22,19 @@
                     </div>
                 </div>
 
+                <label for="production_line_id"></label>
+                <div class="label">
+                    <div class="control">
+
+                        <input type="text"
+                               name="production_line_id"
+                               id="production_line_id"
+                               class="input @error('production_line_id') is-danger @enderror"
+                               {{-- TODO: fix value  --}}
+                               value="">
+
+                    </div>
+                </div>
 
                 <label for="time">Time:</label>
                 <div class="label">
