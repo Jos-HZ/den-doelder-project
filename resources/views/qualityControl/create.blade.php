@@ -8,17 +8,36 @@
             <form method="POST" action="{{ route('qualityControl.store') }}">
                 @csrf
 
-                <label for="ordernumber"></label>
+                <label for="order_id"></label>
                 <div class="label">
+
+                {{-- TODO: type order_id and production_line_id to "hidden"  --}}
+
                     <div class="control">
 
-                        <input type="hidden"
-                               id="ordernumber"
-                               class="input @error('time') is-danger @enderror"
-                               value="{{ app('request')->input('ordernumber') }}">
+                        <input type="text"
+                               name="order_id"
+                               id="order_id"
+                               class="input @error('order_id') is-danger @enderror"
+                                {{-- TODO: fix value  --}}
+                               value="">
+
                     </div>
                 </div>
 
+                <label for="production_line_id"></label>
+                <div class="label">
+                    <div class="control">
+
+                        <input type="text"
+                               name="production_line_id"
+                               id="production_line_id"
+                               class="input @error('production_line_id') is-danger @enderror"
+                               {{-- TODO: fix value  --}}
+                               value="">
+
+                    </div>
+                </div>
 
                 <label for="time">Time:</label>
                 <div class="label">

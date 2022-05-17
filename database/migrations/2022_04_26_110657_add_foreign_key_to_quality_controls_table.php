@@ -17,8 +17,8 @@ class AddForeignKeyToQualityControlsTable extends Migration
             $table->unsignedBigInteger('ordernumber')->nullable();
             $table->foreign('ordernumber')->references('id')->on('orders');
 
-            $table->unsignedBigInteger('production_line');
-            $table->foreign('production_line')->references('production_line')->on('productions');
+            $table->unsignedBigInteger('production_line_id')->nullable();
+            $table->foreign('production_line_id')->references('id')->on('productions');
         });
     }
 
@@ -30,8 +30,9 @@ class AddForeignKeyToQualityControlsTable extends Migration
     public function down()
     {
         Schema::table('quality_controls', function (Blueprint $table) {
-            $table->dropForeign(['ordernumber', 'production_line']);
-            $table->dropColumn('ordernumber', 'production_line');
+            $table->dropForeign(['production_line_id']);
+            $table->dropForeign(['ordernumber']);
+            $table->dropColumn('ordernumber', 'production_line_id');
         });
     }
 }
