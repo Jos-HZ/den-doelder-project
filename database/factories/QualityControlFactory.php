@@ -17,7 +17,7 @@ class QualityControlFactory extends Factory
         $order = Order::all()->random();
 
         return [
-            'ordernumber' => $order->id,
+            'order_id' => $order->id,
             'production_line_id' => $order->production_line_id,
             'name_pallet' => $this->faker->word,
             'time' => $this->faker->time(),

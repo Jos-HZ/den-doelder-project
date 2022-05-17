@@ -64,6 +64,7 @@ class QualityControlController extends Controller
             'action' => 'present',
             'deviation' => 'present',
             'extra_info' => 'present',
+            'order_id' => 'required'
         ]);
     }
 
