@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Authorization\AdminController;
+use App\Http\Controllers\Authorization\DriverController;
 use App\Http\Controllers\BacklogController;
-use App\Http\Controllers\DriverController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\QualityControlController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +23,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/orders', OrderController::class);
+
 Route::resource('/backlog', BacklogController::class);
-//Route::resource('/error', ErrorController::class);
+
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/qualityControl', QualityControlController::class);
+
+Route::resource('users', UserController::class);
 
 Route::get('/checklist', function () {
     return view('checklist');

@@ -17,7 +17,7 @@ class OrderFactory extends Factory
         return [
             'ordernumber' => $this->faker->numberBetween(1111, 99999),
             'notes' => $this->faker->paragraph(10),
-            'production_line_id' => Production::all()->random()->id,
+            'production_line' => Production::all()->random()->production_line,
             'driver_done' => 0
         ];
     }

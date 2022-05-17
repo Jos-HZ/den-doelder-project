@@ -15,9 +15,9 @@ class ProductionSeeder extends Seeder
     public function run()
     {
         DB::table('productions')->insert([
-            ['production_line' => 'cape1'],
-            ['production_line' => 'cape2'],
-            ['production_line' => 'cape5']
+            ['production_line' => '1'],
+            ['production_line' => '2'],
+            ['production_line' => '5']
         ]);
     }
 }

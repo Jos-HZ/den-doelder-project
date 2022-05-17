@@ -29,7 +29,7 @@
                             type="time"
                             id="time"
                             name="time"
-                            value="{{$errors->any() ? old('time') : $backlog->time}}"
+                            value="{{$errors->any() ? old('time') : $backlog->time}}">
                         //required
                     </div>
                     <br>
@@ -47,7 +47,7 @@
                             type="date"
                             id="date"
                             name="date"
-                            value="{{$errors->any() ? old('date') : $backlog->date}}"
+                            value="{{$errors->any() ? old('date') : $backlog->date}}">
                         //required
                     </div>
                     <br>

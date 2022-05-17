@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(ProductionSeeder::class);
         $this->call(OrderSeeder::class);
-//        $this->call(ErrorSeeder::class);
         $this->call(DriverTableSeeder::class);
         $this->call(ProductionTableSeeder::class);
         $this->call(AdminTableSeeder::class);
         $this->call(QualityControlSeeder::class);
         $this->call(BacklogSeeder::class);
+        $this->call(PermissionTableSeeder::class);
     }
 }

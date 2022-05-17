@@ -19,7 +19,7 @@ class QualityControlController extends Controller
      */
     public function index()
     {
-        $qualities = QualityControl::all()->sortDesc() ;
+        $qualities = QualityControl::all()->sortDesc();
 
         return view('qualityControl.index', compact('qualities'));
     }
