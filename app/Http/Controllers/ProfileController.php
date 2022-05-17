@@ -14,6 +14,6 @@ class ProfileController extends Controller
     {
         $users = User::filter($request)->get();
 
-        return view('/profile.index');
+        return view('/profile.index', compact('users'));
     }
 }

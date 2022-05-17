@@ -1,13 +1,23 @@
 @extends('layouts.master')
 @section('content')
-    @can('is_admin')
-        <h1>Admin account</h1>
+    @foreach($users as $user)
+        @can('is_admin')
+            @if($user->role === 'admin')
+            <h1>Admin account</h1>
             <a>{{ $user->name }}</a>
-    @elsecan('is_production')
-        <h1>Production account</h1>
+            @endif
+        @elsecan('is_production')
+            @if($user->role === 'production')
+            <h1>Production account</h1>
             <a>{{ $user->name }}</a>
-    @else()
-        <h1>Driver account</h1>
-        <a>{{ $user->name }}</a>
-    @endcan
+            @endif
+        @elsecan('is_driver')
+            @if($user->role === 'driver')
+            <h1>Driver account</h1>
+            <a>{{ $user->name }}</a>
+            @endif
+        @endcan
+    @endforeach
+
+
 @endsection
