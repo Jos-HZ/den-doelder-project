@@ -29,7 +29,7 @@
                             type="time"
                             id="time"
                             name="time"
-                            value="{{$errors->any() ? old('time') : $backlog->time}}"
+                            value="{{$errors->any() ? old('time') : $backlog->time}}">
                         //required
                     </div>
                     <br>
@@ -47,7 +47,7 @@
                             type="date"
                             id="date"
                             name="date"
-                            value="{{$errors->any() ? old('date') : $backlog->date}}"
+                            value="{{$errors->any() ? old('date') : $backlog->date}}">
                         //required
                     </div>
                     <br>
@@ -84,9 +84,8 @@
                             class="input @error('description') is-danger @enderror"
                             id="description"
                             name="description"
-                            value="{{$errors->any() ? old('description') : $backlog->description}}"
-                        //required
-                        >{{$errors->any() ? old('description') : $backlog->description}}</textarea>
+                            value="{{$errors->any() ? old('description') : $backlog->description}}">
+                        {{$errors->any() ? old('description') : $backlog->description}}</textarea>
                     </div>
                     <br>
                     @error('description')

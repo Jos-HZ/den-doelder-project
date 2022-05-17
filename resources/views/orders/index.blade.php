@@ -4,51 +4,46 @@
 @endsection
 
 @section('content')
-    @php
-        $capeArray = [1, 2, 5]
-    @endphp
-    <div>
-    </div>
-
     <container class="lists">
         <container class="tabs">
-            @foreach ($capeArray as $production_id)
+            @foreach ($orders->groupBy('production_line')->sortKeys() as $orderGroupKey=>$orderGroup)
                 <tab
-                    @class(['tab', 'current' => app('request')->input('cape') == false ? $loop->first : app('request')->input('cape') == $production_id])
+                    @class(['tab', 'current' => app('request')->input('cape') == false ? $loop->first : app('request')->input('cape') == $orderGroupKey])
                     onCLick="xOnClick({{ $loop->index }}, this)"
-                    data-cape="{{ $production_id }}"
-                >Cape {{ $production_id }}
+                    data-cape="{{ $orderGroupKey }}"
+                >Cape {{ $orderGroupKey }}
                 </tab>
             @endforeach
         </container>
         <container class="horizontal flexContainer" dir="ltr" onscroll="xOnScroll()">
-            @foreach ($capeArray as $production_line_idKey=>$production_id)
-                <container class="vertical flexContainer" id="cape-{{ $production_id }}">
-                    @foreach ($orders as $order)
-                        @if ($order->production_line_id === $production_id)
-                            <a href="{{ route('orders.show', $order) }}">
-                                <card class="order">
-                                    <p class="title text-bold">Order: {{ $order->ordernumber }}</p>
-                                    <p class="order">{{ $order->notes }}</p>
+            @foreach ($orders->groupBy('production_line')->sortKeys() as $orderGroupKey=>$orderGroup)
+                <container class="vertical flexContainer" id="cape-{{ $orderGroupKey }}">
+                    @foreach ($orderGroup as $order)
+                        <a href="{{ route('orders.show', $order) }}">
+                            <card class="order">
+                                <p class="title text-bold">Order: {{ $order->ordernumber }}</p>
+                                <p class="order">{{ $order->notes }}</p>
 
-                                    <div class="stepper-wrapper">
-                                        <div class="stepper-item completed" >
-                                            <div class="step-counter"></div>
-                                            <div class="step-name">Admin</div>
-                                        </div>
-                                        <div class="stepper-item {{ $order->driver_done ? 'completed' : 'active' }}" id="driver">
-                                            <div class="step-counter"></div>
-                                            <div class="step-name">Driver</div>
-                                        </div>
-                                        <div class="stepper-item active {{ $order->production_done ? 'completed' : 'active' }} "  id="production">
-                                            <div class="step-counter"></div>
-                                            <div class="step-name">Production</div>
-                                        </div>
+                                <div class="stepper-wrapper">
+                                    <div class="stepper-item completed">
+                                        <div class="step-counter"></div>
+                                        <div class="step-name">Admin</div>
                                     </div>
+                                    <div class="stepper-item {{ $order->driver_done ? 'completed' : 'active' }}"
+                                            id="driver">
+                                        <div class="step-counter"></div>
+                                        <div class="step-name">Driver</div>
+                                    </div>
+                                    <div
+                                        class="stepper-item active {{ $order->production_done ? 'completed' : 'active' }} "
+                                        id="production">
+                                        <div class="step-counter"></div>
+                                        <div class="step-name">Production</div>
+                                    </div>
+                                </div>
 
-                                </card>
-                            </a>
-                        @endif
+                            </card>
+                        </a>
                     @endforeach
                 </container>
             @endforeach

@@ -12,11 +12,17 @@
                     Order
                 </a>
                 @can('is_admin')
-                    <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}" href="{{ url('/backlog') }}">
+                    <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"
+                       href="{{ url('/backlog') }}">
                         Back-log
                     </a>
+                    <a class="navbar-item {{ Request::path() === 'users' ? 'active' : '' }}"
+                        href="{{ route('users.index') }}">
+                        Manage Users
+                    </a>
                 @elsecan('is_production')
-                    <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}" href="{{ url('/backlog') }}">
+                    <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"
+                       href="{{ url('/backlog') }}">
                         Back-log
                     </a>
                 @endcan
@@ -27,6 +33,7 @@
             <a class="navbar-link has-text-white">
                 Settings
             </a>
+
             <div class="navbar-dropdown">
                 <form action="{{ route('destroy', 'logout') }}" method="POST">
                     @csrf

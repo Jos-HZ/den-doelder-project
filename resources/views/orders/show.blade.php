@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <a href="{{ route("orders.index") }}"><img src="/img/svg/back-arrow.svg" width="35" height="35"></a>
+            <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
             <h1 class="title has-text-centered">Order {{ $order->ordernumber }}</h1>
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
@@ -17,12 +17,13 @@
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <a href="{{ route("qualityControl.index", ['ordernumber' => $order->ordernumber]) }}">
-                        <article class="tile is-child box">
-                            <p class="title text-lg-center">Quality control</p>
-                        </article>
-                    </a>
-
+                    <div class="tile is-child box">
+                        <a href="{{ route("qualityControl.index", ['ordernumber' => $order->ordernumber]) }}">
+                            <article>
+                                <p class="title text-lg-center">Quality control</p>
+                            </article>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="tile is-ancestor">
@@ -72,12 +73,18 @@
                         @endif
                     </article>
                 </div>
-                <div class="tile is-parent">
-                    <a href="{{ route('backlog.create', ['ordernumber' => $order->ordernumber ])}}">
-                        <article class="tile is-child box has-background-danger">
+                <div class="tile is-parent is-vertical">
+                    <div class="tile is-child box">
+                        <a href="{{ route('qualityControl.create', ['ordernumber' => $order->ordernumber ])}}">
+                            <p class="title text-lg-center">Create quality control</p>
+                        </a>
+                    </div>
+
+                    <div class="tile is-child box has-background-danger">
+                        <a href="{{ route('backlog.create', ['ordernumber' => $order->ordernumber ])}}">
                             <p class="title text-lg-center">Error</p>
-                        </article>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

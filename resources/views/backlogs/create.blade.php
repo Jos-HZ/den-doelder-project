@@ -4,7 +4,7 @@
     <section class="section">
         <div class="container">
             <h1>Order {{ app('request')->input('ordernumber') }}
-              </h1>
+            </h1>
 
             <form method="POST" action="{{ route('backlog.store') }}">
                 @csrf
@@ -36,7 +36,7 @@
                             type="time"
                             id="time"
                             name="time"
-                            value={{date(' H:i')}}>
+                            value={{ date(' H:i') }}>
                     </div>
                     @error('time')
                     <p class="help is-danger">{{ $errors->get('time')[0] }}</p>

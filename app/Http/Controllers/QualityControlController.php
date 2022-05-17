@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use App\Models\QualityControl;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 
 class QualityControlController extends Controller
@@ -21,9 +19,23 @@ class QualityControlController extends Controller
      */
     public function index()
     {
-        $qualities = QualityControl::all();
+        $qualities = QualityControl::all()->sortDesc();
 
         return view('qualityControl.index', compact('qualities'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
+     */
+    public function store(Request $request)
+    {
+        QualityControl::create($this->validateQuality($request));
+
+        // TODO: ordernumber mee geven aan de index
+        return redirect(route('qualityControl.index'));
     }
 
     /**
@@ -37,16 +49,22 @@ class QualityControlController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Validates the qualityControl
      *
      * @param Request $request
-     * @return Application|RedirectResponse|Redirector
+     * @return array
+     *
      */
-    public function store(Request $request)
+    public function validateQuality(Request $request): array
     {
-        QualityControl::create($this->validateQuality($request));
-
-        return redirect(route('qualityControl.index'));
+        return request()->validate([
+            'name_pallet' => 'required',
+            'time' => 'required',
+            'def_nr' => 'present',
+            'action' => 'present',
+            'deviation' => 'present',
+            'extra_info' => 'present',
+        ]);
     }
 
     /**
@@ -96,23 +114,5 @@ class QualityControlController extends Controller
         $qualityControl->delete();
 
         return redirect(route('qualityControl.index'));
-    }
-
-    /**
-     * Validates the qualityControl
-     *
-     * @param Request $request
-     * @return array
-     *
-     */
-    public function validateQuality(Request $request): array
-    {
-        return request()->validate([
-            'name_pallet' => 'required',
-            'time' => 'required',
-            'extra_info' => 'required',
-            'action' => 'required',
-            'deviation' => 'required',
-        ]);
     }
 }

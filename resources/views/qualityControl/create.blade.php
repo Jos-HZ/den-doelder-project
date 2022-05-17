@@ -5,7 +5,7 @@
         <div class="container">
 
             <h1> Order {{ app('request')->input('ordernumber') }}</h1>
-            <form method="POST" action="{{ route('qualityControl.store') }}" >
+            <form method="POST" action="{{ route('qualityControl.store') }}">
                 @csrf
 
                 <label for="ordernumber"></label>
@@ -27,7 +27,7 @@
                                class="input @error('time') is-danger @enderror"
                                id="time"
                                name="time"
-                               value="{{ $errors->any() ? old('time') : '' }}">
+                               value={{date(' H:i')}}>
                     </div>
                     @error('time')
                     <p class="help is-danger"> This is a required field</p>
@@ -51,8 +51,8 @@
                         <select name="def_nr"
                                 id="def_nr"
                                 class="input @error('def_nr') is-danger @enderror">
-                            <option value="">0</option>
-                            <option value="">1</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
                         </select>
                     </div>
                 </div>

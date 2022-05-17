@@ -70,7 +70,8 @@
                         <form method="POST" action="{{ route('orders.driverDone', $order )}}">
                             @csrf
                             @method('PUT')
-                            <button type="submit" class="btn btn-pink" onclick="return confirm('Are you really done?')"><i
+                            <button type="submit" class="btn btn-pink" onclick="return confirm('Are you really done?')">
+                                <i
                                     class="fas fa-check"></i>
                                 <p class="title">DONE</p>
                             </button>
