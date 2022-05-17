@@ -17,12 +17,8 @@
                         Back-log
                     </a>
                     <a class="navbar-item {{ Request::path() === 'users' ? 'active' : '' }}"
-                        href="{{ route('user.index') }}">
+                        href="{{ route('users.index') }}">
                         Manage Users
-                    </a>
-                    <a class="navbar-item {{ Request::path() === 'roles' ? 'active' : '' }}"
-                        href="{{ route('roles.index') }}">
-                        Manage Role
                     </a>
                 @elsecan('is_production')
                     <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"
@@ -37,6 +33,7 @@
             <a class="navbar-link has-text-white">
                 Settings
             </a>
+
             <div class="navbar-dropdown">
                 <form action="{{ route('destroy', 'logout') }}" method="POST">
                     @csrf
