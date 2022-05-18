@@ -20,7 +20,13 @@
                             type="hidden"
                             id="order_id"
                             name="order_id"
-                            value="{{ app('request')->input('ordernumber') }}"
+                            value="{{
+                            DB::table('orders')
+                                ->where('ordernumber', app('request')
+                                ->input('ordernumber'))
+                                ->pluck('id')
+                                ->first()
+                            }}"
                         >
                     </div>
                 </div>
