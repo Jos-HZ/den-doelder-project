@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use App\Models\QualityControl;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -49,11 +48,9 @@ class QualityControlController extends Controller
     {
 
         $order = DB::table('orders')
-            ->where('ordernumber','=',request()->ordernumber)
+            ->where('ordernumber', '=', request()->ordernumber)
             ->first();
-
-//     dd($order);
-        return view('qualityControl.create',['order'=>$order]);
+        return view('qualityControl.create', ['order' => $order]);
     }
 
     /**

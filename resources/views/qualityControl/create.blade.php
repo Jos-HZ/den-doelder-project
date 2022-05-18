@@ -11,7 +11,7 @@
                 <label for="order_id"></label>
                 <div class="label">
 
-                {{-- TODO: type order_id and production_line_id to "hidden"  --}}
+                    {{-- TODO: type order_id and production_line_id to "hidden"  --}}
 
                     <div class="control">
 
@@ -19,9 +19,9 @@
                                name="order_id"
                                id="order_id"
                                class="input @error('order_id') is-danger @enderror"
-                                {{-- TODO: fix value  --}}
+                               {{-- TODO: fix value  --}}
 
-                                value= {{$order->id}}>
+                               value= {{$order->id}}>
 
                     </div>
                 </div>
