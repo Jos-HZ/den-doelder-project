@@ -51,10 +51,19 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
+
             <div class="form-group">
                 <strong>Role:</strong>
-                {!! Form::select('role[]', $roles,[], array('class' => 'form-control','multiple')) !!}
-                
+{{--                {!! Form::select('role[]', $roles,[], array('class' => 'form-control','multiple')) !!}--}}
+
+                <div class="select">
+                    <select  id="roles" name="roles">
+                        <option value="admin">Administrative worker</option>
+                        <option value="driver">Forklift driver</option>
+                        <option value="production">Production</option>
+                    </select>
+                </div>
+
             </div>
         </div>
 

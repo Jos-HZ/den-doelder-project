@@ -18,7 +18,7 @@ class ProductionTableSeeder extends Seeder
             'name' => 'production',
             'email' => 'production@production.com',
             'password' => bcrypt('production12345'),
-            'role' => 'production'
+            'roles' => 'production'
         ]);
     }
 }
