@@ -4,7 +4,7 @@
     <section class="section">
         <div class="container">
 
-            <h1> Order {{ app('request')->input('ordernumber') }}</h1>
+            <h1> Order {{ $order->ordernumber }}</h1>
             <form method="POST" action="{{ route('qualityControl.store') }}">
                 @csrf
 
@@ -20,7 +20,8 @@
                                id="order_id"
                                class="input @error('order_id') is-danger @enderror"
                                 {{-- TODO: fix value  --}}
-                               value="">
+
+                                value= {{$order->id}}>
 
                     </div>
                 </div>
@@ -34,7 +35,7 @@
                                id="production_line_id"
                                class="input @error('production_line_id') is-danger @enderror"
                                {{-- TODO: fix value  --}}
-                               value="">
+                               value={{ $order->production_line }}>
 
                     </div>
                 </div>
