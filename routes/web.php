@@ -29,8 +29,6 @@ Route::resource('/backlog', BacklogController::class);
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/qualityControl', QualityControlController::class);
 
-Route::resource('users', UserController::class);
-
 Route::get('/checklist', function () {
     return view('checklist');
 })->name('checklist');
@@ -70,6 +68,8 @@ Route::middleware(['driver'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard']);
+    Route::resource('users', UserController::class);
+
 });
 
 /*
