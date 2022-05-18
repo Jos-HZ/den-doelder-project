@@ -23,7 +23,7 @@
                                 <p class="title text-lg-center">Quality control</p>
                             </article>
                         </a>
-                    </div>u
+                    </div>
                 </div>
             </div>
             <div class="tile is-ancestor">
