@@ -15,7 +15,7 @@
 
                     <div class="control">
 
-                        <input type="text"
+                        <input type="hidden"
                                name="order_id"
                                id="order_id"
                                class="input @error('order_id') is-danger @enderror"
@@ -30,7 +30,7 @@
                 <div class="label">
                     <div class="control">
 
-                        <input type="text"
+                        <input type="hidden"
                                name="production_line_id"
                                id="production_line_id"
                                class="input @error('production_line_id') is-danger @enderror"
