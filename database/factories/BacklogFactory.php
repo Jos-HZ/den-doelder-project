@@ -15,7 +15,7 @@ class BacklogFactory extends Factory
     public function definition()
     {
         return [
-            'order_id' => Order::inRandomOrder()->first()->ordernumber,
+            'order_id' => Order::inRandomOrder()->first()->id,
             'time' => $this->faker->time(),
             'date' => $this->faker->date(),
             'description' => $this->faker->text(),
