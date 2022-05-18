@@ -29,6 +29,7 @@ Route::resource('/error', ErrorController::class);
 Route::resource('/qualityControl', QualityControlController::class);
 Route::resource('/profile', ProfileController::class);
 
+
 Route::get('/checklist', function () {
     return view('checklist');
 })->name('checklist');
