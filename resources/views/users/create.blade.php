@@ -11,7 +11,6 @@
         </div>
     </div>
 
-
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -22,7 +21,6 @@
             </ul>
         </div>
     @endif
-
 
     {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
     <div class="row">
