@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\DB;
 
 class QualityControlController extends Controller
 {
@@ -43,9 +44,13 @@ class QualityControlController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('qualityControl.create');
+
+        $order = DB::table('orders')
+            ->where('ordernumber', '=', request()->ordernumber)
+            ->first();
+        return view('qualityControl.create', ['order' => $order]);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 @section('content')
     <section class="section">
+
         <form method="get" action="{{ route('backlog.index') }}">
             <div class="select">
                 <select id="txtSearch" name="category">
@@ -33,9 +34,8 @@
             <tbody>
             @foreach($backlogs as $backlog)
                 <tr>
-                    <th>{{ $backlog->order_id }}</th>
-                    {{-- TODO: connect error->production_line --}}
-                    <th>1/2/5</th>
+                    <th>{{ $backlog->order->ordernumber}}</th>
+                    <th>{{ $backlog->order->production_line }}</th>
                     <td>{{ $backlog->time }}</td>
                     <td>{{ $backlog->date }}</td>
                     <td>@if($backlog->category === 'technical')
