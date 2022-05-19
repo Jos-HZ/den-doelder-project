@@ -25,7 +25,7 @@
 
         <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link has-text-white">
-                <img src="/img/profilepictures/{{$user->avatar }}" alt="profielfoto">
+                <img src="/img/profilepictures/{{$user->avatar }}" alt="profielfoto" style="border-radius:50%;">
             </a>
             <div class="navbar-dropdown">
                 <button class="navbar-item" onclick="location.href='{{ route('profile.index') }}'">Profile</button>
