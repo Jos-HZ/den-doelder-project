@@ -21,11 +21,12 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $orders = Order::all();
         $productions = Production::all();
 
 
-        return view('orders.index', compact('orders', 'productions'));
+        return view('orders.index', compact('orders', 'productions', 'user'));
     }
 
     /**

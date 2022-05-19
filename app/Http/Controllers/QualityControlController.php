@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Auth;
 
 class QualityControlController extends Controller
 {
@@ -21,9 +22,10 @@ class QualityControlController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $qualities = QualityControl::all();
 
-        return view('qualityControl.index', compact('qualities'));
+        return view('qualityControl.index', compact('qualities', 'user'));
     }
 
     /**

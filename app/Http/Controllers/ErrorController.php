@@ -25,8 +25,9 @@ class ErrorController extends Controller
     {
         $errors = Error::filter($request)->get();
         $orders = Order::all();
+        $user = Auth::user();
 
-        return view('errors.index', compact('errors', 'orders'));
+        return view('errors.index', compact('errors', 'orders', 'user'));
     }
 
     /**

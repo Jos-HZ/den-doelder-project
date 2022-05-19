@@ -7,6 +7,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BacklogController extends Controller
 {
@@ -17,7 +18,8 @@ class BacklogController extends Controller
      */
     public function index()
     {
-        return view('backlog.index');
+        $user = Auth::user();
+        return view('backlog.index', compact('user'));
     }
 
     /**
