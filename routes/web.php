@@ -27,7 +27,11 @@ Route::resource('/orders', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/error', ErrorController::class);
 Route::resource('/qualityControl', QualityControlController::class);
-Route::resource('/profile', ProfileController::class);
+Route::post('profile', [ProfileController::class, 'update_avatar'])->name('profile.avatar');
+Route::get('profile', [ProfileController::class, 'profile'])->name('profile.index');
+Route::resource('profiles', ProfileController::class);
+
+
 
 
 Route::get('/checklist', function () {

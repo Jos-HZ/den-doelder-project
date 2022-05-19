@@ -16,10 +16,10 @@
                         You are logged in!
                     </div>
                     <div class="card-body">
-                        <form action="{{route('index')}}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" name="image">
-                            <input type="submit" value="Upload">
+                        <form enctype="multipart/form-data" action="/profile" method="POST">
+                            <input type="file" name="avatar">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <input type="submit" class="pull-right btn btn-sm btn-primary">
                         </form>
                     </div>
                 </div>
