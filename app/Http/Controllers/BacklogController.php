@@ -21,7 +21,7 @@ class BacklogController extends Controller
      */
     public function index(Request $request): View|Factory|Application
     {
-        $backlogs = Backlog::filter($request)->get();
+        $backlogs = Backlog::filter($request->all())->get();
 
         return view('backlogs.index', compact('backlogs'));
     }
