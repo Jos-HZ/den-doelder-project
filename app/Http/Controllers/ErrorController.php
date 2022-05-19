@@ -126,4 +126,5 @@ class ErrorController extends Controller
 //        return redirect(route('order.index'));
         return redirect(route('error.index'));
     }
+
 }

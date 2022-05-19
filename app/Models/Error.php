@@ -24,4 +24,8 @@ class Error extends Model
         return $this->belongsTo(Order::class);
     }
 
+    public function scopeFilter(Builder $builder, $request)
+    {
+        return (new CategoryFilter($request))->filter($builder);
+    }
 }
