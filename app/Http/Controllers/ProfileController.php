@@ -20,10 +20,9 @@ class ProfileController extends Controller
         return view('profile.index', compact('users'));
     }
 
-    public function edit(profile $profile)
+    public function edit(user $user)
     {
-        $user = Auth::user();
-        return redirect(route('profile.edit', ['user' => $user]));
+        return view('profile.edit', compact('user'));
     }
 
     /**
@@ -52,7 +51,7 @@ class ProfileController extends Controller
     {
         $user->update($this->validatedError($request));
 
-        return redirect(route('profile.index'));
+        return redirect(route('profile.index', $user));
     }
 
 
