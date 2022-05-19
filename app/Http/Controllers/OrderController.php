@@ -24,6 +24,7 @@ class OrderController extends Controller
         $orders = Order::all();
         $productions = Production::all();
 
+
         return view('orders.index', compact('orders', 'productions'));
     }
 

@@ -4,7 +4,7 @@
             @if($user->role === 'admin')
                 <img src="img/profilepictures/{{$user->avatar }}" style="width: 150px; height: 150px"; float:left; border-radius:50%; margin-right:25px>
                 <h1>{{ $user->name }}'s Profile</h1>
-                <a href='/profile/{{$user->id}}/edit'>
+                <a href='/profiles/{{$user->id}}/edit'>
                     <button class="btn btn-default" type="button">Settings</button>
                 </a>
                 <br>
