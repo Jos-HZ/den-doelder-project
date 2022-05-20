@@ -70,7 +70,8 @@ class QualityControlController extends Controller
      */
     public function edit(QualityControl $qualityControl)
     {
-        return view('qualityControl.edit', compact('qualityControl'));
+        $user = Auth::user();
+        return view('qualityControl.edit', compact('qualityControl', 'user'));
     }
 
     /**

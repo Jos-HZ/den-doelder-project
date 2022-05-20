@@ -89,7 +89,8 @@ class ErrorController extends Controller
      */
     public function edit(Error $error)
     {
-        return view('errors.edit', compact('error'));
+        $user = Auth::user();
+        return view('errors.edit', compact('error', 'user'));
     }
 
     /**
