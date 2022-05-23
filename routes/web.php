@@ -70,7 +70,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard']);
     Route::resource('users', UserController::class);
 
+
+    Route::get('/dashboard/{locale?}', function ($locale = null) {
+        if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+            app()->setLocale($locale);
+        }
+
+        return view('dashboard');
+    });
 });
+
 
 /*
 |--------------------------------------------------------------------------

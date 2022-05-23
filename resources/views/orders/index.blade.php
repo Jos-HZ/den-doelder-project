@@ -4,6 +4,7 @@
 @endsection
 
 @section('content')
+    {{ dd(Route::current()) }}
     <container class="lists">
         <container class="tabs">
             @foreach ($orders->groupBy('production_line')->sortKeys() as $orderGroupKey=>$orderGroup)

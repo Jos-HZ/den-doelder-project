@@ -80,7 +80,26 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'available_locales' => [
+        'English'=> 'uk',
+        'French' => 'fr',
+        'Spanish'=> 'es',
+        'Dutch'=>'nl',
+        'Polish'=>'pl',
+        'Romanian'=>'ro',
+
+
+    ],
+    'locales' => [
+        'English'=> 'uk',
+        'French' => 'fr',
+        'Spanish'=> 'es',
+        'Dutch'=>'nl',
+        'Polish'=>'pl',
+        'Romanian'=>'ro',
+
+
+    ],
 
     /*
     |--------------------------------------------------------------------------
