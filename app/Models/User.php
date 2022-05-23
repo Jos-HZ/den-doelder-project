@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\CategoryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -48,5 +50,10 @@ class User extends Authenticatable
     public function hasRole(string $role): bool
     {
         return $this->getAttribute('role') === $role;
+    }
+
+    public function scopeFilter(Builder $builder, $request)
+    {
+        return (new CategoryFilter($request))->filter($builder);
     }
 }

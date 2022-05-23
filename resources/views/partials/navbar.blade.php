@@ -31,17 +31,21 @@
 
         <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link has-text-white">
-                Settings
+                <img src="/img/profilepictures/{{$user->avatar }}" alt="profielfoto" style="border-radius:50%;">
             </a>
 
             <div class="navbar-dropdown">
+                <button class="navbar-item" onclick="location.href='{{ route('profile.index') }}'">Profile</button>
                 <form action="{{ route('destroy', 'logout') }}" method="POST">
                     @csrf
+
                     <button class="navbar-item" type="submit">
                         Logout
                     </button>
+
                 </form>
             </div>
         </div>
+
     </div>
 </nav>

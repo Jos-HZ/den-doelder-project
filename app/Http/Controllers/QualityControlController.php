@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class QualityControlController extends Controller
 {
@@ -20,9 +21,12 @@ class QualityControlController extends Controller
      */
     public function index()
     {
+
         $qualities = QualityControl::all()->sortDesc();
 
-        return view('qualityControl.index', compact('qualities'));
+        $user = Auth::user();
+
+        return view('qualityControl.index', compact('qualities', 'user'));
     }
 
     /**
@@ -94,7 +98,8 @@ class QualityControlController extends Controller
      */
     public function edit(QualityControl $qualityControl)
     {
-        return view('qualityControl.edit', compact('qualityControl'));
+        $user = Auth::user();
+        return view('qualityControl.edit', compact('qualityControl', 'user'));
     }
 
     /**

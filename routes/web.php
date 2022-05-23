@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\QualityControlController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,10 +29,18 @@ Route::resource('/backlog', BacklogController::class);
 
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/qualityControl', QualityControlController::class);
+Route::post('profile', [ProfileController::class, 'update_avatar'])->name('profile.avatar');
+Route::get('profile', [ProfileController::class, 'profile'])->name('profile.index');
+Route::resource('profiles', ProfileController::class);
+
+
+
 
 Route::get('/checklist', function () {
     return view('checklist');
 })->name('checklist');
+
+require __DIR__ . '/auth.php';
 
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
