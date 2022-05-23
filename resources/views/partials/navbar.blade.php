@@ -28,7 +28,15 @@
                 @endcan
             </div>
         </div>
-
+        <a href="#" onclick="doGTranslate('en|nl');return false;" title="English" class="gflag nturl"
+           style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="16" width="16"
+                                                       alt="English"/></a>
+        <a href="#" onclick="doGTranslate('en|fr');return false;" title="French" class="gflag nturl"
+           style="background-position:-100px -400px;"><img src="//gtranslate.net/flags/blank.png" height="16" width="16"
+                                                           alt="French"/></a>
+        <a href="#" onclick="doGTranslate('en|de');return false;" title="German" class="gflag nturl"
+           style="background-position:-500px -200px;"><img src="//gtranslate.net/flags/blank.png" height="16" width="16"
+                                                           alt="German"/></a>
         <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link has-text-white">
                 Settings
