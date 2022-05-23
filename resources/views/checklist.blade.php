@@ -550,19 +550,19 @@
                                         @empty ($field['options'])
                                             @switch ($fieldTypes[$field['type']]['element'])
                                                 @case ('input')
-                                                <input
-                                                    @class ([
-                                                        'input',
-                                                        'is-danger' => $backlogs->get($field['name']),
-                                                    ])
-                                                    type="{{ $fieldTypes[$field['type']]['type'] }}"
-                                                    id="{{ $field['name'] }}"
-                                                    name="{{ $field['name'] }}"
-                                                    value="{{ $backlogs->any() ? old($field['name']) : '' }}"
-                                                >
-                                                @break
+                                                    <input
+                                                        @class ([
+                                                            'input',
+                                                            'is-danger' => $backlogs->get($field['name']),
+                                                        ])
+                                                        type="{{ $fieldTypes[$field['type']]['type'] }}"
+                                                        id="{{ $field['name'] }}"
+                                                        name="{{ $field['name'] }}"
+                                                        value="{{ $backlogs->any() ? old($field['name']) : '' }}"
+                                                    >
+                                                    @break
                                                 @case ('textarea')
-                                                <div class="grow-wrap">
+                                                    <div class="grow-wrap">
                                                         <textarea
                                                             @class ([
                                                                 '{{ $fieldTypes[$field["type"]] }}',
@@ -573,11 +573,11 @@
                                                             oninput="this.parentNode.dataset.replicatedValue = this.value">
                                                             {{ ($backlogs->any() ? old($field['name']) : '') }}
                                                         </textarea>
-                                                    <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
-                                                </div>
-                                                @break
+                                                        <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
+                                                    </div>
+                                                    @break
                                                 @default
-                                                {{ dd($fieldTypes[$field['type']]['type']) }}
+                                                    {{ dd($fieldTypes[$field['type']]['type']) }}
                                             @endswitch
                                         @endempty
                                         @isset ($field['options'])
@@ -602,33 +602,35 @@
                                                 @foreach ($field['options'] as $optionKey=>$option)
                                                     @switch(count($field['options']))
                                                         @case(1)
-                                                        {{-- checkmark? toggle switch?--}}
-                                                        <label class="toggle" for="myToggle">
-                                                            <input class="toggle__input" name="" type="checkbox"
-                                                                   id="myToggle">
-                                                            <div class="toggle__fill"></div>
-                                                        </label>
-                                                        @break
+                                                            {{-- checkmark? toggle switch?--}}
+                                                            <label class="toggle" for="myToggle">
+                                                                <input class="toggle__input" name="" type="checkbox"
+                                                                       id="myToggle">
+                                                                <div class="toggle__fill"></div>
+                                                            </label>
+                                                            @break
                                                         @case (2)
-                                                        2
-                                                        {{-- ios two option switch? --}}
-                                                        <label class="{{ $fieldTypes[$field['type']]['class'] }}">
-                                                            <input type="{{ $field['type'] }}"
-                                                                   name="{{ $field['name'] }}" value="{{ $optionKey }}">
-                                                            {{ $option }}
-                                                        </label>
-                                                        {{-- <label class="toggle" for="myToggle">
-                                                            <input class="toggle__input" name="" type="checkbox" id="myToggle">
-                                                            <div class="toggle__fill"></div>
-                                                        </label> --}}
+                                                            2
+                                                            {{-- ios two option switch? --}}
+                                                            <label class="{{ $fieldTypes[$field['type']]['class'] }}">
+                                                                <input type="{{ $field['type'] }}"
+                                                                       name="{{ $field['name'] }}"
+                                                                       value="{{ $optionKey }}">
+                                                                {{ $option }}
+                                                            </label>
+                                                            {{-- <label class="toggle" for="myToggle">
+                                                                <input class="toggle__input" name="" type="checkbox" id="myToggle">
+                                                                <div class="toggle__fill"></div>
+                                                            </label> --}}
                                                         @default
-                                                        default
-                                                        <label class="{{ $fieldTypes[$field['type']]['class'] }}">
-                                                            <input type="{{ $field['type'] }}"
-                                                                   name="{{ $field['name'] }}" value="{{ $optionKey }}">
-                                                            {{ $option }}
-                                                        </label>
-                                                        @break
+                                                            default
+                                                            <label class="{{ $fieldTypes[$field['type']]['class'] }}">
+                                                                <input type="{{ $field['type'] }}"
+                                                                       name="{{ $field['name'] }}"
+                                                                       value="{{ $optionKey }}">
+                                                                {{ $option }}
+                                                            </label>
+                                                            @break
                                                     @endswitch
                                                 @endforeach
                                             @endif

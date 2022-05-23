@@ -52,7 +52,7 @@
             <div class="form-group">
                 <strong>Role:</strong>
                 <div class="select">
-                    <select  id="role" name="role">
+                    <select id="role" name="role">
                         <option value="admin">Administrative worker</option>
                         <option value="driver">Forklift driver</option>
                         <option value="production">Production</option>

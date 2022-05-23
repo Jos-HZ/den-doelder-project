@@ -30,7 +30,7 @@
                                         <div class="step-name">Admin</div>
                                     </div>
                                     <div class="stepper-item {{ $order->driver_done ? 'completed' : 'active' }}"
-                                            id="driver">
+                                         id="driver">
                                         <div class="step-counter"></div>
                                         <div class="step-name">Driver</div>
                                     </div>

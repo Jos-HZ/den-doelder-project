@@ -36,7 +36,7 @@
                     <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
                     {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                     @if($user->role !== "admin")
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                     @endif
                     {!! Form::close() !!}
                 </td>
