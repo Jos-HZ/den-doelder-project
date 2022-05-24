@@ -7,6 +7,10 @@
             <div class="select">
                 <select id="txtSearch" name="category">
                     <option
+                        value="">
+                        All
+                    </option>
+                    <option
                         value="mechanical" <?php if (app('request')->input('category') === 'mechanical') echo "selected";?>>
                         Mechanical
                     </option>
@@ -15,9 +19,30 @@
                         Technical
                     </option>
                 </select>
+
+                <select id="txtSearch" name="cape">
+                    <option
+                        value="">
+                        All
+                    </option>
+                    <option
+                        value="1" <?php if (app('request')->input('cape') === '1') echo "selected";?>>
+                        1
+                    </option>
+                    <option
+                        value="2" <?php if (app('request')->input('cape') === '2') echo "selected";?>>
+                        2
+                    </option>
+                    <option
+                        value="5" <?php if (app('request')->input('cape') === '5') echo "selected";?>>
+                        5
+                    </option>
+                </select>
+
             </div>
             <input type="submit" value="Filter" class="btn btn-default"/>
         </form>
+
         <table class="table">
             <thead>
             <tr>
