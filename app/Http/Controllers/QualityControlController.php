@@ -50,11 +50,11 @@ class QualityControlController extends Controller
      */
     public function create(Request $request)
     {
-
+        $user = Auth::user();
         $order = DB::table('orders')
             ->where('ordernumber', '=', request()->ordernumber)
             ->first();
-        return view('qualityControl.create', ['order' => $order]);
+        return view('qualityControl.create', ['order' => $order], compact('user'));
     }
 
     /**
