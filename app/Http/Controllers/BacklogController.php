@@ -34,9 +34,10 @@ class BacklogController extends Controller
      */
     public function store(Request $request): Redirector|RedirectResponse|Application
     {
+        $user = Auth::user();
         Backlog::create($this->validatedBacklog($request));
 
-        return redirect(route('backlog.index'));
+        return redirect(route('backlog.index', compact('user')));
     }
 
     /**

@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -23,9 +24,10 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $user = Auth::user();
         $roles = User::orderBy('id','DESC')->paginate(5);
 
-        return view('users.index',compact('roles'))
+        return view('users.index',compact('roles', 'user'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -36,9 +38,10 @@ class UserController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         $roles = User::pluck('role', 'id')->all();
 
-        return view('users.create',compact('roles'));
+        return view('users.create',compact('roles', $user));
     }
 
     /**
