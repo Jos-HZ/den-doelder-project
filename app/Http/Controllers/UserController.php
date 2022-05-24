@@ -24,8 +24,9 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $user = Auth::user();
+
         $roles = User::orderBy('id','DESC')->paginate(5);
+        $user = Auth::user();
 
         return view('users.index',compact('roles', 'user'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
@@ -41,7 +42,7 @@ class UserController extends Controller
         $user = Auth::user();
         $roles = User::pluck('role', 'id')->all();
 
-        return view('users.create',compact('roles', $user));
+        return view('users.create',compact('roles', 'user'));
     }
 
     /**
