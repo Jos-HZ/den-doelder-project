@@ -3,6 +3,7 @@
     <section class="section">
         <div class="container">
             @can('is_admin')
+                <h1>{{__('Welcome Back!')}}</h1>
                 <h1>Je bent ingelogd als admin</h1>
                 <div class="tile is-ancestor">
                     <div class="tile is-parent is-vertical">

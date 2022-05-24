@@ -20,7 +20,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/{locale?}', function ($locale = null) {
+    if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+        app()->setLocale($locale);
+    }
 
+    return view('dashboard');
+});
 Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/orders', OrderController::class);
 
@@ -34,6 +40,8 @@ Route::resource('users', UserController::class);
 Route::get('/checklist', function () {
     return view('checklist');
 })->name('checklist');
+
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
