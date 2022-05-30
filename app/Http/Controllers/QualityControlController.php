@@ -20,9 +20,14 @@ class QualityControlController extends Controller
      */
     public function index()
     {
+
+        $order = DB::table('orders')
+            ->where('ordernumber', '=', request()->ordernumber)
+            ->first();
+
         $qualities = QualityControl::all()->sortDesc();
 
-        return view('qualityControl.index', compact('qualities'));
+        return view('qualityControl.index', compact('qualities'),['order' => $order]);
     }
 
     /**
@@ -94,7 +99,12 @@ class QualityControlController extends Controller
      */
     public function edit(QualityControl $qualityControl)
     {
-        return view('qualityControl.edit', compact('qualityControl'));
+        dd(request());
+        $order = DB::table('orders')
+            ->where('ordernumber', '=', request()->ordernumber)
+            ->first();
+
+        return view('qualityControl.edit', compact('qualityControl'),['order' => $order]);
     }
 
     /**

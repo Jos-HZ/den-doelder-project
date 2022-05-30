@@ -31,7 +31,7 @@
                     <td>{{ $quality->action }}</td>
                     <td>{{ $quality->deviation }}</td> --}}
                     <td>
-                        <a href="{{route('qualityControl.edit', $quality)}}">
+                        <a href="{{route('qualityControl.edit', $quality, )}}">
                             <button class="btn btn-default" type="button">Edit</button>
                         </a>
                     </td>

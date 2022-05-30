@@ -3,9 +3,8 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <h1 class="title has-text-centered">Order {{}}</h1>
+            <h1 class="title has-text-centered">Order{{ app('request')->input('ordernumber') }}</h1>
         </div>
-
         <table class="table">
             <thead>
             <tr>
@@ -35,7 +34,7 @@
                     </td>
                     <td>{{ $backlog->description }}</td>
                     <td>
-                        <a href="{{route('backlog.edit', $backlog)}}">
+                        <a href="{{route('backlog.edit', $backlog, ['ordernumber' => $order->ordernumber ])}}">
                             <button class="btn btn-default" type="button">Edit</button>
                         </a>
                     </td>
