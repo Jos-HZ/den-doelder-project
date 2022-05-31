@@ -1,4 +1,3 @@
-
 @extends('errors::illustrated-layout')
 
 @section('title', __('Too Many Requests'))

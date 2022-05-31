@@ -12,7 +12,11 @@ class AuthenticatedSessionController extends Controller
 {
     public function index()
     {
-        return view('auth.login');
+        if (Auth::check()) {
+            return redirect('redirects');
+        } else {
+            return view('auth.login');
+        }
     }
 
     /**
