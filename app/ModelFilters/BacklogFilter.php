@@ -2,20 +2,17 @@
 
 namespace App\ModelFilters;
 
-use App\Models\Backlog;
 use App\Models\Order;
-use App\Models\Production;
 use EloquentFilter\ModelFilter;
-use Illuminate\Support\Facades\DB;
 
 class BacklogFilter extends ModelFilter
 {
     /**
-    * Related Models that have ModelFilters as well as the method on the ModelFilter
-    * As [relationMethod => [input_key1, input_key2]].
-    *
-    * @var array
-    */
+     * Related Models that have ModelFilters as well as the method on the ModelFilter
+     * As [relationMethod => [input_key1, input_key2]].
+     *
+     * @var array
+     */
     public $relations = [];
 
     /**
