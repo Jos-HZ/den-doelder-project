@@ -4,7 +4,8 @@
     <section class="section">
 
         <form method="get" action="{{ route('backlog.index') }}">
-            <div class="select">
+
+            <div>
                 <select id="txtSearch" name="category">
                     <option
                         value="">
@@ -19,7 +20,6 @@
                         Technical
                     </option>
                 </select>
-
                 <select id="txtSearch" name="cape">
                     <option
                         value="">
@@ -39,8 +39,8 @@
                     </option>
                 </select>
 
-            </div>
             <input type="submit" value="Filter" class="btn btn-default"/>
+            </div>
         </form>
 
         <table class="table">
