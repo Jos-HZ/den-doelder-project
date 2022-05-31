@@ -3,6 +3,7 @@
     <section class="section">
         <div class="container">
             @can('is_admin')
+                @include('partials/language_switcher')
                 <h1>{{__('Welcome Back!')}}</h1>
                 <h1>Je bent ingelogd als admin</h1>
                 <div class="tile is-ancestor">
