@@ -41,6 +41,12 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+/**
+ * For the php artisan model:filter command.
+ */
+$app->register(EloquentFilter\LumenServiceProvider::class);
+
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRoleColumnToUsers extends Migration
+class DropColumnOrderIdInBacklogs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddRoleColumnToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('role', ['production', 'admin', 'driver']);
+        Schema::table('backlogs', function (Blueprint $table) {
+            $table->dropColumn('order_id');
         });
     }
 
@@ -25,8 +25,8 @@ class AddRoleColumnToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
+        Schema::table('backlogs', function (Blueprint $table) {
+            $table->foreignId('order_id');
         });
     }
 }

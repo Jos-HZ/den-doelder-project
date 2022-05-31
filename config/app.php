@@ -182,6 +182,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         *  EloquentFilter Service Providers ...
+         */
+        EloquentFilter\ServiceProvider::class,
+
     ],
 
     /*

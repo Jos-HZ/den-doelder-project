@@ -18,12 +18,12 @@
                 </div>
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                        <a href="{{ route("qualityControl.create", $order) }}">
+                        <a href="{{ route("qualityControl.index", $order) }}">
                             <article>
                                 <p class="title text-lg-center">Quality control</p>
                             </article>
                         </a>
-                    </div>u
+                    </div>
                 </div>
             </div>
             <div class="tile is-ancestor">

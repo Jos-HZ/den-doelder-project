@@ -2,9 +2,15 @@
 
 @section('content')
     <section class="section">
+
         <form method="get" action="{{ route('backlog.index') }}">
-            <div class="select">
+
+            <div>
                 <select id="txtSearch" name="category">
+                    <option
+                        value="">
+                        All
+                    </option>
                     <option
                         value="mechanical" <?php if (app('request')->input('category') === 'mechanical') echo "selected";?>>
                         Mechanical
@@ -14,9 +20,29 @@
                         Technical
                     </option>
                 </select>
-            </div>
+                <select id="txtSearch" name="cape">
+                    <option
+                        value="">
+                        All
+                    </option>
+                    <option
+                        value="1" <?php if (app('request')->input('cape') === '1') echo "selected";?>>
+                        1
+                    </option>
+                    <option
+                        value="2" <?php if (app('request')->input('cape') === '2') echo "selected";?>>
+                        2
+                    </option>
+                    <option
+                        value="5" <?php if (app('request')->input('cape') === '5') echo "selected";?>>
+                        5
+                    </option>
+                </select>
+
             <input type="submit" value="Filter" class="btn btn-default"/>
+            </div>
         </form>
+
         <table class="table">
             <thead>
             <tr>
@@ -33,9 +59,8 @@
             <tbody>
             @foreach($backlogs as $backlog)
                 <tr>
-                    <th>{{ $backlog->order_id }}</th>
-                    {{-- TODO: connect error->production_line --}}
-                    <th>1/2/5</th>
+                    <th>{{ $backlog->order->ordernumber}}</th>
+                    <th>{{ $backlog->order->production_line }}</th>
                     <td>{{ $backlog->time }}</td>
                     <td>{{ $backlog->date }}</td>
                     <td>@if($backlog->category === 'technical')

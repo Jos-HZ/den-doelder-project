@@ -17,7 +17,7 @@
                         Back-log
                     </a>
                     <a class="navbar-item {{ Request::path() === 'users' ? 'active' : '' }}"
-                        href="{{ route('users.index') }}">
+                       href="{{ route('users.index') }}">
                         Manage Users
                     </a>
                 @elsecan('is_production')
