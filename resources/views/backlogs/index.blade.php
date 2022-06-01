@@ -39,7 +39,7 @@
                     </option>
                 </select>
 
-            <input type="submit" value="Filter" class="btn btn-default"/>
+                <input type="submit" value="Filter" class="btn btn-default"/>
             </div>
         </form>
 
