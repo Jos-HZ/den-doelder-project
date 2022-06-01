@@ -9,21 +9,21 @@
             <div class="navbar-start">
                 <a class="navbar-item {{ Request::path() === 'orders' ? 'active' : '' }}"
                    href="{{ url(route('orders.index')) }}">
-                    Order
+                    {{__("Order")}}
                 </a>
                 @can('is_admin')
                     <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"
                        href="{{ url('/backlog') }}">
-                        Back-log
+                        {{__("Backlog")}}
                     </a>
                     <a class="navbar-item {{ Request::path() === 'users' ? 'active' : '' }}"
                        href="{{ route('users.index') }}">
-                        Manage Users
+                      {{__("Manage Users")}}
                     </a>
                 @elsecan('is_production')
                     <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"
                        href="{{ url('/backlog') }}">
-                        Back-log
+                        {{__("Backlog")}}
                     </a>
                 @endcan
             </div>
@@ -31,14 +31,14 @@
 
         <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link has-text-white">
-                Settings
+                {{__("Settings")}}
             </a>
 
             <div class="navbar-dropdown">
                 <form action="{{ route('destroy', 'logout') }}" method="POST">
                     @csrf
                     <button class="navbar-item" type="submit">
-                        Logout
+                        {{__("Logout")}}
                     </button>
                 </form>
             </div>
