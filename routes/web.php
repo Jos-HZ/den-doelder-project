@@ -39,6 +39,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('redirects', [HomeController::class, 'index']);
 });
 
+Route::resource('production-line', \App\Http\Controllers\ProductionLineController::class)->only([
+    'show'
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Driver Routes
