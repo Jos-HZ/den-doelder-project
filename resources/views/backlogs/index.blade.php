@@ -9,21 +9,21 @@
                 <select id="txtSearch" name="category">
                     <option
                         value="">
-                        All
+                       {{__("All")}}
                     </option>
                     <option
                         value="mechanical" <?php if (app('request')->input('category') === 'mechanical') echo "selected";?>>
-                        Mechanical
+                       {{__("Mechanical")}}
                     </option>
                     <option
                         value="technical" <?php if (app('request')->input('category') === 'technical') echo "selected";?>>
-                        Technical
+                  {{__("Technical")}}
                     </option>
                 </select>
                 <select id="txtSearch" name="cape">
                     <option
                         value="">
-                        All
+                       {{__("All")}}
                     </option>
                     <option
                         value="1" <?php if (app('request')->input('cape') === '1') echo "selected";?>>
@@ -39,19 +39,19 @@
                     </option>
                 </select>
 
-            <input type="submit" value="Filter" class="btn btn-default"/>
+            <input type="submit" value="{{__("Filter")}}" class="btn btn-default"/>
             </div>
         </form>
 
         <table class="table">
             <thead>
             <tr>
-                <th><abbr title="order_id">Order</abbr></th>
+                <th><abbr title="order_id">{{__("Order")}}</abbr></th>
                 <th><abbr title="production_line">Cape</abbr></th>
-                <th><abbr title="time">Time</abbr></th>
-                <th><abbr title="date">Date</abbr></th>
-                <th><abbr title="category">Category</abbr></th>
-                <th><abbr title="description">Description</abbr></th>
+                <th><abbr title="time">{{__("Time")}}</abbr></th>
+                <th><abbr title="date">{{__("Date")}}</abbr></th>
+                <th><abbr title="category">{{__("Category")}}</abbr></th>
+                <th><abbr title="description">{{__("Description")}}</abbr></th>
                 <th><abbr title="edit-button"></abbr></th>
                 <th><abbr title="delete-buttons"></abbr></th>
             </tr>
@@ -72,7 +72,7 @@
                     <td>{{ $backlog->description }}</td>
                     <td>
                         <a href="{{route('backlog.edit', $backlog)}}">
-                            <button class="btn btn-default" type="button">Edit</button>
+                            <button class="btn btn-default" type="button">{{__("Edit")}}</button>
                         </a>
                     </td>
                     <td>
@@ -81,8 +81,8 @@
                             @method('DELETE')
                             {{-- TODO: change confirm message --}}
                             <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Weet je zeker dat je deze error wilt verwijderen?')">
-                                Delete
+                                    onclick="return confirm({{__("Are you sure you want to delete this error?")}})">
+                                {{__("Delete")}}
                             </button>
                         </form>
                     </td>
