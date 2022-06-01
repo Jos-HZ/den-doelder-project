@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <h1>Order {{ $backlog->order_id }} </h1>
+            <h1>{{__("Order")}} {{ $backlog->order_id }} </h1>
             <form method="POST" action="{{route('backlog.update', $backlog)}}">
                 @csrf
                 @method('PUT')
@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <label for="time">Time:</label><br>
+                <label for="time">{{__("Time")}}:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
@@ -30,7 +30,7 @@
                             id="time"
                             name="time"
                             value="{{$errors->any() ? old('time') : $backlog->time}}">
-                        //required
+                        // {{__("required")}}
                     </div>
                     <br>
                     @error('time')
@@ -39,7 +39,7 @@
                 </div>
                 <br>
 
-                <label for="date">Date:</label><br>
+                <label for="date">{{__("Date")}}:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
@@ -48,7 +48,7 @@
                             id="date"
                             name="date"
                             value="{{$errors->any() ? old('date') : $backlog->date}}">
-                        //required
+                        //{{__("required")}}
                     </div>
                     <br>
                     @error('date')
@@ -57,7 +57,7 @@
                 </div>
                 <br>
 
-                <label for="category">Error category:</label><br>
+                <label for="category">{{__("Error category")}}:</label><br>
                 <div class="label">
                     <div class="select">
                         <select
@@ -67,8 +67,8 @@
                             name="category"
                             value="{{$errors->any() ? old('category') : $backlog->category}}"
                         >
-                            <option value="mechanical">Mechanical error</option>
-                            <option value="technical">Technical error</option>
+                            <option value="mechanical">{{__("Mechanical error")}}</option>
+                            <option value="technical">{{__("Technical error")}}</option>
                         </select>
                     </div>
                     <br>
@@ -77,7 +77,7 @@
                     @enderror
                 </div>
 
-                <label for="description">Description:</label><br>
+                <label for="description">{{__("Description")}}:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
@@ -93,9 +93,9 @@
                     @enderror
                 </div>
 
-                <input type="submit" value="Submit" class="button is-link">
+                <input type="submit" value="{{__("Submit")}}" class="button is-link">
                 <a href="{{route('backlog.index')}}">
-                    <button type="button" class="button is-link-light">Cancel</button>
+                    <button type="button" class="button is-link-light">{{__("Cancel")}}</button>
                 </a>
 
             </form>
