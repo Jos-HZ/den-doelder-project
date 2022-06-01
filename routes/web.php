@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('redirects', [HomeController::class, 'index']);
 });
 
-Route::resource('photos', Produc::class)->only([
+Route::resource('production-lines', \App\Http\Controllers\ProductionLineController::class)->only([
     'show'
 ]);
 
