@@ -27,7 +27,7 @@ class QualityControl extends Model
 
     public function production()
     {
-        return $this->belongsTo(Production::class);
+        return $this->belongsTo(ProductionLines::class);
     }
 
     public function user()

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProductionSeeder extends Seeder
+class ProductionLinesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class ProductionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('productions')->insert([
+        DB::table('production_lines')->insert([
             ['production_line' => '1'],
             ['production_line' => '2'],
             ['production_line' => '5']

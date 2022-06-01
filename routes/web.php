@@ -39,6 +39,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('redirects', [HomeController::class, 'index']);
 });
 
+Route::resource('photos', Produc::class)->only([
+    'show'
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Driver Routes
