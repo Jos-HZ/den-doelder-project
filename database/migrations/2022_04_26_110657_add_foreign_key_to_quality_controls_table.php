@@ -18,7 +18,7 @@ class AddForeignKeyToQualityControlsTable extends Migration
             $table->foreign('ordernumber')->references('id')->on('orders');
 
             $table->unsignedBigInteger('production_line_id')->nullable();
-            $table->foreign('production_line_id')->references('id')->on('productions');
+            $table->foreign('production_line_id')->references('id')->on('production_lines');
         });
     }
 

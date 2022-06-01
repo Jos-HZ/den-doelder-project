@@ -14,7 +14,7 @@ class ProductionLineSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('productions')->insert([
+        DB::table('production_lines')->insert([
             ['production_line' => '1'],
             ['production_line' => '2'],
             ['production_line' => '5']
