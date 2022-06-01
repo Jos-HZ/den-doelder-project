@@ -12,7 +12,7 @@
                 </div>
 
                 {{--   TODO: change url query to something useful     --}}
-                {{--   TODO: stop horizontal grow textarea     --}}
+
 
                 <div class="tile is-parent">
                     <div class="tile is-child box">
