@@ -11,7 +11,7 @@ class Order extends Model
 
     public function production()
     {
-        return $this->belongsTo(Production::class);
+        return $this->belongsTo(ProductionLine::class);
     }
 
     public function error(): \Illuminate\Database\Eloquent\Relations\HasMany
