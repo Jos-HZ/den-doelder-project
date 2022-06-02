@@ -7,10 +7,15 @@
         </div>
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-start">
-                <a class="navbar-item {{ Request::path() === 'orders' ? 'active' : '' }}"
-                   href="{{ url(route('orders.index')) }}">
-                    {{__("Order")}}
+
+                @foreach([1,2,3] as $line)
+                <a class="navbar-item {{ Request::path() === 'producion-line' ? 'active' : '' }}"
+                   href="{{ url(route('production-lines.show', $line)) }}">
+                    Cape @if($line === 3) 5 @else {{ $line }} @endif
+
                 </a>
+                @endforeach
+
                 @can('is_admin')
                     <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"
                        href="{{ url('/backlog') }}">
