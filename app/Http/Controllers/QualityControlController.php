@@ -71,7 +71,7 @@ class QualityControlController extends Controller
             'extra_info' => 'present',
             'order_id' => 'required',
 //            TODO: set to required
-            'production_line_id' => 'present'
+            'production_line_id' => 'required'
         ]);
     }
 
