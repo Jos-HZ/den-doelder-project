@@ -16,6 +16,7 @@ class AddForeignKeyToOrdersTable extends Migration
         Schema::table('orders', function (Blueprint $table) {
             $table->unsignedBigInteger('production_line_id');
             $table->foreign('production_line_id')->references('id')->on('production_lines');
+
         });
     }
 

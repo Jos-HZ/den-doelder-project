@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 class ProductionLinesSeeder extends Seeder
+
 {
     /**
      * Run the database seeds.
