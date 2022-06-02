@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\ProductionLines;
+use App\Models\ProductionLine;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -24,7 +24,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
-        $productions = ProductionLines::all();
+        $productions = ProductionLine::all();
 
         return view('orders.index', compact('orders', 'productions'));
     }

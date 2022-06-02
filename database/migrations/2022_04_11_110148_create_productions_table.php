@@ -13,7 +13,7 @@ class CreateProductionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('productions', function (Blueprint $table) {
+        Schema::create('production_lines', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('production_line')->unique();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateProductionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('productions');
+        Schema::dropIfExists('production_lines');
     }
 }

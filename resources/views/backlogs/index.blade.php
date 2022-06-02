@@ -60,7 +60,7 @@
             @foreach($backlogs as $backlog)
                 <tr>
                     <th>{{ $backlog->order->ordernumber}}</th>
-                    <th>{{ $backlog->order->production_line }}</th>
+                    <th>{{ $backlog->order->production_line_id }}</th>
                     <td>{{ $backlog->time }}</td>
                     <td>{{ $backlog->date }}</td>
                     <td>@if($backlog->category === 'technical')

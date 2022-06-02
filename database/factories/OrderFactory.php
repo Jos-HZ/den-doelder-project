@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\ProductionLines;
+use App\Models\ProductionLine;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class OrderFactory extends Factory
@@ -17,7 +17,7 @@ class OrderFactory extends Factory
         return [
             'ordernumber' => $this->faker->numberBetween(1111, 99999),
             'notes' => $this->faker->paragraph(10),
-            'production_line' => ProductionLines::all()->random()->production_line,
+            'production_line_id' => ProductionLine::all()->random()->id,
             'driver_done' => 0
         ];
     }
