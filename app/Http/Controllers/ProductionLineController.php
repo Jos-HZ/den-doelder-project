@@ -7,23 +7,25 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ProductionLineController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param ProductionLine $productionLines
+     * @return Application|Factory|View
      */
-    public function index()
+    public function index(ProductionLine $productionLine): View|Factory|Application
     {
-        //
+
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -34,7 +36,7 @@ class ProductionLineController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -47,16 +49,16 @@ class ProductionLineController extends Controller
      * @param ProductionLine $productionLine
      * @return Application|Factory|View
      */
-    public function show(ProductionLine $productionLine)
+    public function show(ProductionLine $production_line): View|Factory|Application
     {
-        return view('production-line.show', compact('productionLine'));
+        return view('productionLines.show', compact('production_line'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -68,7 +70,7 @@ class ProductionLineController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -79,7 +81,7 @@ class ProductionLineController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

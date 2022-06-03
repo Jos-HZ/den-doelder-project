@@ -24,12 +24,6 @@
                     @foreach($quality->getFillable() as $qualityFillableAttribute)
                         <td>{{ $quality[$qualityFillableAttribute] }}</td>
                     @endforeach
-                    {{-- <th>{{ $quality->time }}</th>
-                    <td>{{ $quality->name_pallet }}</td>
-                    <td>{{ $quality->def_nr }}</td>
-                    <td>{{ $quality->extra_info }}</td>
-                    <td>{{ $quality->action }}</td>
-                    <td>{{ $quality->deviation }}</td> --}}
                     <td>
                         <a href="{{route('qualityControl.edit', $quality)}}">
                             <button class="btn btn-default" type="button">Edit</button>
