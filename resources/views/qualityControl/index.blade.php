@@ -3,14 +3,14 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <h1 class="title has-text-centered">Order {{ app('request')->input('ordernumber') }}</h1>
+            <h1 class="title has-text-centered">{{__("Order")}} {{ app('request')->input('ordernumber') }}</h1>
         </div>
 
         <table class="table">
             <thead>
             <tr>
-                <th><abbr title="time">time</abbr></th>
-                <th><abbr title="name-pallet">name pallet/ order</abbr></th>
+                <th><abbr title="time">{{__("Time")}}</abbr></th>
+                <th><abbr title="name-pallet">Name pallet/ {{__("Order")}}</abbr></th>
                 <th><abbr title="def-nr">def nr</abbr></th>
                 <th><abbr title="extra-info">extra info</abbr></th>
                 <th><abbr title="action">action</abbr></th>
