@@ -26,7 +26,7 @@
                 </div>
 
             @else
-                <h1>{{__("Je bent ingelogd als production")}}</h1>
+                <h1>{{__("You are logged in as production!")}}</h1>
 
                 <div class="tile is-ancestor">
                     <div class="tile is-parent is-vertical">
