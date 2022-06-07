@@ -17,7 +17,7 @@ class QualityControlController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param int $order_number
+     * @param Order $order
      * @return Application|Factory|View
      */
     public function index(Order $order): View|Factory|Application
@@ -27,9 +27,6 @@ class QualityControlController extends Controller
 //        $order_id = Order::where('ordernumber', $order->ordernumber)->pluck('id')->first();
 
         $qualities = $qualities->where('order_id', $order->id);
-
-        // debug
-        // dd($qualities);
 
         return view('qualityControl.index', compact('qualities', 'order'));
     }
@@ -43,9 +40,9 @@ class QualityControlController extends Controller
     public function store(Request $request)
     {
         QualityControl::create($this->validateQuality($request));
-
+//        dd($request->order_id);
         // TODO: ordernumber mee geven aan de index
-        return redirect(route('qualityControl.index', 3));
+        return redirect(route('qualityControl.index', $request->order_id));
     }
 
     /**
