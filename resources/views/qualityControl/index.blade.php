@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <h1 class="title has-text-centered">Order {{ app('request')->input('ordernumber') }}</h1>
+            <h1 class="title has-text-centered">Order {{ $order_number }}</h1>
         </div>
 
         <table class="table">
