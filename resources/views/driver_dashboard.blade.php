@@ -1,4 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <h1>je bent een driver</h1>
+    <section class="section">
+        <h1>je bent een driver</h1>
+    </section>
 @endsection
