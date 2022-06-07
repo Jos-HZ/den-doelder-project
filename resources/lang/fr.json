@@ -766,6 +766,7 @@
     "You are already subscribed.": "Vous êtes déjà abonné(e).",
     "You are currently within your free trial period. Your trial will expire on :date.": "Vous êtes actuellement dans votre période d'essai gratuit. Votre essai expirera le: date.",
     "You are logged in as admin!":"Vous êtes connecté en tant qu'administrateur !",
+    "You are logged in as driver!":"Vous êtes connecté en tant que conducteur!",
     "You are logged in!": "Vous êtes connecté(e) !",
     "You are receiving this email because we received a password reset request for your account.": "Vous recevez cet e-mail car nous avons reçu une demande de réinitialisation de mot de passe pour votre compte.",
     "You have been invited to join the :team team!": "Vous avez été invité à rejoindre l'équipe :team !",

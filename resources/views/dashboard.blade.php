@@ -6,7 +6,7 @@
                 @include('partials/language_switcher')
                 <h1>{{__('Welcome Back!')}}</h1>
                 <h1>{{__('You are logged in as admin!')}}</h1>
-                <h1>{{__('You are logged in!')}}</h1>
+
 
 
                 <div class="tile is-ancestor">
