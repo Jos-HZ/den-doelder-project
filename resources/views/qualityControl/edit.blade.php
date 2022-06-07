@@ -5,7 +5,7 @@
         <div class="container">
 
 
-            <h1> Order {{ $qualityControl->order->ordernumber }}</h1>
+            <h1>{{__("Order")}}  {{ $qualityControl->order->ordernumber }}</h1>
 
             <form method="POST" action="{{ route('qualityControl.update', $qualityControl) }}">
                 @csrf
@@ -39,7 +39,7 @@
                     @enderror
                 </div>
 
-                <label for="name_pallet">{{__("Name Pallet")}}/ {{__("Order")}}</label>
+                <label for="name_pallet">{{__("Name pallet")}}/ {{__("Order")}}</label>
                 <div class="label">
                     <div class="control">
                         <input class="input @error('name_pallet') is-danger @enderror"
@@ -123,7 +123,7 @@
                     </div>
                 </div>
 
-                <input type="submit" value="Submit" class="button is-link">
+                <input type="submit" value="{{__("Submit")}}" class="button is-link">
                 <a href="{{route('qualityControl.index')}}">
                     <button type="button" class="button is-link-light">{{__("Cancel")}}</button>
                 </a>
