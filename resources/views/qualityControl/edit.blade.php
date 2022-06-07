@@ -4,19 +4,23 @@
     <section class="section">
         <div class="container">
 
-            <h1>{{__("Order")}}  {{ app('request')->input('ordernumber') }}</h1>
+
+            <h1> Order {{ $qualityControl->order->ordernumber }}</h1>
+
             <form method="POST" action="{{ route('qualityControl.update', $qualityControl) }}">
                 @csrf
                 @method('PUT')
 
-                <label for="ordernumber"></label>
+                <label for="order_id"></label>
                 <div class="label">
-                    <div class="control">
-
-                        <input type="hidden"
-                               id="ordernumber"
-                               class="input @error('time') is-danger @enderror"
-                               value="{{ $qualityControl->ordernumber }}">
+                    <div class="control has-icons-left has-icons-right">
+                        <input
+                            class="input @error('order_id') is-danger @enderror"
+                            type="hidden"
+                            id="order_id"
+                            name="order_id"
+                            value="{{ $qualityControl->order_id }}"
+                        >
                     </div>
                 </div>
 
@@ -81,7 +85,6 @@
                             class="input @error('deviation') is-danger @enderror"
                             id="deviation"
                             name="deviation"
-                            value="{{$errors->any() ? old('deviation') : $qualityControl->deviation}}"
                         >{{$errors->any() ? old('deviation') : $qualityControl->deviation}}</textarea>
                     </div>
                     <br>
@@ -106,7 +109,21 @@
                     @enderror
                 </div>
 
-                <input type="submit" value="{{__("Submit")}}" class="button is-link">
+
+                <label for="production_line_id"></label>
+                <div class="label">
+                    <div class="control has-icons-left has-icons-right">
+                        <input
+                            class="input @error('production_line_id') is-danger @enderror"
+                            type="hidden"
+                            id="production_line_id"
+                            name="production_line_id"
+                            value="{{ $qualityControl->production_line_id }}"
+                        >
+                    </div>
+                </div>
+
+                <input type="submit" value="Submit" class="button is-link">
                 <a href="{{route('qualityControl.index')}}">
                     <button type="button" class="button is-link-light">{{__("Cancel")}}</button>
                 </a>

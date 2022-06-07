@@ -35,7 +35,7 @@
                                id="production_line_id"
                                class="input @error('production_line_id') is-danger @enderror"
                                {{-- TODO: fix value  --}}
-                               value={{ $order->production_line }}>
+                               value={{ $order->production_line_id }}>
 
                     </div>
                 </div>
