@@ -21,24 +21,24 @@
                     @foreach ($orderGroup as $order)
                         <a href="{{ route('orders.show', $order) }}">
                             <card class="order">
-                                <p class="title text-bold">Order: {{ $order->ordernumber }}</p>
+                                <p class="title text-bold">{{__("Order")}}: {{ $order->ordernumber }}</p>
                                 <p class="order">{{ $order->notes }}</p>
 
                                 <div class="stepper-wrapper">
                                     <div class="stepper-item completed">
                                         <div class="step-counter"></div>
-                                        <div class="step-name">Admin</div>
+                                        <div class="step-name">{{__("Administrator")}}</div>
                                     </div>
                                     <div class="stepper-item {{ $order->driver_done ? 'completed' : 'active' }}"
                                          id="driver">
                                         <div class="step-counter"></div>
-                                        <div class="step-name">Driver</div>
+                                        <div class="step-name">{{__("Driver")}}</div>
                                     </div>
                                     <div
                                         class="stepper-item active {{ $order->production_done ? 'completed' : 'active' }} "
                                         id="production">
                                         <div class="step-counter"></div>
-                                        <div class="step-name">Production</div>
+                                        <div class="step-name">{{__("Production")}}</div>
                                     </div>
                                 </div>
 

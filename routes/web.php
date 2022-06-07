@@ -25,7 +25,25 @@ use Illuminate\Support\Str;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test/{locale?}', function ($locale = null) {
+    if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+        app()->setLocale($locale);
+    }
 
+    return view('dashboard');
+});
+//Route::get('/{locale?}', function ($locale = null) {
+//    if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+//        app()->setLocale($locale);
+//    }
+//
+//    return view('dashboard');
+//});
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
 Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/orders', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
@@ -35,6 +53,8 @@ Route::resource('/qualityControl', QualityControlController::class);
 Route::get('/checklist', function () {
     return view('checklist');
 })->name('checklist');
+
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');

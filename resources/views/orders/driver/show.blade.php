@@ -6,17 +6,17 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                        <p class="title">Order {{ $order->ordernumber }}</p>
-                        <p>Productie lijn: Cape @if($order->production_line_id === 3) 5 @else
-                            {{ $order->production_line_id }} @endif</p>
+                        <p class="title">{{__("Order")}} {{ $order->ordernumber }}</p>
+                        <p>{{__("Production line")}}: Cape {{ $order->production_id }} </p>
                     </div>
                 </div>
 
                 {{--   TODO: change url query to something useful     --}}
 
+
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                        <p class="title">Note</p>
+                        <p class="title">{{__("Note")}}</p>
                         <div class="notesTitle">
                             @if (Request::query('a') === 'edit')
                                 <div class="notesButton">
@@ -57,7 +57,7 @@
 
                 <div class="tile is-parent is-8">
                     <div class="tile is-child box">
-                        <p class="title">Material checklist</p>
+                        <p class="title">{{__("Material checklist")}}</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
                             pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat
                             facilisis.</p>
@@ -73,7 +73,7 @@
                             <button type="submit" class="btn btn-pink" onclick="return confirm('Are you really done?')">
                                 <i
                                     class="fas fa-check"></i>
-                                <p class="title">DONE</p>
+                                <p class="title">{{__("Done")}}</p>
                             </button>
                         </form>
                     </div>

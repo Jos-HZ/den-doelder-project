@@ -4,7 +4,9 @@
     <section class="section">
         <div class="container">
 
-            <h1> Order {{ $qualityControl->order->ordernumber }}</h1>
+
+            <h1>{{__("Order")}}  {{ $qualityControl->order->ordernumber }}</h1>
+
             <form method="POST" action="{{ route('qualityControl.update', $qualityControl) }}">
                 @csrf
                 @method('PUT')
@@ -23,7 +25,7 @@
                 </div>
 
 
-                <label for="time">Time:</label>
+                <label for="time">{{__("Time")}}:</label>
                 <div class="label">
                     <div class="control">
                         <input type="time"
@@ -37,7 +39,7 @@
                     @enderror
                 </div>
 
-                <label for="name_pallet">Name Pallet/ Order</label>
+                <label for="name_pallet">{{__("Name pallet")}}/ {{__("Order")}}</label>
                 <div class="label">
                     <div class="control">
                         <input class="input @error('name_pallet') is-danger @enderror"
@@ -60,7 +62,7 @@
                     </div>
                 </div>
 
-                <label for="action">Action:</label><br>
+                <label for="action">{{__("Action")}}:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
@@ -76,7 +78,7 @@
                     @enderror
                 </div>
 
-                <label for="deviation">Deviation:</label><br>
+                <label for="deviation">{{__("Deviation")}}:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
@@ -107,6 +109,7 @@
                     @enderror
                 </div>
 
+
                 <label for="production_line_id"></label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
@@ -120,9 +123,9 @@
                     </div>
                 </div>
 
-                <input type="submit" value="Submit" class="button is-link">
+                <input type="submit" value="{{__("Submit")}}" class="button is-link">
                 <a href="{{route('qualityControl.index')}}">
-                    <button type="button" class="button is-link-light">Cancel</button>
+                    <button type="button" class="button is-link-light">{{__("Cancel")}}</button>
                 </a>
 
             </form>
