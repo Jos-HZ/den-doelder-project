@@ -10,11 +10,11 @@
             <thead>
             <tr>
                 <th><abbr title="time">{{__("Time")}}</abbr></th>
-                <th><abbr title="name-pallet">Name pallet/ {{__("Order")}}</abbr></th>
+                <th><abbr title="name-pallet">{{__("Name pallet")}}/ {{__("Order")}}</abbr></th>
                 <th><abbr title="def-nr">def nr</abbr></th>
                 <th><abbr title="extra-info">extra info</abbr></th>
-                <th><abbr title="action">action</abbr></th>
-                <th><abbr title="deviation">deviation</abbr></th>
+                <th><abbr title="action">{{__("Action")}}</abbr></th>
+                <th><abbr title="deviation">{{__("Deviation")}}</abbr></th>
                 <th><abbr title="edit-button"></abbr></th>
             </tr>
             </thead>
@@ -32,7 +32,7 @@
                     <td>{{ $quality->deviation }}</td> --}}
                     <td>
                         <a href="{{route('qualityControl.edit', $quality)}}">
-                            <button class="btn btn-default" type="button">Edit</button>
+                            <button class="btn btn-default" type="button">{{__("Edit")}}</button>
                         </a>
                     </td>
                 </tr>

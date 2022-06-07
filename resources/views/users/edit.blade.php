@@ -3,10 +3,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit New User</h2>
+                <h2>{{__("Edit New User")}}</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('users.index') }}"> {{__("Back")}}</a>
             </div>
         </div>
     </div>
@@ -29,33 +29,33 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Name:</strong>
+                <strong>{{__("Name")}}:</strong>
                 {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control', 'value' => [$user->name] )) !!}
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Email:</strong>
+                <strong>{{__("Email")}}:</strong>
                 {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control', 'value' => [$user->email])) !!}
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Role:</strong>
+                <strong>{{__("Role")}}:</strong>
                 <div class="select">
                     <select id="role" name="role">
-                        <option value="admin">Administrative worker</option>
-                        <option value="driver">Forklift driver</option>
-                        <option value="production">Production</option>
+                        <option value="admin">{{__("Administrative worker")}}</option>
+                        <option value="driver">{{__("Forklift driver")}}</option>
+                        <option value="production">{{__("Production")}}</option>
                     </select>
                 </div>
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">{{__("Submit")}}</button>
         </div>
     </div>
     {!! Form::close() !!}
