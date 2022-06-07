@@ -40,8 +40,10 @@ class QualityControlController extends Controller
     public function store(Request $request)
     {
         QualityControl::create($this->validateQuality($request));
+
+//        debug
 //        dd($request->order_id);
-        // TODO: ordernumber mee geven aan de index
+
         return redirect(route('qualityControl.index', $request->order_id));
     }
 
@@ -115,7 +117,7 @@ class QualityControlController extends Controller
     {
         $qualityControl->update($this->validateQuality($request));
 
-        return redirect(route('qualityControl.index'));
+        return redirect(route('qualityControl.index', $request->order_id));
     }
 
     /**
