@@ -7,12 +7,12 @@
                 <div class="tile is-parent">
                     <div class="tile is-child box">
                         <p class="title">Order {{ $order->ordernumber }}</p>
-                        <p>Productie lijn: Cape {{ $order->production_id }} </p>
+                        <p>Productie lijn: Cape @if($order->production_line_id === 3) 5 @else
+                            {{ $order->production_line_id }} @endif</p>
                     </div>
                 </div>
 
                 {{--   TODO: change url query to something useful     --}}
-
 
                 <div class="tile is-parent">
                     <div class="tile is-child box">
