@@ -9,7 +9,7 @@
                 <a href="{{ route('orders.show', $order) }}">
                     <div class="my-2">
                             <div class="tile is-child box">
-                                <p class="title">Order {{ $order->ordernumber }}</p>
+                                <p class="title">{{__("Order")}} {{ $order->ordernumber }}</p>
                                 <p class="has-text-link-dark"> {{ $order->notes }} </p>
                                 <div class="stepper-wrapper">
                                     <div class="stepper-item completed">

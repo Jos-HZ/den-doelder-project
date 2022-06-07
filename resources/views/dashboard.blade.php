@@ -2,8 +2,8 @@
 @section('content')
     <section class="section">
         <div class="container">
+            @include('partials/language_switcher')
             @can('is_admin')
-                @include('partials/language_switcher')
                 <h1>{{__('Welcome Back!')}}</h1>
                 <h1>{{__('You are logged in as admin!')}}</h1>
 
@@ -46,7 +46,7 @@
                     <div class="tile is-parent is-vertical">
                         <a href="{{ route('orders.index')  }}">
                             <article class="tile is-child box">
-                                <p class="title text-lg-center">Orders</p>
+                                <p class="title text-lg-center">{{__("Orders")}}</p>
                             </article>
                         </a>
                     </div>
@@ -55,7 +55,7 @@
                     <div class="tile is-parent is-vertical">
                         <a href="{{ route('qualityControl.index')  }}">
                             <article class="tile is-child box">
-                                <p class="title text-lg-center">Qualitycontrol</p>
+                                <p class="title text-lg-center">{{__("Quality control")}}</p>
                             </article>
                         </a>
                     </div>
