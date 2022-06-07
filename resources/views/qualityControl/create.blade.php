@@ -119,7 +119,7 @@
                 </div>
 
                 <input type="submit" value="Submit" class="button is-link">
-                <a href="{{route('qualityControl.index', $order->ordernumber)}}">
+                <a href="{{route('qualityControl.index', $order->id)}}">
                     <button type="button" class="button is-link-light">Cancel</button>
                 </a>
 
