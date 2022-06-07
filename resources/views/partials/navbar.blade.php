@@ -40,11 +40,13 @@
             </a>
 
             <div class="navbar-dropdown">
+                @include('partials/language_switcher')
                 <form action="{{ route('destroy', 'logout') }}" method="POST">
                     @csrf
                     <button class="navbar-item" type="submit">
                         {{__("Logout")}}
                     </button>
+
                 </form>
             </div>
         </div>

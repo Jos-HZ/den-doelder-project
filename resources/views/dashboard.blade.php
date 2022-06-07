@@ -2,7 +2,6 @@
 @section('content')
     <section class="section">
         <div class="container">
-            @include('partials/language_switcher')
             @can('is_admin')
                 <h1>{{__('Welcome Back!')}}</h1>
                 <h1>{{__('You are logged in as admin!')}}</h1>
