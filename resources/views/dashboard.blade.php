@@ -37,15 +37,16 @@
                         </a>
                     </div>
                 </div>
-                <div class="tile is-ancestor">
-                    <div class="tile is-parent is-vertical">
-                        <a href="{{ route('qualityControl.index')  }}">
-                            <article class="tile is-child box">
-                                <p class="title text-lg-center">Qualitycontrol</p>
-                            </article>
-                        </a>
-                    </div>
-                </div>
+{{-- TODO: cape1, cape2, cape5 index  --}}
+{{--                <div class="tile is-ancestor">--}}
+{{--                    <div class="tile is-parent is-vertical">--}}
+{{--                        <a href="{{ route('qualityControl.index')  }}">--}}
+{{--                            <article class="tile is-child box">--}}
+{{--                                <p class="title text-lg-center">Qualitycontrol</p>--}}
+{{--                            </article>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             @endcan
         </div>
     </section>

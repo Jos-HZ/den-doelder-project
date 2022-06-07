@@ -125,7 +125,8 @@
                 </div>
 
                 <input type="submit" value="Submit" class="button is-link">
-                <a href="{{route('qualityControl.index')}}">
+                {{-- TODO: give right param  --}}
+                <a href="{{route('qualityControl.index', 3)}}">
                     <button type="button" class="button is-link-light">Cancel</button>
                 </a>
 
