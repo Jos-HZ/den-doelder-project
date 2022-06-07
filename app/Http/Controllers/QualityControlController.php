@@ -20,18 +20,18 @@ class QualityControlController extends Controller
      * @param int $order_number
      * @return Application|Factory|View
      */
-    public function index(int $order_number): View|Factory|Application
+    public function index(Order $order): View|Factory|Application
     {
         $qualities = QualityControl::all()->sortDesc();
-        
-        $order_id = Order::where('ordernumber', $order_number)->pluck('id')->first();
 
-        $qualities = $qualities->where('order_id', $order_id);
+//        $order_id = Order::where('ordernumber', $order->ordernumber)->pluck('id')->first();
+
+        $qualities = $qualities->where('order_id', $order->id);
 
         // debug
         // dd($qualities);
 
-        return view('qualityControl.index', compact('qualities', 'order_number'));
+        return view('qualityControl.index', compact('qualities', 'order'));
     }
 
     /**
@@ -59,6 +59,7 @@ class QualityControlController extends Controller
         $order = DB::table('orders')
             ->where('ordernumber', '=', request()->ordernumber)
             ->first();
+
         return view('qualityControl.create', ['order' => $order]);
     }
 
