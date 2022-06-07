@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\QualityControl;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -16,19 +17,21 @@ class QualityControlController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param int $order_id
+     * @param int $order_number
      * @return Application|Factory|View
      */
-    public function index(int $order_id): View|Factory|Application
+    public function index(int $order_number): View|Factory|Application
     {
         $qualities = QualityControl::all()->sortDesc();
+        
+        $order_id = Order::where('ordernumber', $order_number)->pluck('id')->first();
 
         $qualities = $qualities->where('order_id', $order_id);
 
         // debug
         // dd($qualities);
 
-        return view('qualityControl.index', compact('qualities'));
+        return view('qualityControl.index', compact('qualities', 'order_number'));
     }
 
     /**
