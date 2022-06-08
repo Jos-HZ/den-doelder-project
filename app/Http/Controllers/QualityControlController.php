@@ -24,8 +24,6 @@ class QualityControlController extends Controller
     {
         $qualities = QualityControl::all()->sortDesc();
 
-//        $order_id = Order::where('ordernumber', $order->ordernumber)->pluck('id')->first();
-
         $qualities = $qualities->where('order_id', $order->id);
 
         return view('qualityControl.index', compact('qualities', 'order'));
@@ -41,9 +39,6 @@ class QualityControlController extends Controller
     {
         QualityControl::create($this->validateQuality($request));
 
-//        debug
-//        dd($request->order_id);
-
         return redirect(route('qualityControl.index', $request->order_id));
     }
 
@@ -54,7 +49,6 @@ class QualityControlController extends Controller
      */
     public function create(Request $request)
     {
-
         $order = DB::table('orders')
             ->where('ordernumber', '=', request()->ordernumber)
             ->first();
