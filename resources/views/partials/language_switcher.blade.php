@@ -8,7 +8,7 @@
 {{--                <span>{{ $locale_name }}</span>--}}
 {{--            </a>--}}
 
-            <a href="language/{{ $available_locale }}">
+            <a href="/language/{{ $available_locale }}">
                 <img src= "\img\svg\{{ $available_locale }}.svg" style="width:42px;height:42px;">
             </a>
         @endif
