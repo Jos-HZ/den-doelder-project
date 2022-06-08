@@ -37,15 +37,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="tile is-ancestor">
-                    <div class="tile is-parent is-vertical">
-                        <a href="{{ route('qualityControl.index')  }}">
-                            <article class="tile is-child box">
-                                <p class="title text-lg-center">{{__("Quality control")}}</p>
-                            </article>
-                        </a>
-                    </div>
-                </div>
+
             @endcan
         </div>
     </section>

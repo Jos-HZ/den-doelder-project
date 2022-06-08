@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\QualityControl;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -16,13 +17,16 @@ class QualityControlController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Order $order
      * @return Application|Factory|View
      */
-    public function index()
+    public function index(Order $order): View|Factory|Application
     {
         $qualities = QualityControl::all()->sortDesc();
 
-        return view('qualityControl.index', compact('qualities'));
+        $qualities = $qualities->where('order_id', $order->id);
+
+        return view('qualityControl.index', compact('qualities', 'order'));
     }
 
     /**
@@ -35,8 +39,7 @@ class QualityControlController extends Controller
     {
         QualityControl::create($this->validateQuality($request));
 
-        // TODO: ordernumber mee geven aan de index
-        return redirect(route('qualityControl.index'));
+        return redirect(route('qualityControl.index', $request->order_id));
     }
 
     /**
@@ -46,10 +49,10 @@ class QualityControlController extends Controller
      */
     public function create(Request $request)
     {
-
         $order = DB::table('orders')
             ->where('ordernumber', '=', request()->ordernumber)
             ->first();
+
         return view('qualityControl.create', ['order' => $order]);
     }
 
@@ -108,7 +111,7 @@ class QualityControlController extends Controller
     {
         $qualityControl->update($this->validateQuality($request));
 
-        return redirect(route('qualityControl.index'));
+        return redirect(route('qualityControl.index', $request->order_id));
     }
 
     /**

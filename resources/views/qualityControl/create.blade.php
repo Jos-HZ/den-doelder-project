@@ -2,7 +2,6 @@
 @section('content')
     <section class="section">
         <div class="container">
-
             <h1> Order {{ $order->ordernumber }}</h1>
             <form method="POST" action="{{ route('qualityControl.store') }}">
                 @csrf
@@ -10,16 +9,12 @@
                 <label for="order_id"></label>
                 <div class="label">
 
-                    {{-- TODO: type order_id and production_line_id to "hidden"  --}}
-
                     <div class="control">
 
                         <input type="hidden"
                                name="order_id"
                                id="order_id"
                                class="input @error('order_id') is-danger @enderror"
-                               {{-- TODO: fix value  --}}
-
                                value= {{$order->id}}>
 
                     </div>
@@ -33,7 +28,6 @@
                                name="production_line_id"
                                id="production_line_id"
                                class="input @error('production_line_id') is-danger @enderror"
-                               {{-- TODO: fix value  --}}
                                value={{ $order->production_line_id }}>
 
                     </div>
@@ -125,7 +119,8 @@
                 </div>
 
                 <input type="submit" value="Submit" class="button is-link">
-                <a href="{{route('qualityControl.index')}}">
+
+                <a href="{{route('qualityControl.index', $order->id)}}">
                     <button type="button" class="button is-link-light">{{__("Cancel")}}</button>
                 </a>
 

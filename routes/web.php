@@ -48,7 +48,9 @@ Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/orders', OrderController::class);
 Route::resource('/backlog', BacklogController::class);
 Route::resource('/backlog', BacklogController::class);
-Route::resource('/qualityControl', QualityControlController::class);
+
+Route::resource('/qualityControl', QualityControlController::class)->except(['index', 'show']);
+Route::get('/qualityControl/{order}', [QualityControlController::class, 'index'])->name('qualityControl.index');
 
 Route::get('/checklist', function () {
     return view('checklist');
