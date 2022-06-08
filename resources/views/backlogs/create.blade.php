@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <h1>Order {{ app('request')->input('ordernumber') }}
+            <h1>{{__("Order")}} {{ app('request')->input('ordernumber') }}
             </h1>
 
             <form method="POST" action="{{ route('backlog.store') }}">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <label for="time">Time:</label><br>
+                <label for="time">{{__("Time")}}:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
@@ -50,7 +50,7 @@
                     @enderror
                 </div>
 
-                <label for="date">Date:</label><br>
+                <label for="date">{{__("Date")}}:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
@@ -70,7 +70,7 @@
                     @enderror
                 </div>
 
-                <label class="i forgor" for="category">Error category:</label><br>
+                <label class="i forgor" for="category"> {{__("Error category")}}:</label><br>
                 <div class="label">
 
                     <div class="select">
@@ -80,8 +80,8 @@
                             id="category"
                             name="category"
                         >
-                            <option value="mechanical">Mechanical error</option>
-                            <option value="technical">Technical error</option>
+                            <option value="mechanical">{{__("Mechanical error")}}</option>
+                            <option value="technical">{{__("Technical error")}}r</option>
                         </select>
                     </div>
                     @error('category')
@@ -89,7 +89,7 @@
                     @enderror
                 </div>
 
-                <label for="description">Description:</label><br>
+                <label for="description">{{__("Description")}}:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <div class="grow-wrap">
@@ -106,9 +106,9 @@
                     @enderror
                 </div>
 
-                <input type="submit" value="Submit" class="button is-link">
+                <input type="submit" value="{{__("Submit")}}" class="button is-link">
                 <a href="{{ route('backlog.index') }}">
-                    <button type="button" class="button is-link-light">Cancel</button>
+                    <button type="button" class="button is-link-light">{{__("Cancel")}}</button>
                 </a>
 
             </form>

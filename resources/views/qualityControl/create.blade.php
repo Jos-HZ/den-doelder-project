@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-                <label for="time">Time:</label>
+                <label for="time">{{__("Time")}}:</label>
                 <div class="label">
                     <div class="control">
                         <input type="time"
@@ -47,7 +47,7 @@
                     @enderror
                 </div>
 
-                <label for="name_pallet">Name Pallet/ Order</label>
+                <label for="name_pallet">{{__("Name pallet")}}/ {{__("Order")}}</label>
                 <div class="label">
                     <div class="control">
                         <input class="input @error('name_pallet') is-danger @enderror"
@@ -86,7 +86,7 @@
                     @enderror
                 </div>
 
-                <label for="deviation">Deviation:</label><br>
+                <label for="deviation">{{__("Deviation")}}:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
@@ -119,8 +119,9 @@
                 </div>
 
                 <input type="submit" value="Submit" class="button is-link">
+
                 <a href="{{route('qualityControl.index', $order->id)}}">
-                    <button type="button" class="button is-link-light">Cancel</button>
+                    <button type="button" class="button is-link-light">{{__("Cancel")}}</button>
                 </a>
 
             </form>

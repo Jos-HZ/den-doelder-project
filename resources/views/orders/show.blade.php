@@ -4,23 +4,23 @@
     <section class="section">
         <div class="container">
             <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
-            <h1 class="title has-text-centered">Order {{ $order->ordernumber }}</h1>
+            <h1 class="title has-text-centered">{{__("Order")}} {{ $order->ordernumber }}</h1>
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <p class="title text-lg-center">Control list</p>
+                        <p class="title text-lg-center">{{__("Control list")}}</p>
                     </article>
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <p class="title text-lg-center">Order details</p>
+                        <p class="title text-lg-center">{{__("Order details")}}</p>
                     </article>
                 </div>
                 <div class="tile is-parent">
                     <div class="tile is-child box">
                         <a href="{{ route('qualityControl.index', $order) }}">
                             <article>
-                                <p class="title text-lg-center">Quality control</p>
+                                <p class="title text-lg-center">{{__("Quality control")}}</p>
                             </article>
                         </a>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="tile is-parent is-8">
                     <article class="tile is-child box has-background-success">
                         <div class="notesTitle">
-                            <p class="title">Notes</p>
+                            <p class="title">{{__("Notes")}}</p>
                             <div class="notesButton">
                                 @can('is_admin')
                                     <a href="{{
@@ -76,13 +76,13 @@
                 <div class="tile is-parent is-vertical">
                     <div class="tile is-child box">
                         <a href="{{ route('qualityControl.create', ['ordernumber' => $order->ordernumber ])}}">
-                            <p class="title text-lg-center">Create quality control</p>
+                            <p class="title text-lg-center">{{__("Create quality control")}}</p>
                         </a>
                     </div>
 
                     <div class="tile is-child box has-background-danger">
                         <a href="{{ route('backlog.create', ['ordernumber' => $order->ordernumber ])}}">
-                            <p class="title text-lg-center">Error</p>
+                            <p class="title text-lg-center">{{__("Error")}}</p>
                         </a>
                     </div>
                 </div>
