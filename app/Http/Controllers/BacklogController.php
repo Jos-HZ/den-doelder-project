@@ -36,7 +36,7 @@ class BacklogController extends Controller
     {
         Backlog::create($this->validatedBacklog($request));
 
-        return redirect(route('backlog.index'));
+        return redirect(route('orders.show', $request->order_id));
     }
 
     /**
@@ -46,7 +46,7 @@ class BacklogController extends Controller
      */
     public function create(): View|Factory|Application
     {
-        return \view('backlogs.create');
+        return view('backlogs.create');
     }
 
     /**

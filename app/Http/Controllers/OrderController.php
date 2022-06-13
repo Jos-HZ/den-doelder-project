@@ -47,7 +47,8 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect(route('orders.index'));
+
+        return redirect(route('orders.show'));
     }
 
     /**
@@ -118,17 +119,11 @@ class OrderController extends Controller
         return redirect(route('orders.show', $order));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @return Application|Redirector|RedirectResponse
-     */
-    public function productionDone(Request $request)
-    {
-        $order = Order::find($request->id);
-        $order->production_done = 1;
-        $order->save();
-        return redirect(route('orders.show', $order));
-    }
+   public function resolved(Request $request)
+   {
+       $order = Order::find($request->id);
+       $order->resolved_at = now();
+       $order->save();
+       return redirect(route('orders.show', $order));
+   }
 }
