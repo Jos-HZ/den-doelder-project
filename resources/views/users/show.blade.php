@@ -2,14 +2,12 @@
 
 @section('content')
 <section class="section">
+    <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
                     <h2> {{__("Show")}} {{__("User")}}</h2>
-                </div>
-                <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('users.index') }}"> {{__("Back")}}</a>
                 </div>
             </div>
         </div>
