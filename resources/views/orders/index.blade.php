@@ -15,6 +15,7 @@
                 </tab>
             @endforeach
         </container>
+
         <container class="horizontal flexContainer" dir="ltr" onscroll="xOnScroll()">
             @foreach ($orders->groupBy('production_line')->sortKeys() as $orderGroupKey=>$orderGroup)
                 <container class="vertical flexContainer" id="cape-{{ $orderGroupKey }}">
