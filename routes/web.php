@@ -6,6 +6,7 @@ use App\Http\Controllers\Authorization\DriverController;
 use App\Http\Controllers\BacklogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductionLineController;
 use App\Http\Controllers\QualityControlController;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\PasswordReset;
@@ -34,24 +35,21 @@ Route::get('language/{locale}', function ($locale) {
 
 Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/orders', OrderController::class);
-Route::resource('/backlog', BacklogController::class);
-Route::resource('/backlog', BacklogController::class);
+Route::resource('/backlog', BacklogController::class)->except(['delete', 'show']);
 
-Route::resource('/qualityControl', QualityControlController::class)->except(['index', 'show']);
+Route::resource('/qualityControl', QualityControlController::class)->except(['index', 'show', 'delete']);
 Route::get('/qualityControl/{order}', [QualityControlController::class, 'index'])->name('qualityControl.index');
 
 Route::get('/checklist', function () {
     return view('checklist');
 })->name('checklist');
 
-
-
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
     Route::get('redirects', [HomeController::class, 'index']);
 });
 
-Route::resource('production-lines', \App\Http\Controllers\ProductionLineController::class)->only([
+Route::resource('production-lines', ProductionLineController::class)->only([
     'show'
 ]);
 
