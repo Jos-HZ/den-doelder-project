@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index()
+    /**
+     * Create a new controller instance.
+     *
+     * @return int|Redirector|RedirectResponse|Application
+     */
+    public function index(): int|Redirector|RedirectResponse|Application
     {
-        switch (Auth::user()->role) {
-            case "admin":
-            case "production":
-                return redirect('/dashboard');
-                break;
-            case "driver":
-                return redirect('/driver_dashboard');
-                break;
-            default:
-                return 403;
-        }
+        return match (Auth::user()->role) {
+            "admin", "production" => redirect('/dashboard'),
+            "driver" => redirect('/driver_dashboard'),
+            default => 403,
+        };
     }
 }
