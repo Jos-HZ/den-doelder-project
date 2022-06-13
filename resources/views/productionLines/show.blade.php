@@ -2,7 +2,10 @@
 
 @section('content')
     <section class="section">
-            <h1>Cape {{ $production_line->production_line }}</h1>
+        <div class="pull-right">
+            <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
+        </div>
+            <h1 class="has-text-centered"> Cape {{ $production_line->production_line }}</h1>
         <div class="tile is-ancestor">
             <div class="tile is-vertical is-parent">
             @foreach($production_line->orders as $order)
