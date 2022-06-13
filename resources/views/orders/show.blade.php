@@ -88,6 +88,51 @@
                     </div>
                 </div>
             </div>
+
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <div class="tile is-child box">
+                        <table class="table">
+                            <thead>
+                            <th><abbr title="time">{{__("Time")}}</abbr></th>
+                            <th><abbr title="date">{{__("Date")}}</abbr></th>
+                            <th><abbr title="category">{{__("Category")}}</abbr></th>
+                            <th><abbr title="description">{{__("Description")}}</abbr></th>
+                            <th><abbr title="resolved">{{__("Resolved_at")}}</abbr></th>
+                            <th><abbr title="edit-button"></abbr></th>
+                            <th><abbr title="resolve-button"></abbr></th>
+                            </thead>
+                            <tbody>
+                            @foreach($order->backlog as $backlog)
+                                <tr>
+                                    <td>{{ $backlog->time }}</td>
+                                    <td>{{ $backlog->date }}</td>
+                                    <td>@if($backlog->category === 'technical')
+                                            T
+                                        @else
+                                            M
+                                        @endif
+                                    </td>
+                                    <td>{{ $backlog->description }}</td>
+                                    <td>{{ $backlog->description }}</td>
+                                    <td>
+                                        <a href="">
+                                            <button class="btn btn-default" type="button">{{__("Resolve_at")}}</button>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('backlog.edit', $backlog)}}">
+                                            <button class="btn btn-default" type="button">{{__("Edit")}}</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 @endsection
