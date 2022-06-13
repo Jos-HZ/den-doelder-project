@@ -45,7 +45,6 @@ Route::get('/checklist', function () {
 })->name('checklist');
 
 
-
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
     Route::get('redirects', [HomeController::class, 'index']);
