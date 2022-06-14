@@ -1,41 +1,29 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> {{__("Show")}} {{__("User")}}</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('users.index') }}"> {{__("Back")}}</a>
+<section class="section">
+    <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 margin-tb">
+                <div class="pull-left">
+                    <h2> {{__("Show")}} {{__("User")}}</h2>
+                </div>
             </div>
         </div>
-    </div>
 
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>{{__("Name")}}:</strong>
-                {{ $user->name }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>{{__("Email")}}:</strong>
-                {{ $user->email }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>{{__("Roles")}}:</strong>
-                {{ $user->role }}
-                {{--                @if(!empty($user->getRoleNames()))--}}
-                {{--                    @foreach($user->getRoleNames() as $v)--}}
-                {{--                        <label class="badge badge-success">{{ $v }}</label>--}}
-                {{--                    @endforeach--}}
-                {{--                @endif--}}
-            </div>
-        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th>{{__("Name")}}</th>
+                <th>{{__("Email")}}</th>
+                <th>{{__("Roles")}}</th>
+            </tr>
+            <tr>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->role }}</td>
+            </tr>
+        </table>
     </div>
+</section>
 @endsection

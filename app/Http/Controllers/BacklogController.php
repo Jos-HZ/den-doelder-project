@@ -36,7 +36,7 @@ class BacklogController extends Controller
     {
         Backlog::create($this->validatedBacklog($request));
 
-        return redirect(route('backlog.index'));
+        return redirect(route('orders.show', $request->order_id));
     }
 
     /**
@@ -46,7 +46,7 @@ class BacklogController extends Controller
      */
     public function create(): View|Factory|Application
     {
-        return \view('backlogs.create');
+        return view('backlogs.create');
     }
 
     /**
@@ -101,27 +101,6 @@ class BacklogController extends Controller
     {
         $backlog->update($this->validatedBacklog($request));
 
-        return redirect(route('backlog.index'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Backlog $backlog
-     * @return Application|RedirectResponse|Redirector
-     */
-    public function destroy(Backlog $backlog)
-    {
-        // check logged in user
-        $user = Auth::user();
-
-        if ($user->can('delete', $backlog)) {
-            $backlog->delete();
-        } else {
-            abort(403);
-        };
-
-//        return redirect(route('order.index'));
         return redirect(route('backlog.index'));
     }
 }

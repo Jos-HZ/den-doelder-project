@@ -2,36 +2,22 @@
 
 @section('content')
     <section class="section">
-        <h1>Cape {{ $production_line->production_line }}</h1>
+        <div class="pull-right">
+            <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
+        </div>
+            <h1 class="has-text-centered"> Cape {{ $production_line->production_line }}</h1>
         <div class="tile is-ancestor">
             <div class="tile is-vertical is-parent">
-                @foreach($production_line->orders as $order)
-                    <a href="{{ route('orders.show', $order) }}">
-                        <div class="my-2">
+            @foreach($production_line->orders as $order)
+                <a href="{{ route('orders.show', $order) }}">
+                    <div class="my-2">
                             <div class="tile is-child box">
                                 <p class="title">{{__("Order")}} {{ $order->ordernumber }}</p>
                                 <p class="has-text-link-dark"> {{ $order->notes }} </p>
-                                <div class="stepper-wrapper">
-                                    <div class="stepper-item completed">
-                                        <div class="step-counter"></div>
-                                        <div class="step-name">{{__("Administrator")}} </div>
-                                    </div>
-                                    <div class="stepper-item {{ $order->driver_done ? 'completed' : 'active' }}"
-                                         id="driver">
-                                        <div class="step-counter"></div>
-                                        <div class="step-name">{{__("Driver")}}</div>
-                                    </div>
-                                    <div
-                                        class="stepper-item active {{ $order->production_done ? 'completed' : 'active' }} "
-                                        id="production">
-                                        <div class="step-counter"></div>
-                                        <div class="step-name">{{__("Production")}}</div>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                    </a>
-                @endforeach
+                    </div>
+                </a>
+            @endforeach
             </div>
         </div>
     </section>
