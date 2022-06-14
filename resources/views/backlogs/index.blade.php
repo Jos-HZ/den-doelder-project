@@ -36,7 +36,7 @@
                         2
                     </option>
                     <option
-                        value="5" <?php if (app('request')->input('cape') === '5') echo "selected";?>>
+                        value="3" <?php if (app('request')->input('cape') === '3') echo "selected";?>>
                         5
                     </option>
                 </select>
