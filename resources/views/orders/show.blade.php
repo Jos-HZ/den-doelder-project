@@ -99,11 +99,12 @@
                             <th><abbr title="category">{{__("Category")}}</abbr></th>
                             <th><abbr title="description">{{__("Description")}}</abbr></th>
                             <th><abbr title="resolved">{{__("Resolved_at")}}</abbr></th>
+                            <th><abbr title="resolved">{{__("Error time")}}</abbr></th>
                             <th><abbr title="edit-button"></abbr></th>
                             <th><abbr title="resolve-button"></abbr></th>
                             </thead>
                             <tbody>
-                            @foreach($order->backlog as $backlog)
+                            @foreach($order->backlog->sortByDesc('created_at') as $backlog)
                                 <tr>
                                     <td>{{ $backlog->time }}</td>
                                     <td>{{ $backlog->date }}</td>
@@ -114,11 +115,14 @@
                                         @endif
                                     </td>
                                     <td>{{ $backlog->description }}</td>
-                                    <td>{{ $backlog->description }}</td>
+                                    <td>{{ $backlog->resolved_at }}</td>
+                                    <td>{{ $backlog->timeDiffrence() }}</td>
                                     <td>
-                                        <a href="">
-                                            <button class="btn btn-default" type="button">{{__("Resolve_at")}}</button>
-                                        </a>
+                                        @if($backlog->resolved_at === null)
+                                            <a href="{{ route('backlog.resolve', $backlog)}}">
+                                                <button class="btn btn-default" type="button">{{__("Resolve")}}</button>
+                                            </a>
+                                        @endif
                                     </td>
                                     <td>
                                         <a href="{{route('backlog.edit', $backlog)}}">
