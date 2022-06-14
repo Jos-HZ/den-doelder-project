@@ -35,7 +35,9 @@ Route::get('language/{locale}', function ($locale) {
 
 Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/orders', OrderController::class);
+
 Route::resource('/backlog', BacklogController::class)->except(['delete', 'show']);
+Route::get('/backlog/{backlog}/resolve', [BacklogController::class, 'resolve'])->name('backlog.resolve');
 
 Route::resource('/qualityControl', QualityControlController::class)->except(['index', 'show', 'delete']);
 Route::get('/qualityControl/{order}', [QualityControlController::class, 'index'])->name('qualityControl.index');
