@@ -101,6 +101,16 @@ class BacklogController extends Controller
     {
         $backlog->update($this->validatedBacklog($request));
 
-        return redirect(route('backlog.index'));
+        return redirect(route('orders.show', $backlog->order_id));
+    }
+
+    // change resolved_at to now()
+    public function resolve(Backlog $backlog)
+    {
+        if ($backlog->resolved_at === null){
+            $backlog->resolved_at = now();
+            $backlog->save();
+        }
+        return redirect(route('orders.show', $backlog->order_id));
     }
 }
