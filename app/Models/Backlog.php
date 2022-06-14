@@ -20,7 +20,6 @@ class Backlog extends Model
         'description',
         'category'
     ];
-    private mixed $resolved_at;
 
     public function order()
     {
