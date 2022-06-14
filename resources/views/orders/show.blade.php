@@ -5,7 +5,8 @@
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
 
         <div class="container">
-            <h1 class="title has-text-centered">{{__("Order")}} {{ $order->ordernumber }}</h1>
+            <h1 class="title has-text-centered">{{__("Order")}} {{ $order->ordernumber }} {{$order->pallettype}}</h1>
+            <p class="has-text-centered">{{__("Number of pallets")}} {{ $order->palletnumber }}</p>
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <article class="tile is-child box">

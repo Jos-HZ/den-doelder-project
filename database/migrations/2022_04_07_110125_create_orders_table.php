@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
 //            $table->foreignId('production_id');
             $table->integer('ordernumber');
+            $table->string('pallettype');
+            $table->integer('palletnumber');
             $table->timestamps();
         });
     }
