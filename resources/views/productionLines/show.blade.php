@@ -12,7 +12,8 @@
                 <a href="{{ route('orders.show', $order) }}">
                     <div class="my-2">
                             <div class="tile is-child box">
-                                <p class="title">{{__("Order")}} {{ $order->ordernumber }}</p>
+                                <p class="title">{{__("Order")}} {{ $order->ordernumber }} {{__("Pallet type")}} {{ $order->pallettype }}</p>
+                                <p class="">{{__("Number of pallets")}} {{ $order->palletnumber }}</p>
                                 <p class="has-text-link-dark"> {{ $order->notes }} </p>
                             </div>
                     </div>
