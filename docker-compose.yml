@@ -1,0 +1,41 @@
+services:
+  php-apache:
+    image: php:8.1-apache
+    ports:
+      - '${APP_PORT:-80}:80'
+    volumes:
+      - '.:/var/www/html/'
+    networks:
+      - bababooey
+    depends_on:
+      - mysql
+
+  composer:
+    image: composer
+    volumes:
+      - '.:/app'
+    command: >
+      bash -c "composer update"
+
+  mysql:
+    image: mysql
+    ports:
+      - '${FORWARD_DB_PORT:-3306}:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - 'apache-mysql:/var/lib/mysql'
+    networks:
+      - bababooey
+
+networks:
+  bababooey:
+    driver: bridge
+volumes:
+  apache-mysql:
+    driver: local
