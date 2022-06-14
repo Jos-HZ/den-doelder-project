@@ -45,7 +45,7 @@
             </div>
         </form>
 
-        <table class="table">
+        <table class="table is-bordered">
             <thead>
             <tr>
                 <th><abbr title="order_id">{{__("Order")}}</abbr></th>
