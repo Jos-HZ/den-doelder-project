@@ -9,6 +9,22 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
+                        @if($order->start_time === null)
+                            <a href="{{ route('orders.start', $order) }}">
+                                <p class="title text-lg-center">{{__("Start")}}</p>
+                            </a>
+                        @elseif($order->end_time === null)
+                            <a href="{{ route('orders.end', $order) }}">
+                                <p class="title text-lg-center">{{__("Done")}}</p>
+                            </a>
+                            @else
+                                <p class="title text-lg-center">{{__("Is finished")}}</p>
+                        @endif
+
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
                         <p class="title text-lg-center">{{__("Control list")}}</p>
                     </article>
                 </div>
@@ -17,7 +33,7 @@
                         <p class="title text-lg-center">{{__("Order details")}}</p>
                     </article>
                 </div>
-                <div class="tile is-parent">
+                <div class="tile is-parent is-4">
                     <div class="tile is-child box">
                         <a href="{{ route('qualityControl.index', $order) }}">
                             <article>

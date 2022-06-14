@@ -35,6 +35,8 @@ Route::get('language/{locale}', function ($locale) {
 
 Route::resource('/', AuthenticatedSessionController::class);
 Route::resource('/orders', OrderController::class);
+Route::get('/orders/{order}/start', [OrderController::class, 'start'])->name('orders.start');
+Route::get('/orders/{order}/end', [OrderController::class, 'end'])->name('orders.end');
 
 Route::resource('/backlog', BacklogController::class)->except(['delete', 'show']);
 Route::get('/backlog/{backlog}/resolve', [BacklogController::class, 'resolve'])->name('backlog.resolve');
