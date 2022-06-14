@@ -127,8 +127,10 @@ class OrderController extends Controller
      */
     public function start(Order $order)
     {
-        $order->start_time = now();
-        $order->save();
+        if ($order->start_time === null) {
+            $order->start_time = now();
+            $order->save();
+        }
         return redirect(route('orders.show', $order));
     }
 
@@ -140,8 +142,10 @@ class OrderController extends Controller
      */
     public function end(Order $order)
     {
-        $order->end_time = now();
-        $order->save();
+        if ($order->end_time === null) {
+            $order->end_time = now();
+            $order->save();
+        }
         return redirect(route('orders.show', $order));
     }
 }
