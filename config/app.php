@@ -82,8 +82,8 @@ return [
 
     'available_locales' => [
         'English' => 'en',
-        'Spanish' => 'es',
-        'French' => 'fr',
+        'Polish' => 'pl',
+        'Romanian' => 'ro',
         'Dutch' => 'nl',
     ],
 

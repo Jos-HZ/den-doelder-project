@@ -5,7 +5,8 @@
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
 
         <div class="container">
-            <h1 class="title has-text-centered">{{__("Order")}} {{ $order->ordernumber }}</h1>
+            <h1 class="title has-text-centered">{{__("Order")}} {{ $order->ordernumber }} {{$order->pallettype}}</h1>
+            <p class="has-text-centered">{{__("Number of pallets")}} {{ $order->palletnumber }}</p>
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
@@ -98,7 +99,7 @@
                             <th><abbr title="date">{{__("Date")}}</abbr></th>
                             <th><abbr title="category">{{__("Category")}}</abbr></th>
                             <th><abbr title="description">{{__("Description")}}</abbr></th>
-                            <th><abbr title="resolved">{{__("Resolved_at")}}</abbr></th>
+                            <th><abbr title="resolved">{{__("Resolve")}}</abbr></th>
                             <th><abbr title="edit-button"></abbr></th>
                             <th><abbr title="resolve-button"></abbr></th>
                             </thead>
@@ -117,7 +118,7 @@
                                     <td>{{ $backlog->description }}</td>
                                     <td>
                                         <a href="">
-                                            <button class="btn btn-default" type="button">{{__("Resolve_at")}}</button>
+                                            <button class="btn btn-default" type="button">{{__("Resolve")}}</button>
                                         </a>
                                     </td>
                                     <td>
