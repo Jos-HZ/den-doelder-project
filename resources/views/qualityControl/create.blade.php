@@ -3,7 +3,7 @@
     <section class="section">
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
         <div class="container">
-            <h1> Order {{ $order->ordernumber }}</h1>
+            <h1> {{__("Order")}} {{ $order->ordernumber }}</h1>
             <form method="POST" action="{{ route('qualityControl.store') }}">
                 @csrf
 
@@ -119,7 +119,7 @@
                     @enderror
                 </div>
 
-                <input type="submit" value="Submit" class="button is-link">
+                <input type="submit" value="{{__("Submit")}}" class="button is-link">
 
                 <a href="{{route('qualityControl.index', $order->id)}}">
                     <button type="button" class="button is-link-light">{{__("Cancel")}}</button>

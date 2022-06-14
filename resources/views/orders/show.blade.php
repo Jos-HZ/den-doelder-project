@@ -98,7 +98,7 @@
                             <th><abbr title="date">{{__("Date")}}</abbr></th>
                             <th><abbr title="category">{{__("Category")}}</abbr></th>
                             <th><abbr title="description">{{__("Description")}}</abbr></th>
-                            <th><abbr title="resolved">{{__("Resolved_at")}}</abbr></th>
+                            <th><abbr title="resolved">{{__("Resolve")}}</abbr></th>
                             <th><abbr title="edit-button"></abbr></th>
                             <th><abbr title="resolve-button"></abbr></th>
                             </thead>
@@ -117,7 +117,7 @@
                                     <td>{{ $backlog->description }}</td>
                                     <td>
                                         <a href="">
-                                            <button class="btn btn-default" type="button">{{__("Resolve_at")}}</button>
+                                            <button class="btn btn-default" type="button">{{__("Resolve")}}</button>
                                         </a>
                                     </td>
                                     <td>
