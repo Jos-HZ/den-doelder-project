@@ -33,7 +33,6 @@ class Backlog extends Model
      */
     public function timeDiffrence(): null|int
     {
-        // TODO: kan een error meerdere dagen duren
         if ($this->resolved_at === null) {
             return null;
         } else {
