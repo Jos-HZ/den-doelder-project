@@ -14,8 +14,7 @@ class AddCategoryToBacklogsTable extends Migration
     public function up()
     {
         Schema::table('backlogs', function (Blueprint $table) {
-            $table->set('category', ['technical', 'mechanical']); // waarom set als je er ÉÉN MOET kiezen, zou enum niet beter geweest zijn dan?
-
+            $table->enum('category', ['technical', 'mechanical']);
         });
     }
 
