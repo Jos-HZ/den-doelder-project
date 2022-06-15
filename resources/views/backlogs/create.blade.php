@@ -103,8 +103,8 @@
                     <p class="help is-danger">{{ $backlogs->get('description')[0] }}</p>
                     @enderror
                 </div>
-
                 <input type="submit" value="{{__("Submit")}}" class="button is-link">
+
                 <a href="{{ route('backlog.index') }}">
                     <button type="button" class="button is-link-light">{{__("Cancel")}}</button>
                 </a>

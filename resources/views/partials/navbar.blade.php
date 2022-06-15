@@ -9,11 +9,15 @@
             <div class="navbar-start">
 
                 @foreach([1,2,3] as $line)
-                <a class="navbar-item {{ Request::path() === 'producion-line' ? 'active' : '' }}"
-                   href="{{ url(route('production-lines.show', $line)) }}">
-                    Cape @if($line === 3) 5 @else {{ $line }} @endif
+                    <a class="navbar-item {{ Request::path() === 'producion-line' ? 'active' : '' }}"
+                       href="{{ url(route('production-lines.show', $line)) }}">
+                        Cape @if($line === 3)
+                            5
+                        @else
+                            {{ $line }}
+                        @endif
 
-                </a>
+                    </a>
                 @endforeach
 
                 @can('is_admin')
@@ -23,7 +27,7 @@
                     </a>
                     <a class="navbar-item {{ Request::path() === 'users' ? 'active' : '' }}"
                        href="{{ route('users.index') }}">
-                      {{__("Manage Users")}}
+                        {{__("Manage Users")}}
                     </a>
                 @elsecan('is_production')
                     <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"

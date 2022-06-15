@@ -47,7 +47,8 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect(route('orders.index'));
+
+        return redirect(route('orders.show'));
     }
 
     /**
@@ -119,16 +120,32 @@ class OrderController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the start time to current time.
      *
-     * @param Request $request
+     * @param Order $order
      * @return Application|Redirector|RedirectResponse
      */
-    public function productionDone(Request $request)
+    public function start(Order $order)
     {
-        $order = Order::find($request->id);
-        $order->production_done = 1;
-        $order->save();
+        if ($order->start_time === null) {
+            $order->start_time = now();
+            $order->save();
+        }
+        return redirect(route('orders.show', $order));
+    }
+
+    /**
+     * Update the end time to current time.
+     *
+     * @param Order $order
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function end(Order $order)
+    {
+        if ($order->end_time === null) {
+            $order->end_time = now();
+            $order->save();
+        }
         return redirect(route('orders.show', $order));
     }
 }

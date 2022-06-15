@@ -113,17 +113,4 @@ class QualityControlController extends Controller
 
         return redirect(route('qualityControl.index', $request->order_id));
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param QualityControl $qualityControl
-     * @return Application|RedirectResponse|Redirector
-     */
-    public function destroy(QualityControl $qualityControl)
-    {
-        $qualityControl->delete();
-
-        return redirect(route('qualityControl.index'));
-    }
 }

@@ -36,7 +36,7 @@
                         2
                     </option>
                     <option
-                        value="5" <?php if (app('request')->input('cape') === '5') echo "selected";?>>
+                        value="3" <?php if (app('request')->input('cape') === '3') echo "selected";?>>
                         5
                     </option>
                 </select>
@@ -45,7 +45,7 @@
             </div>
         </form>
 
-        <table class="table">
+        <table class="table is-bordered">
             <thead>
             <tr>
                 <th><abbr title="order_id">{{__("Order")}}</abbr></th>
@@ -55,7 +55,6 @@
                 <th><abbr title="category">{{__("Category")}}</abbr></th>
                 <th><abbr title="description">{{__("Description")}}</abbr></th>
                 <th><abbr title="edit-button"></abbr></th>
-                <th><abbr title="delete-buttons"></abbr></th>
             </tr>
             </thead>
             <tbody>
@@ -79,17 +78,6 @@
                         <a href="{{route('backlog.edit', $backlog)}}">
                             <button class="btn btn-default" type="button">{{__("Edit")}}</button>
                         </a>
-                    </td>
-                    <td>
-                        <form method="POST" action="{{route('backlog.destroy', $backlog)}}">
-                            @csrf
-                            @method('DELETE')
-                            {{-- TODO: change confirm message --}}
-                            <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm({{__("Are you sure you want to delete this error?")}})">
-                                {{__("Delete")}}
-                            </button>
-                        </form>
                     </td>
                 </tr>
             @endforeach

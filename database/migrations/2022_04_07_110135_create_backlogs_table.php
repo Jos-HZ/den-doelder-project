@@ -19,6 +19,7 @@ class CreateBacklogsTable extends Migration
             $table->time('time');
             $table->date('date');
             $table->text('description');
+            $table->time('resolved_at')->nullable();
             $table->timestamps();
         });
     }

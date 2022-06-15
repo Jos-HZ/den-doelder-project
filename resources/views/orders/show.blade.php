@@ -5,8 +5,25 @@
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
 
         <div class="container">
-            <h1 class="title has-text-centered">{{__("Order")}} {{ $order->ordernumber }}</h1>
+            <h1 class="title has-text-centered">{{__("Order")}} {{ $order->ordernumber }} {{$order->pallettype}}</h1>
+            <p class="has-text-centered">{{__("Number of pallets")}} {{ $order->palletnumber }}</p>
             <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        @if($order->start_time === null)
+                            <a href="{{ route('orders.start', $order) }}">
+                                <p class="title text-lg-center">{{__("Start")}}</p>
+                            </a>
+                        @elseif($order->end_time === null)
+                            <a href="{{ route('orders.end', $order) }}">
+                                <p class="title text-lg-center">{{__("Done")}}</p>
+                            </a>
+                            @else
+                                <p class="title text-lg-center">{{__("Is finished")}}</p>
+                        @endif
+
+                    </article>
+                </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
                         <p class="title text-lg-center">{{__("Control list")}}</p>
@@ -17,7 +34,7 @@
                         <p class="title text-lg-center">{{__("Order details")}}</p>
                     </article>
                 </div>
-                <div class="tile is-parent">
+                <div class="tile is-parent is-4">
                     <div class="tile is-child box">
                         <a href="{{ route('qualityControl.index', $order) }}">
                             <article>
@@ -88,6 +105,55 @@
                     </div>
                 </div>
             </div>
+
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <div class="tile is-child box">
+                        <table class="table">
+                            <thead>
+                            <th><abbr title="time">{{__("Time")}}</abbr></th>
+                            <th><abbr title="date">{{__("Date")}}</abbr></th>
+                            <th><abbr title="category">{{__("Category")}}</abbr></th>
+                            <th><abbr title="description">{{__("Description")}}</abbr></th>
+                            <th><abbr title="resolved">{{__("Resolved_at")}}</abbr></th>
+                            <th><abbr title="resolved">{{__("Error time")}}</abbr></th>
+                            <th><abbr title="edit-button"></abbr></th>
+                            <th><abbr title="resolve-button"></abbr></th>
+                            </thead>
+                            <tbody>
+                            @foreach($order->backlog->sortByDesc('created_at') as $backlog)
+                                <tr>
+                                    <td>{{ $backlog->time }}</td>
+                                    <td>{{ $backlog->date }}</td>
+                                    <td>@if($backlog->category === 'technical')
+                                            T
+                                        @else
+                                            M
+                                        @endif
+                                    </td>
+                                    <td>{{ $backlog->description }}</td>
+                                    <td>{{ $backlog->resolved_at }}</td>
+                                    <td>{{ $backlog->timeDiffrence() }}</td>
+                                    <td>
+                                        @if($backlog->resolved_at === null)
+                                            <a href="{{ route('backlog.resolve', $backlog)}}">
+                                                <button class="btn btn-default" type="button">{{__("Resolve")}}</button>
+                                            </a>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{route('backlog.edit', $backlog)}}">
+                                            <button class="btn btn-default" type="button">{{__("Edit")}}</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 @endsection
