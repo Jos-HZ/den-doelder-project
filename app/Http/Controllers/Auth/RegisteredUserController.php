@@ -14,16 +14,6 @@ use Illuminate\Validation\Rules;
 class RegisteredUserController extends Controller
 {
     /**
-     * Display the registration view.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('auth.register');
-    }
-
-    /**
      * Handle an incoming registration request.
      *
      * @param \Illuminate\Http\Request $request
@@ -58,5 +48,15 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    /**
+     * Display the registration view.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('auth.register');
     }
 }

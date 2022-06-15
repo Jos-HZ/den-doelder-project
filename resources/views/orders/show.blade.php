@@ -18,8 +18,8 @@
                             <a href="{{ route('orders.end', $order) }}">
                                 <p class="title text-lg-center">{{__("Done")}}</p>
                             </a>
-                            @else
-                                <p class="title text-lg-center">{{__("Is finished")}}</p>
+                        @else
+                            <p class="title text-lg-center">{{__("Is finished")}}</p>
                         @endif
 
                     </article>

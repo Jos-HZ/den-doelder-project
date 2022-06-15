@@ -12,7 +12,8 @@
                     <a href="{{ route('orders.show', $order) }}">
                         <div class="my-2">
                             <div class="tile is-child box">
-                                <p class="title">{{__("Order")}} {{ $order->ordernumber }} - {{ $order->pallettype }}</p>
+                                <p class="title">{{__("Order")}} {{ $order->ordernumber }}
+                                    - {{ $order->pallettype }}</p>
                                 <p class="subtitle">{{__("Production status: ")}}
                                     @if($order->start_time === null)
                                         {{__("Not started")}}

@@ -11,21 +11,21 @@
                 <select id="txtSearch" name="category">
                     <option
                         value="">
-                       {{__("All")}}
+                        {{__("All")}}
                     </option>
                     <option
                         value="mechanical" <?php if (app('request')->input('category') === 'mechanical') echo "selected";?>>
-                       {{__("Mechanical")}}
+                        {{__("Mechanical")}}
                     </option>
                     <option
                         value="technical" <?php if (app('request')->input('category') === 'technical') echo "selected";?>>
-                  {{__("Technical")}}
+                        {{__("Technical")}}
                     </option>
                 </select>
                 <select id="txtSearch" name="cape">
                     <option
                         value="">
-                       {{__("All")}}
+                        {{__("All")}}
                     </option>
                     <option
                         value="1" <?php if (app('request')->input('cape') === '1') echo "selected";?>>
@@ -41,7 +41,7 @@
                     </option>
                 </select>
 
-            <input type="submit" value="{{__("Filter")}}" class="btn btn-default"/>
+                <input type="submit" value="{{__("Filter")}}" class="btn btn-default"/>
             </div>
         </form>
 
@@ -62,8 +62,10 @@
                 <tr>
                     <th>{{ $backlog->order->ordernumber}}</th>
                     {{-- TODO: nette oplossing --}}
-                    <th> @if($backlog->order->production_line_id === 3) 5
-                        @else {{ $backlog->order->production_line_id }}
+                    <th> @if($backlog->order->production_line_id === 3)
+                            5
+                        @else
+                            {{ $backlog->order->production_line_id }}
                         @endif</th>
                     <td>{{ $backlog->time }}</td>
                     <td>{{ $backlog->date }}</td>
