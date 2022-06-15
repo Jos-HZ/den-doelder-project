@@ -31,13 +31,10 @@ class Backlog extends Model
      *
      * @return int|null
      */
-    public function timeDiffrence(): null|int
+    public function timeDifference(): null|int
     {
-        if ($this->resolved_at === null) {
-            return null;
-        } else {
-            $time = Carbon::parse($this->created_at)->floatDiffInMinutes($this->resolved_at);
-            return round($time, 1, PHP_ROUND_HALF_UP);
-        }
+            $time = Carbon::parse($this->time)->floatDiffInMinutes
+            ($this->resolved_at);
+            return round($time);
     }
 }
