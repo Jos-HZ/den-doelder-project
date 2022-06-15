@@ -119,11 +119,33 @@ class OrderController extends Controller
         return redirect(route('orders.show', $order));
     }
 
-   public function resolved(Request $request)
-   {
-       $order = Order::find($request->id);
-       $order->resolved_at = now();
-       $order->save();
-       return redirect(route('orders.show', $order));
-   }
+    /**
+     * Update the start time to current time.
+     *
+     * @param Order $order
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function start(Order $order)
+    {
+        if ($order->start_time === null) {
+            $order->start_time = now();
+            $order->save();
+        }
+        return redirect(route('orders.show', $order));
+    }
+
+    /**
+     * Update the end time to current time.
+     *
+     * @param Order $order
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function end(Order $order)
+    {
+        if ($order->end_time === null) {
+            $order->end_time = now();
+            $order->save();
+        }
+        return redirect(route('orders.show', $order));
+    }
 }

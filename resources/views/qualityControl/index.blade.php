@@ -13,7 +13,7 @@
             <thead>
             <tr>
                 <th><abbr title="time">{{__("Time")}}</abbr></th>
-                <th><abbr title="name-pallet">{{__("Name pallet")}}/ {{__("Order")}}</abbr></th>
+                <th><abbr title="name-pallet">{{__("Name pallet")}}</abbr></th>
                 <th><abbr title="def-nr">def nr</abbr></th>
                 <th><abbr title="extra-info">extra info</abbr></th>
                 <th><abbr title="action">{{__("Action")}}</abbr></th>
@@ -24,9 +24,12 @@
             <tbody>
             @foreach($qualities as $quality)
                 <tr>
-                    @foreach($quality->getFillable() as $qualityFillableAttribute)
-                        <td>{{ $quality[$qualityFillableAttribute] }}</td>
-                    @endforeach
+                    <td>{{ $quality->time }}</td>
+                    <td>{{ $quality->name_pallet }}</td>
+                    <td>{{ $quality->def_nr }}</td>
+                    <td>{{ $quality->extra_info}}</td>
+                    <td>{{ $quality->action}}</td>
+                    <td>{{ $quality->deviation}}</td>
                     <td>
                         <a href="{{route('qualityControl.edit', $quality)}}">
                             <button class="btn btn-default" type="button">{{__("Edit")}}</button>
