@@ -9,7 +9,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Auth;
 
 class BacklogController extends Controller
 {
@@ -107,7 +106,7 @@ class BacklogController extends Controller
     // change resolved_at to now()
     public function resolve(Backlog $backlog)
     {
-        if ($backlog->resolved_at === null){
+        if ($backlog->resolved_at === null) {
             $backlog->resolved_at = now();
             $backlog->save();
         }

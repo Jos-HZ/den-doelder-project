@@ -36,7 +36,7 @@ class Backlog extends Model
         if ($this->resolved_at === null) {
             return null;
         } else {
-            $time =  Carbon::parse($this->created_at)->floatDiffInMinutes($this->resolved_at);
+            $time = Carbon::parse($this->created_at)->floatDiffInMinutes($this->resolved_at);
             return round($time, 1, PHP_ROUND_HALF_UP);
         }
     }
