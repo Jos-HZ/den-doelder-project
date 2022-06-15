@@ -36,6 +36,11 @@
 - The error is added to the backlog.
 
 ### Happy path
+1. The production worker is on the order show page
+2. They can click on the error button
+3. They go to the error form page
+4. They can fill out the form
+5. The error is added to the backlog
 
 ### Unhappy path
 
