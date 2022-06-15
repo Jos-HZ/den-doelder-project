@@ -8,16 +8,6 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 class Kernel extends HttpKernel
 {
     /**
-     * Define the application's command schedule.
-     *
-     * @param Schedule $schedule
-     * @return void
-     */
-    protected function schedule(Schedule $schedule) {
-        $schedule->command('auth:clear-resets')->everyFifteenMinutes();
-    }
-
-    /**
      * The application's global HTTP middleware stack.
      *
      * These middleware are run during every request to your application.
@@ -33,7 +23,6 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
-
     /**
      * The application's route middleware groups.
      *
@@ -49,14 +38,13 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\Localization::class,
-            ],
+        ],
 
         'api' => [
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
-
     /**
      * The application's route middleware.
      *
@@ -82,4 +70,15 @@ class Kernel extends HttpKernel
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
 
     ];
+
+    /**
+     * Define the application's command schedule.
+     *
+     * @param Schedule $schedule
+     * @return void
+     */
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('auth:clear-resets')->everyFifteenMinutes();
+    }
 }
