@@ -30,9 +30,7 @@
                             id="time"
                             name="time"
                             value="{{$errors->any() ? old('time') : $backlog->time}}">
-                        // {{__("required")}}
                     </div>
-                    <br>
                     @error('time')
                     <p class="help is-danger">This is a required field</p>
                     @enderror
@@ -48,9 +46,7 @@
                             id="date"
                             name="date"
                             value="{{$errors->any() ? old('date') : $backlog->date}}">
-                        //{{__("required")}}
                     </div>
-                    <br>
                     @error('date')
                     <p class="help is-danger">This is a required field</p>
                     @enderror
