@@ -9,7 +9,14 @@
             <p class="has-text-centered">{{__("Number of pallets")}} {{ $order->palletnumber }}</p>
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
-                    <article class="tile is-child box">
+                    <article
+                        class="tile is-child box  @if($order->end_time === null && $order->start_time === null)
+                        @elseif($order->end_time === null && $order->start_time != null)
+                            has-background-warning
+                        @else
+                            bg-green-500
+                        @endif"
+                        >
                         @if($order->start_time === null)
                             <a href="{{ route('orders.start', $order) }}">
                                 <p class="title text-lg-center">{{__("Start")}}</p>
@@ -46,7 +53,7 @@
             </div>
             <div class="tile is-ancestor">
                 <div class="tile is-parent is-8">
-                    <article class="tile is-child box has-background-success">
+                    <article class="tile is-child box bg-sky-200">
                         <div class="notesTitle">
                             <p class="title">{{__("Notes")}}</p>
                             <div class="notesButton">
@@ -77,7 +84,7 @@
                                                 <textarea
                                                     name="notes"
                                                     oninput="textareaOnInput(this)"
-                                                    class="is-focused has-background-success">{{
+                                                    class="is-focused bg-green-300">{{
                                                         $order->notes
                                                 }}</textarea>
                                         </div>
@@ -98,7 +105,7 @@
                         </a>
                     </div>
 
-                    <div class="tile is-child box has-background-danger">
+                    <div class="tile is-child box bg-red-500">
                         <a href="{{ route('backlog.create', ['ordernumber' => $order->ordernumber ])}}">
                             <p class="title text-lg-center">{{__("Error")}}</p>
                         </a>
