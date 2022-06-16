@@ -16,7 +16,6 @@
                         @else
                             {{ $line }}
                         @endif
-
                     </a>
                 @endforeach
 
@@ -45,6 +44,7 @@
 
             <div class="navbar-dropdown">
                 @include('partials/language_switcher')
+                <button class="navbar-item" onclick="location.href='{{ route('file-upload.index') }}'">Profile</button>
                 <form action="{{ route('destroy', 'logout') }}" method="POST">
                     @csrf
                     <button class="navbar-item" type="submit">
