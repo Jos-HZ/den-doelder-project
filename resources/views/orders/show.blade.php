@@ -3,10 +3,11 @@
 @section('content')
     <section class="section">
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
-
         <div class="container">
+
             <h1 class="title has-text-centered">{{__("Order")}} {{ $order->ordernumber }} {{$order->pallettype}}</h1>
             <p class="has-text-centered">{{__("Number of pallets")}} {{ $order->palletnumber }}</p>
+
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
@@ -21,7 +22,6 @@
                         @else
                             <p class="title text-lg-center">{{__("Is finished")}}</p>
                         @endif
-
                     </article>
                 </div>
                 <div class="tile is-parent">
@@ -44,6 +44,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="tile is-ancestor">
                 <div class="tile is-parent is-8">
                     <article class="tile is-child box has-background-success">
@@ -91,6 +92,7 @@
                         @endif
                     </article>
                 </div>
+
                 <div class="tile is-parent is-vertical">
                     <div class="tile is-child box">
                         <a href="{{ route('qualityControl.create', ['ordernumber' => $order->ordernumber ])}}">

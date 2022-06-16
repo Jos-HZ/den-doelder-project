@@ -16,7 +16,6 @@
                         @else
                             {{ $line }}
                         @endif
-
                     </a>
                 @endforeach
 
