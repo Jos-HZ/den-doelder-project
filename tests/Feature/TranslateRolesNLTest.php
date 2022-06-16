@@ -8,7 +8,6 @@ use Tests\TestCase;
 
 class TranslateRolesNLTest extends TestCase
 {
-//    use
     use RefreshDatabase;
 
     /**
@@ -23,7 +22,8 @@ class TranslateRolesNLTest extends TestCase
             'name' => 'admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin12345'),
-            'role' => 'admin'
+            'role' => 'admin',
+            'language'=>'nl'
         ]);
         $response = $this->actingAs($user)->followingRedirects()->get('/language/nl/')->assertSee('U bent ingelogd als admin!');
         $response->assertStatus(200);
@@ -40,7 +40,7 @@ class TranslateRolesNLTest extends TestCase
         $user = User::factory()->create();
         $response = $this->post('/login', [
             'email' => $user->email,
-            'password' => 'password',
+            'password' => 'password'
         ]);
         $this->assertAuthenticated();
         $response = $this->actingAs($user)->followingRedirects()->get('/language/nl/')->assertSee('Je bent ingelogd als productie');
@@ -54,7 +54,8 @@ class TranslateRolesNLTest extends TestCase
             'name' => 'driver',
             'email' => 'driver@driver.com',
             'password' => bcrypt('driver12345'),
-            'role' => 'driver'
+            'role' => 'driver',
+            'language'=>'nl'
         ]);
         $response = $this->actingAs($user)->followingRedirects()->get('/language/nl/')->assertSee('U bent ingelogd als driver!');
         $response->assertStatus(200);
