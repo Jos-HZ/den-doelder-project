@@ -7,6 +7,7 @@ use App\Http\Controllers\BacklogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductionLineController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualityControlController;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\PasswordReset;
