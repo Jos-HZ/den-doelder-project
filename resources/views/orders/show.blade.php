@@ -133,7 +133,7 @@
                                     </td>
                                     <td>{{ $backlog->description }}</td>
                                     <td>{{ $backlog->resolved_at }}</td>
-                                    <td>{{ $backlog->timeDiffrence() }}</td>
+                                    <td>{{ $backlog->timeDifference() }}</td>
                                     <td>
                                         @if($backlog->resolved_at === null)
                                             <a href="{{ route('backlog.resolve', $backlog)}}">

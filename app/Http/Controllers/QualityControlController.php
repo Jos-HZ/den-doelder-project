@@ -12,7 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 
-class QualityControlController extends Controller
+class
+QualityControlController extends Controller
 {
     /**
      * Display a listing of the resource.
