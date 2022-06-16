@@ -16,7 +16,7 @@ class FileUploadController extends Controller
     {
 
         $validatedData = $request->validate([
-            'file' => 'required|csv,txt,xlx,xls,pdf|max:2048',
+            'file' => 'required:csv,txt,xlx,xls,pdf|max:2048',
 
         ]);
 
@@ -30,7 +30,7 @@ class FileUploadController extends Controller
         $save->name = $name;
         $save->path = $path;
 
-        return redirect('file-upload.index')->with('status', 'File Has been uploaded successfully in laravel 8');
+        return redirect('file-upload')->with('status', 'File Has been uploaded successfully in laravel 8');
 
     }
 }
