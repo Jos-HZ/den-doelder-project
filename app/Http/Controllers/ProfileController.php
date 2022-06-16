@@ -18,13 +18,13 @@ class ProfileController extends Controller
 {
 
     public function profile(){
-        return view('profile.index', array('user' => Auth::user()));
+        return view('file-upload.index', array('user' => Auth::user()));
     }
     public function index(Request $request)
     {
         $users = User::filter($request)->get();
 
-        return view('profile.index', compact('users'));
+        return view('file-upload.index', compact('users'));
     }
 
     public function store(Request $request)
@@ -50,7 +50,7 @@ class ProfileController extends Controller
 //    public function edit()
 //    {
 //        $user = Auth::user();
-//        return view('profile.edit', compact('user'), array('user' => Auth::user()));
+//        return view('file-upload.edit', compact('user'), array('user' => Auth::user()));
 //    }
 
     /**
@@ -79,7 +79,7 @@ class ProfileController extends Controller
     {
         $user->update($this->validatedError($request));
 
-        return redirect(route('profile.index', $user));
+        return redirect(route('file-upload.index', $user));
     }
 
 //    public function update_avatar(Request  $request){
@@ -97,7 +97,7 @@ class ProfileController extends Controller
 //            $user->avatar = $filename;
 //            $user->save();
 //        }
-//        return view('profile.index', array('user' => Auth::user()));
+//        return view('file-upload.index', array('user' => Auth::user()));
 //    }
 
 

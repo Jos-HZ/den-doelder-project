@@ -27296,7 +27296,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
                      * @returns {Function} Returns the new restricted function.
                      * @example
                      *
-                     * var saves = ['profile', 'settings'];
+                     * var saves = ['file-upload', 'settings'];
                      *
                      * var done = _.after(saves.length, function() {
                      *   console.log('done saving!');

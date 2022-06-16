@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Authorization\AdminController;
 use App\Http\Controllers\Authorization\DriverController;
 use App\Http\Controllers\BacklogController;
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductionLineController;
@@ -49,8 +50,10 @@ Route::get('/checklist', function () {
     return view('checklist');
 })->name('checklist');
 
-Route::get('profile', [ProfileController::class, 'profile'])->name('profile.index');
-Route::resource('profiles', ProfileController::class);
+
+
+Route::get('file-upload', [FileUploadController::class, 'index'])->name('file-upload.index');
+Route::post('store', [FileUploadController::class, 'store'])->name('file-upload.store');
 
 
 Route::group(['middleware' => ['auth']], function () {
