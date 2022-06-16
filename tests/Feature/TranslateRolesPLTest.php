@@ -4,11 +4,11 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class TranslateRolesNLTest extends TestCase
+class TranslateRolesPLTest extends TestCase
 {
-//    use
     use RefreshDatabase;
 
     /**
@@ -17,7 +17,7 @@ class TranslateRolesNLTest extends TestCase
      * @return void
      */
     /** @test */
-    public function LocalisationTest_admin_NL()
+    public function LocalisationTest_admin_PL()
     {
         $user = User::create([
             'name' => 'admin',
@@ -25,7 +25,7 @@ class TranslateRolesNLTest extends TestCase
             'password' => bcrypt('admin12345'),
             'role' => 'admin'
         ]);
-        $response = $this->actingAs($user)->followingRedirects()->get('/language/nl/')->assertSee('U bent ingelogd als admin!');
+        $response = $this->actingAs($user)->followingRedirects()->get('/language/pl/')->assertSee('Jesteś zalogowany jako administrator!');
         $response->assertStatus(200);
 
     }
@@ -35,7 +35,7 @@ class TranslateRolesNLTest extends TestCase
      * @return void
      */
     /** @test */
-    public function LocalisationTest_production_NL()
+    public function LocalisationTest_production_PL()
     {
         $user = User::factory()->create();
         $response = $this->post('/login', [
@@ -43,12 +43,12 @@ class TranslateRolesNLTest extends TestCase
             'password' => 'password',
         ]);
         $this->assertAuthenticated();
-        $response = $this->actingAs($user)->followingRedirects()->get('/language/nl/')->assertSee('Je bent ingelogd als productie');
+        $response = $this->actingAs($user)->followingRedirects()->get('/language/pl/')->assertSee('Jesteś zalogowany jako producent!');
         $response->assertStatus(200);
 
     }
 
-    public function LocalisationTest_driver_NL()
+    public function LocalisationTest_driver_PL()
     {
         $user = User::create([
             'name' => 'driver',
@@ -56,7 +56,7 @@ class TranslateRolesNLTest extends TestCase
             'password' => bcrypt('driver12345'),
             'role' => 'driver'
         ]);
-        $response = $this->actingAs($user)->followingRedirects()->get('/language/nl/')->assertSee('U bent ingelogd als driver!');
+        $response = $this->actingAs($user)->followingRedirects()->get('/language/pl/')->assertSee('Jesteś zalogowany jako kierowca!');
         $response->assertStatus(200);
     }
 }
