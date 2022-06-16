@@ -1,11 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-    <!DOCTYPE html>
-<html>
-<!DOCTYPE html>
-<html>
 <body>
 <div>
     <form method="POST" enctype="multipart/form-data" id="upload-file" action="{{ url('store') }}" >
@@ -18,7 +13,6 @@
                     @enderror
                 </div>
             </div>
-
             <div class="col-md-12">
                 <button type="submit" class="btn btn-primary" id="submit">Submit</button>
             </div>
