@@ -52,6 +52,7 @@ Route::get('/checklist', function () {
 Route::get('profile', [ProfileController::class, 'profile'])->name('profile.index');
 Route::resource('profiles', ProfileController::class);
 
+
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
     Route::get('redirects', [HomeController::class, 'index']);
