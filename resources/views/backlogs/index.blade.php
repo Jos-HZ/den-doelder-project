@@ -86,6 +86,5 @@
             </tbody>
         </table>
     </section>
-{{--    <div id="google_translate_element2"></div>--}}
+
 @endsection
-{{--<script src="{{asset("js/google_translate.js")}}"></script>--}}
