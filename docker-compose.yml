@@ -1,7 +1,5 @@
 services:
   php-apache:
-    build:
-      context: ./
     image: php:8.1-apache
     ports:
       - '${APP_PORT:-80}:80'
