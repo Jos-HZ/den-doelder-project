@@ -54,6 +54,8 @@
                     </div>
                 </div>
 
+                <input type="hidden" id="language" name="language" value= {{Auth::user()->language}}>
+
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     <button type="submit" class="btn btn-primary">{{__("Submit")}}</button>
                 </div>
