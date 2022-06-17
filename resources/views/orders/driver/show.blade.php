@@ -83,6 +83,15 @@
                         </div>
                     </div>
                 </div>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <div class="title is-child box">
+                        <a href="{{ route('placement.index') }}">
+                            <img src="/img/placement/placing-den-doelder.jpg" alt="placement">
+                        </a>
+                    </div>
+                </div>
+            </div>
             </div>
     </section>
 @endsection
