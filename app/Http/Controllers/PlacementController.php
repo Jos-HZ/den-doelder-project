@@ -22,7 +22,7 @@ class PlacementController extends Controller
     {
         $placements = Placement::all();
 
-        return view('placement.index', compact('placements'));
+        return view('placements.index', compact('placements'));
     }
 
     /**
@@ -36,7 +36,7 @@ class PlacementController extends Controller
             ->where('ordernumber', '=', request()->ordernumber)
             ->first();
 
-        return view('placement.create', ['order' => $order]);
+        return view('placements.create', ['order' => $order]);
     }
 
     /**
@@ -49,7 +49,7 @@ class PlacementController extends Controller
     {
         Placement::create($this->validatedPlacement($request));
 
-        return redirect(route('placement.index'));
+        return redirect(route('placements.index'));
     }
 
     /**
@@ -61,7 +61,7 @@ class PlacementController extends Controller
     public function validatedPlacement(Request $request): array
     {
         return request()->validate([
-            'placement' => 'required',
+            'placements' => 'required',
             'addition' => 'nullable',
             'description' => 'required',
             'quantity' => 'required',
@@ -76,7 +76,7 @@ class PlacementController extends Controller
      */
     public function show(Placement $placement)
     {
-        return view('placement.show', compact('placement'));
+        return view('placements.show', compact('placement'));
     }
 
     /**
@@ -87,7 +87,7 @@ class PlacementController extends Controller
      */
     public function edit(Placement $placement)
     {
-        return view('placement.edit', compact('placement'));
+        return view('placements.edit', compact('placement'));
     }
 
     /**
@@ -101,7 +101,7 @@ class PlacementController extends Controller
     {
         $placement->update($this->validatedPlacement($request));
 
-        return redirect(route('placement.index'));
+        return redirect(route('placements.index'));
     }
 
     /**
@@ -114,6 +114,6 @@ class PlacementController extends Controller
     {
         $placement->delete();
 
-        return redirect(route('placement.index'));
+        return redirect(route('placements.index'));
     }
 }
