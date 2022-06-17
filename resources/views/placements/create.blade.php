@@ -11,10 +11,7 @@
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
-                            @class ([
-                                'input',
-                                'is-danger' => $errors->get('time'),
-                            ])
+                            class="input @error('order_id') is-danger @enderror"
                             type="hidden"
                             id="order_id"
                             name="order_id"

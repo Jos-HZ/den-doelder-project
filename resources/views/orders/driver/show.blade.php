@@ -78,7 +78,7 @@
 
                         <div class="tile is-child box">
                             <a href="">
-                                <p class="title text-lg-center">{{__("Location")}}</p>
+                                <p class="title text-lg-center">{{__("Location Log")}}</p>
                             </a>
                         </div>
                     </div>
@@ -87,6 +87,7 @@
                 <div class="tile is-parent">
                     <div class="title is-child box">
                         <a href="{{ route('placements.index') }}">
+                            <p class="title text-lg-center">{{__("Location")}}</p>
                             <img src="/img/placement/placing-den-doelder.jpg" alt="placement">
                         </a>
                     </div>

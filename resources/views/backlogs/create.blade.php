@@ -3,8 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <h1>{{__("Order")}} {{ app('request')->input('ordernumber') }}
-            </h1>
+            <h1>{{__("Order")}} {{ app('request')->input('ordernumber') }}</h1>
 
             <form method="POST" action="{{ route('backlog.store') }}">
                 @csrf
