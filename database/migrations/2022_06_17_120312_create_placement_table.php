@@ -15,7 +15,7 @@ class CreatePlacementTable extends Migration
     {
         Schema::create('placements', function (Blueprint $table) {
             $table->id();
-            $table->enum('placement', ['dry-rooms', 'location-q', 'warehouse-c', 'c-pallets', 'warehouse-2+3', 'location-a', 'warehouse-d', 'outside-terrain']);
+            $table->enum('placements', ['dry-rooms', 'location-q', 'warehouse-c', 'c-pallets', 'warehouse-2+3', 'location-a', 'warehouse-d', 'outside-terrain']);
             $table->string('addition')->nullable();
             $table->string('description');
             $table->integer('quantity');
