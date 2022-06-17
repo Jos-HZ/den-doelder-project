@@ -66,6 +66,19 @@
                     </div>
                 </div>
 
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <strong>{{__("Language")}}:</strong>
+                    <div class="form-group">
+                        <div class="select">
+                            <select id="language" name="language">
+                                <option value="nl">{{__("Dutch")}}</option>
+                                <option value="en">{{__("English")}}</option>
+                                <option value="pl">{{__("Polish")}}</option>
+                                <option value="ro">{{__("Romanian")}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     <button type="submit" class="btn btn-primary">{{__("Submit")}}</button>
                 </div>
