@@ -54,13 +54,27 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
+                    <strong>{{__("Role")}}:</strong>
                     <div class="form-group">
-                        <strong>{{__("Role")}}:</strong>
                         <div class="select">
                             <select id="role" name="role">
                                 <option value="admin">{{__("Administrative worker")}}</option>
                                 <option value="driver">{{__("Forklift driver")}}</option>
                                 <option value="production">{{__("Production")}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <strong>{{__("Language")}}:</strong>
+                    <div class="form-group">
+                        <div class="select">
+                            <select id="language" name="language">
+                                <option value="nl">{{__("Dutch")}}</option>
+                                <option value="en">{{__("English")}}</option>
+                                <option value="pl">{{__("Polish")}}</option>
+                                <option value="ro">{{__("Romanian")}}</option>
                             </select>
                         </div>
                     </div>
