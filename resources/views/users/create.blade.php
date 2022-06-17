@@ -54,8 +54,8 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
+                    <strong>{{__("Role")}}:</strong>
                     <div class="form-group">
-                        <strong>{{__("Role")}}:</strong>
                         <div class="select">
                             <select id="role" name="role">
                                 <option value="admin">{{__("Administrative worker")}}</option>
