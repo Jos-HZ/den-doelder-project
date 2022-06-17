@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="section">
-        <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
+        <a href="/"><img src="/img/svg/back-arrow.svg"  width="35" height="35"></a>
         <br>
 
         <form method="get" action="{{ route('backlog.index') }}">
@@ -86,6 +86,7 @@
             </tbody>
         </table>
     </section>
-{{--    <div id="google_translate_element2"></div>--}}
+
 @endsection
-{{--<script src="{{asset("js/google_translate.js")}}"></script>--}}
+
+
