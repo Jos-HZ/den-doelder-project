@@ -10,7 +10,7 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                        <a href="">
+                        <a href="{{ route('placements.create')}}">
                             <img src="/img/placement/locations/loods-C.jpg" alt="loods-C">
                             <p class="title text-center pt-3">{{__("Warehouse C")}}</p>
                         </a>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                        <a href="">
+                        <a href="{{ route('placements.create')}}">
 
 
                             <img src="/img/placement/locations/droog-kamer.jpg" alt="droog-kamers">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                        <a href="">
+                        <a href="{{ route('placements.create')}}">
 
 
                             <img src="/img/placement/locations/location-Q.jpg" alt="location-Q">
@@ -41,7 +41,7 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                        <a href="">
+                        <a href="{{ route('placements.create')}}">
                             <img src="/img/placement/locations/buiten-terrein.JPG" alt="buiten-terrein">
                             <p class="title text-center pt-3">{{__("Outside Terrain")}}</p>
                         </a>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                        <a href="">
+                        <a href="{{ route('placements.create')}}">
 
                             <img src="/img/placement/locations/Loods-2+3.JPG" alt="loods-2+3">
                             <p class="title text-center pt-3">{{__("Warehouse 2 + 3")}}</p>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                        <a href="">
+                        <a href="{{ route('placements.create')}}">
 
                             <img src="/img/placement/locations/C-pallets.JPG" alt="c-pallets">
                             <p class="title text-center pt-3">{{__("C Pallets")}}</p>
@@ -70,7 +70,7 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent is-4">
                     <div class="tile is-child box">
-                        <a href="">
+                        <a href="{{ route('placements.create')}}">
                             <img src="/img/placement/locations/loods-D.JPG" alt="loods-d">
                             <p class="title text-center pt-3">{{__("Warehouse D")}}</p>
                         </a>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="tile is-parent is-4">
                     <div class="tile is-child box">
-                        <a href="">
+                        <a href="{{ route('placements.create')}}">
                             <img src="/img/placement/locations/location-A.JPG" alt="location-a">
                             <p class="title text-center pt-3">{{__("Location A")}}</p>
                         </a>

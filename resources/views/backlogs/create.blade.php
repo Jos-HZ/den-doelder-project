@@ -94,9 +94,8 @@
                             <textarea
                                 id="description"
                                 name="description"
-                                oninput="textareaOnInput(this)">{{
-                                    $errors->any() ? old('description') : ''
-                            }}</textarea>
+                                oninput="textareaOnInput(this)">
+                                {{ $errors->any() ? old('description') : '' }}</textarea>
                         </div>
                     </div>
                     @error('description')

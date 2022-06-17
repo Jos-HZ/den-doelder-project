@@ -86,7 +86,7 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <div class="title is-child box">
-                        <a href="{{ route('placement.index') }}">
+                        <a href="{{ route('placements.index') }}">
                             <img src="/img/placement/placing-den-doelder.jpg" alt="placement">
                         </a>
                     </div>
