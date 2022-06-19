@@ -31,8 +31,10 @@
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
+                        <a href=/public/storage/files/D4QyUTWQq9BF9vBabztsfuTiKc735a4RI7hwsDlZ.pdf">
                         <p class="title text-lg-center">{{__("Order details")}}</p>
                     </article>
+                    </a>
                 </div>
                 <div class="tile is-parent is-4">
                     <div class="tile is-child box">

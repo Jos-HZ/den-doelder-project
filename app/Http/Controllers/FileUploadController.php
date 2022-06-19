@@ -33,4 +33,7 @@ class FileUploadController extends Controller
         return redirect('file-upload')->with('status', 'File Has been uploaded successfully in laravel 8');
 
     }
+    public function getClientOriginalName() {
+        return $this->originalName;
+    }
 }
