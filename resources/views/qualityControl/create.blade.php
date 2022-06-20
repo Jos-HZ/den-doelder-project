@@ -48,15 +48,14 @@
                     @enderror
                 </div>
 
-                <label for="name_pallet">{{__("Name pallet")}}/ {{__("Order")}}</label>
-                <div class="label">
-                    <div class="control">
-                        <input class="input @error('name_pallet') is-danger @enderror"
-                               type="text"
-                               id="name_pallet"
-                               name="name_pallet"
-                               value="{{ $errors->any() ? old('name_pallet') : '' }}">
-                    </div>
+                <br>
+
+                <div class="control">
+                    <input class="input @error('name_pallet') is-danger @enderror"
+                           type="hidden"
+                           id="name_pallet"
+                           name="name_pallet"
+                           value="{{ $order->pallettype }}">
                 </div>
 
                 <label for="def_nr">Def nr</label>
@@ -71,7 +70,9 @@
                     </div>
                 </div>
 
-                <label for="action">Action:</label><br>
+                <br>
+
+                <label for="action">Action:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
