@@ -10,7 +10,8 @@ class Placement extends Model
     use HasFactory;
 
     public $fillable = [
-        'placements',
+        'placement',
+        'order_id',
         'addition',
         'description',
         'quantity',
