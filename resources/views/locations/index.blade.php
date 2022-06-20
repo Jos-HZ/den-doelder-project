@@ -13,7 +13,8 @@
                         @endif
                         <div class="tile is-parent">
                             <div class="tile is-child box">
-                                <a href="{{ route('placements.create' ,['ordernumber' => app('request')->input('ordernumber')])}}">
+
+                                <a href="{{ route('placements.create',['ordernumber' => app('request')->input('ordernumber'), 'location'=> $location->name ])}}">
                                     <img src="{{ $location->img_name }}" alt="{{ $location->name }}">
                                     <p class="title text-center pt-3">{{ $location->name }}</p>
                                 </a>
@@ -21,8 +22,8 @@
                         </div>
                         @if(($location->id -1)% 3 === 2)
                     </div>
-        @endif
-        @endforeach
+                @endif
+            @endforeach
         </div>
 
     </section>

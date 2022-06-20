@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="tile is-child box">
-                            <a href="">
+                            <a href="{{ route('placements.index') }}">
                                 <p class="title text-lg-center">{{__("Location Log")}}</p>
                             </a>
                         </div>

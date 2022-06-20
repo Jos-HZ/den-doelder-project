@@ -9,6 +9,17 @@
 
             <form method="POST" action="{{ route('placements.store') }}">
                 @csrf
+                <label for="placement"></label>
+                <div class="label">
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input @error('order_id') is-danger @enderror"
+                               type="text"
+                               name="placement"
+                               id="placement"
+                               value="{{ app('request')->input('location') }}">
+                    </div>
+                </div>
+
                 <label for="order_id"></label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
