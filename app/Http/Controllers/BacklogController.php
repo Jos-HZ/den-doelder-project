@@ -109,7 +109,6 @@ class BacklogController extends Controller
         if ($backlog->resolved_at === null) {
             $backlog->resolved_at = now();
             $backlog->save();
-            dd($backlog->timeDifference());
         }
         return redirect(route('orders.show', $backlog->order_id));
     }
