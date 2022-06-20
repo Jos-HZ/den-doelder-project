@@ -15,6 +15,9 @@ class CreateChecklistsTable extends Migration
     {
         Schema::create('checklists', function (Blueprint $table) {
             $table->id();
+            $table->string('Pallet name');
+            $table->string('order number');
+            $table->
             $table->timestamps();
         });
     }
