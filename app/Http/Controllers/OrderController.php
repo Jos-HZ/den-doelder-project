@@ -129,6 +129,7 @@ class OrderController extends Controller
     {
         if ($order->start_time === null) {
             $order->start_time = now();
+            $order->status = 'production';
             $order->save();
         }
         return redirect(route('orders.show', $order));
@@ -144,6 +145,7 @@ class OrderController extends Controller
     {
         if ($order->end_time === null) {
             $order->end_time = now();
+            $order->status = 'completed';
             $order->save();
         }
         return redirect(route('orders.show', $order));
@@ -160,6 +162,7 @@ class OrderController extends Controller
     {
         if ($order->conversion_time === null) {
             $order->conversion_time = now();
+            $order->status = 'conversion';
             $order->save();
         }
         return redirect(route('orders.show', $order));
