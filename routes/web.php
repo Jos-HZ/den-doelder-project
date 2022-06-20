@@ -6,6 +6,7 @@ use App\Http\Controllers\Authorization\DriverController;
 use App\Http\Controllers\BacklogController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PlacementController;
 use App\Http\Controllers\ProductionLineController;
@@ -48,6 +49,7 @@ Route::resource('/qualityControl', QualityControlController::class)->except(['in
 Route::get('/qualityControl/{order}', [QualityControlController::class, 'index'])->name('qualityControl.index');
 
 Route::resource('/placements', PlacementController::class);
+Route::resource('/locations', LocationController::class);
 
 
 
