@@ -17,7 +17,6 @@ class CreateChecklistsTable extends Migration
             $table->id();
             $table->string('Pallet name');
             $table->string('order number');
-            $table->
             $table->timestamps();
         });
     }
