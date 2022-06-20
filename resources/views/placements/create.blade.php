@@ -2,6 +2,8 @@
 
 @section('content')
     <section class="section">
+        <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
+
         <div class="container">
             <h1>{{__("Order")}} {{ app('request')->input('ordernumber') }}</h1>
 
@@ -69,8 +71,15 @@
                     @error('quantity')
                     <p class="help is-danger">{{ $errors->get('quantity')[0] }}</p>
                     @enderror
+                </div>
+
+                <input type="submit" value="{{__("Submit")}}" class="button is-link">
+
+                <a href="{{route('placements.index')}}">
+                    <button type="button" class="button is-link-light">{{__("Cancel")}}</button>
+                </a>
+
             </form>
         </div>
     </section>
-
 @endsection

@@ -86,7 +86,7 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <div class="title is-child box">
-                        <a href="{{ route('placements.index') }}">
+                        <a href="{{ route('locations.index', ['ordernumber' => $order->ordernumber ]) }}">
                             <p class="title text-lg-center">{{__("Location")}}</p>
                             <img src="/img/placement/placing-den-doelder.jpg" alt="placement">
                         </a>
