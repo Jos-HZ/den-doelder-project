@@ -6,6 +6,7 @@
 
         <div class="container">
             <h1>{{__("Order")}} {{ app('request')->input('ordernumber') }}</h1>
+            <p><b>{{__("Chosen location:")}} </b> {{app('request')->input('location')}}</p>
 
             <form method="POST" action="{{ route('placements.store') }}">
                 @csrf
@@ -13,7 +14,7 @@
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input class="input @error('order_id') is-danger @enderror"
-                               type="text"
+                               type="hidden"
                                name="placement"
                                id="placement"
                                value="{{ app('request')->input('location') }}">
