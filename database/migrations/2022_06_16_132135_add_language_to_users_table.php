@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumsToOrdersTable extends Migration
+class AddLanguageToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class AddColumsToOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->time('star
-            t_time')->nullable();
-            $table->time('end_time')->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->text('language');
         });
     }
 
@@ -27,9 +25,8 @@ class AddColumsToOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn('start_time');
-            $table->dropColumn('end_time');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('language');
         });
     }
 }

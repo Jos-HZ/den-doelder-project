@@ -18,7 +18,8 @@ class Backlog extends Model
         'time',
         'date',
         'description',
-        'category'
+        'category',
+        'language'
     ];
 
     public function order()
