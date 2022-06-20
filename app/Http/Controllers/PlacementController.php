@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Placement;
+use App\Models\Location;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -30,13 +31,13 @@ class PlacementController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create(Request $request)
+    public function create(Request $request, Location $location)
     {
         $order = DB::table('orders')
             ->where('ordernumber', '=', request()->ordernumber)
             ->first();
 
-        return view('placements.create', ['order' => $order]);
+        return view('placements.create', compact('location'), ['order' => $order]);
     }
 
     /**
@@ -116,4 +117,5 @@ class PlacementController extends Controller
 
         return redirect(route('placements.index'));
     }
+
 }
