@@ -14,7 +14,8 @@ class AddColumsToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->time('start_time')->nullable();
+            $table->time('star
+            t_time')->nullable();
             $table->time('end_time')->nullable();
         });
     }
