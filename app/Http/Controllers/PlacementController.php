@@ -31,13 +31,13 @@ class PlacementController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create(Request $request, Location $location)
+    public function create(Request $request)
     {
         $order = DB::table('orders')
             ->where('ordernumber', '=', request()->ordernumber)
             ->first();
 
-        return view('placements.create', compact('location'), ['order' => $order]);
+        return view('placements.create', ['order' => $order]);
     }
 
     /**
@@ -62,7 +62,8 @@ class PlacementController extends Controller
     public function validatedPlacement(Request $request): array
     {
         return request()->validate([
-            'placements' => 'required',
+            'placement' => 'required',
+            'order_id' => 'required',
             'addition' => 'nullable',
             'description' => 'required',
             'quantity' => 'required',
