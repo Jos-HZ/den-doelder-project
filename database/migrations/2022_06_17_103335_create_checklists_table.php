@@ -17,12 +17,9 @@ class CreateChecklistsTable extends Migration
             $table->id();
             $table->string('Pallet name');
             $table->string('order number');
-<<<<<<< Updated upstream
-=======
             $table->string('HT /non HT');
             $table->string('location');
             $table->string('controller name');
->>>>>>> Stashed changes
             $table->timestamps();
         });
     }

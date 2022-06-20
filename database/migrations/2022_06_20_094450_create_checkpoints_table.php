@@ -16,6 +16,8 @@ class CreateCheckpointsTable extends Migration
         Schema::create('checkpoints', function (Blueprint $table) {
             $table->id();
             $table->string('correct');
+            $table->string('ht/kd');
+            $table->bigInteger('humidity');
             $table->timestamps();
         });
     }
