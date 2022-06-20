@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChecklistsTable extends Migration
+class CreateRubricsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,9 @@ class CreateChecklistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('checklists', function (Blueprint $table) {
+        Schema::create('rubrics', function (Blueprint $table) {
             $table->id();
-            $table->string('Pallet name');
-            $table->string('order number');
-<<<<<<< Updated upstream
-=======
-            $table->string('HT /non HT');
-            $table->string('location');
-            $table->string('controller name');
->>>>>>> Stashed changes
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -34,6 +27,6 @@ class CreateChecklistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('checklists');
+        Schema::dropIfExists('rubrics');
     }
 }
