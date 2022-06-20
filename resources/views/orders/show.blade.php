@@ -11,9 +11,13 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        @if($order->start_time === null)
+                        @if($order->conversion_time === null)
+                            <a href="{{ route('orders.conversion', $order) }}">
+                                <p class="title text-lg-center">{{__("Conversion")}}</p>
+                            </a>
+                        @elseif($order->start_time === null)
                             <a href="{{ route('orders.start', $order) }}">
-                                <p class="title text-lg-center">{{__("Start")}}</p>
+                                <p class="title text-lg-center">{{__("Start production")}}</p>
                             </a>
                         @elseif($order->end_time === null)
                             <a href="{{ route('orders.end', $order) }}">

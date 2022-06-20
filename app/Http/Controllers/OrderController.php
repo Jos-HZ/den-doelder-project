@@ -148,4 +148,20 @@ class OrderController extends Controller
         }
         return redirect(route('orders.show', $order));
     }
+
+
+    /**
+     * Update the end time to current time.
+     *
+     * @param Order $order
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function conversion(Order $order)
+    {
+        if ($order->conversion_time === null) {
+            $order->conversion_time = now();
+            $order->save();
+        }
+        return redirect(route('orders.show', $order));
+    }
 }
