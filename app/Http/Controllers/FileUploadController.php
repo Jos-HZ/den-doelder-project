@@ -20,7 +20,7 @@ class FileUploadController extends Controller
 
         ]);
 
-        $name = $request->file('file')->getClientOriginalName();
+        $name = $request->file('file')->getFilename();
 
         $path = $request->file('file')->store('public/files');
 
@@ -32,17 +32,5 @@ class FileUploadController extends Controller
 
         return redirect('file-upload')->with('status', 'File Has been uploaded successfully');
 
-    }
-
-    public function file(File $file)
-    {
-        // file path
-        $path = public_path('storage/files' . '/' . $file);
-        // header
-        $header = [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="' . $file . '"'
-        ];
-        return response()->file($path, $header);
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
 <body>
 <div>
-    <form method="POST" enctype='multipart/form-data' id="upload-file" action="{{ url('store') }}" >
+    <form method="POST" enctype="multipart/form-data" id="upload-file" action="{{ url('store') }}" >
         @csrf
             <div class="col-md-12">
                 <div class="form-group">

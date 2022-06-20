@@ -31,7 +31,7 @@
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <a href="{{ 'storage/files/D4QyUTWQq9BF9vBabztsfuTiKc735a4RI7hwsDlZ.pdf' }}">
+                        <a href="{{ '/pdf/{file}' }}">
                         <p class="title text-lg-center">{{__("Order details")}}</p>
                     </article>
                     </a>
