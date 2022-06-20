@@ -6,7 +6,9 @@ use App\Http\Controllers\Authorization\DriverController;
 use App\Http\Controllers\BacklogController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PlacementController;
 use App\Http\Controllers\ProductionLineController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualityControlController;
@@ -47,9 +49,8 @@ Route::get('/backlog/{backlog}/resolve', [BacklogController::class, 'resolve'])-
 Route::resource('/qualityControl', QualityControlController::class)->except(['index', 'show', 'delete']);
 Route::get('/qualityControl/{order}', [QualityControlController::class, 'index'])->name('qualityControl.index');
 
-Route::get('/checklist', function () {
-    return view('checklist');
-})->name('checklist');
+Route::resource('/placements', PlacementController::class);
+Route::resource('/locations', LocationController::class);
 
 
 

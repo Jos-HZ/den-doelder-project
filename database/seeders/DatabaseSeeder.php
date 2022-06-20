@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(QualityControlSeeder::class);
         $this->call(BacklogSeeder::class);
         $this->call(PermissionTableSeeder::class);
+        $this->call(LocationSeeder::class);
     }
 }
