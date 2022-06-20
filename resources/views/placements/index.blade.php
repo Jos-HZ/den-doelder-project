@@ -11,6 +11,7 @@
                 <tr>
                     <th><abbr title="order_id">{{__("Order")}}</abbr></th>
                     <th><abbr title="pallet_name">{{__('Pallet name')}}</abbr></th>
+                    <th><abbr title="description">{{__('Description')}}</abbr></th>
                     <th><abbr title="location">{{__("Location")}}</abbr></th>
                     <th><abbr title="quantity">{{__('Quantity')}}</abbr></th>
                 </tr>
@@ -20,6 +21,7 @@
                     <tr>
                         <td>{{ $placement->order->ordernumber }}</td>
                         <td>{{ $placement->order->pallettype}}</td>
+                        <td>{{ $placement->description}}</td>
                         <td>{{ $placement->placement }}</td>
                         <td>{{ $placement->quantity }}</td>
                     </tr>
