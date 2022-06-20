@@ -20,4 +20,5 @@ class Placement extends Model
     {
         return $this->belongsTo(Order::class);
     }
+
 }
