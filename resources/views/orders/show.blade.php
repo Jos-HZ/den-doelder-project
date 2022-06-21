@@ -10,7 +10,25 @@
 
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
-                    <article class="tile is-child box">
+                    <article class="tile is-child box @switch($order->status)
+                        @case('pending')
+                            has-background-grey-light
+                            @break
+                        @case('conversion')
+                            has-background-warning
+                            @break
+                        @case('production')
+                        bg-orange-500
+                            @break
+                        @case('completed')
+                            has-background-success
+                            @break
+                        @case('error')
+                            is-danger
+                            @break
+                        @default
+                            is-primary
+                    @endswitch">
                         @if($order->conversion_time === null)
                             <a href="{{ route('orders.conversion', $order) }}">
                                 <p class="title text-lg-center">{{__("Conversion")}}</p>
