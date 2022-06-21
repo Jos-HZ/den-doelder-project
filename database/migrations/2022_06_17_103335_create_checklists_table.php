@@ -15,11 +15,12 @@ class CreateChecklistsTable extends Migration
     {
         Schema::create('checklists', function (Blueprint $table) {
             $table->id();
-            $table->string('Pallet name');
-            $table->string('order number');
-            $table->string('HT /non HT');
+            $table->string('palletname');
+            $table->string('ordernumber');
+            $table->string('HT/nonHT');
+            $table->date('date');
             $table->string('location');
-            $table->string('controller name');
+            $table->string('controllername');
             $table->timestamps();
         });
     }

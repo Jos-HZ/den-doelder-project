@@ -28,5 +28,12 @@ class Order extends Model
     {
         return $this->hasMany(Backlog::class);
     }
+    /**
+     * Get the checklist associated with the order.
+     */
+    public function checklist(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Checklist::class);
+    }
 }
 

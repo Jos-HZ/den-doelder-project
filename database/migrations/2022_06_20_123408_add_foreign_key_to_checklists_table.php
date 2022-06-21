@@ -14,8 +14,9 @@ class AddForeignKeyToChecklistsTable extends Migration
     public function up()
     {
         Schema::table('checklists', function (Blueprint $table) {
-            $table->unsignedBigInteger('checklist_id');
-            $table->foreign('checklist_id')->references('id')->on('checklists')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
@@ -27,7 +28,7 @@ class AddForeignKeyToChecklistsTable extends Migration
     public function down()
     {
         Schema::table('checklists', function (Blueprint $table) {
-            $table->dropColumn('checklists');
+            $table->dropColumn('order_id');
         });
     }
 }

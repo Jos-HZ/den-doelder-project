@@ -1,9 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Order;
 use App\Models\Checklist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
+
 
 class ChecklistController extends Controller
 {
@@ -12,9 +19,10 @@ class ChecklistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+//        $checklist = Checklist::filter($request->all())->get();
+
     }
 
     /**
@@ -22,9 +30,13 @@ class ChecklistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+      $order = DB::table('orders')
+            ->where('ordernumber', '=', request()->ordernumber)
+            ->first();
+        return view('checklist.create',['order' => $order]);
     }
 
     /**
@@ -46,7 +58,7 @@ class ChecklistController extends Controller
      */
     public function show(Checklist $checklist)
     {
-        //
+        return view('checklist.show');
     }
 
     /**
@@ -83,3 +95,5 @@ class ChecklistController extends Controller
         //
     }
 }
+
+

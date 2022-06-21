@@ -25,9 +25,11 @@
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <article class="tile is-child box">
+                    <div class="tile is-child box">
+                    <a href="{{ route('checklist.create', ['ordernumber' => $order->ordernumber ])}}">
                         <p class="title text-lg-center">{{__("Control list")}}</p>
-                    </article>
+                    </a>
+                    </div>
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">

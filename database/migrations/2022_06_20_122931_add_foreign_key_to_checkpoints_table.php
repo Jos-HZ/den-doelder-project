@@ -14,8 +14,8 @@ class AddForeignKeyToCheckpointsTable extends Migration
     public function up()
     {
         Schema::table('checkpoints', function (Blueprint $table) {
-            $table->unsignedBigInteger('rubrics_id');
-            $table->foreign('rubrics_id')->references('id')->on('rubrics')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('rubric_id');
+            $table->foreign('rubric_id')->references('id')->on('rubrics')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }
@@ -28,7 +28,7 @@ class AddForeignKeyToCheckpointsTable extends Migration
     public function down()
     {
         Schema::table('checkpoints', function (Blueprint $table) {
-            $table->dropColumn('rubrics');
+            $table->dropColumn('rubric_id');
         });
     }
 }
