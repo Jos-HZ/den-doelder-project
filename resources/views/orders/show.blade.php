@@ -131,9 +131,13 @@
                     </div>
 
                     <div class="tile is-child box has-background-danger">
+                        @if($order->error_status == 1)
+                            <p class="title text-lg-center">{{__("Error occurred")}}</p>
+                        @else
                         <a href="{{ route('backlog.create', ['ordernumber' => $order->ordernumber ])}}">
                             <p class="title text-lg-center">{{__("Error")}}</p>
                         </a>
+                            @endif
                     </div>
                 </div>
             </div>
