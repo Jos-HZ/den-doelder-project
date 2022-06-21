@@ -28,12 +28,18 @@
                        href="{{ route('users.index') }}">
                         {{__("Manage Users")}}
                     </a>
-                @elsecan('is_production')
-                    <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"
-                       href="{{ url('/backlog') }}">
-                        {{__("Backlog")}}
-                    </a>
                 @endcan
+
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link has-text-white">
+                            {{__("Backlog")}}
+                        </a>
+
+                        <div class="navbar-dropdown">
+                            <button class="navbar-item" onclick="location.href='{{ route('orders.data') }}'">Order backlog</button>
+                            <button class="navbar-item" onclick="location.href='{{ route('backlog.index') }}'">Error backlog</button>
+                        </div>
+                    </div>
             </div>
         </div>
 

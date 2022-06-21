@@ -167,4 +167,16 @@ class OrderController extends Controller
         }
         return redirect(route('orders.show', $order));
     }
+
+    /**
+     * Update the end time to current time.
+     *
+     * @param Order $order
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function  data(): Factory|View|Application
+    {
+        $orders = Order::all();
+        return view('orders.data', compact('orders'));
+    }
 }
