@@ -34,10 +34,7 @@ class BacklogFilter extends ModelFilter
      */
     public function cape($cape): BacklogFilter
     {
-//        return $this->where('cape', '=', $cape);
-//        $order_id = $this->order_id;
         $order = Order::where('production_line_id', $cape)->pluck('id');
-//        dd(Order::where('production_line', $cape)->pluck('id'));
 
         return $this->whereIn('order_id', $order);
     }
