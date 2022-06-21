@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CategorySeeder extends Seeder
 {
@@ -13,6 +14,19 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $categories = [
+            'upper_deck',
+            'blocks',
+            'bottom_deck',
+            'remaining'
+        ];
+
+        foreach ($categories as $category) {
+            DB::table('categories')->insert([
+                'category' => $category,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
     }
 }
