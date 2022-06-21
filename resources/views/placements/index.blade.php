@@ -14,6 +14,7 @@
                     <th><abbr title="description">{{__('Description')}}</abbr></th>
                     <th><abbr title="location">{{__("Location")}}</abbr></th>
                     <th><abbr title="quantity">{{__('Quantity')}}</abbr></th>
+                    <th><abbr title="edit"></abbr></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,11 @@
                         <td>{{ $placement->description}}</td>
                         <td>{{ $placement->placement }}</td>
                         <td>{{ $placement->quantity }}</td>
+                        <td>
+                            <a href="{{ route('placements.edit', $placement->id) }}">
+                                <button class="btn btn-default" type="button">{{__("Edit")}}</button>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
