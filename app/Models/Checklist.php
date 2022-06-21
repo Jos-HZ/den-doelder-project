@@ -9,6 +9,17 @@ class Checklist extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'palletname',
+        'ordernumber',
+        'HT/nonHT',
+        'date',
+        'location',
+        'controllername',
+        'order_id'
+    ];
+
+
     public function rubric(){
         return $this->hasMany(Rubric::class);
     }

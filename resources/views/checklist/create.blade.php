@@ -63,6 +63,17 @@
                     @enderror
                 </div>
 
+                <label for="location">{{__("Location")}}</label>
+                <div class="label">
+                    <div class="control">
+                        <input class="input @error('location') is-danger @enderror"
+                               type="text"
+                               id="location"
+                               name="location"
+                               value= "@if($order->production_line_id===3)cape 5 @else cap {{$order->production_line_id}} @endif">
+                    </div>
+                </div>
+
                 <label for="controllername">{{__("Controller")}} {{__("Name")}}</label>
                 <div class="label">
                     <div class="control">
@@ -74,7 +85,57 @@
                     </div>
                 </div>
 
-              
+                <label for="order_id"></label>
+                <div class="label">
+                    <div class="control has-icons-left has-icons-right">
+                        <input
+                            @class ([
+                                'input',
+                                'is-danger' => $errors->get('time'),
+                            ])
+                            type="hidden"
+                            id="order_id"
+                            name="order_id"
+                            value="{{
+                            DB::table('orders')
+                                ->where('ordernumber', app('request')
+                                ->input('ordernumber'))
+                                ->pluck('id')
+                                ->first()
+                            }}"
+                        >
+                    </div>
+                </div>
+
+                <label for="palletname"></label>
+                <div class="label">
+
+                    <div class="control">
+
+                        <input type="text"
+                               name="name"
+                               id="name"
+                               class="input @error('name') is-danger @enderror"
+                              >
+
+
+                    </div>
+                </div>
+
+                <label for="name"></label>
+                <div class="label">
+
+                    <div class="control">
+
+                        <input type="text"
+                               name="name"
+                               id="name"
+                               class="input @error('name') is-danger @enderror"
+                               >
+
+
+                    </div>
+                </div>
 
                 <input type="submit" value="{{__("Submit")}}" class="button is-link">
 

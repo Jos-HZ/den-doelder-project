@@ -38,12 +38,13 @@ class TranslateRolesENTest extends TestCase
     /** @test */
     public function LocalisationTest_production_EN()
     {
-        $user = User::factory()->create();
-        $response = $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'password',
+        $user = User::create([
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('admin12345'),
+            'role' => 'production',
+            'language'=>'en'
         ]);
-        $this->assertAuthenticated();
         $response = $this->actingAs($user)->followingRedirects()->get('/language/en/')->assertSee('You are logged in as production!');
         $response->assertStatus(200);
 

@@ -38,12 +38,13 @@ class TranslateRolesROTest extends TestCase
     /** @test */
     public function LocalisationTest_production_RO()
     {
-        $user = User::factory()->create();
-        $response = $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'password',
+        $user = User::create([
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('admin12345'),
+            'role' => 'production',
+            'language'=>'ro'
         ]);
-        $this->assertAuthenticated();
         $response = $this->actingAs($user)->followingRedirects()->get('/language/ro/')->assertSee('Sunteți autentificat ca producție!');
         $response->assertStatus(200);
 

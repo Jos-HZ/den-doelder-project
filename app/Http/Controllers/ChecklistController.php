@@ -47,7 +47,10 @@ class ChecklistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        Checklist::create($this->validatedChecklist($request));
+
+        return redirect(route('orders.show', $request->order_id));
     }
 
     /**
@@ -93,6 +96,18 @@ class ChecklistController extends Controller
     public function destroy(Checklist $checklist)
     {
         //
+    }
+
+    private function validatedChecklist(Request $request){
+        return $request->validate([
+            'palletname' => 'required',
+            'ordernumber' => 'required|numeric|gt:0',
+            'HT/nonHT' => 'required|string',
+            'date'=>'required|date',
+            'location'=>'required|string',
+            'controllername'=>'required|string',
+            'order_id'=>'required'
+        ]);
     }
 }
 

@@ -37,12 +37,13 @@ class TranslateRolesNLTest extends TestCase
     /** @test */
     public function LocalisationTest_production_NL()
     {
-        $user = User::factory()->create();
-        $response = $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'password'
+        $user = User::create([
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('admin12345'),
+            'role' => 'production',
+            'language'=>'nl'
         ]);
-        $this->assertAuthenticated();
         $response = $this->actingAs($user)->followingRedirects()->get('/language/nl/')->assertSee('Je bent ingelogd als productie');
         $response->assertStatus(200);
 
