@@ -14,8 +14,14 @@ class AddForeignKeyToRowsTable extends Migration
     public function up()
     {
         Schema::table('rows', function (Blueprint $table) {
-            $table->unsignedBigInteger('row_id')->nullable();
-            $table->foreign('row_id')->references('id')->on('columns');
+            $table->unsignedBigInteger('column_id')->nullable();
+            $table->foreign('column_id')->references('id')->on('columns');
+
+            $table->unsignedBigInteger('control_id')->nullable();
+            $table->foreign('control_id')->references('id')->on('controls');
+
+            $table->unsignedBigInteger('pre_control_id')->nullable();
+            $table->foreign('pre_control_id')->references('id')->on('pre_controls');
         });
     }
 
@@ -27,8 +33,14 @@ class AddForeignKeyToRowsTable extends Migration
     public function down()
     {
         Schema::table('rows', function (Blueprint $table) {
-            $table->dropForeign(['row_id']);
-            $table->dropColumn('row_id');
+            $table->dropForeign(['column_id']);
+            $table->dropColumn('column_id');
+
+            $table->dropForeign(['control_id']);
+            $table->dropColumn('control_id');
+
+            $table->dropForeign(['pre_control_id']);
+            $table->dropColumn('pre_control_id');
         });
     }
 }
