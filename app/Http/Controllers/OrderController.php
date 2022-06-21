@@ -174,9 +174,9 @@ class OrderController extends Controller
      * @param Order $order
      * @return Application|Redirector|RedirectResponse
      */
-    public function  data(): Factory|View|Application
+    public function  data(Request $request): Factory|View|Application
     {
-        $orders = Order::all();
+        $orders = Order::filter($request->all())->get();
         return view('orders.data', compact('orders'));
     }
 }

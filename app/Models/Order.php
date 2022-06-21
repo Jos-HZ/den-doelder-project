@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -9,7 +10,9 @@ use Illuminate\Support\Carbon;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, filterable;
+
+    private static array $whiteListFilter = ['production_line_id'];
 
     public function production()
     {
