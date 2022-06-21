@@ -15,7 +15,36 @@ class CreateRowsTable extends Migration
     {
         Schema::create('rows', function (Blueprint $table) {
             $table->id();
-            $table->enum('row', ['measurement', 'number_of_planks', 'stringer_boards', 'fungi', 'waan', 'kind', 'runner_msm_2', 'runner_msm_3', 'cross_deck', 'elements', 'double_deck', 'corners_cut', 'extra_stamp', 'stack_height', 'marks', 'q_hangar_a_choice', 'special_instructions']);
+            $table->enum('row', [
+                // upper deck rows
+                'measurement',
+                'number_of_planks',
+                'stringer_boards',
+                'fungi',
+                'waan',
+
+                // blocks rows
+                'kind',
+                'beam',
+                'measurement_1',
+                'measurement_2',
+
+                // bottom deck rows
+                'bridge',
+                'runner_msm_2',
+                'runner_msm_3',
+                'cross_deck',
+                'elements',
+                'double_deck',
+
+                // remaining rows
+                'corners_cut',
+                'extra_stamp',
+                'stack_height',
+                'marks',
+                'q_hangar_a_choice',
+                'special_instructions'
+            ]);
             $table->timestamps();
         });
     }

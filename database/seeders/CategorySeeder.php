@@ -18,7 +18,7 @@ class CategorySeeder extends Seeder
             'upper_deck',
             'blocks',
             'bottom_deck',
-            'remaining'
+            'remaining_rows'
         ];
 
         foreach ($categories as $category) {
