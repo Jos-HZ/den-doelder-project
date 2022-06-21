@@ -22,6 +22,7 @@
 {{-- preview laten zien--}}
 {{-- de bestanden laten zien via de order details--}}
 
+
 </body>
 </html>
 @endsection
