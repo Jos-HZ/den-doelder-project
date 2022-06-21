@@ -77,12 +77,22 @@
                         </div>
 
                         <div class="tile is-child box">
-                            <a href="">
-                                <p class="title text-lg-center">{{__("Location")}}</p>
+                            <a href="{{ route('placements.index') }}">
+                                <p class="title text-lg-center">{{__("Location Log")}}</p>
                             </a>
                         </div>
                     </div>
                 </div>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <div class="title is-child box">
+                        <a href="{{ route('locations.index', ['ordernumber' => $order->ordernumber ]) }}">
+                            <p class="title text-lg-center">{{__("Location")}}</p>
+                            <img src="/img/placement/placing-den-doelder.jpg" alt="placement">
+                        </a>
+                    </div>
+                </div>
+            </div>
             </div>
     </section>
 @endsection

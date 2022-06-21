@@ -7,7 +7,9 @@ use App\Http\Controllers\BacklogController;
 use App\Http\Controllers\ChecklistController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PlacementController;
 use App\Http\Controllers\ProductionLineController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualityControlController;
@@ -48,12 +50,28 @@ Route::get('/backlog/{backlog}/resolve', [BacklogController::class, 'resolve'])-
 Route::resource('/qualityControl', QualityControlController::class)->except(['index', 'show', 'delete']);
 Route::get('/qualityControl/{order}', [QualityControlController::class, 'index'])->name('qualityControl.index');
 
+
 Route::resource('/checklist', ChecklistController::class)->except(['delete']);
+
+Route::resource('/placements', PlacementController::class);
+Route::resource('/locations', LocationController::class);
+
 
 
 
 Route::get('file-upload', [FileUploadController::class, 'index'])->name('file-upload.index');
 Route::post('store', [FileUploadController::class, 'store'])->name('file-upload.store');
+Route::get('/pdf/{file}', function ($file) {
+    // file path
+    $path = public_path('/storage/files/D4QyUTWQq9BF9vBabztsfuTiKc735a4RI7hwsDlZ.pdf');
+        // 'storage/files' . '/' . $file);
+    // header
+    $header = [
+        'Content-Type' => 'application/pdf',
+        'Content-Disposition' => 'inline; filename="' . $file . '"'
+    ];
+    return response()->file($path, $header);
+})->name('pdf');
 
 
 Route::group(['middleware' => ['auth']], function () {
