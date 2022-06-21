@@ -10,40 +10,44 @@
 
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
-                    <article class="tile is-child box @switch($order->status)
-                        @case('pending')
-                            has-background-grey-light
-                            @break
-                        @case('conversion')
-                            has-background-warning
-                            @break
-                        @case('production')
+                    <article class="tile is-child box
+                    @if($order->error_status == 1)
+                        has-background-danger
+                        @else
+                    @switch($order->status)
+                    @case('pending')
+                        has-background-grey-light
+@break
+                    @case('conversion')
+                        has-background-warning
+@break
+                    @case('production')
                         has-background-info
                             @break
-                        @case('completed')
-                            has-background-success
-                            @break
-                        @case('error')
-                            is-danger
-                            @break
-                        @default
-                            is-primary
-                    @endswitch">
-                        @if($order->conversion_time === null)
-                            <a href="{{ route('orders.conversion', $order) }}">
-                                <p class="title text-lg-center">{{__("Conversion")}}</p>
-                            </a>
-                        @elseif($order->start_time === null)
-                            <a href="{{ route('orders.start', $order) }}">
-                                <p class="title text-lg-center">{{__("Start production")}}</p>
-                            </a>
-                        @elseif($order->end_time === null)
-                            <a href="{{ route('orders.end', $order) }}">
-                                <p class="title text-lg-center">{{__("Done")}}</p>
-                            </a>
-                        @else
-                            <p class="title text-lg-center">{{__("Is finished")}}</p>
-                        @endif
+                    @case('completed')
+                        has-background-success
+@break
+                    @case('error')
+                        is-danger
+@break
+                    @default
+                        is-primary
+@endswitch
+                        @endif">
+
+                        @if(!$order->error_status)
+                            @if($order->conversion_time === null)
+                                <a href="{{ route('orders.conversion', $order) }}">
+                                    @elseif($order->start_time === null)
+                                        <a href="{{ route('orders.start', $order) }}">
+                                            @elseif($order->end_time === null)
+                                                <a href="{{ route('orders.end', $order) }}">
+                                                    @endif
+                                                    <p class="title text-lg-center">{{$order->status}}</p>
+                                                </a>
+                                            @else
+                                                <p class="title text-lg-center">{{__('Error occurred')}}</p>
+                            @endif
                     </article>
                 </div>
                 <div class="tile is-parent">
@@ -51,19 +55,22 @@
                         <p class="title text-lg-center">{{__("Control list")}}</p>
                     </article>
                 </div>
+
                 <div class="tile is-parent">
                     <article class="tile is-child box">
                         <a href="{{ '/pdf/order' }}">
-                        <p class="title text-lg-center">{{__("Order details")}}</p>
+                            <p class="title text-lg-center">{{__("Order details")}}</p>
+                        </a>
                     </article>
-                    </a>
                 </div>
+
                 <div class="tile is-parent is-4">
                     <div class="tile is-child box">
-                            <article>
-                                <p class="title text-lg-center">{{__("Quality control")}}</p>
-                            </article>
-                        </a>
+                        <article>
+                            <a href="{{ route('qualityControl.index', $order) }}">
+                            <p class="title text-lg-center">{{__("Quality control")}}</p>
+                            </a>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -124,9 +131,13 @@
                     </div>
 
                     <div class="tile is-child box has-background-danger">
+                        @if($order->error_status == 1)
+                            <p class="title text-lg-center">{{__("Error occurred")}}</p>
+                        @else
                         <a href="{{ route('backlog.create', ['ordernumber' => $order->ordernumber ])}}">
                             <p class="title text-lg-center">{{__("Error")}}</p>
                         </a>
+                            @endif
                     </div>
                 </div>
             </div>
