@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRowsTable extends Migration
+class CreateColumnsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -37,7 +37,7 @@ class CreateRowsTable extends Migration
                 'elements',
                 'double_deck',
 
-                // remaining rows
+                // remaining columns
                 'corners_cut',
                 'extra_stamp',
                 'stack_height',

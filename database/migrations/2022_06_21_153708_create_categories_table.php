@@ -15,7 +15,7 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->enum('category', ['upper_deck', 'blocks', 'bottom_deck', 'remaining_rows' ]);
+            $table->enum('category', ['upper_deck', 'blocks', 'bottom_deck', 'remaining_columns' ]);
             $table->timestamps();
         });
     }
