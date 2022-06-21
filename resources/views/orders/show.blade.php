@@ -18,7 +18,7 @@
                             has-background-warning
                             @break
                         @case('production')
-                        bg-orange-500
+                        has-background-info
                             @break
                         @case('completed')
                             has-background-success
@@ -70,7 +70,7 @@
 
             <div class="tile is-ancestor">
                 <div class="tile is-parent is-8">
-                    <article class="tile is-child box has-background-success">
+                    <article class="tile is-child box has-background-primary">
                         <div class="notesTitle">
                             <p class="title">{{__("Notes")}}</p>
                             <div class="notesButton">
@@ -175,6 +175,14 @@
                             @endforeach
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <div class="tile is-child box">
+                        @include('partials.data')
                     </div>
                 </div>
             </div>
