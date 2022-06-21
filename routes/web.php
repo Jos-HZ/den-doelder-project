@@ -82,9 +82,7 @@ Route::resource('production-lines', ProductionLineController::class)->only([
 ]);
 
 // control lists
-Route::Resource('pre-controls', PreControlController::class)->only([
-    'create', 'store', 'edit', 'update'
-]);
+Route::Resource('pre-controls', PreControlController::class);
 
 /*
 |--------------------------------------------------------------------------
