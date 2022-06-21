@@ -33,7 +33,7 @@ class Order extends Model
      */
     public function productionTime()
     {
-        return round(Carbon::parse($this->conversion_time)->floatDiffInMinutes
+        return round(Carbon::parse($this->start_time)->floatDiffInMinutes
         ($this->end_time));
     }
 
