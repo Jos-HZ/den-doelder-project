@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Placement;
-use App\Models\Location;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -65,8 +64,8 @@ class PlacementController extends Controller
             'placement' => 'required',
             'order_id' => 'required',
             'addition' => 'nullable',
-            'description' => 'required',
-            'quantity' => 'required',
+            'description' => 'nullable',
+            'quantity' => 'required | numeric | min:1',
         ]);
     }
 
