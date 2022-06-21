@@ -13,9 +13,9 @@ class AddForeignKeyToColumnsTable extends Migration
      */
     public function up()
     {
-        Schema::table('columns', function (Blueprint $table) {
+        Schema::table('rows', function (Blueprint $table) {
             $table->unsignedBigInteger('row_id')->nullable();
-            $table->foreign('row_id')->references('id')->on('rows');
+            $table->foreign('row_id')->references('id')->on('columns');
         });
     }
 
@@ -26,7 +26,7 @@ class AddForeignKeyToColumnsTable extends Migration
      */
     public function down()
     {
-        Schema::table('columns', function (Blueprint $table) {
+        Schema::table('rows', function (Blueprint $table) {
             $table->dropForeign(['row_id']);
             $table->dropColumn('row_id');
         });

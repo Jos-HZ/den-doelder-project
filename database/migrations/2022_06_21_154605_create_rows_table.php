@@ -13,9 +13,9 @@ class CreateRowsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rows', function (Blueprint $table) {
+        Schema::create('columns', function (Blueprint $table) {
             $table->id();
-            $table->enum('row', [
+            $table->enum('column', [
                 // upper deck rows
                 'measurement',
                 'number_of_planks',
@@ -56,6 +56,6 @@ class CreateRowsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rows');
+        Schema::dropIfExists('columns');
     }
 }

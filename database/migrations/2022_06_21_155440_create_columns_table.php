@@ -13,7 +13,7 @@ class CreateColumnsTable extends Migration
      */
     public function up()
     {
-        Schema::create('columns', function (Blueprint $table) {
+        Schema::create('rows', function (Blueprint $table) {
             $table->id();
             $table->boolean('correct');
             $table->string('changed_to')->nullable();
@@ -30,6 +30,6 @@ class CreateColumnsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('columns');
+        Schema::dropIfExists('rows');
     }
 }
