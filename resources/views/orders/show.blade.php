@@ -134,6 +134,7 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <div class="tile is-child box">
+                        <p class="title text-lg-center">{{__("Errors")}}</p>
                         <table class="table">
                             <thead>
                             <th><abbr title="time">{{__("Time")}}</abbr></th>
@@ -182,6 +183,7 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <div class="tile is-child box">
+                        <p class="title text-lg-center">{{__("Time overview")}}</p>
                         @include('partials.data')
                     </div>
                 </div>
