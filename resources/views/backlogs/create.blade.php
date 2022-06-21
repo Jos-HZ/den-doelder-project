@@ -78,7 +78,7 @@
                             name="category"
                         >
                             <option value="mechanical">{{__("Mechanical error")}}</option>
-                            <option value="technical">{{__("Technical error")}}r</option>
+                            <option value="technical">{{__("Technical error")}}</option>
                         </select>
                     </div>
                     @error('category')
