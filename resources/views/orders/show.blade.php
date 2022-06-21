@@ -10,10 +10,32 @@
 
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
-                    <article class="tile is-child box">
-                        @if($order->start_time === null)
+                    <article class="tile is-child box @switch($order->status)
+                        @case('pending')
+                            has-background-grey-light
+                            @break
+                        @case('conversion')
+                            has-background-warning
+                            @break
+                        @case('production')
+                        has-background-info
+                            @break
+                        @case('completed')
+                            has-background-success
+                            @break
+                        @case('error')
+                            is-danger
+                            @break
+                        @default
+                            is-primary
+                    @endswitch">
+                        @if($order->conversion_time === null)
+                            <a href="{{ route('orders.conversion', $order) }}">
+                                <p class="title text-lg-center">{{__("Conversion")}}</p>
+                            </a>
+                        @elseif($order->start_time === null)
                             <a href="{{ route('orders.start', $order) }}">
-                                <p class="title text-lg-center">{{__("Start")}}</p>
+                                <p class="title text-lg-center">{{__("Start production")}}</p>
                             </a>
                         @elseif($order->end_time === null)
                             <a href="{{ route('orders.end', $order) }}">
@@ -48,7 +70,7 @@
 
             <div class="tile is-ancestor">
                 <div class="tile is-parent is-8">
-                    <article class="tile is-child box has-background-success">
+                    <article class="tile is-child box has-background-primary">
                         <div class="notesTitle">
                             <p class="title">{{__("Notes")}}</p>
                             <div class="notesButton">
@@ -112,6 +134,7 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <div class="tile is-child box">
+                        <p class="title text-lg-center">{{__("Errors")}}</p>
                         <table class="table">
                             <thead>
                             <th><abbr title="time">{{__("Time")}}</abbr></th>
@@ -153,6 +176,15 @@
                             @endforeach
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <div class="tile is-child box">
+                        <p class="title text-lg-center">{{__("Time overview")}}</p>
+                        @include('partials.data')
                     </div>
                 </div>
             </div>

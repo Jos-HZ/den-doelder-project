@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Backlog;
+use App\Models\Order;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -34,6 +35,11 @@ class BacklogController extends Controller
     public function store(Request $request): Redirector|RedirectResponse|Application
     {
         Backlog::create($this->validatedBacklog($request));
+
+        // set backlog->status to true
+        $order = Order::find($request->order_id);
+        $order->error_status = true;
+        $order->save();
 
         return redirect(route('orders.show', $request->order_id));
     }
@@ -108,6 +114,12 @@ class BacklogController extends Controller
     {
         if ($backlog->resolved_at === null) {
             $backlog->resolved_at = now();
+
+            // set backlog->status to false
+            $order = Order::find($backlog->order_id);
+            $order->error_status = false;
+            $order->save();
+
             $backlog->save();
         }
         return redirect(route('orders.show', $backlog->order_id));
