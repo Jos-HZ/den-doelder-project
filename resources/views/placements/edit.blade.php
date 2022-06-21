@@ -36,7 +36,7 @@
                     </div>
                 </div>
 
-                <label for="addition">{{__("Addition")}}</label><br>
+                <label for="addition">{{__("Addition")}}:</label><br>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input type="text"
@@ -51,7 +51,7 @@
                     @enderror
                 </div>
 
-                <label for="description">{{__("Description")}}</label>
+                <label for="description">{{__("Description")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
@@ -67,7 +67,7 @@
                 <p class="help is-danger">{{ $errors->get('description')[0] }}</p>
                 @enderror
 
-                <label for="quantity">{{__("Quantity")}}</label>
+                <label for="quantity">{{__("Quantity")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input

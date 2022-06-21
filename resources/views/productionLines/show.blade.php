@@ -14,14 +14,8 @@
                             <div class="tile is-child box">
                                 <p class="title">{{__("Order")}} {{ $order->ordernumber }}
                                     - {{ $order->pallettype }}</p>
-                                <p class="subtitle">{{__("Production status: ")}}
-                                    @if($order->start_time === null)
-                                        {{__("Not started")}}
-                                    @elseif($order->end_time === null)
-                                        {{__("In progress")}}
-                                    @else
-                                        {{__("Finished")}}
-                                    @endif
+                                <p class="subtitle">{{__("Production status")}}:
+                                 {{ $order->status }}
                                     <br>
                                     {{__("Number of pallets:")}} {{ $order->palletnumber }}
                                 </p>

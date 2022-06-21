@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumsToOrdersTable extends Migration
+class AddConversionTimeToOrders extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddColumsToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->time('start_time')->nullable();
-            $table->time('end_time')->nullable();
+            $table->time('conversion_time')->nullable();
         });
     }
 
@@ -27,8 +26,7 @@ class AddColumsToOrdersTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn('start_time');
-            $table->dropColumn('end_time');
+            $table->dropColumn('conversion_time');
         });
     }
 }

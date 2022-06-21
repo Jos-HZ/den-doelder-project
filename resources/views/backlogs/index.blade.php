@@ -6,7 +6,6 @@
         <br>
 
         <form method="get" action="{{ route('backlog.index') }}">
-
             <div>
                 <select id="txtSearch" name="category">
                     <option
