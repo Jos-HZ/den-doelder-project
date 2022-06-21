@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PlacementController;
+use App\Http\Controllers\PreControlController;
 use App\Http\Controllers\ProductionLineController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualityControlController;
@@ -78,6 +79,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::resource('production-lines', ProductionLineController::class)->only([
     'show'
+]);
+
+// control lists
+Route::Resource('pre-controls', PreControlController::class)->only([
+    'create', 'store', 'edit', 'update'
 ]);
 
 /*
