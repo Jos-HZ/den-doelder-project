@@ -52,7 +52,6 @@
                 </div>
 
                 @can('is_admin')
-
                         <div class="tile is-parent">
                             <article class="tile is-child box">
                                 @if(!\App\Models\PreControl::where('order_id', $order->id)->first())
@@ -60,7 +59,9 @@
                                         <p class="title text-lg-center">{{__("Create control list")}}</p>
                                     </a>
                                 @elseif(!\App\Models\Control::where('order_id', $order->id)->first())
-                                    {{-- Show blde pre control  --}}
+                                    <a href="{{ route('pre-controls.show', $order) }}">
+                                        <p class="title text-lg-center">{{__("Control list")}}</p>
+                                    </a>
                                 @else
                                     <a href="{{ route('controls.show',[ 'order' => $order]) }}">
                                         <p class="title text-lg-center">{{__("Control list")}}</p>

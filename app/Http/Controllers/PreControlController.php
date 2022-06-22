@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Column;
+use App\Models\Control;
+use App\Models\ControlRow;
 use App\Models\Order;
 use App\Models\PreControl;
 use App\Models\Row;
@@ -67,11 +69,18 @@ class PreControlController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        //
+        $categories = Category::all();
+        $columns = Column::all();
+
+        $preControl = PreControl::where('order_id', $order->id)->first();
+
+        $rows = Row::where('pre_control_id', $preControl->id)->get();
+
+        return view('pre-controls.show', compact('order', 'categories', 'columns', 'rows'));
     }
 
     /**

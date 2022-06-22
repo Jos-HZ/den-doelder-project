@@ -82,7 +82,7 @@ class ControlController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Control $control
+     * @param Order $order
      * @return Application|Factory|View
      */
     public function show(Order $order)
