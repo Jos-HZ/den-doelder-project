@@ -87,7 +87,6 @@ Route::resource('pre-controls', PreControlController::class)->except('create');
 Route::get('/pre-control/create/{order}', [PreControlController::class, 'create'])->name('pre-controls.create');
 
 Route::resource('rows', RowController::class);
-
 /*
 |--------------------------------------------------------------------------
 | Driver Routes

@@ -1,7 +1,9 @@
 @extends('layouts.master')
+
 @section('head')
     <script type="text/javascript" src="{{ URL::asset('js/submit-forms.js') }}"></script>
 @endsection
+
 @section('content')
     <section class="section">
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
@@ -80,8 +82,9 @@
                     @enderror
                 </div>
 
+                @foreach($categories as $category)
                 <div class="pt-4">
-                    <h1 class='subtitle is-4'>Upperdeck</h1>
+                    <h1 class='subtitle is-4'>{{ $category->category }}</h1>
                 </div>
                 <table class="table is-bordered">
                     <thead>
@@ -95,11 +98,12 @@
                     </thead>
                     <tbody>
                     {{-- !! ROWS !! --}}
-                    @foreach($columns_id as $id)
+                    @foreach($columns as $column)
                         {{-- hidden fields --}}
+                        @if($category->id === $column->category_id )
                         <tr>
                             <td>
-                                {{ $columns[$id-1]->column }}
+                                {{ $column->column }}
                             </td>
                             <div class="control has-icons-left has-icons-right">
                                 <input
@@ -109,9 +113,9 @@
                                     ])
                                     type="hidden"
                                     id="column_id"
-                                    name="column_id_{{$id}}"
+                                    name="column_id_{{$column->id}}"
                                     {{-- TODO: correct column_id --}}
-                                    value=" {{ $id }}"
+                                    value=" {{ $column->id }}"
                                 >
                             </div>
 
@@ -122,7 +126,7 @@
                                         <select
                                             class="input @error('correct') is-danger @enderror"
                                             id="correct"
-                                            name="correct_{{$id}}"
+                                            name="correct_{{$column->id}}"
                                         >
                                             <option value="1">{{__("Yes")}}</option>
                                             <option value="0">{{__("No")}}</option>
@@ -144,7 +148,7 @@
                                             ])
                                             type="text"
                                             id="changed_to"
-                                            name="changed_to_{{$id}}"
+                                            name="changed_to_{{$column->id}}"
                                             value="NEE"
                                         >
                                     </div>
@@ -160,7 +164,7 @@
                                         <select
                                             class="input @error('treated') is-danger @enderror"
                                             id="treated"
-                                            name="treated_{{$id}}"
+                                            name="treated_{{$column->id}}"
                                         >
                                             <option value="hk">{{__("HK")}}</option>
                                             <option value="kd">{{__("KD")}}</option>
@@ -182,7 +186,7 @@
                                             ])
                                             type="number"
                                             id="humidity"
-                                            name="humidity_{{$id}}"
+                                            name="humidity_{{$column->id}}"
                                             value="8"
                                         >
                                     </div>
@@ -192,9 +196,11 @@
                                 </div>
                             </td>
                         </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>
+                @endforeach
                 <input type="submit" value="{{__("submit")}}"
                        class="button is-link"/>
             </form>

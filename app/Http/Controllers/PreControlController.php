@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Column;
 use App\Models\Order;
 use App\Models\PreControl;
@@ -21,9 +22,9 @@ class PreControlController extends Controller
      */
     public function create(Order $order)
     {
-        $columns_id = Column::pluck('id')->toArray();
+        $categories = Category::all();
         $columns = Column::all();
-        return view('pre-controls.create', compact('columns_id', 'order', 'columns'));
+        return view('pre-controls.create', compact('order', 'columns', 'categories'));
     }
 
     /**
