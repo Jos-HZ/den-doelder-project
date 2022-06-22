@@ -79,7 +79,7 @@
                             name="quantity"
                             class="input @error('quantity') is-danger @enderror"
                         >
-                </div>
+                    </div>
                     @error('quantity')
                     <p class="help is-danger">{{ $errors->get('quantity')[0] }}</p>
                     @enderror

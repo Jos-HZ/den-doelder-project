@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <section class="section">
-        <a href="/"><img src="/img/svg/back-arrow.svg"  width="35" height="35"></a>
+        <a href="/"><img src="/img/svg/back-arrow.svg" width="35" height="35"></a>
         <div class="container">
             <div class="row">
 

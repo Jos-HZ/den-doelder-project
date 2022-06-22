@@ -50,7 +50,6 @@
                 </div>
 
 
-
                 <div class="control">
                     <input class="input @error('name_pallet') is-danger @enderror"
                            type="hidden"
@@ -70,7 +69,6 @@
                         </select>
                     </div>
                 </div>
-
 
 
                 <label for="action">Action:</label>

@@ -32,8 +32,8 @@ class Backlog extends Model
      */
     public function timeDifference(): null|int
     {
-            $time = Carbon::parse($this->time)->floatDiffInMinutes
-            ($this->resolved_at);
-            return round($time);
+        $time = Carbon::parse($this->time)->floatDiffInMinutes
+        ($this->resolved_at);
+        return round($time);
     }
 }

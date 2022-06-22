@@ -40,7 +40,8 @@ class BacklogTest extends TestCase
      *
      * @return void
      */
-    public function test_time_difference_round_number_edge_case(){
+    public function test_time_difference_round_number_edge_case()
+    {
         // Create a backlog
         $backlog = Backlog::create([
             'id' => 1,
@@ -63,7 +64,8 @@ class BacklogTest extends TestCase
      *
      * @return void
      */
-    public function test_time_difference_round_number_round_down(){
+    public function test_time_difference_round_number_round_down()
+    {
         // Create a backlog
         $backlog = Backlog::create([
             'id' => 1,
@@ -86,7 +88,8 @@ class BacklogTest extends TestCase
      *
      * @return void
      */
-    public function test_time_difference_round_number_round_up(){
+    public function test_time_difference_round_number_round_up()
+    {
         // Create a backlog
         $backlog = Backlog::create([
             'id' => 1,
