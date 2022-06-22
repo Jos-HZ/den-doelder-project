@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="section">
-        <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
+        <img src="/img/svg/back-arrow.svg" href="/production-lines/2" width="35" height="35">
         <div class="container">
 
             <h1 class="title has-text-centered">{{__("Order")}} {{ $order->ordernumber }} {{$order->pallettype}}</h1>

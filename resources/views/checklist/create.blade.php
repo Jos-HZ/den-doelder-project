@@ -107,35 +107,24 @@
                     </div>
                 </div>
 
-                <label for="palletname"></label>
+                @foreach ( ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21'] as $test)
+
+                <label for="name_{{$loop->index}}"></label>
                 <div class="label">
 
                     <div class="control">
 
                         <input type="text"
-                               name="name"
-                               id="name"
-                               class="input @error('name') is-danger @enderror"
-                              >
+                               name="name_{{$loop->index}}"
+                               id="name_{{$loop->index}}"
+                               class="input @error('name_{{$i}}') is-danger @enderror"
+                        value="  {{$test}}">
 
 
                     </div>
                 </div>
+                @endforeach
 
-                <label for="name"></label>
-                <div class="label">
-
-                    <div class="control">
-
-                        <input type="text"
-                               name="name"
-                               id="name"
-                               class="input @error('name') is-danger @enderror"
-                               >
-
-
-                    </div>
-                </div>
 
                 <input type="submit" value="{{__("Submit")}}" class="button is-link">
 

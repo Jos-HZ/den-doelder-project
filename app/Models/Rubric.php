@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Rubric extends Model
 {
     use HasFactory;
-
+    public $fillable = [
+        'name',
+        'checklist_id',
+    ];
     /**
      * Get the checkpoints associated with the rubric.
      */

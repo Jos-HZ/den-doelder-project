@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Checklist;
+use App\Models\Rubric;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Foundation\Application;
@@ -47,8 +48,22 @@ class ChecklistController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+//        dd($request->input('name_21'));
+
         Checklist::create($this->validatedChecklist($request));
+$test = [];
+        for($i = 1;$i<=21;$i++)
+        {
+            array_push( $test,$request->input("name_$i"));
+
+        }
+//     dd($request);
+        foreach ($test as $name)
+        {
+            dd($name);
+            Rubric::create($this->validatedRubric($name));
+        }
+
 
         return redirect(route('orders.show', $request->order_id));
     }
@@ -107,6 +122,13 @@ class ChecklistController extends Controller
             'location'=>'required|string',
             'controllername'=>'required|string',
             'order_id'=>'required'
+        ]);
+    }
+
+    private function validatedRubric(Request $request){
+        return $request->validate([
+            'name' => 'required',
+            'checklist_id'=>'required'
         ]);
     }
 }
