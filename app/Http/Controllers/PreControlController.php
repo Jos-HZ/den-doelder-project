@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\PreControl;
+use App\Models\Row;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class PreControlController extends Controller
@@ -23,13 +26,30 @@ class PreControlController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
         PreControl::create($this->validatedPreControl($request));
 
-        return redirect(route('orders.show', $request->order_id));
+        foreach ([1, 2] as $id){
+            // variables with correct id
+            $correct = 'correct_' . $id;
+            $changed_to = 'changed_to_' . $id;
+            $treated = 'treated_' . $id;
+            $humidity = 'humidity_' . $id;
+            $column_id = 'column_id_' . $id;
+            $pre_control_id = 'pre_control_id_' . $id;
+
+            DB::table('rows')->insert([
+                'correct' => $request->$correct,
+                'changed_to' => $request->$changed_to,
+                'treated' => $request->$treated,
+                'humidity' => $request->$humidity,
+                'column_id' => $request->$column_id,
+                'pre_control_id' => $request->$pre_control_id
+            ]);
+        }
     }
 
     /**

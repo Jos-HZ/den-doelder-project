@@ -5,27 +5,28 @@
 @section('content')
     <section class="section">
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
+
         <div class="container">
             <h1 class="title has-text-centered">{{__("Pre control")}}</h1>
 
             <form id="pre-control" method="POST" action="{{ route('pre-controls.store') }}">
-            @csrf
-
-            {{-- Hidden fields --}}
+                @csrf
+                {{-- Hidden fields --}}
                 <label for="order_id"></label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input
-                            @class ([
-                                'input',
-                                'is-danger' => $errors->get('time'),
-                            ])
-                            type="hidden"
-                            id="order_id"
-                            name="order_id"
-                            {{-- TODO: correct ordernumber --}}
-                            value="1"
-                        >
-                    </div>
+                <div class="control has-icons-left has-icons-right">
+                    <input
+                        @class ([
+                            'input',
+                            'is-danger' => $errors->get('time'),
+                        ])
+                        type="hidden"
+                        id="order_id"
+                        name="order_id"
+                        {{-- TODO: correct ordernumber --}}
+                        value="1"
+                    >
+                </div>
+
 
                 <label for="treated">{{__('HT / Non HT / HtKd')}}:</label>
                 <div class="label">
@@ -56,7 +57,7 @@
                         >
                     </div>
                     @error('date')
-                    <p class="help is-danger">{{ $errors->get('date')[0] }}</p>
+                    <p class="help is-danger">{{ $errors->get('date') }}</p>
                     @enderror
                 </div>
 
@@ -71,16 +72,123 @@
                             type="text"
                             id="submitted_by"
                             name="submitted_by"
-                            value=>
+                        >
                     </div>
-                    @error('time')
+                    @error('submitted_by')
                     <p class="help is-danger">{{ $errors->get('submitted_by') }}</p>
                     @enderror
                 </div>
+
+                {{-- !! ROWS !! --}}
+                @foreach([1, 2] as $id)
+                {{-- hidden fields --}}
+                <label for="pre_control_id"></label>
+                <div class="control has-icons-left has-icons-right">
+                    <input
+                        @class ([
+                            'input',
+                            'is-danger' => $errors->get('time'),
+                        ])
+                        type="hidden"
+                        id="pre_control_id"
+                        name="pre_control_id_{{$id}}"
+                        {{-- TODO: correct pre_cotrol_id --}}
+                        value="{{ $id }}"
+                    >
+                </div>
+
+                <label for="column_id"></label>
+                <div class="control has-icons-left has-icons-right">
+                    <input
+                        @class ([
+                            'input',
+                            'is-danger' => $errors->get('column_id'),
+                        ])
+                        type="hidden"
+                        id="column_id"
+                        name="column_id_{{$id}}"
+                        {{-- TODO: correct column_id --}}
+                        value=" {{ $id }}"
+                    >
+                </div>
+
+                {{-- input fields --}}
+                <lable for="correct">{{__("Correct")}}:</lable>
+                <div class="label">
+                    <div class="select">
+                        <select
+                            class="input @error('correct') is-danger @enderror"
+                            id="correct"
+                            name="correct_{{$id}}"
+                        >
+                            <option value="1">{{__("Yes")}}</option>
+                            <option value="0">{{__("No")}}</option>
+                        </select>
+                    </div>
+                    @error('correct')
+                    <p class="help is-danger">{{ $errors->get('correct') }}</p>
+                    @enderror
+                </div>
+
+                <label for="changed_to">{{__("Changed to")}}:</label><br>
+                <div class="label">
+                    <div class="control has-icons-left has-icons-right">
+                        <input
+                            @class ([
+                                'input',
+                                'is-danger' => $errors->get('changed_to'),
+                            ])
+                            type="text"
+                            id="changed_to"
+                            name="changed_to_{{$id}}"
+                            value=""
+                        >
+                    </div>
+                    @error('changed_to')
+                    <p class="help is-danger">{{ $errors->get('changed_to') }}</p>
+                    @enderror
+                </div>
+
+                <lable for="treated">{{__("Treated")}}:</lable>
+                <div class="label">
+                    <div class="select">
+                        <select
+                            class="input @error('treated') is-danger @enderror"
+                            id="treated"
+                            name="treated_{{$id}}"
+                        >
+                            <option value="hk">{{__("HK")}}</option>
+                            <option value="kd">{{__("KD")}}</option>
+                        </select>
+                    </div>
+                    @error('treated')
+                    <p class="help is-danger">{{ $errors->get('treated') }}</p>
+                    @enderror
+                </div>
+
+                <label for="humidity">{{__("Humidity")}}:</label><br>
+                <div class="label">
+                    <div class="control has-icons-left has-icons-right">
+                        <input
+                            @class ([
+                                'input',
+                                'is-danger' => $errors->get('humidity'),
+                            ])
+                            type="number"
+                            id="humidity"
+                            name="humidity_{{$id}}"
+                            value=""
+                        >
+                    </div>
+                    @error('humidity')
+                    <p class="help is-danger">{{ $errors->get('humidity') }}</p>
+                    @enderror
+                </div>
+                @endforeach
+
+                <input type="submit" value="{{__("submit")}}"
+                       class="button is-link"/>
             </form>
-
-                <input type="submit" value="{{__("submit")}}" onclick="submitFormsPreQualityControl()" class="button is-link"/>
-
 
         </div>
     </section>

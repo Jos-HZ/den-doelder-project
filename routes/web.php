@@ -13,6 +13,7 @@ use App\Http\Controllers\PreControlController;
 use App\Http\Controllers\ProductionLineController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualityControlController;
+use App\Http\Controllers\RowController;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
@@ -82,7 +83,8 @@ Route::resource('production-lines', ProductionLineController::class)->only([
 ]);
 
 // control lists
-Route::Resource('pre-controls', PreControlController::class);
+Route::resource('pre-controls', PreControlController::class);
+Route::resource('rows', RowController::class);
 
 /*
 |--------------------------------------------------------------------------

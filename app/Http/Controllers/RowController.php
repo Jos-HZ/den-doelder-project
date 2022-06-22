@@ -85,13 +85,12 @@ class RowController extends Controller
 
     private function validatedRow(Request $request)
     {
-        return $request->valildate([
+        return request()->validate([
            'correct' => 'required',
-           'changed_to' => 'required',
+           'changed_to' => 'present',
            'treated' => 'required',
             'humidity' => 'required',
             'column_id' => 'required',
-            'control_id' => 'required',
             'pre_control_id' => 'required'
         ]);
     }
