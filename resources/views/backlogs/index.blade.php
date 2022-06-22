@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <a href="/"><img src="/img/svg/back-arrow.svg"  width="35" height="35"></a>
-        <br>
+
 
         <form method="get" action="{{ route('backlog.index') }}">
             <div>
@@ -85,7 +85,6 @@
             </tbody>
         </table>
     </section>
-
 @endsection
 
 

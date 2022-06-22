@@ -5,7 +5,7 @@
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
 
         <div class="container">
-            <h1>{{__("Order")}} {{ app('request')->input('ordernumber') }}</h1>
+            <h1 class="has-text-centered">{{__("Order")}} {{ app('request')->input('ordernumber') }}</h1>
             <p><b>{{__("Chosen location:")}} </b> {{app('request')->input('location')}}</p>
 
             <form method="POST" action="{{ route('placements.store') }}">
@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                <label for="addition">{{__("Addition")}}:</label><br>
+                <label for="addition">{{__("Addition")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input type="text"
