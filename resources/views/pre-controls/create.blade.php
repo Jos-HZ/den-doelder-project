@@ -84,7 +84,8 @@
 
                 @foreach($categories as $category)
                 <div class="pt-4">
-                    <h1 class='subtitle is-4'>{{ $category->category }}</h1>
+                    <h1 class='title is-5'>{{ $category->category }}</h1>
+
                 </div>
                 <table class="table is-bordered">
                     <thead>
@@ -102,9 +103,9 @@
                         {{-- hidden fields --}}
                         @if($category->id === $column->category_id )
                         <tr>
-                            <td>
+                            <th>
                                 {{ $column->column }}
-                            </td>
+                            </th>
                             <div class="control has-icons-left has-icons-right">
                                 <input
                                     @class ([
