@@ -66,7 +66,7 @@
                         @if($category->id === $rows[$i]->column->category_id )
                             <tr>
                                 <th>
-                                    {{ $rows[$i]->column->column }}
+                                    {{ $rows[$i]->column->column_name() }}
                                 </th>
 
                                 <td>@if($rows[$i]->correct) Correct @else Incorrect @endif</td>

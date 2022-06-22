@@ -5,25 +5,100 @@
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
 
         <div class="container">
-            <h1 class="title has-text-centered">{{__("Control")}}</h1>
-            <h2 class="subtitle has-text-centered">{{__("Order") }}: {{ $order->ordernumber }}
-                - {{ $order->pallettype }} </h2>
+            <h1 class="title has-text-centered">{{__("Control list")}}</h1>
+
+            <div class="columns">
+
+                <div class="column">
+            <div class="pt-4">
+                <h1 class='title is-5'>{{__("Pre control list")}}</h1>
+            </div>
+            <table class="table is-bordered">
+                <tbody>
+                <tr>
+                    <th>{{__("Order number")}}</th>
+                    <td>{{ $order->ordernumber }}</td>
+                </tr>
+                <tr>
+                    <th>{{__("Pallet name")}}</th>
+                    <td>{{ $order->pallettype }}</td>
+                </tr>
+                <tr>
+                    <th>HT / Non HT / HtKd</th>
+                    <td>{{ $pre_control->treated }}</td>
+                </tr>
+                <tr>
+                    <th>{{__("Date")}}</th>
+                    <td>{{ $pre_control->date }}</td>
+                </tr>
+                <tr>
+                    <th>{{__("Location")}}</th>
+                    <td>@if($order->production_line_id === 3)
+                            Cape 5
+                        @else Cape {{ $order->production_line_id }}
+                        @endif</td>
+                </tr>
+                <tr>
+                    <th>{{__("Submitted by")}}</th>
+                    <td>{{ $pre_control->submitted_by }}</td>
+                </tr>
+                </tbody>
+            </table>
+                </div>
+
+                <div class="column">
+            <div class="pt-4">
+                <h1 class='title is-5'>{{__("Control list")}}</h1>
+            </div>
+            <table class="table is-bordered">
+                <tbody>
+                <tr>
+                    <th>{{__("Order number")}}</th>
+                    <td>{{ $order->ordernumber }}</td>
+                </tr>
+                <tr>
+                    <th>{{__("Pallet name")}}</th>
+                    <td>{{ $order->pallettype }}</td>
+                </tr>
+                <tr>
+                    <th>HT / Non HT / HtKd</th>
+                    <td>{{ $control->treated }}</td>
+                </tr>
+                <tr>
+                    <th>{{__("Date")}}</th>
+                    <td>{{ $control->date }}</td>
+                </tr>
+                <tr>
+                    <th>{{__("Location")}}</th>
+                    <td>@if($order->production_line_id === 3)
+                            Cape 5
+                        @else Cape {{ $order->production_line_id }}
+                        @endif</td>
+                </tr>
+                <tr>
+                    <th>{{__("Submitted by")}}</th>
+                    <td>{{ $control->submitted_by }}</td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+            </div>
 
             @foreach($categories as $category)
                 <div class="pt-4">
-                    <h1 class='title is-5'>{{ $category->category }}</h1>
+                    <h1 class='title is-5'>{{ $category->category_name() }}</h1>
 
                 </div>
                 <table class="table is-bordered">
                     <thead>
                     <tr>
-                        <th></th>
+                        <th style="border: none"></th>
                         <th><abbr title="correct">{{__("Correct (Y/N)")}}</abbr></th>
                         <th><abbr title="changed_to">{{__("Changed to")}}</abbr></th>
                         <th><abbr title="treated">ht / hk</abbr></th>
                         <th><abbr title="humidity">{{__("Humidity")}}</abbr></th>
 
-                        <th></th>
+                        <th style="border: none"></th>
 
                         <th><abbr title="correct">{{__("Correct (Y/N)")}}</abbr></th>
                         <th><abbr title="changed_to">{{__("Changed to")}}</abbr></th>
@@ -37,7 +112,7 @@
                         @if($category->id === $rows[$i]->column->category_id )
                             <tr>
                                 <th>
-                                    {{ $rows[$i]->column->column }}
+                                    {{ $rows[$i]->column->column_name() }}
                                 </th>
 
                                 <td>@if($rows[$i]->correct) Correct @else Incorrect @endif</td>
@@ -45,7 +120,7 @@
                                 <td>{{ $rows[$i]->treated }}</td>
                                 <td>{{ $rows[$i]->humidity }}</td>
 
-                                        <td></td>
+                                <td style="border: none"></td>
 
 
                                 <td>{{ $controlRows[$i]->correct }}</td>

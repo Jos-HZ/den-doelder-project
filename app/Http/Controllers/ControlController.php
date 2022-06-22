@@ -92,14 +92,14 @@ class ControlController extends Controller
         $categories = Category::all();
         $columns = Column::all();
 
-        $preControl = PreControl::where('order_id', $order->id)->first();
+        $pre_control = PreControl::where('order_id', $order->id)->first();
         $control = Control::where('order_id', $order->id)->first();
 
 
-        $rows = Row::where('pre_control_id', $preControl->id)->get();
+        $rows = Row::where('pre_control_id', $pre_control->id)->get();
         $controlRows = ControlRow::where('control_id', $control->id)->get();
 
-        return view('controls.show', compact('order', 'categories', 'columns', 'rows', 'controlRows'));
+        return view('controls.show', compact('order', 'categories', 'columns', 'rows', 'controlRows', 'pre_control', 'control'));
     }
 
     /**

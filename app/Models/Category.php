@@ -13,4 +13,15 @@ class Category extends Model
     {
         return $this->hasMany(Category::class);
     }
+
+    public function category_name()
+    {
+        return match ($this->category) {
+            'upper_deck' => "Upper deck",
+            'blocks' => 'Blocks',
+            'bottom_deck' => 'Bottom deck',
+            'remaining_columns' =>  'Remaning columns',
+            default => $this->category,
+        };
+    }
 }
