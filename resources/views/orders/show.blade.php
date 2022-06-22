@@ -1,11 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-    @php
-        $control = \App\Models\Control::where('order_id', $order->id)->first()
-    @endphp
-
     <section class="section">
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
         <div class="container">
@@ -18,26 +13,26 @@
                     <article class="tile is-child box
                     @if($order->error_status == 1)
                         has-background-danger
-                        @else
-                    @switch($order->status)
-                    @case('pending')
-                        has-background-grey-light
-@break
-                    @case('conversion')
-                        has-background-warning
-@break
-                    @case('production')
-                        has-background-info
-                            @break
-                    @case('completed')
-                        has-background-success
-@break
-                    @case('error')
-                        is-danger
-@break
-                    @default
-                        is-primary
-@endswitch
+                    @else
+                        @switch($order->status)
+                            @case('pending')
+                                has-background-grey-light
+                                    @break
+                            @case('conversion')
+                                has-background-warning
+                                    @break
+                            @case('production')
+                                has-background-info
+                                    @break
+                            @case('completed')
+                                has-background-success
+                                    @break
+                            @case('error')
+                                is-danger
+                                    @break
+                            @default
+                                is-primary
+                        @endswitch
                     @endif">
 
                         @if(!$order->error_status)
@@ -65,7 +60,7 @@
 
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <a href="{{ route('controls.show', $control) }}">
+                        <a href="{{ route('controls.index',[ 'order' => $order]) }}">
                             <p class="title text-lg-center">{{__("Control list SHOW")}}</p>
                         </a>
                     </article>

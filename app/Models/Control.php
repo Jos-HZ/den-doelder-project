@@ -10,8 +10,8 @@ class Control extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pre_control_id',
         'order_id',
+        'pre_control_id',
         'treated',
         'date',
         'submitted_by',

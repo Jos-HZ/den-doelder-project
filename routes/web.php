@@ -88,8 +88,10 @@ Route::resource('pre-controls', PreControlController::class)->except('create');
 Route::get('orders/{order}/pre-controls/create', [PreControlController::class, 'create'])->name('pre-controls.create');
 
 // control list
-Route::resource('/controls', ControlController::class)->only('store', 'show');
+Route::resource('/controls', ControlController::class)->only('store');
 Route::get('orders/{order}/controls/create', [ControlController::class, 'create'])->name('controls.create');
+Route::get('/controls/{order}', [ControlController::class, 'index'])->name('controls.index');
+
 
 /*
 |--------------------------------------------------------------------------

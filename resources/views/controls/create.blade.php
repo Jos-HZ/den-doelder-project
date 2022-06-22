@@ -14,7 +14,7 @@
                 - {{ $order->pallettype }} </h2>
 
 
-            <form id="pre-control" method="POST" action="{{ route('controls.store') }}">
+            <form id="control" method="POST" action="{{ route('controls.store') }}">
                 @csrf
                 {{-- Hidden fields --}}
                 <label for="order_id"></label>
@@ -119,19 +119,32 @@
                     </thead>
                     <tbody>
                     {{-- !! ROWS !! --}}
-                    @foreach($columns as $column)
+                    @for($i=0; $i < count($rows); $i++)
                         {{-- hidden fields --}}
-                        @if($category->id === $column->category_id )
+                        @if($category->id === $rows[$i]->column->category_id  )
                         <tr>
                             <th>
-                                {{ $column->column }}
+                                {{ $rows[$i]->column->column }}
                             </th>
 
+                            <div class="control has-icons-left has-icons-right">
+                                <input
+                                    @class ([
+                                        'input',
+                                        'is-danger' => $errors->get('column_id'),
+                                    ])
+                                    type="hidden"
+                                    id="column_id"
+                                    name="column_id_{{$i}}"
+                                    value=" {{ $i + 1}}"
+                                >
+                            </div>
+
                             {{-- input fields --}}
-                            <td>@if($rows[$category->id -1]->correct) Correct @else Incorrect @endif</td>
-                            <td>{{ $rows[$category->id -1]->changed_to }}</td>
-                            <td>{{ $rows[$category->id -1]->treated }}</td>
-                            <td>{{ $rows[$category->id -1]->humidity }}</td>
+                            <td>@if($rows[$i]->correct) Correct @else Incorrect @endif</td>
+                            <td>{{ $rows[$i]->changed_to }}</td>
+                            <td>{{ $rows[$i]->treated }}</td>
+                            <td>{{ $rows[$i]->humidity }}</td>
                             {{-- laat de lege staan aub --}}
                             <td></td>
                             {{-- input fields --}}
@@ -141,7 +154,7 @@
                                         <select
                                             class="input @error('correct') is-danger @enderror"
                                             id="correct"
-                                            name="correct_{{$column->id}}"
+                                            name="correct_{{$i}}"
                                         >
                                             <option value="1">{{__("Yes")}}</option>
                                             <option value="0">{{__("No")}}</option>
@@ -163,7 +176,7 @@
                                             ])
                                             type="text"
                                             id="changed_to"
-                                            name="changed_to_{{$column->id}}"
+                                            name="changed_to_{{$i}}"
                                             value="NEE"
                                         >
                                     </div>
@@ -183,7 +196,7 @@
                                             ])
                                             type="text"
                                             id="comment"
-                                            name="comment_{{$column->id}}"
+                                            name="comment_{{$i}}"
                                             value="NEE"
                                         >
                                     </div>
@@ -194,7 +207,7 @@
                             </td>
                         </tr>
                         @endif
-                    @endforeach
+                    @endfor
                     </tbody>
                 </table>
                 @endforeach

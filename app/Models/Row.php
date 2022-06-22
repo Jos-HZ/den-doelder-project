@@ -20,11 +20,11 @@ class Row extends Model
 
     public function column()
     {
-        $this->belongsTo(Column::class);
+        return $this->belongsTo(Column::class);
     }
 
     public function pre_control()
     {
-        $this->belongsTo(PreControl::class);
+       return $this->belongsTo(PreControl::class);
     }
 }
