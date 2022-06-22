@@ -66,6 +66,8 @@ class ControlController extends Controller
                 'updated_at' => now()
             ]);
         }
+
+        return redirect(route('orders.show', $pre_control->order_id));
     }
 
     private function validatedControl(Request $request)

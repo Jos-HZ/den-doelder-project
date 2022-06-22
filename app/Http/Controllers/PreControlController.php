@@ -76,11 +76,11 @@ class PreControlController extends Controller
         $categories = Category::all();
         $columns = Column::all();
 
-        $preControl = PreControl::where('order_id', $order->id)->first();
+        $pre_control = PreControl::where('order_id', $order->id)->first();
 
-        $rows = Row::where('pre_control_id', $preControl->id)->get();
+        $rows = Row::where('pre_control_id', $pre_control->id)->get();
 
-        return view('pre-controls.show', compact('order', 'categories', 'columns', 'rows'));
+        return view('pre-controls.show', compact('order', 'categories', 'columns', 'rows', 'pre_control'));
     }
 
     /**
