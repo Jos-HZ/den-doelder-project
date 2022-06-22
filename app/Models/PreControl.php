@@ -15,4 +15,20 @@ class PreControl extends Model
         'date',
         'submitted_by',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function control()
+    {
+        return $this->belongsTo(Control::class);
+    }
+
+    public function rows()
+    {
+        return $this->hasMany(Row::class);
+    }
+
 }

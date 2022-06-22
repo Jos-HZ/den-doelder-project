@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Column extends Model
 {
     use HasFactory;
+
+    public function row()
+    {
+        return $this->hasMany(Row::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

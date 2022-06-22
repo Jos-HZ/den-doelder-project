@@ -80,7 +80,7 @@
                 </div>
 
                 {{-- !! ROWS !! --}}
-                @foreach([1, 2] as $id)
+                @foreach($columns_id as $id)
                 {{-- hidden fields --}}
                 <label for="pre_control_id"></label>
                 <div class="control has-icons-left has-icons-right">
@@ -141,7 +141,7 @@
                             type="text"
                             id="changed_to"
                             name="changed_to_{{$id}}"
-                            value=""
+                            value="NEE"
                         >
                     </div>
                     @error('changed_to')
@@ -177,7 +177,7 @@
                             type="number"
                             id="humidity"
                             name="humidity_{{$id}}"
-                            value=""
+                            value="8"
                         >
                     </div>
                     @error('humidity')

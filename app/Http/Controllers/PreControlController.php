@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Column;
 use App\Models\PreControl;
 use App\Models\Row;
 use Illuminate\Contracts\Foundation\Application;
@@ -15,11 +16,12 @@ class PreControlController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
-        return view('pre-controls.create');
+        $columns_id = Column::pluck('id')->toArray();
+        return view('pre-controls.create', compact('columns_id'));
     }
 
     /**
@@ -30,16 +32,17 @@ class PreControlController extends Controller
      */
     public function store(Request $request)
     {
-        PreControl::create($this->validatedPreControl($request));
+        $pre_control = PreControl::create($this->validatedPreControl($request));
 
-        foreach ([1, 2] as $id){
+        $columns_id = Column::pluck('id')->toArray();
+
+        foreach ($columns_id as $id) {
             // variables with correct id
             $correct = 'correct_' . $id;
             $changed_to = 'changed_to_' . $id;
             $treated = 'treated_' . $id;
             $humidity = 'humidity_' . $id;
             $column_id = 'column_id_' . $id;
-            $pre_control_id = 'pre_control_id_' . $id;
 
             DB::table('rows')->insert([
                 'correct' => $request->$correct,
@@ -47,7 +50,11 @@ class PreControlController extends Controller
                 'treated' => $request->$treated,
                 'humidity' => $request->$humidity,
                 'column_id' => $request->$column_id,
-                'pre_control_id' => $request->$pre_control_id
+                // TODO: give right pre_control id
+                'pre_control_id' => $pre_control->id,
+
+                'created_at' => now(),
+                'updated_at' => now()
             ]);
         }
     }

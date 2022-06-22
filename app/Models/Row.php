@@ -17,4 +17,14 @@ class Row extends Model
         'column_id',
         'pre_control_id'
     ];
+
+    public function column()
+    {
+        $this->belongsTo(Column::class);
+    }
+
+    public function pre_control()
+    {
+        $this->belongsTo(PreControl::class);
+    }
 }
