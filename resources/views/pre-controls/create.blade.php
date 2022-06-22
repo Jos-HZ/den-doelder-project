@@ -8,6 +8,8 @@
 
         <div class="container">
             <h1 class="title has-text-centered">{{__("Pre control")}}</h1>
+            <h2 class="subtitle has-text-centered">{{__("Order") }}: {{ $order->ordernumber }} - {{ $order->pallettype }} </h2>
+
 
             <form id="pre-control" method="POST" action="{{ route('pre-controls.store') }}">
                 @csrf
@@ -22,8 +24,7 @@
                         type="hidden"
                         id="order_id"
                         name="order_id"
-                        {{-- TODO: correct ordernumber --}}
-                        value="1"
+                        value="{{ $order->id }}"
                     >
                 </div>
 
@@ -82,21 +83,7 @@
                 {{-- !! ROWS !! --}}
                 @foreach($columns_id as $id)
                 {{-- hidden fields --}}
-                <label for="pre_control_id"></label>
-                <div class="control has-icons-left has-icons-right">
-                    <input
-                        @class ([
-                            'input',
-                            'is-danger' => $errors->get('time'),
-                        ])
-                        type="hidden"
-                        id="pre_control_id"
-                        name="pre_control_id_{{$id}}"
-                        {{-- TODO: correct pre_cotrol_id --}}
-                        value="{{ $id }}"
-                    >
-                </div>
-
+                {{ $columns[$id-1]->column }}
                 <label for="column_id"></label>
                 <div class="control has-icons-left has-icons-right">
                     <input

@@ -33,7 +33,7 @@
                     @default
                         is-primary
 @endswitch
-                        @endif">
+                    @endif">
 
                         @if(!$order->error_status)
                             @if($order->conversion_time === null)
@@ -52,7 +52,9 @@
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <p class="title text-lg-center">{{__("Control list")}}</p>
+                        <a href="{{ route('pre-controls.create', $order) }}">
+                            <p class="title text-lg-center">{{__("Control list")}}</p>
+                        </a>
                     </article>
                 </div>
 
@@ -68,7 +70,7 @@
                     <div class="tile is-child box">
                         <article>
                             <a href="{{ route('qualityControl.index', $order) }}">
-                            <p class="title text-lg-center">{{__("Quality control")}}</p>
+                                <p class="title text-lg-center">{{__("Quality control")}}</p>
                             </a>
                         </article>
                     </div>
@@ -134,10 +136,10 @@
                         @if($order->error_status == 1)
                             <p class="title text-lg-center">{{__("Error occurred")}}</p>
                         @else
-                        <a href="{{ route('backlog.create', ['ordernumber' => $order->ordernumber ])}}">
-                            <p class="title text-lg-center">{{__("Error")}}</p>
-                        </a>
-                            @endif
+                            <a href="{{ route('backlog.create', ['ordernumber' => $order->ordernumber ])}}">
+                                <p class="title text-lg-center">{{__("Error")}}</p>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
