@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Authorization\AdminController;
 use App\Http\Controllers\Authorization\DriverController;
 use App\Http\Controllers\BacklogController;
+use App\Http\Controllers\ControlController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
@@ -82,11 +83,16 @@ Route::resource('production-lines', ProductionLineController::class)->only([
     'show'
 ]);
 
-// control lists
+// pre control list
 Route::resource('pre-controls', PreControlController::class)->except('create');
-Route::get('orders/{order}/pre-control/create', [PreControlController::class, 'create'])->name('pre-controls.create');
+Route::get('orders/{order}/pre-controls/create', [PreControlController::class, 'create'])->name('pre-controls.create');
 
-Route::resource('rows', RowController::class);
+// control list
+Route::resource('controls', ControlController::class)->except('create');
+Route::get('orders/{order}/controls/create', [ControlController::class, 'create'])->name('controls.create');
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Driver Routes
