@@ -67,7 +67,7 @@ class ControlController extends Controller
             ]);
         }
 
-        return redirect(route('orders.show', $pre_control->order_id));
+        return redirect(route('orders.show', $control->order_id));
     }
 
     private function validatedControl(Request $request)
