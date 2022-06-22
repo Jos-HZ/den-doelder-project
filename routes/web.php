@@ -90,7 +90,7 @@ Route::get('orders/{order}/pre-controls/create', [PreControlController::class, '
 // control list
 Route::resource('/controls', ControlController::class)->only('store');
 Route::get('orders/{order}/controls/create', [ControlController::class, 'create'])->name('controls.create');
-Route::get('/controls/{order}', [ControlController::class, 'index'])->name('controls.index');
+Route::get('/controls/{order}', [ControlController::class, 'show'])->name('controls.show');
 
 
 /*

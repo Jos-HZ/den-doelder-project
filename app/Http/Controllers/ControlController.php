@@ -85,7 +85,7 @@ class ControlController extends Controller
      * @param Control $control
      * @return Application|Factory|View
      */
-    public function index(Order $order)
+    public function show(Order $order)
     {
         $categories = Category::all();
         $columns = Column::all();
@@ -97,7 +97,7 @@ class ControlController extends Controller
         $rows = Row::where('pre_control_id', $preControl->id)->get();
         $controlRows = ControlRow::where('control_id', $control->id)->get();
 
-        return view('controls.index', compact('order', 'categories', 'columns', 'rows', 'controlRows'));
+        return view('controls.show', compact('order', 'categories', 'columns', 'rows', 'controlRows'));
     }
 
     /**

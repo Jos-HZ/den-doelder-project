@@ -62,7 +62,7 @@
                                 @elseif(!\App\Models\Control::where('order_id', $order->id)->first())
                                     {{-- Show blde pre control  --}}
                                 @else
-                                    <a href="{{ route('controls.index',[ 'order' => $order]) }}">
+                                    <a href="{{ route('controls.show',[ 'order' => $order]) }}">
                                         <p class="title text-lg-center">{{__("Control list")}}</p>
                                     </a>
                                 @endif
@@ -84,7 +84,7 @@
                     @else
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <a href="{{ route('controls.index',[ 'order' => $order]) }}">
+                                <a href="{{ route('controls.show',[ 'order' => $order]) }}">
                                     <p class="title text-lg-center">{{__("Control list")}}</p>
                                 </a>
                             </article>
