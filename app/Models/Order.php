@@ -31,7 +31,12 @@ class Order extends Model
 
     public function pre_control()
     {
-        return $this->hasMany(Row::class);
+        return $this->belongsTo(PreControl::class);
+    }
+
+    public function control()
+    {
+        return $this->belongsTo(Control::class);
     }
 
     /*

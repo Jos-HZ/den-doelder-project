@@ -9,6 +9,14 @@ class Control extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'pre_control_id',
+        'order_id',
+        'treated',
+        'date',
+        'submitted_by',
+    ];
+
     public function order()
     {
         return $this->belongsTo(Order::class);

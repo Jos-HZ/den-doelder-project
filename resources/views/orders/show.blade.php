@@ -1,6 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
+
+    @php
+        $control = \App\Models\Control::where('order_id', $order->id)->first()
+    @endphp
+
     <section class="section">
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
         <div class="container">
@@ -54,6 +59,14 @@
                     <article class="tile is-child box">
                         <a href="{{ route('pre-controls.create', $order) }}">
                             <p class="title text-lg-center">{{__("Control list")}}</p>
+                        </a>
+                    </article>
+                </div>
+
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <a href="{{ route('controls.show', $control) }}">
+                            <p class="title text-lg-center">{{__("Control list SHOW")}}</p>
                         </a>
                     </article>
                 </div>
