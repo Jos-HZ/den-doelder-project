@@ -52,7 +52,6 @@ class PreControlController extends Controller
                 'treated' => $request->$treated,
                 'humidity' => $request->$humidity,
                 'column_id' => $request->$column_id,
-                // TODO: give right pre_control id
                 'pre_control_id' => $pre_control->id,
 
                 'created_at' => now(),
