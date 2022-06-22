@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Column;
+use App\Models\Order;
 use App\Models\PreControl;
 use App\Models\Row;
 use Illuminate\Contracts\Foundation\Application;
@@ -18,17 +19,18 @@ class PreControlController extends Controller
      *
      * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create()
+    public function create(Order $order)
     {
         $columns_id = Column::pluck('id')->toArray();
-        return view('pre-controls.create', compact('columns_id'));
+        $columns = Column::all();
+        return view('pre-controls.create', compact('columns_id', 'order', 'columns'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return string
      */
     public function store(Request $request)
     {
@@ -57,6 +59,8 @@ class PreControlController extends Controller
                 'updated_at' => now()
             ]);
         }
+
+        return redirect(route('orders.show', $pre_control->order_id));
     }
 
     /**

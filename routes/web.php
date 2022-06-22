@@ -83,7 +83,9 @@ Route::resource('production-lines', ProductionLineController::class)->only([
 ]);
 
 // control lists
-Route::resource('pre-controls', PreControlController::class);
+Route::resource('pre-controls', PreControlController::class)->except('create');
+Route::get('/pre-control/create/{order}', [PreControlController::class, 'create'])->name('pre-controls.create');
+
 Route::resource('rows', RowController::class);
 
 /*
