@@ -21,7 +21,7 @@ class AdminTableSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin12345'),
             'role' => 'admin',
-            'language'=>'nl'
+            'language' => 'nl'
         ]);
 
         $role = Role::create(['name' => 'Admin']);

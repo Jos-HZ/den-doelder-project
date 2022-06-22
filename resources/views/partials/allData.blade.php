@@ -38,7 +38,11 @@
     @foreach($orders as $order)
         <tr>
             <td>{{ $order->ordernumber}}</td>
-            <td>@if($order->production_line_id === 3) 5 @else {{ $order->production_line_id }} @endif</td>
+            <td>@if($order->production_line_id === 3)
+                    5
+                @else
+                    {{ $order->production_line_id }}
+                @endif</td>
             <td>{{ $order->conversion_time}}</td>
             <td>{{ $order->start_time }}</td>
             <td>{{ $order->end_time }}</td>

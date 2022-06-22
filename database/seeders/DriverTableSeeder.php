@@ -19,7 +19,7 @@ class DriverTableSeeder extends Seeder
             'email' => 'driver@driver.com',
             'password' => bcrypt('driver12345'),
             'role' => 'driver',
-             'language'=>'en'
+            'language' => 'en'
         ]);
     }
 }

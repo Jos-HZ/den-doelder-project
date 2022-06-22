@@ -36,7 +36,7 @@
                     </div>
                 </div>
 
-                <label for="addition">{{__("Addition")}}:</label><br>
+                <label for="addition">{{__("Addition")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input type="text"
