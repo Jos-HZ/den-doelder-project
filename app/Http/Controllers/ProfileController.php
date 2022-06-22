@@ -17,9 +17,11 @@ use Illuminate\Support\Facades\File;
 class ProfileController extends Controller
 {
 
-    public function profile(){
+    public function profile()
+    {
         return view('file-upload.index', array('user' => Auth::user()));
     }
+
     public function index(Request $request)
     {
         $users = User::filter($request)->get();
@@ -29,8 +31,7 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
-        if($request->file('file'))
-        {
+        if ($request->file('file')) {
             $file = $request->file('file');
             $filename = time() . '.' . $request->file('file')->extension();
             $filePath = public_path() . '/files/uploads/';
@@ -99,7 +100,6 @@ class ProfileController extends Controller
 //        }
 //        return view('file-upload.index', array('user' => Auth::user()));
 //    }
-
 
 
 }

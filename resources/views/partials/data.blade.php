@@ -9,12 +9,12 @@
     </thead>
     <tbody>
     <tr>
-    <td>{{ $order->conversion_time}}</td>
-    <td>{{ $order->start_time }}</td>
-    <td>{{ $order->end_time }}</td>
-    <td>{{ $order->conversionTime() }}</td>
-    <td>{{ $order->productionTime() }}</td>
-    <td>{{ $order->errorTime() }}</td>
+        <td>{{ $order->conversion_time}}</td>
+        <td>{{ $order->start_time }}</td>
+        <td>{{ $order->end_time }}</td>
+        <td>{{ $order->conversionTime() }}</td>
+        <td>{{ $order->productionTime() }}</td>
+        <td>{{ $order->errorTime() }}</td>
     </tr>
     </tbody>
 </table>

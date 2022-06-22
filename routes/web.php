@@ -4,7 +4,6 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Authorization\AdminController;
 use App\Http\Controllers\Authorization\DriverController;
 use App\Http\Controllers\BacklogController;
-use App\Http\Controllers\ChecklistController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
@@ -32,41 +31,66 @@ use Illuminate\Support\Str;
 |
 */
 
-Route::get('language/{locale}', function ($locale) {
-    app()->setLocale($locale);
-    session()->put('locale', $locale);
-
-    return redirect()->back();
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('/', AuthenticatedSessionController::class);
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
+    Route::get('redirects', [HomeController::class, 'index']);
 });
 
-Route::resource('/', AuthenticatedSessionController::class);
+/*
+|--------------------------------------------------------------------------
+| Orders
+|--------------------------------------------------------------------------
+*/
+
 Route::resource('/orders', OrderController::class);
 Route::get('/orders/{order}/conversion', [OrderController::class, 'conversion'])->name('orders.conversion');
 Route::get('/orders/{order}/start', [OrderController::class, 'start'])->name('orders.start');
 Route::get('/orders/{order}/end', [OrderController::class, 'end'])->name('orders.end');
 Route::get('/data', [OrderController::class, 'data'])->name('orders.data');
 
+/*
+|--------------------------------------------------------------------------
+| Backlog
+|--------------------------------------------------------------------------
+*/
+
 Route::resource('/backlog', BacklogController::class)->except(['delete', 'show']);
 Route::get('/backlog/{backlog}/resolve', [BacklogController::class, 'resolve'])->name('backlog.resolve');
+
+/*
+|--------------------------------------------------------------------------
+| QualityControl
+|--------------------------------------------------------------------------
+*/
 
 Route::resource('/qualityControl', QualityControlController::class)->except(['index', 'show', 'delete']);
 Route::get('/qualityControl/{order}', [QualityControlController::class, 'index'])->name('qualityControl.index');
 
-
-Route::resource('/checklist', ChecklistController::class)->except(['delete']);
+/*
+|--------------------------------------------------------------------------
+| Pallet Locations
+|--------------------------------------------------------------------------
+*/
 
 Route::resource('/placements', PlacementController::class);
 Route::resource('/locations', LocationController::class);
 
 
-
+/*
+|--------------------------------------------------------------------------
+| File upload
+|--------------------------------------------------------------------------
+*/
 
 Route::get('file-upload', [FileUploadController::class, 'index'])->name('file-upload.index');
 Route::post('store', [FileUploadController::class, 'store'])->name('file-upload.store');
 Route::get('/pdf/{file}', function ($file) {
+
+
     // file path
     $path = public_path('/storage/files/D4QyUTWQq9BF9vBabztsfuTiKc735a4RI7hwsDlZ.pdf');
-        // 'storage/files' . '/' . $file);
+    // 'storage/files' . '/' . $file);
     // header
     $header = [
         'Content-Type' => 'application/pdf',
@@ -75,15 +99,18 @@ Route::get('/pdf/{file}', function ($file) {
     return response()->file($path, $header);
 })->name('pdf');
 
+/*
+|--------------------------------------------------------------------------
+| Language
+|--------------------------------------------------------------------------
+*/
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
-    Route::get('redirects', [HomeController::class, 'index']);
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+
+    return redirect()->back();
 });
-
-Route::resource('production-lines', ProductionLineController::class)->only([
-    'show'
-]);
 
 /*
 |--------------------------------------------------------------------------
@@ -131,6 +158,7 @@ Route::middleware(['auth'])->group(function () {
 */
 
 Route::middleware(['production'])->group(function () {
+    Route::resource('production-lines', ProductionLineController::class)->only(['show']);
 
 });
 

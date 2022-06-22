@@ -23,7 +23,7 @@ class TranslateRolesNLTest extends TestCase
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin12345'),
             'role' => 'admin',
-            'language'=>'nl'
+            'language' => 'nl'
         ]);
         $response = $this->actingAs($user)->followingRedirects()->get('/language/nl/')->assertSee('U bent ingelogd als admin!');
         $response->assertStatus(200);
@@ -56,7 +56,7 @@ class TranslateRolesNLTest extends TestCase
             'email' => 'driver@driver.com',
             'password' => bcrypt('driver12345'),
             'role' => 'driver',
-            'language'=>'nl'
+            'language' => 'nl'
         ]);
         $response = $this->actingAs($user)->followingRedirects()->get('/language/nl/')->assertSee('U bent ingelogd als driver!');
         $response->assertStatus(200);

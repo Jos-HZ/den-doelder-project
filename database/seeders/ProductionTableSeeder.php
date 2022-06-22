@@ -19,7 +19,7 @@ class ProductionTableSeeder extends Seeder
             'email' => 'production@production.com',
             'password' => bcrypt('production12345'),
             'role' => 'production',
-            'language'=>'en'
+            'language' => 'en'
         ]);
     }
 }
