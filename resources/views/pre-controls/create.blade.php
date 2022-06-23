@@ -84,13 +84,13 @@
 
                 @foreach($categories as $category)
                 <div class="pt-4">
-                    <h1 class='title is-5'>{{ $category->category }}</h1>
+                    <h1 class='title is-5'>{{ $category->category_name() }}</h1>
 
                 </div>
                 <table class="table is-bordered">
                     <thead>
                     <tr>
-                        <th></th>
+                        <th style="border:none"></th>
                         <th><abbr title="correct">{{__("Correct (Y/N)")}}</abbr></th>
                         <th><abbr title="changed_to">{{__("Changed to")}}</abbr></th>
                         <th><abbr title="treated">ht / hk</abbr></th>
@@ -104,7 +104,7 @@
                         @if($category->id === $column->category_id )
                         <tr>
                             <th>
-                                {{ $column->column }}
+                                {{ $column->column_name() }}
                             </th>
                             <div class="control has-icons-left has-icons-right">
                                 <input
@@ -150,7 +150,7 @@
                                             type="text"
                                             id="changed_to"
                                             name="changed_to_{{$column->id}}"
-                                            value="NEE"
+                                            value="Test"
                                         >
                                     </div>
                                     @error('changed_to')
@@ -188,7 +188,7 @@
                                             type="number"
                                             id="humidity"
                                             name="humidity_{{$column->id}}"
-                                            value="8"
+                                            value="78"
                                         >
                                     </div>
                                     @error('humidity')

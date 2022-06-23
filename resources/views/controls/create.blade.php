@@ -98,7 +98,7 @@
 
                 @foreach($categories as $category)
                 <div class="pt-4">
-                    <h1 class='title is-5'>{{ $category->category }}</h1>
+                    <h1 class='title is-5'>{{ $category->category_name() }}</h1>
 
                 </div>
                 <table class="table is-bordered">
@@ -110,7 +110,7 @@
                         <th><abbr title="treated">ht / hk</abbr></th>
                         <th><abbr title="humidity">{{__("Humidity")}}</abbr></th>
 
-                        <th></th>
+                        <th style="border:none"></th>
 
                         <th><abbr title="correct">{{__("Correct (Y/N)")}}</abbr></th>
                         <th><abbr title="changed_to">{{__("Changed to")}}</abbr></th>
@@ -124,7 +124,7 @@
                         @if($category->id === $rows[$i]->column->category_id  )
                         <tr>
                             <th>
-                                {{ $rows[$i]->column->column }}
+                                {{ $rows[$i]->column->column_name() }}
                             </th>
 
                             <div class="control has-icons-left has-icons-right">
@@ -146,7 +146,7 @@
                             <td>{{ $rows[$i]->treated }}</td>
                             <td>{{ $rows[$i]->humidity }}</td>
                             {{-- laat de lege staan aub --}}
-                            <td></td>
+                            <td style="border:none"></td>
                             {{-- input fields --}}
                             <td>
                                 <div class="label">
@@ -177,7 +177,7 @@
                                             type="text"
                                             id="changed_to"
                                             name="changed_to_{{$i}}"
-                                            value="NEE"
+                                            value="Test"
                                         >
                                     </div>
                                     @error('changed_to')
@@ -197,7 +197,7 @@
                                             type="text"
                                             id="comment"
                                             name="comment_{{$i}}"
-                                            value="NEE"
+                                            value="Test"
                                         >
                                     </div>
                                     @error('comment')
