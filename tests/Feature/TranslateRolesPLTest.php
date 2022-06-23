@@ -59,7 +59,7 @@ class TranslateRolesPLTest extends TestCase
             'role' => 'driver',
             'language' => 'pl'
         ]);
-        $response = $this->actingAs($user)->followingRedirects()->get('/language/pl/')->assertSee('Jesteś zalogowany jako kierowca!');
+        $response = $this->actingAs($user)->get('/')->assertSee('Jesteś zalogowany jako kierowca!');
         $response->assertStatus(200);
     }
 }
