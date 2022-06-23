@@ -4,11 +4,13 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Authorization\AdminController;
 use App\Http\Controllers\Authorization\DriverController;
 use App\Http\Controllers\BacklogController;
+use App\Http\Controllers\ControlController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PlacementController;
+use App\Http\Controllers\PreControlController;
 use App\Http\Controllers\ProductionLineController;
 use App\Http\Controllers\QualityControlController;
 use App\Http\Controllers\UserController;
@@ -109,6 +111,26 @@ Route::get('language/{locale}', function ($locale) {
 
     return redirect()->back();
 });
+
+/*
+|--------------------------------------------------------------------------
+| Pre control list
+|--------------------------------------------------------------------------
+*/
+Route::resource('pre-controls', PreControlController::class)->only('store');
+Route::get('orders/{order}/pre-controls/create', [PreControlController::class, 'create'])->name('pre-controls.create');
+Route::get('/pre-controls/{order}', [PreControlController::class, 'show'])->name('pre-controls.show');
+
+
+/*
+|--------------------------------------------------------------------------
+| Control list
+|--------------------------------------------------------------------------
+*/
+Route::resource('/controls', ControlController::class)->only('store');
+Route::get('orders/{order}/controls/create', [ControlController::class, 'create'])->name('controls.create');
+Route::get('/controls/{order}', [ControlController::class, 'show'])->name('controls.show');
+
 
 /*
 |--------------------------------------------------------------------------

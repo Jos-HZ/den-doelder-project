@@ -29,6 +29,16 @@ class Order extends Model
         return $this->hasMany(Backlog::class);
     }
 
+    public function pre_control()
+    {
+        return $this->belongsTo(PreControl::class);
+    }
+
+    public function control()
+    {
+        return $this->belongsTo(Control::class);
+    }
+
     /*
      * calculates the time between conversion_time and end_time in minutes
      *
