@@ -4,8 +4,7 @@
     <section class="section">
         <a href="/"><img src="/img/svg/back-arrow.svg" width="35" height="35"></a>
 
-
-        <form method="get" action="{{ route('backlog.index') }}">
+        <form method="get" action="{{ route('backlog.index') }}" class="pt-4">
             <div>
                 <select id="txtSearch" name="category">
                     <option
@@ -60,7 +59,6 @@
             @foreach($backlogs as $backlog)
                 <tr>
                     <th>{{ $backlog->order->ordernumber}}</th>
-                    {{-- TODO: nette oplossing --}}
                     <th> @if($backlog->order->production_line_id === 3)
                             5
                         @else

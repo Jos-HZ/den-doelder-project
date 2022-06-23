@@ -11,7 +11,19 @@
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <p class="title text-lg-center">{{__("Checklist")}}</p>
+                        @if(!\App\Models\PreControl::where('order_id', $order->id)->first())
+                            <a href="{{ route('pre-controls.create', $order) }}">
+                                <p class="title text-lg-center">{{__("Create control list")}}</p>
+                            </a>
+                        @elseif(!\App\Models\Control::where('order_id', $order->id)->first())
+                            <a href="{{ route('pre-controls.show', $order) }}">
+                                <p class="title text-lg-center">{{__("Control list")}}</p>
+                            </a>
+                        @else
+                            <a href="{{ route('controls.show',[ 'order' => $order]) }}">
+                                <p class="title text-lg-center">{{__("Control list")}}</p>
+                            </a>
+                        @endif
                     </article>
                 </div>
                 <div class="tile is-parent">
@@ -29,11 +41,10 @@
                     </div>
                 </div>
             </div>
-            {{--   TODO: change url query to something useful     --}}
 
             <div class="tile is-ancestor">
                 <div class="tile is-parent is-8">
-                    <div class="tile is-child box">
+                    <div class="tile is-child box has-background-primary">
                         <div class="notesTitle">
                             <p class="title">{{__("Notes")}}</p>
                             @if (Request::query('a') === 'edit')
@@ -56,7 +67,7 @@
                                     <div class="grow-wrap">
                                             <textarea name="notes"
                                                       oninput="this.parentNode.dataset.replicatedValue = this.value"
-                                                      class="is-focused has-background-grey-lighter">{{ $order->notes }}</textarea>
+                                                      class="is-focused has-background-primary-lighter">{{ $order->notes }}</textarea>
                                         <script>document.querySelector('#notes > div > textarea').parentNode.dataset.replicatedValue = document.querySelector('#notes > div > textarea').value;</script>
                                     </div>
                                 </form>
