@@ -32,13 +32,12 @@
                     </a>
 
                     <div class="navbar-dropdown">
-                        <button class="navbar-item" onclick="location.href='{{ route('backlog.index') }}'">Error
-                            backlog
+                        <button class="navbar-item" onclick="location.href='{{ route('backlog.index') }}'">{{__('Error backlog')}}
+
                         </button>
-                        <button class="navbar-item" onclick="location.href='{{ route('placements.index') }}'">Location
-                            log
+                        <button class="navbar-item" onclick="location.href='{{ route('placements.index') }}'">{{__('Location log')}}
                         </button>
-                        <button class="navbar-item" onclick="location.href='{{ route('orders.data') }}'">Order backlog
+                        <button class="navbar-item" onclick="location.href='{{ route('orders.data') }}'">{{__('Order backlog')}}
                         </button>
                     </div>
                 </div>
@@ -52,7 +51,7 @@
 
             <div class="navbar-dropdown">
                 @include('partials/language_switcher')
-                <button class="navbar-item" onclick="location.href='{{ route('file-upload.index') }}'">Profile</button>
+                <button class="navbar-item" onclick="location.href='{{ route('file-upload.index') }}'">{{__('Profile')}}</button>
                 <form action="{{ route('destroy', 'logout') }}" method="POST">
                     @csrf
                     <button class="navbar-item" type="submit">

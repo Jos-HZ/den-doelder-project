@@ -17,7 +17,7 @@
                                 <p class="subtitle">{{__("Production status")}}:
                                     {{ $order->status }}
 
-                                    {{__("Number of pallets:")}} {{ $order->palletnumber }}
+                                    {{__('Number of pallets')}}: {{ $order->palletnumber }}
                                 </p>
                                 <p class="has-text-link-dark"> {{ $order->notes }} </p>
                             </div>
