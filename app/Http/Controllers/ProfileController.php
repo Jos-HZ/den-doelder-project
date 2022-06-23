@@ -48,11 +48,6 @@ class ProfileController extends Controller
         return redirect()->back()->with('success', 'File uploaded successfully.');
     }
 
-//    public function edit()
-//    {
-//        $user = Auth::user();
-//        return view('file-upload.edit', compact('user'), array('user' => Auth::user()));
-//    }
 
     /**
      * Validates the User
@@ -82,24 +77,5 @@ class ProfileController extends Controller
 
         return redirect(route('file-upload.index', $user));
     }
-
-//    public function update_avatar(Request  $request){
-//
-//        if($request->hasFile('avatar')){
-//            $user = Auth::user();
-//            if(File::exists('img/profilepictures/' . $user->avatar)) {
-//                File::delete('img/profilepictures/' . $user->avatar);
-//            }
-//            $avatar = $request->file('avatar');
-//            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-//            Image::make($avatar)->save( public_path('img/profilepictures/' . $filename));
-//
-//
-//            $user->avatar = $filename;
-//            $user->save();
-//        }
-//        return view('file-upload.index', array('user' => Auth::user()));
-//    }
-
 
 }

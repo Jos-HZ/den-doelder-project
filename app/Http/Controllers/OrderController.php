@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    //    TODO: validation
 
     /**
      * Display a listing of the resource.
