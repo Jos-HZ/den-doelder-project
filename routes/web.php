@@ -10,7 +10,6 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PlacementController;
 use App\Http\Controllers\ProductionLineController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualityControlController;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\PasswordReset;
@@ -31,11 +30,10 @@ use Illuminate\Support\Str;
 |
 */
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::resource('/', AuthenticatedSessionController::class);
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
-    Route::get('redirects', [HomeController::class, 'index']);
-});
+Route::resource('/', AuthenticatedSessionController::class);
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
+Route::get('redirects', [HomeController::class, 'index']);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -157,10 +155,7 @@ Route::middleware(['auth'])->group(function () {
 |
 */
 
-Route::middleware(['production'])->group(function () {
-    Route::resource('production-lines', ProductionLineController::class)->only(['show']);
-
-});
+Route::resource('production-lines', ProductionLineController::class)->only(['show']);
 
 require __DIR__ . '/auth.php';
 
