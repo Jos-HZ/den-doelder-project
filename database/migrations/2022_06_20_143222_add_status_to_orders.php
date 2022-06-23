@@ -14,7 +14,7 @@ class AddStatusToOrders extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->enum('status', ['pending','conversion','production', 'completed', 'error'])->default('pending');
+            $table->enum('status', ['pending', 'conversion', 'production', 'completed', 'error'])->default('pending');
         });
     }
 

@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <h1>{{__("Order")}} {{ app('request')->input('ordernumber') }}</h1>
+            <h1 class="has-text-centered">{{__("Order")}} {{ app('request')->input('ordernumber') }}</h1>
 
             <form method="POST" action="{{ route('backlog.store') }}">
                 @csrf
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <label for="time">{{__("Time")}}:</label><br>
+                <label for="time">{{__("Time")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
@@ -48,7 +48,7 @@
                     @enderror
                 </div>
 
-                <label for="date">{{__("Date")}}:</label><br>
+                <label for="date">{{__("Date")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
@@ -67,7 +67,7 @@
                     @enderror
                 </div>
 
-                <label class="i forgor" for="category"> {{__("Error category")}}:</label><br>
+                <label class="i forgor" for="category"> {{__("Error category")}}:</label>
                 <div class="label">
 
                     <div class="select">
@@ -86,7 +86,7 @@
                     @enderror
                 </div>
 
-                <label for="description">{{__("Description")}}:</label><br>
+                <label for="description">{{__("Description")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <div class="grow-wrap">

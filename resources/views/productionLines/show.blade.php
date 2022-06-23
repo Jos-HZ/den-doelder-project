@@ -15,8 +15,8 @@
                                 <p class="title">{{__("Order")}} {{ $order->ordernumber }}
                                     - {{ $order->pallettype }}</p>
                                 <p class="subtitle">{{__("Production status")}}:
-                                 {{ $order->status }}
-                                    <br>
+                                    {{ $order->status }}
+
                                     {{__("Number of pallets:")}} {{ $order->palletnumber }}
                                 </p>
                                 <p class="has-text-link-dark"> {{ $order->notes }} </p>

@@ -22,14 +22,14 @@ class Localization
      * @param \Closure $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next )
+    public function handle(Request $request, Closure $next)
     {
         if (Session::has('locale')) {
             App::setLocale(Session::get('locale'));
 
             DB::table('users')
-                ->where("id", '=', Auth::user()->id )
-                ->update(['language'=> Session::get('locale')]);
+                ->where("id", '=', Auth::user()->id)
+                ->update(['language' => Session::get('locale')]);
 
         }
 

@@ -24,7 +24,7 @@ class TranslateRolesROTest extends TestCase
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin12345'),
             'role' => 'admin',
-            'language'=>'ro'
+            'language' => 'ro'
         ]);
         $response = $this->actingAs($user)->followingRedirects()->get('/language/ro/')->assertSee('Sunteți autentificat ca administrator!');
         $response->assertStatus(200);
@@ -56,7 +56,7 @@ class TranslateRolesROTest extends TestCase
             'email' => 'driver@driver.com',
             'password' => bcrypt('driver12345'),
             'role' => 'driver',
-            'language'=>'ro'
+            'language' => 'ro'
         ]);
         $response = $this->actingAs($user)->followingRedirects()->get('/language/ro/')->assertSee('Sunteți autentificat ca șofer!');
         $response->assertStatus(200);
