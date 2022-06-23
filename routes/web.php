@@ -4,13 +4,14 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Authorization\AdminController;
 use App\Http\Controllers\Authorization\DriverController;
 use App\Http\Controllers\BacklogController;
+use App\Http\Controllers\ControlController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PlacementController;
+use App\Http\Controllers\PreControlController;
 use App\Http\Controllers\ProductionLineController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualityControlController;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\PasswordReset;
@@ -31,11 +32,10 @@ use Illuminate\Support\Str;
 |
 */
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::resource('/', AuthenticatedSessionController::class);
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
-    Route::get('redirects', [HomeController::class, 'index']);
-});
+Route::resource('/', AuthenticatedSessionController::class);
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
+Route::get('redirects', [HomeController::class, 'index']);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -114,6 +114,26 @@ Route::get('language/{locale}', function ($locale) {
 
 /*
 |--------------------------------------------------------------------------
+| Pre control list
+|--------------------------------------------------------------------------
+*/
+Route::resource('pre-controls', PreControlController::class)->only('store');
+Route::get('orders/{order}/pre-controls/create', [PreControlController::class, 'create'])->name('pre-controls.create');
+Route::get('/pre-controls/{order}', [PreControlController::class, 'show'])->name('pre-controls.show');
+
+
+/*
+|--------------------------------------------------------------------------
+| Control list
+|--------------------------------------------------------------------------
+*/
+Route::resource('/controls', ControlController::class)->only('store');
+Route::get('orders/{order}/controls/create', [ControlController::class, 'create'])->name('controls.create');
+Route::get('/controls/{order}', [ControlController::class, 'show'])->name('controls.show');
+
+
+/*
+|--------------------------------------------------------------------------
 | Driver Routes
 |--------------------------------------------------------------------------
 |
@@ -157,10 +177,7 @@ Route::middleware(['auth'])->group(function () {
 |
 */
 
-Route::middleware(['production'])->group(function () {
-    Route::resource('production-lines', ProductionLineController::class)->only(['show']);
-
-});
+Route::resource('production-lines', ProductionLineController::class)->only(['show']);
 
 require __DIR__ . '/auth.php';
 

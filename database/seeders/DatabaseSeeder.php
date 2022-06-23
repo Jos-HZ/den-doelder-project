@@ -22,5 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call(BacklogSeeder::class);
         $this->call(PermissionTableSeeder::class);
         $this->call(LocationSeeder::class);
+
+        //checklist
+        $this->call(CategorySeeder::class);
+        $this->call(ColumnSeeder::class);
     }
 }

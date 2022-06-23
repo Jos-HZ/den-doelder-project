@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="section">
-        <img src="/img/svg/back-arrow.svg" href="/production-lines/2" width="35" height="35">
+        <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
         <div class="container">
 
             <h1 class="title has-text-centered">{{__("Order")}} {{ $order->ordernumber }} {{$order->pallettype}}</h1>
@@ -13,27 +13,27 @@
                     <article class="tile is-child box
                     @if($order->error_status == 1)
                         has-background-danger
-                        @else
-                    @switch($order->status)
-                    @case('pending')
-                        has-background-grey-light
-@break
-                    @case('conversion')
-                        has-background-warning
-@break
-                    @case('production')
-                        has-background-info
-                            @break
-                    @case('completed')
-                        has-background-success
-@break
-                    @case('error')
-                        is-danger
-@break
-                    @default
-                        is-primary
-@endswitch
-                        @endif">
+                    @else
+                        @switch($order->status)
+                            @case('pending')
+                                has-background-grey-light
+                                    @break
+                            @case('conversion')
+                                has-background-warning
+                                    @break
+                            @case('production')
+                                has-background-info
+                                    @break
+                            @case('completed')
+                                has-background-success
+                                    @break
+                            @case('error')
+                                is-danger
+                                    @break
+                            @default
+                                is-primary
+                        @endswitch
+                    @endif">
 
                         @if(!$order->error_status)
                             @if($order->conversion_time === null)
@@ -50,13 +50,49 @@
                             @endif
                     </article>
                 </div>
+
+                @can('is_admin')
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                @if(!\App\Models\PreControl::where('order_id', $order->id)->first())
+                                    <a href="{{ route('pre-controls.create', $order) }}">
+                                        <p class="title text-lg-center">{{__("Create control list")}}</p>
+                                    </a>
+                                @elseif(!\App\Models\Control::where('order_id', $order->id)->first())
+                                    <a href="{{ route('pre-controls.show', $order) }}">
+                                        <p class="title text-lg-center">{{__("Control list")}}</p>
+                                    </a>
+                                @else
+                                    <a href="{{ route('controls.show',[ 'order' => $order]) }}">
+                                        <p class="title text-lg-center">{{__("Control list")}}</p>
+                                    </a>
+                                @endif
+                            </article>
+                        </div>
+                @endcan
+
+
+                @can('is_production')
+                    @if(!\App\Models\PreControl::where('order_id', $order->id)->first())
+                    @elseif(!\App\Models\Control::where('order_id', $order->id)->first())
                 <div class="tile is-parent">
-                    <div class="tile is-child box">
-                    <a href="{{ route('checklist.create', ['ordernumber' => $order->ordernumber ])}}">
-                        <p class="title text-lg-center">{{__("Control list")}}</p>
-                    </a>
-                    </div>
+                    <article class="tile is-child box">
+                            <a href="{{ route('controls.create', $order) }}">
+                                <p class="title text-lg-center">{{__("Create control list")}}</p>
+                            </a>
+                    </article>
                 </div>
+                    @else
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <a href="{{ route('controls.show',[ 'order' => $order]) }}">
+                                    <p class="title text-lg-center">{{__("Control list")}}</p>
+                                </a>
+                            </article>
+                        </div>
+
+                    @endif
+                @endcan
 
                 <div class="tile is-parent">
                     <article class="tile is-child box">

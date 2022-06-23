@@ -29,14 +29,15 @@ class Order extends Model
         return $this->hasMany(Backlog::class);
     }
 
-    /**
-     * Get the checklist associated with the order.
-     */
-    public function checklist(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function pre_control()
     {
-        return $this->hasOne(Checklist::class);
+        return $this->belongsTo(PreControl::class);
     }
 
+    public function control()
+    {
+        return $this->belongsTo(Control::class);
+    }
 
     /*
      * calculates the time between conversion_time and end_time in minutes
@@ -68,7 +69,6 @@ class Order extends Model
         }
         return round($time);
     }
-
 
 }
 
