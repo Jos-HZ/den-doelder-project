@@ -74,7 +74,6 @@ QualityControlController extends Controller
             'deviation' => 'present',
             'extra_info' => 'present',
             'order_id' => 'required',
-//            TODO: set to required
             'production_line_id' => 'required'
         ]);
     }

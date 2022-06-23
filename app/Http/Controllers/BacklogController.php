@@ -36,7 +36,6 @@ class BacklogController extends Controller
     {
         Backlog::create($this->validatedBacklog($request));
 
-        // set backlog->status to true
         $order = Order::find($request->order_id);
         $order->error_status = true;
         $order->save();
@@ -109,13 +108,11 @@ class BacklogController extends Controller
         return redirect(route('orders.show', $backlog->order_id));
     }
 
-    // change resolved_at to now()
     public function resolve(Backlog $backlog)
     {
         if ($backlog->resolved_at === null) {
             $backlog->resolved_at = now();
 
-            // set backlog->status to false
             $order = Order::find($backlog->order_id);
             $order->error_status = false;
             $order->save();

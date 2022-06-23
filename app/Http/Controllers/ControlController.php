@@ -46,8 +46,6 @@ class ControlController extends Controller
 
         $columns = Column::all();
 
-//        dd($request);
-
         for ($i=0; $i < count($columns); $i++) {
             // variables with correct id
             $correct = 'correct_' . $i;
