@@ -36,6 +36,7 @@ Route::resource('/', AuthenticatedSessionController::class);
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
 Route::get('redirects', [HomeController::class, 'index']);
 
+require __DIR__ . '/auth.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -86,12 +87,8 @@ Route::resource('/locations', LocationController::class);
 Route::get('file-upload', [FileUploadController::class, 'index'])->name('file-upload.index');
 Route::post('store', [FileUploadController::class, 'store'])->name('file-upload.store');
 Route::get('/pdf/{file}', function ($file) {
-
-
-    // file path
     $path = public_path('/storage/files/D4QyUTWQq9BF9vBabztsfuTiKc735a4RI7hwsDlZ.pdf');
-    // 'storage/files' . '/' . $file);
-    // header
+
     $header = [
         'Content-Type' => 'application/pdf',
         'Content-Disposition' => 'inline; filename="' . $file . '"'
@@ -117,20 +114,28 @@ Route::get('language/{locale}', function ($locale) {
 | Pre control list
 |--------------------------------------------------------------------------
 */
+
 Route::resource('pre-controls', PreControlController::class)->only('store');
 Route::get('orders/{order}/pre-controls/create', [PreControlController::class, 'create'])->name('pre-controls.create');
 Route::get('/pre-controls/{order}', [PreControlController::class, 'show'])->name('pre-controls.show');
 
+/*
+|--------------------------------------------------------------------------
+| Production Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('production-lines', ProductionLineController::class)->only(['show']);
 
 /*
 |--------------------------------------------------------------------------
 | Control list
 |--------------------------------------------------------------------------
 */
+
 Route::resource('/controls', ControlController::class)->only('store');
 Route::get('orders/{order}/controls/create', [ControlController::class, 'create'])->name('controls.create');
 Route::get('/controls/{order}', [ControlController::class, 'show'])->name('controls.show');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -151,7 +156,7 @@ Route::middleware(['driver'])->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Admin
+| Admin Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register admin routes for your application. These
@@ -165,21 +170,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', UserController::class);
 
 });
-
-/*
-|--------------------------------------------------------------------------
-| Production Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register production routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which contains
-| the "production" middleware group.
-|
-*/
-
-Route::resource('production-lines', ProductionLineController::class)->only(['show']);
-
-require __DIR__ . '/auth.php';
 
 /*
 |--------------------------------------------------------------------------
