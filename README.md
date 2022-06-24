@@ -5,12 +5,16 @@
 I made a policy called [BacklogPolicy](app/Policies/BacklogPolicy.php) here you can define if a user has access to
 the route. In the [BacklogController](app/Http/Controllers/BacklogController.php) I could check if the user has access to that route
 
-
 ### Admin
+is not authorize to have access to all the routes;
+- can view the backlog
+- can not edit the backlog
 
-### User
-
-## Production
+### Production
+has access to all routes;
+- can edit the backlog
+- can create the backlog
+- can view the backlog
 
 
 The application is hosted on [heroku](https://...)
