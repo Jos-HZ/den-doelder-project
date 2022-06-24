@@ -90,6 +90,7 @@ class BacklogController extends Controller
      */
     public function edit(Backlog $backlog): View|Factory|Application
     {
+        $this->authorize("edit", $backlog);
         return view('backlogs.edit', compact('backlog'));
 
     }
