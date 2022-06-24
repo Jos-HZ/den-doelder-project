@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12 margin-tb">
                     <div class="pull-left">
-                        <h2>{{__("Users Management")}}</h2>
+                        <h2 class="pt-4">{{__("Users Management")}}</h2>
                     </div>
                 </div>
             </div>
