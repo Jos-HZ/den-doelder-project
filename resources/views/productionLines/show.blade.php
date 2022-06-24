@@ -13,11 +13,12 @@
                         <div class="my-2">
                             <div class="tile is-child box">
                                 <p class="title">{{__("Order")}} {{ $order->ordernumber }}
-                                    - {{ $order->pallettype }}</p>
+                                    - {{ $order->pallettype }} HT</p>
                                 <p class="subtitle">{{__("Production status")}}:
-                                    {{ $order->status }}
-
-                                    {{__("Number of pallets:")}} {{ $order->palletnumber }}
+                                    <b>{{ $order->status }}</b>
+                                    <br>
+                                    {{__("Number of pallets:")}}:
+                                    <b>{{ $order->palletnumber }}</b>
                                 </p>
                                 <p class="has-text-link-dark"> {{ $order->notes }} </p>
                             </div>
