@@ -1,8 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
-
+@import '../sass/notes.scss';
 
 /*
 ! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com
