@@ -28,18 +28,13 @@
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link has-text-white">
-                        {{__("Backlog")}}
+                        {{__("Log")}}
                     </a>
 
                     <div class="navbar-dropdown">
-                        <button class="navbar-item" onclick="location.href='{{ route('backlog.index') }}'">Error
-                            backlog
-                        </button>
-                        <button class="navbar-item" onclick="location.href='{{ route('placements.index') }}'">Location
-                            log
-                        </button>
-                        <button class="navbar-item" onclick="location.href='{{ route('orders.data') }}'">Order backlog
-                        </button>
+                        <button class="navbar-item" onclick="location.href='{{ route('backlog.index') }}'">Error log</button>
+                        <button class="navbar-item" onclick="location.href='{{ route('placements.index') }}'">Location log</button>
+                        <button class="navbar-item" onclick="location.href='{{ route('orders.data') }}'">Order log</button>
                     </div>
                 </div>
             </div>

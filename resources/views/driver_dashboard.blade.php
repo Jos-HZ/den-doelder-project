@@ -18,7 +18,7 @@
                 <div class="tile is-parent is-vertical">
                     <a href="{{ route('backlog.index')  }}">
                         <article class="tile is-child box">
-                            <p class="title text-lg-center">{{__("Error backlog")}}</p>
+                            <p class="title text-lg-center">{{__("Error log")}}</p>
                         </article>
                     </a>
                 </div>
@@ -28,7 +28,7 @@
                 <div class="tile is-parent is-vertical">
                     <a href="{{ route('orders.data')  }}">
                         <article class="tile is-child box">
-                            <p class="title text-lg-center">{{__("Order backlog")}}</p>
+                            <p class="title text-lg-center">{{__("Order log")}}</p>
                         </article>
                     </a>
                 </div>
