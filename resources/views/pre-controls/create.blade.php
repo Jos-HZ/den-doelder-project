@@ -93,7 +93,7 @@
                         <th style="border:none"></th>
                         <th><abbr title="correct">{{__("Correct (Y/N)")}}</abbr></th>
                         <th><abbr title="changed_to">{{__("Changed to")}}</abbr></th>
-                        <th><abbr title="treated">ht / hk</abbr></th>
+                        <th><abbr title="treated">ht / kd</abbr></th>
                         <th><abbr title="humidity">{{__("Humidity")}}</abbr></th>
                     </tr>
                     </thead>
@@ -167,7 +167,7 @@
                                             id="treated"
                                             name="treated_{{$column->id}}"
                                         >
-                                            <option value="hk">{{__("HK")}}</option>
+                                            <option value="ht">{{__("HT")}}</option>
                                             <option value="kd">{{__("KD")}}</option>
                                         </select>
                                     </div>
