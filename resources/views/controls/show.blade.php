@@ -122,8 +122,7 @@
 
                                 <td style="border: none"></td>
 
-
-                                <td>{{ $controlRows[$i]->correct }}</td>
+                                <td>@if($controlRows[$i]->correct) Correct @else Incorrect @endif</td>
                                 <td>{{ $controlRows[$i]->changed_to }}</td>
                                 <td>{{ $controlRows[$i]->comment }}</td>
                                 @endif
