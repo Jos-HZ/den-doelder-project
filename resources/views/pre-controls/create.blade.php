@@ -167,7 +167,7 @@
                                             id="treated"
                                             name="treated_{{$column->id}}"
                                         >
-                                            <option value="ht">{{__("HT")}}</option>
+                                            <option value="hk">{{__("HT")}}</option>
                                             <option value="kd">{{__("KD")}}</option>
                                         </select>
                                     </div>
