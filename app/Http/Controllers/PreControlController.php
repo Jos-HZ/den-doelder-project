@@ -4,35 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Column;
-use App\Models\Control;
-use App\Models\ControlRow;
 use App\Models\Order;
 use App\Models\PreControl;
 use App\Models\Row;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
 
 class PreControlController extends Controller
 {
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function create(Order $order)
-    {
-        $categories = Category::all();
-        $columns = Column::all();
-        return view('pre-controls.create', compact('order', 'columns', 'categories'));
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return string
      */
     public function store(Request $request)
@@ -66,9 +51,31 @@ class PreControlController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function create(Order $order)
+    {
+        $categories = Category::all();
+        $columns = Column::all();
+        return view('pre-controls.create', compact('order', 'columns', 'categories'));
+    }
+
+    private function validatedPreControl(Request $request)
+    {
+        return $request->validate([
+            'order_id' => 'required',
+            'treated' => 'required',
+            'date' => 'required',
+            'submitted_by' => 'required',
+        ]);
+    }
+
+    /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(Order $order)
@@ -86,7 +93,7 @@ class PreControlController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -97,22 +104,12 @@ class PreControlController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
-    }
-
-    private function validatedPreControl(Request $request)
-    {
-        return $request->validate([
-            'order_id' => 'required',
-            'treated' => 'required',
-            'date' => 'required',
-            'submitted_by' => 'required',
-        ]);
     }
 }

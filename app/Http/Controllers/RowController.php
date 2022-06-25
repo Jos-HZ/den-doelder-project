@@ -18,6 +18,17 @@ class RowController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        Row::create($this->validatedRow($request));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -27,21 +38,22 @@ class RowController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    private function validatedRow(Request $request)
     {
-        Row::create($this->validatedRow($request));
+        return request()->validate([
+            'correct' => 'required',
+            'changed_to' => 'present',
+            'treated' => 'required',
+            'humidity' => 'required',
+            'column_id' => 'required',
+            'pre_control_id' => 'required'
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -52,7 +64,7 @@ class RowController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -63,8 +75,8 @@ class RowController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -75,23 +87,11 @@ class RowController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-    }
-
-    private function validatedRow(Request $request)
-    {
-        return request()->validate([
-           'correct' => 'required',
-           'changed_to' => 'present',
-           'treated' => 'required',
-            'humidity' => 'required',
-            'column_id' => 'required',
-            'pre_control_id' => 'required'
-        ]);
     }
 }

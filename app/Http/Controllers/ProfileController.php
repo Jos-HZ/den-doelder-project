@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Error;
-use App\Models\Order;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
@@ -11,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\File;
 
 
 class ProfileController extends Controller
@@ -40,6 +37,20 @@ class ProfileController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param User $user
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function update(Request $request, User $user)
+    {
+        $user->update($this->validatedError($request));
+
+        return redirect(route('file-upload.index', $user));
+    }
+
+    /**
      * Validates the User
      *
      * @param Request $request
@@ -52,20 +63,6 @@ class ProfileController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param User $user
-     * @return Application|Redirector|RedirectResponse
-     */
-    public function update(Request $request, User $user)
-    {
-        $user->update($this->validatedError($request));
-
-        return redirect(route('file-upload.index', $user));
     }
 
 }

@@ -10,78 +10,80 @@
             <div class="columns">
 
                 <div class="column">
-            <div class="pt-4">
-                <h1 class='title is-5'>{{__("Pre control list")}}</h1>
-            </div>
-            <table class="table is-bordered">
-                <tbody>
-                <tr>
-                    <th>{{__("Order number")}}</th>
-                    <td>{{ $order->ordernumber }}</td>
-                </tr>
-                <tr>
-                    <th>{{__("Pallet name")}}</th>
-                    <td>{{ $order->pallettype }}</td>
-                </tr>
-                <tr>
-                    <th>HT / Non HT / HtKd</th>
-                    <td>{{ $pre_control->treated }}</td>
-                </tr>
-                <tr>
-                    <th>{{__("Date")}}</th>
-                    <td>{{ $pre_control->date }}</td>
-                </tr>
-                <tr>
-                    <th>{{__("Location")}}</th>
-                    <td>@if($order->production_line_id === 3)
-                            Cape 5
-                        @else Cape {{ $order->production_line_id }}
-                        @endif</td>
-                </tr>
-                <tr>
-                    <th>{{__("Submitted by")}}</th>
-                    <td>{{ $pre_control->submitted_by }}</td>
-                </tr>
-                </tbody>
-            </table>
+                    <div class="pt-4">
+                        <h1 class='title is-5'>{{__("Pre control list")}}</h1>
+                    </div>
+                    <table class="table is-bordered">
+                        <tbody>
+                        <tr>
+                            <th>{{__("Order number")}}</th>
+                            <td>{{ $order->ordernumber }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{__("Pallet name")}}</th>
+                            <td>{{ $order->pallettype }}</td>
+                        </tr>
+                        <tr>
+                            <th>HT / Non HT / HtKd</th>
+                            <td>{{ $pre_control->treated }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{__("Date")}}</th>
+                            <td>{{ $pre_control->date }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{__("Location")}}</th>
+                            <td>@if($order->production_line_id === 3)
+                                    Cape 5
+                                @else
+                                    Cape {{ $order->production_line_id }}
+                                @endif</td>
+                        </tr>
+                        <tr>
+                            <th>{{__("Submitted by")}}</th>
+                            <td>{{ $pre_control->submitted_by }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="column">
-            <div class="pt-4">
-                <h1 class='title is-5'>{{__("Control list")}}</h1>
-            </div>
-            <table class="table is-bordered">
-                <tbody>
-                <tr>
-                    <th>{{__("Order number")}}</th>
-                    <td>{{ $order->ordernumber }}</td>
-                </tr>
-                <tr>
-                    <th>{{__("Pallet name")}}</th>
-                    <td>{{ $order->pallettype }}</td>
-                </tr>
-                <tr>
-                    <th>HT / Non HT / HtKd</th>
-                    <td>{{ $control->treated }}</td>
-                </tr>
-                <tr>
-                    <th>{{__("Date")}}</th>
-                    <td>{{ $control->date }}</td>
-                </tr>
-                <tr>
-                    <th>{{__("Location")}}</th>
-                    <td>@if($order->production_line_id === 3)
-                            Cape 5
-                        @else Cape {{ $order->production_line_id }}
-                        @endif</td>
-                </tr>
-                <tr>
-                    <th>{{__("Submitted by")}}</th>
-                    <td>{{ $control->submitted_by }}</td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
+                    <div class="pt-4">
+                        <h1 class='title is-5'>{{__("Control list")}}</h1>
+                    </div>
+                    <table class="table is-bordered">
+                        <tbody>
+                        <tr>
+                            <th>{{__("Order number")}}</th>
+                            <td>{{ $order->ordernumber }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{__("Pallet name")}}</th>
+                            <td>{{ $order->pallettype }}</td>
+                        </tr>
+                        <tr>
+                            <th>HT / Non HT / HtKd</th>
+                            <td>{{ $control->treated }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{__("Date")}}</th>
+                            <td>{{ $control->date }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{__("Location")}}</th>
+                            <td>@if($order->production_line_id === 3)
+                                    Cape 5
+                                @else
+                                    Cape {{ $order->production_line_id }}
+                                @endif</td>
+                        </tr>
+                        <tr>
+                            <th>{{__("Submitted by")}}</th>
+                            <td>{{ $control->submitted_by }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             @foreach($categories as $category)
@@ -115,14 +117,22 @@
                                     {{ $rows[$i]->column->column_name() }}
                                 </th>
 
-                                <td>@if($rows[$i]->correct) Correct @else Incorrect @endif</td>
+                                <td>@if($rows[$i]->correct)
+                                        Correct
+                                    @else
+                                        Incorrect
+                                    @endif</td>
                                 <td>{{ $rows[$i]->changed_to }}</td>
                                 <td>{{ $rows[$i]->treated }}</td>
                                 <td>{{ $rows[$i]->humidity }}</td>
 
                                 <td style="border: none"></td>
 
-                                <td>@if($controlRows[$i]->correct) Correct @else Incorrect @endif</td>
+                                <td>@if($controlRows[$i]->correct)
+                                        Correct
+                                    @else
+                                        Incorrect
+                                    @endif</td>
                                 <td>{{ $controlRows[$i]->changed_to }}</td>
                                 <td>{{ $controlRows[$i]->comment }}</td>
                                 @endif

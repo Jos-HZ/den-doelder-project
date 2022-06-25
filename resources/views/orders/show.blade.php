@@ -52,36 +52,36 @@
                 </div>
 
                 @can('is_admin')
-                        <div class="tile is-parent">
-                            <article class="tile is-child box">
-                                @if(!\App\Models\PreControl::where('order_id', $order->id)->first())
-                                    <a href="{{ route('pre-controls.create', $order) }}">
-                                        <p class="title text-lg-center">{{__("Create control list")}}</p>
-                                    </a>
-                                @elseif(!\App\Models\Control::where('order_id', $order->id)->first())
-                                    <a href="{{ route('pre-controls.show', $order) }}">
-                                        <p class="title text-lg-center">{{__("Control list")}}</p>
-                                    </a>
-                                @else
-                                    <a href="{{ route('controls.show',[ 'order' => $order]) }}">
-                                        <p class="title text-lg-center">{{__("Control list")}}</p>
-                                    </a>
-                                @endif
-                            </article>
-                        </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child box">
+                            @if(!\App\Models\PreControl::where('order_id', $order->id)->first())
+                                <a href="{{ route('pre-controls.create', $order) }}">
+                                    <p class="title text-lg-center">{{__("Create control list")}}</p>
+                                </a>
+                            @elseif(!\App\Models\Control::where('order_id', $order->id)->first())
+                                <a href="{{ route('pre-controls.show', $order) }}">
+                                    <p class="title text-lg-center">{{__("Control list")}}</p>
+                                </a>
+                            @else
+                                <a href="{{ route('controls.show',[ 'order' => $order]) }}">
+                                    <p class="title text-lg-center">{{__("Control list")}}</p>
+                                </a>
+                            @endif
+                        </article>
+                    </div>
                 @endcan
 
 
                 @can('is_production')
                     @if(!\App\Models\PreControl::where('order_id', $order->id)->first())
                     @elseif(!\App\Models\Control::where('order_id', $order->id)->first())
-                <div class="tile is-parent">
-                    <article class="tile is-child box">
-                            <a href="{{ route('controls.create', $order) }}">
-                                <p class="title text-lg-center">{{__("Create control list")}}</p>
-                            </a>
-                    </article>
-                </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <a href="{{ route('controls.create', $order) }}">
+                                    <p class="title text-lg-center">{{__("Create control list")}}</p>
+                                </a>
+                            </article>
+                        </div>
                     @else
                         <div class="tile is-parent">
                             <article class="tile is-child box">

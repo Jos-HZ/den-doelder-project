@@ -26,6 +26,19 @@ class PlacementController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
+     */
+    public function store(Request $request)
+    {
+        Placement::create($this->validatedPlacement($request));
+
+        return redirect(route('placements.index'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return Application|Factory|View
@@ -37,19 +50,6 @@ class PlacementController extends Controller
             ->first();
 
         return view('placements.create', ['order' => $order]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Application|RedirectResponse|Redirector
-     */
-    public function store(Request $request)
-    {
-        Placement::create($this->validatedPlacement($request));
-
-        return redirect(route('placements.index'));
     }
 
     /**
