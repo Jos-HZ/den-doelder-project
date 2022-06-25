@@ -87,7 +87,7 @@ Route::resource('/locations', LocationController::class);
 Route::get('file-upload', [FileUploadController::class, 'index'])->name('file-upload.index');
 Route::post('store', [FileUploadController::class, 'store'])->name('file-upload.store');
 Route::get('/pdf/{file}', function ($file) {
-    $path = public_path('/storage/files/D4QyUTWQq9BF9vBabztsfuTiKc735a4RI7hwsDlZ.pdf');
+    $path = public_path('storage\files\D4QyUTWQq9BF9vBabztsfuTiKc735a4RI7hwsDlZ.pdf');
 
     $header = [
         'Content-Type' => 'application/pdf',

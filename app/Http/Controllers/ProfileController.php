@@ -32,22 +32,12 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         if ($request->file('file')) {
-            $file = $request->file('file');
+            $file = $request->file(['file' => 'required|mimes:pdf']);
             $filename = time() . '.' . $request->file('file')->extension();
             $filePath = public_path() . '/files/uploads/';
             $file->move($filePath, $filename);
         }
     }
-
-    public function upload(Request $request): RedirectResponse
-    {
-        $uniqueFileName = uniqid() . $request->get('upload_file')->getClientOriginalName() . '.' . $request->get('upload_file')->getClientOriginalExtension();
-
-        $request->get('upload_file')->move(public_path('files') . $uniqueFileName);
-
-        return redirect()->back()->with('success', 'File uploaded successfully.');
-    }
-
 
     /**
      * Validates the User
