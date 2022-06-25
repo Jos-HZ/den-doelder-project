@@ -33,15 +33,37 @@
 9. They get an error message for the incorrect field
 
 ## Unit test
-Time of the occurred error is correctly calculated.
-- Try two random different times
+- When you have the created_at and resolved_at the time between should be calculated correctly
 - Try if the time is rounded to the nearest minute
-  - Try the edge case (:29, :30, :31)
+  - :29 should be rounded down to the nearest minute
+  - :30 should be rounded up to the nearest minute
+  - :31 should be rounded up to the nearest minute
 
 ## System test
+- Test if the error is added to the backlog.
+  - When you submit the form the error is added to the backlog
+  - When you submit invalid data the data is not added to the backlog
+- When you add a new error the chosen order should be added to the db
 
+## Test result
+// image
+
+## Evaluation
+### Possible mistake/error that can be detected
+//
+
+### Possible mistake/error that can not be detected by your test(s)
+//
+
+### Why everything works as expected
+//
+
+<br>                        
+<br>                        
+<br>
 
 ## Test plan B
+- --
 **<i>As an administrative assistant I want to check the order status so that I can check if the planning is intact.</i>**
 
 ### Acceptance criteria:
