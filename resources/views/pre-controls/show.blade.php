@@ -34,7 +34,8 @@
                     <th>{{__("Location")}}</th>
                     <td>@if($order->production_line_id === 3)
                             Cape 5
-                            @else Cape {{ $order->production_line_id }}
+                        @else
+                            Cape {{ $order->production_line_id }}
                         @endif</td>
                 </tr>
                 <tr>
@@ -44,7 +45,7 @@
                 </tbody>
             </table>
 
-        @foreach($categories as $category)
+            @foreach($categories as $category)
                 <div class="pt-4">
                     <h1 class='title is-5'>{{ $category->category_name() }}</h1>
                 </div>
@@ -69,7 +70,11 @@
                                     {{ $rows[$i]->column->column_name() }}
                                 </th>
 
-                                <td>@if($rows[$i]->correct) Correct @else Incorrect @endif</td>
+                                <td>@if($rows[$i]->correct)
+                                        Correct
+                                    @else
+                                        Incorrect
+                                    @endif</td>
                                 <td>{{ $rows[$i]->changed_to }}</td>
                                 <td>{{ $rows[$i]->treated }}</td>
                                 <td>{{ $rows[$i]->humidity }}</td>

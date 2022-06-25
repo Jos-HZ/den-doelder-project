@@ -25,6 +25,6 @@ class Row extends Model
 
     public function pre_control()
     {
-       return $this->belongsTo(PreControl::class);
+        return $this->belongsTo(PreControl::class);
     }
 }
