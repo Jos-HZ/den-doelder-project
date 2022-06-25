@@ -46,12 +46,12 @@
 
         @foreach($categories as $category)
                 <div class="pt-4">
-                    <h1 class='title is-5'>{{ $category->category }}</h1>
+                    <h1 class='title is-5'>{{ $category->category_name() }}</h1>
                 </div>
                 <table class="table is-bordered">
                     <thead>
                     <tr>
-                        <th></th>
+                        <th style="border:none"></th>
                         <th><abbr title="correct">{{__("Correct (Y/N)")}}</abbr></th>
                         <th><abbr title="changed_to">{{__("Changed to")}}</abbr></th>
                         <th><abbr title="treated">ht / hk</abbr></th>
