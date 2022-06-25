@@ -20,7 +20,7 @@ class Category extends Model
             'upper_deck' => "Upper deck",
             'blocks' => 'Blocks',
             'bottom_deck' => 'Bottom deck',
-            'remaining_columns' =>  'Remaning columns',
+            'remaining_columns' =>  'Remaining columns',
             default => $this->category,
         };
     }

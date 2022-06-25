@@ -19,7 +19,7 @@
                     <td>{{ $order->ordernumber }}</td>
                 </tr>
                 <tr>
-                    <th>{{__("Pallet name")}}</th>
+                    <th>{{__("Name pallet")}}</th>
                     <td>{{ $order->pallettype }}</td>
                 </tr>
                 <tr>

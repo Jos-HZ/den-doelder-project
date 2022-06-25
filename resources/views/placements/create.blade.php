@@ -6,7 +6,7 @@
 
         <div class="container">
             <h1 class="has-text-centered">{{__("Order")}} {{ app('request')->input('ordernumber') }}</h1>
-            <p><b>{{__("Chosen location:")}} </b> {{app('request')->input('location')}}</p>
+            <p><b>{{__("Chosen location")}}: </b> {{app('request')->input('location')}}</p>
 
             <form method="POST" action="{{ route('placements.store') }}">
                 @csrf

@@ -4,7 +4,7 @@
     <section class="section">
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
         <div class="container">
-            <h1 class="title has-text-centered">{{__("Pallet Locations")}}</h1>
+            <h1 class="title has-text-centered">{{__("Pallet locations")}}</h1>
 
             <table class="table is-bordered">
                 <thead>
