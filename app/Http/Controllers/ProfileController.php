@@ -2,64 +2,49 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Error;
-use App\Models\Order;
+
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 
 
 class ProfileController extends Controller
 {
 
-    public function profile(){
-        return view('file-upload.index', array('user' => Auth::user()));
-    }
-    public function index(Request $request)
-    {
-        $users = User::filter($request)->get();
 
-        return view('file-upload.index', compact('users'));
+    public function index()
+    {
+        return view('file-upload.index');
     }
 
     public function store(Request $request)
     {
-        if($request->file('file'))
-        {
-            $file = $request->file('file');
-            $filename = time() . '.' . $request->file('file')->extension();
-            $filePath = public_path() . '/files/uploads/';
-            $file->move($filePath, $filename);
+        $validatedData = $request->validate([
+            'file' => 'required|pdf|max:2048',
+        ]);
+
+        $name = $request->file('file')->getFilename();
+
+        $path = $request->file('file')->store('public/storage/files');
+
+        $save = new File;
+
+        $save->name = $name;
+        $save->path = $path;
+
+        return redirect('file-upload')->with('status', 'PDF has been uploaded');
+
         }
-    }
-
-    public function upload(Request $request): RedirectResponse
-    {
-        $uniqueFileName = uniqid() . $request->get('upload_file')->getClientOriginalName() . '.' . $request->get('upload_file')->getClientOriginalExtension();
-
-        $request->get('upload_file')->move(public_path('files') . $uniqueFileName);
-
-        return redirect()->back()->with('success', 'File uploaded successfully.');
-    }
-
-//    public function edit()
-//    {
-//        $user = Auth::user();
-//        return view('file-upload.edit', compact('user'), array('user' => Auth::user()));
-//    }
 
     /**
      * Validates the User
      *
-     * @param Request $request
      * @return array
      */
-    public function validatedError(Request $request): array
+    public function validatedError(): array
     {
         return request()->validate([
             'name' => 'required',

@@ -13,6 +13,7 @@
 
     <link href="{{ asset('sass/app.scss') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
 </head>
 <body>
 @include('partials.navbar')

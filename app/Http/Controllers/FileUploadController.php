@@ -12,6 +12,11 @@ class FileUploadController extends Controller
         return view('file-upload.index');
     }
 
+    public function show()
+    {
+        return view('file-upload.show');
+    }
+
     public function store(Request $request)
     {
 
