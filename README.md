@@ -102,7 +102,7 @@ $ php artisan db:seed
 * **Kevin van Herwijnen** - *Student* - [kvherwijnen](https://github.com/kvherwijnen)
 * **Diego Ponte** - *Student* - [Shadowblack03](https://github.com/Shadowblack03)
 * **Niek Schlooz** - *Student* - [schl0014](https://github.com/schl0014)
-* **Jochem Dijkdrent ** - *Student* - [Jochem-D](https://github.com/Jochem-D)
+* **Jochem Dijkdrent** - *Student* - [Jochem-D](https://github.com/Jochem-D)
 
 See also the list of [contributors](url-to-project-contributors-page) who participated in this project.
 
