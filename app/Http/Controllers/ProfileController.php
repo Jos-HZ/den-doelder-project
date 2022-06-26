@@ -8,7 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProfileController extends Controller
@@ -19,36 +20,41 @@ class ProfileController extends Controller
         return view('file-upload.index', array('user' => Auth::user()));
     }
 
-    public function index(Request $request)
+    public function index()
     {
-        $users = User::filter($request)->get();
-
-        return view('file-upload.index', compact('users'));
-    }
-
-    public function store(Request $request)
-    {
-        if ($request->file('file')) {
-            $file = $request->file(['file' => 'required|mimes:pdf']);
-            $filename = time() . '.' . $request->file('file')->extension();
-            $filePath = public_path() . '/files/uploads/';
-            $file->move($filePath, $filename);
-        }
+        return view('file-upload.index');
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param User $user
-     * @return Application|Redirector|RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request, User $user)
+    public function store(Request $request)
     {
-        $user->update($this->validatedError($request));
+        $this->validate($request, [
+            'file' => 'required|mimes:pdf|max:2048',
+        ]);
 
-        return redirect(route('file-upload.index', $user));
+        $name = $request->file('file')->getClientOriginalName();
+
+        $path = $request->file('file')->store('public/files');
+
+
+        $save = new File;
+
+        $save->name = $name;
+        $save->path = $path;
+
+        return redirect('file-upload')->with('status', 'File Has been uploaded successfully');
     }
+
+    public function getName(){
+        $storage = File::allFiles(storage_path('files'));
+
+        foreach ($storage as $file) {
+            echo $file->getFilename();
+        }
+    }
+
 
     /**
      * Validates the User
