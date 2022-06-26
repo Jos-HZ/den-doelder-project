@@ -47,7 +47,7 @@
 
 ## Test result
 When I run 
-`php artisan test --filter BacklogTest` I get the following result:
+`php artisan test --filter BacklogTest` I get the following result: <br>
 ![backlog tests](https://github.com/Jos-HZ/den-doelder-project/blob/dff7135cbaaa6b006631abd2ccc58a18f71c17f1/public/img/testing-ivy/backlogTests.png)
 
 ## Evaluation
@@ -89,6 +89,20 @@ The last test i made was to check if the backlog.index page is loaded correctly.
 3. The order they clicked on is not in the system
 4. They get redirected to a 404 page
 
-### System test
+## System test
+- When a new order is added to the system, the order status is set to **pending** 
+- When the order is started, the order status is set to **conversion** 
+- When the production is started the status is set to **production**
+- When the order is finished, the order status is set to **completed**
+- When the `error_status` is `TRUE` the order status is set to **error**
 
-### Unit test
+
+## Unit test
+- conversion_time should be calculated correctly (time between start_time and production_time)
+  - :29 should be rounded down to the nearest minute
+  - :30 should be rounded up to the nearest minute
+  - :31 should be rounded up to the nearest minute
+- production_time should be calculated correctly (time between production_time and end_time)
+    - :29 should be rounded down to the nearest minute
+    - :30 should be rounded up to the nearest minute
+    - :31 should be rounded up to the nearest minute
