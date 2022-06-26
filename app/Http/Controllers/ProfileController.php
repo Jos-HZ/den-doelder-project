@@ -24,12 +24,7 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $storage = File::allFiles(storage_path('app/public/files'));
-        $files = Storage::allFiles('app/public/files');
-        foreach ($storage as $file) {
-            $names = $file->getFilename();
-        }
-        return view('file-upload.index', compact('names'));
+        return view('file-upload.index');
     }
 
     public function store(Request $request)
@@ -41,7 +36,7 @@ class ProfileController extends Controller
         ]);
 
         $name = $request->file('file')->getClientOriginalName();
-// als hij geupload is, wil ik gelijk de url/name weten te koppelen aan een order en controleren of die order al een pdf gekoppeld heeft fuck dit word kut.
+
         $path = $request->file('file')->store('public/files');
 
 

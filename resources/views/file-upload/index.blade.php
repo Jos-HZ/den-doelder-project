@@ -18,9 +18,6 @@
             </div>
         </form>
     </div>
-    @foreach($names as $name)
-        {{$name}} <br>
-    @endforeach
     </body>
 @endsection
 
