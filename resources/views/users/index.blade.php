@@ -1,12 +1,12 @@
 @extends('layouts.master')
 @section('content')
     <section class="section">
-        <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
+        <a href="/"><img src="/img/svg/back-arrow.svg" display="block" width="35" height="35"></a>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 margin-tb">
                     <div class="pull-left">
-                        <h2>{{__("Users Management")}}</h2>
+                        <h2 class="pt-4">{{__("Users Management")}}</h2>
                     </div>
                 </div>
             </div>

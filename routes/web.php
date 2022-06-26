@@ -4,8 +4,13 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Authorization\AdminController;
 use App\Http\Controllers\Authorization\DriverController;
 use App\Http\Controllers\BacklogController;
+use App\Http\Controllers\ControlController;
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PlacementController;
+use App\Http\Controllers\PreControlController;
 use App\Http\Controllers\ProductionLineController;
 use App\Http\Controllers\QualityControlController;
 use App\Http\Controllers\UserController;
@@ -27,35 +32,111 @@ use Illuminate\Support\Str;
 |
 */
 
-Route::get('language/{locale}', function ($locale) {
-    app()->setLocale($locale);
-    session()->put('locale', $locale);
-    return redirect()->back();
-});
-
 Route::resource('/', AuthenticatedSessionController::class);
-Route::resource('/orders', OrderController::class);
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
+Route::get('redirects', [HomeController::class, 'index']);
+
+require __DIR__ . '/auth.php';
+
+/*
+|--------------------------------------------------------------------------
+| Orders
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('/orders', OrderController::class)->except('index');
+Route::get('/orders/{order}/conversion', [OrderController::class, 'conversion'])->name('orders.conversion');
 Route::get('/orders/{order}/start', [OrderController::class, 'start'])->name('orders.start');
 Route::get('/orders/{order}/end', [OrderController::class, 'end'])->name('orders.end');
+Route::get('/data', [OrderController::class, 'data'])->name('orders.data');
+
+/*
+|--------------------------------------------------------------------------
+| Backlog
+|--------------------------------------------------------------------------
+*/
 
 Route::resource('/backlog', BacklogController::class)->except(['delete', 'show']);
 Route::get('/backlog/{backlog}/resolve', [BacklogController::class, 'resolve'])->name('backlog.resolve');
 
+/*
+|--------------------------------------------------------------------------
+| QualityControl
+|--------------------------------------------------------------------------
+*/
+
 Route::resource('/qualityControl', QualityControlController::class)->except(['index', 'show', 'delete']);
 Route::get('/qualityControl/{order}', [QualityControlController::class, 'index'])->name('qualityControl.index');
 
-Route::get('/checklist', function () {
-    return view('checklist');
-})->name('checklist');
+/*
+|--------------------------------------------------------------------------
+| Pallet Locations
+|--------------------------------------------------------------------------
+*/
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('authenticatedSession.destroy');
-    Route::get('redirects', [HomeController::class, 'index']);
+Route::resource('/placements', PlacementController::class);
+Route::resource('/locations', LocationController::class);
+
+
+/*
+|--------------------------------------------------------------------------
+| File upload
+|--------------------------------------------------------------------------
+*/
+
+Route::get('file-upload', [FileUploadController::class, 'index'])->name('file-upload.index');
+Route::post('store', [FileUploadController::class, 'store'])->name('file-upload.store');
+Route::get('/pdf/{file}', function ($file) {
+    $path = public_path('storage\files\D4QyUTWQq9BF9vBabztsfuTiKc735a4RI7hwsDlZ.pdf');
+
+    $header = [
+        'Content-Type' => 'application/pdf',
+        'Content-Disposition' => 'inline; filename="' . $file . '"'
+    ];
+    return response()->file($path, $header);
+})->name('pdf');
+
+Route::get('get-name', [FileUploadController::class, 'getName']);
+/*
+|--------------------------------------------------------------------------
+| Language
+|--------------------------------------------------------------------------
+*/
+
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+
+    return redirect()->back();
 });
 
-Route::resource('production-lines', ProductionLineController::class)->only([
-    'show'
-]);
+/*
+|--------------------------------------------------------------------------
+| Pre control list
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('pre-controls', PreControlController::class)->only('store');
+Route::get('orders/{order}/pre-controls/create', [PreControlController::class, 'create'])->name('pre-controls.create');
+Route::get('/pre-controls/{order}', [PreControlController::class, 'show'])->name('pre-controls.show');
+
+/*
+|--------------------------------------------------------------------------
+| Production Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('production-lines', ProductionLineController::class)->only(['show']);
+
+/*
+|--------------------------------------------------------------------------
+| Control list
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('/controls', ControlController::class)->only('store');
+Route::get('orders/{order}/controls/create', [ControlController::class, 'create'])->name('controls.create');
+Route::get('/controls/{order}', [ControlController::class, 'show'])->name('controls.show');
 
 /*
 |--------------------------------------------------------------------------
@@ -76,7 +157,7 @@ Route::middleware(['driver'])->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Admin
+| Admin Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register admin routes for your application. These
@@ -90,23 +171,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', UserController::class);
 
 });
-
-/*
-|--------------------------------------------------------------------------
-| Production Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register production routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which contains
-| the "production" middleware group.
-|
-*/
-
-Route::middleware(['production'])->group(function () {
-
-});
-
-require __DIR__ . '/auth.php';
 
 /*
 |--------------------------------------------------------------------------

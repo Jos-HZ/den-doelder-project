@@ -13,17 +13,12 @@
                         <div class="my-2">
                             <div class="tile is-child box">
                                 <p class="title">{{__("Order")}} {{ $order->ordernumber }}
-                                    - {{ $order->pallettype }}</p>
-                                <p class="subtitle">{{__("Production status: ")}}
-                                    @if($order->start_time === null)
-                                        {{__("Not started")}}
-                                    @elseif($order->end_time === null)
-                                        {{__("In progress")}}
-                                    @else
-                                        {{__("Finished")}}
-                                    @endif
+                                    - {{ $order->pallettype }} HT</p>
+                                <p class="subtitle">{{__("Production status")}}:
+                                    <b>{{ $order->status }}</b>
                                     <br>
-                                    {{__("Number of pallets:")}} {{ $order->palletnumber }}
+                                    {{__("Number of pallets:")}}:
+                                    <b>{{ $order->palletnumber }}</b>
                                 </p>
                                 <p class="has-text-link-dark"> {{ $order->notes }} </p>
                             </div>

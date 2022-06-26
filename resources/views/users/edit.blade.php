@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <section class="section">
-        <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
+        <a href="/users"><img src="/img/svg/back-arrow.svg" class="image is-32x32"></a>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 margin-tb">
@@ -13,7 +13,7 @@
 
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <strong>Whoops!</strong> There were some problems with your input.
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -53,6 +53,22 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <strong>{{__("Language")}}:</strong>
+                    <div class="form-group">
+                        <div class="select">
+                            <select id="language" name="language">
+                                <option value="nl">{{__("Dutch")}}</option>
+                                <option value="en">{{__("English")}}</option>
+                                <option value="pl">{{__("Polish")}}</option>
+                                <option value="ro">{{__("Romanian")}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" id="language" name="language" value= {{Auth::user()->language}}>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     <button type="submit" class="btn btn-primary">{{__("Submit")}}</button>

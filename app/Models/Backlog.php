@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Filters\CategoryFilter;
 use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,15 +9,15 @@ use Illuminate\Support\Carbon;
 
 class Backlog extends Model
 {
-    use HasFactory;
-    use filterable;
+    use HasFactory, filterable;
 
     public $fillable = [
         'order_id',
         'time',
         'date',
         'description',
-        'category'
+        'category',
+        'language'
     ];
 
     public function order()
@@ -33,8 +32,8 @@ class Backlog extends Model
      */
     public function timeDifference(): null|int
     {
-            $time = Carbon::parse($this->time)->floatDiffInMinutes
-            ($this->resolved_at);
-            return round($time);
+        $time = Carbon::parse($this->time)->floatDiffInMinutes
+        ($this->resolved_at);
+        return round($time);
     }
 }

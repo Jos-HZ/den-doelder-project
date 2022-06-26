@@ -42,7 +42,8 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'role' => 'required'
+            'role' => 'required',
+            'language' => 'required|string'
         ]);
 
         $input = $request->all();
@@ -52,11 +53,7 @@ class UserController extends Controller
         $user->hasRole($request->input('role'));
 
         return redirect(route('users.index'))->with('success', 'User created successfully');
-//
-//
-//
-//        return redirect()->route('users.index')
-//            ->with('success','User created successfully');
+
     }
 
     /**
@@ -111,7 +108,8 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'same:confirm-password',
-            'role' => 'required'
+            'role' => 'required',
+            'language' => 'required|string'
         ]);
 
         $input = $request->all();
@@ -124,8 +122,6 @@ class UserController extends Controller
         $user = User::find($id);
         $user->update($input);
         DB::table('model_has_roles')->where('model_id', $id)->delete();
-
-//        $user->hasRole($request->input('role'));
 
         return redirect()->route('users.index')
             ->with('success', 'User updated successfully');

@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <h1>{{__("Order")}} {{ $backlog->order_id }} </h1>
+            <h1>{{__("Order" )}} {{ $backlog->order_id }} </h1>
             <form method="POST" action="{{route('backlog.update', $backlog)}}">
                 @csrf
                 @method('PUT')
@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <label for="time">{{__("Time")}}:</label><br>
+                <label for="time">{{__("Time")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
@@ -35,9 +35,9 @@
                     <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
-                <br>
 
-                <label for="date">{{__("Date")}}:</label><br>
+
+                <label for="date">{{__("Date")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <input
@@ -51,9 +51,9 @@
                     <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
-                <br>
 
-                <label for="category">{{__("Error category")}}:</label><br>
+
+                <label for="category">{{__("Error category")}}:</label>
                 <div class="label">
                     <div class="select">
                         <select
@@ -67,13 +67,13 @@
                             <option value="technical">{{__("Technical error")}}</option>
                         </select>
                     </div>
-                    <br>
+
                     @error('category')
                     <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
 
-                <label for="description">{{__("Description")}}:</label><br>
+                <label for="description">{{__("Description")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
@@ -83,7 +83,7 @@
                             value="{{$errors->any() ? old('description') : $backlog->description}}">
                         {{$errors->any() ? old('description') : $backlog->description}}</textarea>
                     </div>
-                    <br>
+
                     @error('description')
                     <p class="help is-danger">This is a required field</p>
                     @enderror

@@ -16,25 +16,31 @@
                         @else
                             {{ $line }}
                         @endif
-
                     </a>
                 @endforeach
 
                 @can('is_admin')
-                    <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"
-                       href="{{ url('/backlog') }}">
-                        {{__("Backlog")}}
-                    </a>
                     <a class="navbar-item {{ Request::path() === 'users' ? 'active' : '' }}"
                        href="{{ route('users.index') }}">
                         {{__("Manage Users")}}
                     </a>
-                @elsecan('is_production')
-                    <a class="navbar-item {{ Request::path() === 'backlog' ? 'active' : '' }}"
-                       href="{{ url('/backlog') }}">
-                        {{__("Backlog")}}
-                    </a>
                 @endcan
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link has-text-white">
+                        {{__("Log")}}
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <button class="navbar-item" onclick="location.href='{{ route('backlog.index') }}'">{{__('Error log')}}
+                        </button>
+                        <button class="navbar-item" onclick="location.href='{{ route('placements.index') }}'">{{__('Location log')}}
+
+                        </button>
+                        <button class="navbar-item" onclick="location.href='{{ route('orders.data') }}'">{{__('Order log')}}
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -45,12 +51,13 @@
 
             <div class="navbar-dropdown">
                 @include('partials/language_switcher')
+                <button class="navbar-item" onclick="location.href='{{ route('file-upload.index') }}'">{{__('PDF Upload')}}
+                </button>
                 <form action="{{ route('destroy', 'logout') }}" method="POST">
                     @csrf
                     <button class="navbar-item" type="submit">
                         {{__("Logout")}}
                     </button>
-
                 </form>
             </div>
         </div>

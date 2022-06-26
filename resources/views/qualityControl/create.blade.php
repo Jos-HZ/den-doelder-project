@@ -3,7 +3,8 @@
     <section class="section">
         <img src="/img/svg/back-arrow.svg" onclick="history.back();" width="35" height="35">
         <div class="container">
-            <h1> {{__("Order")}} {{ $order->ordernumber }}</h1>
+
+            <h1 class="has-text-centered"> {{__("Order")}} {{ $order->ordernumber }}</h1>
             <form method="POST" action="{{ route('qualityControl.store') }}">
                 @csrf
 
@@ -48,15 +49,13 @@
                     @enderror
                 </div>
 
-                <label for="name_pallet">{{__("Name pallet")}}/ {{__("Order")}}</label>
-                <div class="label">
-                    <div class="control">
-                        <input class="input @error('name_pallet') is-danger @enderror"
-                               type="text"
-                               id="name_pallet"
-                               name="name_pallet"
-                               value="{{ $errors->any() ? old('name_pallet') : '' }}">
-                    </div>
+
+                <div class="control">
+                    <input class="input @error('name_pallet') is-danger @enderror"
+                           type="hidden"
+                           id="name_pallet"
+                           name="name_pallet"
+                           value="{{ $order->pallettype }}">
                 </div>
 
                 <label for="def_nr">Def nr</label>
@@ -71,7 +70,8 @@
                     </div>
                 </div>
 
-                <label for="action">Action:</label><br>
+
+                <label for="action">Action:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
@@ -81,13 +81,13 @@
                             value="{{$errors->any() ? old('action') : ''}}"
                         >{{ $errors->any() ? old('action') : ''}}</textarea>
                     </div>
-                    <br>
+
                     @error('action')
                     <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
 
-                <label for="deviation">{{__("Deviation")}}:</label><br>
+                <label for="deviation">{{__("Deviation")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
@@ -97,13 +97,13 @@
                             value="{{$errors->any() ? old('deviation') : ''}}"
                         >{{$errors->any() ? old('deviation') : ''}}</textarea>
                     </div>
-                    <br>
+
                     @error('deviation')
                     <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
 
-                <label for="extra_info">Extra info:</label><br>
+                <label for="extra_info">Extra info:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
@@ -113,7 +113,7 @@
                             oninput="textareaOnInput(this)"
                         >{{$errors->any() ? old('extra_info') : ''}}</textarea>
                     </div>
-                    <br>
+
                     @error('extra_info')
                     <p class="help is-danger">This is a required field</p>
                     @enderror

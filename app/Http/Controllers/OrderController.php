@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    //    TODO: validation
 
     /**
      * Display a listing of the resource.
@@ -129,6 +128,7 @@ class OrderController extends Controller
     {
         if ($order->start_time === null) {
             $order->start_time = now();
+            $order->status = 'production';
             $order->save();
         }
         return redirect(route('orders.show', $order));
@@ -144,8 +144,38 @@ class OrderController extends Controller
     {
         if ($order->end_time === null) {
             $order->end_time = now();
+            $order->status = 'completed';
             $order->save();
         }
         return redirect(route('orders.show', $order));
+    }
+
+
+    /**
+     * Update the end time to current time.
+     *
+     * @param Order $order
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function conversion(Order $order)
+    {
+        if ($order->conversion_time === null) {
+            $order->conversion_time = now();
+            $order->status = 'conversion';
+            $order->save();
+        }
+        return redirect(route('orders.show', $order));
+    }
+
+    /**
+     * Update the end time to current time.
+     *
+     * @param Order $order
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function data(Request $request): Factory|View|Application
+    {
+        $orders = Order::filter($request->all())->orderBy('start_time', 'desc')->get();
+        return view('orders.data', compact('orders'));
     }
 }

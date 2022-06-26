@@ -39,7 +39,7 @@
                     @enderror
                 </div>
 
-                <label for="name_pallet">{{__("Name pallet")}}/ {{__("Order")}}</label>
+                <label for="name_pallet">{{__("Pallet name")}}/ {{__("Order")}}:</label>
                 <div class="label">
                     <div class="control">
                         <input class="input @error('name_pallet') is-danger @enderror"
@@ -50,7 +50,7 @@
                     </div>
                 </div>
 
-                <label for="def_nr">Def nr</label>
+                <label for="def_nr">Def nr:</label>
                 <div class="label">
                     <div class="select">
                         <select name="def_nr"
@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-                <label for="action">{{__("Action")}}:</label><br>
+                <label for="action">{{__("Action")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
@@ -72,13 +72,13 @@
                             value="{{$errors->any() ? old('action') : $qualityControl->action}}"
                         >{{ $errors->any() ? old('action') : $qualityControl->action}}</textarea>
                     </div>
-                    <br>
+
                     @error('action')
                     <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
 
-                <label for="deviation">{{__("Deviation")}}:</label><br>
+                <label for="deviation">{{__("Deviation")}}:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
@@ -87,13 +87,13 @@
                             name="deviation"
                         >{{$errors->any() ? old('deviation') : $qualityControl->deviation}}</textarea>
                     </div>
-                    <br>
+
                     @error('deviation')
                     <p class="help is-danger">This is a required field</p>
                     @enderror
                 </div>
 
-                <label for="extra_info">Extra info:</label><br>
+                <label for="extra_info">Extra info:</label>
                 <div class="label">
                     <div class="control has-icons-left has-icons-right">
                         <textarea
@@ -103,7 +103,7 @@
                             oninput="textareaOnInput(this)"
                         >{{$errors->any() ? old('extra_info') : $qualityControl->extra_info}}</textarea>
                     </div>
-                    <br>
+
                     @error('extra_info')
                     <p class="help is-danger">This is a required field</p>
                     @enderror
