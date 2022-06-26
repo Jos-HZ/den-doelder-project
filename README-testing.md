@@ -46,25 +46,30 @@
   - When you submit invalid data the data is not added to the backlog
 
 ## Test result
+When I run 
+`php artisan test --filter BacklogTest` I get the following result:
 ![backlog tests](https://github.com/Jos-HZ/den-doelder-project/blob/dff7135cbaaa6b006631abd2ccc58a18f71c17f1/public/img/testing-ivy/backlogTests.png)
-
 
 ## Evaluation
 ### Possible mistake/error that can be detected
-//
+With these tests you can detect the following mistakes:
+- The time is not calculated correctly
+- The time is not rounded to the nearest minute
+- The error is not added to the backlog
+- The error is added to the backlog when the data is invalid
 
 ### Possible mistake/error that can not be detected by your test(s)
-//
+With these tests you can not detect the following mistakes:
+- The wrong order_id is added to the db
+- The user filled in the form incorrectly (but the requirements are correct)
 
 ### Why everything works as expected
-//
+With these tests you can detect if the time is calculated correctly and if the time is rounded to the nearest minute. I made 4 tests for this. I chose two random times, to check if the time is calculated correctly. I also chose the edge cases to check if the minute are rounded correctly.
+The feature test tests if the error is added to the backlog. I tested if the error is added to the backlog when the data is valid. I also tested if the error is not added to the backlog when the data is invalid.
+The last test i made was to check if the backlog.index page is loaded correctly.
 
-<br>                        
-<br>                        
-<br>
 
 ## Test plan B
-- --
 **<i>As an administrative assistant I want to check the order status so that I can check if the planning is intact.</i>**
 
 ### Acceptance criteria:
