@@ -202,7 +202,7 @@
                         </tbody>
                     </table>
                 @endforeach
-                <input type="submit" value="{{__("submit")}}"
+                <input type="submit" value="{{__("Submit")}}"
                        class="button is-link"/>
             </form>
 

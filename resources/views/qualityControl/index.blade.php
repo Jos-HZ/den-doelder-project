@@ -13,7 +13,7 @@
             <thead>
             <tr>
                 <th><abbr title="time">{{__("Time")}}</abbr></th>
-                <th><abbr title="name-pallet">{{__("Name pallet")}}</abbr></th>
+                <th><abbr title="name-pallet">{{__("Pallet name")}}</abbr></th>
                 <th><abbr title="def-nr">def nr</abbr></th>
                 <th><abbr title="extra-info">extra info</abbr></th>
                 <th><abbr title="action">{{__("Action")}}</abbr></th>

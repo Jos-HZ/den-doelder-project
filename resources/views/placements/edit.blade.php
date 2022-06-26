@@ -6,7 +6,7 @@
 
         <div class="container">
             <h1>{{__("Order")}} {{ $placement->order->ordernumber }}</h1>
-            <p><b>{{__("Chosen location:")}} </b> {{$placement->placement}}</p>
+            <p><b>{{__("Chosen location")}}: </b> {{$placement->placement}}</p>
 
             <form method="POST" action="{{ route('placements.update', $placement) }}">
                 @csrf

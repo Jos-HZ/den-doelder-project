@@ -39,7 +39,7 @@
                     @enderror
                 </div>
 
-                <label for="name_pallet">{{__("Name pallet")}}/ {{__("Order")}}:</label>
+                <label for="name_pallet">{{__("Pallet name")}}/ {{__("Order")}}:</label>
                 <div class="label">
                     <div class="control">
                         <input class="input @error('name_pallet') is-danger @enderror"
