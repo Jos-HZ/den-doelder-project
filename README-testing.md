@@ -1,3 +1,4 @@
+
 # Testing - [Ivy Dekker](https://github.com/ivydk)
 ## Test plan A
 - --
@@ -43,7 +44,6 @@
 - Test if the error is added to the backlog.
   - When you submit the form the error is added to the backlog
   - When you submit invalid data the data is not added to the backlog
-- When you add a new error the chosen order should be added to the db
 
 ## Test result
 // image
