@@ -75,6 +75,7 @@
                             type="text"
                             id="submitted_by"
                             name="submitted_by"
+                            required
                         >
                     </div>
                     @error('submitted_by')
