@@ -30,14 +30,8 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< Updated upstream
-        $validatedData = $request->validate([
-            'file' => 'required|pdf|max:2048',
-
-=======
         $this->validate($request, [
             'file' => 'required|mimes:pdf|max:2048',
->>>>>>> Stashed changes
         ]);
 
         $name = $request->file('file')->getClientOriginalName();
