@@ -94,7 +94,7 @@ The last test i made was to check if the backlog.index page is loaded correctly.
 - When the order is started, the order status is set to **conversion** 
 - When the production is started the status is set to **production**
 - When the order is finished, the order status is set to **completed**
-- When the `error_status` is `TRUE` the order status is set to **error**
+- When backlog is created error_status is set to TRUE
 
 
 ## Unit test

@@ -46,8 +46,27 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'ordernumber' => 'required',
+            'pallettype' => 'required',
+            'palletnumber' => 'required',
+            'notes' => 'required',
+            'production_line_id' => 'required',
+            'error_status' => 'required',
+            'production_done' => 'required',
+        ]);
 
-        return redirect(route('orders.show'));
+        $order = new Order();
+        $order->ordernumber = $request->ordernumber;
+        $order->pallettype = $request->pallettype;
+        $order->palletnumber = $request->palletnumber;
+        $order->notes = $request->notes;
+        $order->production_line_id = $request->production_line_id;
+        $order->error_status = 0;
+        $order->production_done = 0;
+        $order->save();
+
+        return redirect('/');
     }
 
     /**
