@@ -10,8 +10,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProfileController extends Controller
@@ -22,11 +22,14 @@ class ProfileController extends Controller
         return view('file-upload.index', array('user' => Auth::user()));
     }
 
-    public function index(Request $request)
+    public function index()
     {
-        $users = User::filter($request)->get();
-
-        return view('file-upload.index', compact('users'));
+        $storage = File::allFiles(storage_path('app/public/files'));
+        $files = Storage::allFiles('app/public/files');
+        foreach ($storage as $file) {
+            $names = $file->getFilename();
+        }
+        return view('file-upload.index', compact('names'));
     }
 
     public function store(Request $request)
@@ -38,7 +41,7 @@ class ProfileController extends Controller
         ]);
 
         $name = $request->file('file')->getClientOriginalName();
-
+// als hij geupload is, wil ik gelijk de url/name weten te koppelen aan een order en controleren of die order al een pdf gekoppeld heeft fuck dit word kut.
         $path = $request->file('file')->store('public/files');
 
 
@@ -48,6 +51,14 @@ class ProfileController extends Controller
         $save->path = $path;
 
         return redirect('file-upload')->with('status', 'File Has been uploaded successfully');
+    }
+
+    public function getName(){
+        $storage = File::allFiles(storage_path('files'));
+
+        foreach ($storage as $file) {
+            echo $file->getFilename();
+        }
     }
 
     /**

@@ -96,6 +96,7 @@ Route::get('/pdf/{file}', function ($file) {
     return response()->file($path, $header);
 })->name('pdf');
 
+Route::get('get-name', [FileUploadController::class, 'getName']);
 /*
 |--------------------------------------------------------------------------
 | Language
