@@ -18,7 +18,7 @@ class CreateRowsTable extends Migration
             $table->boolean('correct');
             $table->string('changed_to')->nullable();
             $table->enum('treated', ['hk', 'kd']);
-            $table->integer('humidity');
+            $table->integer('humidity')->nullable();
             $table->timestamps();
         });
     }
