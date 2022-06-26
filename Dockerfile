@@ -1,3 +1,13 @@
+# PHP + Apache
 FROM php:8.1-apache
-RUN docker-php-ext-install -j$(nproc) pdo
-RUN docker-php-ext-install -j$(nproc) pdo_mysql
+
+# Update OS and install common dev tools
+RUN apt-get update
+RUN apt-get install -y wget vim git zip unzip zlib1g-dev libzip-dev libpng-dev
+RUN a2enmod rewrite
+
+RUN docker-php-ext-install mysqli pdo_mysql gd zip pcntl exif
+RUN docker-php-ext-enable mysqli
+
+# Set Apache documentroot to public
+COPY vhost.conf /etc/apache2/sites-available/000-default.conf
