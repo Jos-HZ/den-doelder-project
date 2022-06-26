@@ -2,7 +2,6 @@
 
 namespace App\ModelFilters;
 
-use App\Models\Order;
 use EloquentFilter\ModelFilter;
 
 class OrderFilter extends ModelFilter

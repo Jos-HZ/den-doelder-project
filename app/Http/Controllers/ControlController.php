@@ -19,22 +19,6 @@ use Illuminate\Support\Facades\DB;
 class ControlController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Application|Factory|View
-     */
-    public function create(Order $order)
-    {
-        $categories = Category::all();
-        $columns = Column::all();
-
-        $preControl = PreControl::where('order_id', $order->id)->first();
-        $rows = Row::where('pre_control_id', $preControl->id)->get();
-
-        return view('controls.create', compact('order', 'columns', 'categories', 'rows', 'preControl'));
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
@@ -46,9 +30,7 @@ class ControlController extends Controller
 
         $columns = Column::all();
 
-//        dd($request);
-
-        for ($i=0; $i < count($columns); $i++) {
+        for ($i = 0; $i < count($columns); $i++) {
             // variables with correct id
             $correct = 'correct_' . $i;
             $changed_to = 'changed_to_' . $i;
@@ -68,6 +50,22 @@ class ControlController extends Controller
         }
 
         return redirect(route('orders.show', $control->order_id));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Application|Factory|View
+     */
+    public function create(Order $order)
+    {
+        $categories = Category::all();
+        $columns = Column::all();
+
+        $preControl = PreControl::where('order_id', $order->id)->first();
+        $rows = Row::where('pre_control_id', $preControl->id)->get();
+
+        return view('controls.create', compact('order', 'columns', 'categories', 'rows', 'preControl'));
     }
 
     private function validatedControl(Request $request)

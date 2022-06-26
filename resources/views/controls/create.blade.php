@@ -97,119 +97,123 @@
                 </div>
 
                 @foreach($categories as $category)
-                <div class="pt-4">
-                    <h1 class='title is-5'>{{ $category->category_name() }}</h1>
+                    <div class="pt-4">
+                        <h1 class='title is-5'>{{ $category->category_name() }}</h1>
 
-                </div>
-                <table class="table is-bordered">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th><abbr title="correct">{{__("Correct (Y/N)")}}</abbr></th>
-                        <th><abbr title="changed_to">{{__("Changed to")}}</abbr></th>
-                        <th><abbr title="treated">ht / hk</abbr></th>
-                        <th><abbr title="humidity">{{__("Humidity")}}</abbr></th>
-
-                        <th style="border:none"></th>
-
-                        <th><abbr title="correct">{{__("Correct (Y/N)")}}</abbr></th>
-                        <th><abbr title="changed_to">{{__("Changed to")}}</abbr></th>
-                        <th><abbr title="comment">{{__("Comment")}}</abbr></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{-- !! ROWS !! --}}
-                    @for($i=0; $i < count($rows); $i++)
-                        {{-- hidden fields --}}
-                        @if($category->id === $rows[$i]->column->category_id  )
+                    </div>
+                    <table class="table is-bordered">
+                        <thead>
                         <tr>
-                            <th>
-                                {{ $rows[$i]->column->column_name() }}
-                            </th>
+                            <th></th>
+                            <th><abbr title="correct">{{__("Correct (Y/N)")}}</abbr></th>
+                            <th><abbr title="changed_to">{{__("Changed to")}}</abbr></th>
+                            <th><abbr title="treated">ht / hk</abbr></th>
+                            <th><abbr title="humidity">{{__("Humidity")}}</abbr></th>
 
-                            <div class="control has-icons-left has-icons-right">
-                                <input
-                                    @class ([
-                                        'input',
-                                        'is-danger' => $errors->get('column_id'),
-                                    ])
-                                    type="hidden"
-                                    id="column_id"
-                                    name="column_id_{{$i}}"
-                                    value=" {{ $i + 1}}"
-                                >
-                            </div>
+                            <th style="border:none"></th>
 
-                            {{-- input fields --}}
-                            <td>@if($rows[$i]->correct) Correct @else Incorrect @endif</td>
-                            <td>{{ $rows[$i]->changed_to }}</td>
-                            <td>{{ $rows[$i]->treated }}</td>
-                            <td>{{ $rows[$i]->humidity }}</td>
-                            {{-- laat de lege staan aub --}}
-                            <td style="border:none"></td>
-                            {{-- input fields --}}
-                            <td>
-                                <div class="label">
-                                    <div class="select">
-                                        <select
-                                            class="input @error('correct') is-danger @enderror"
-                                            id="correct"
-                                            name="correct_{{$i}}"
-                                        >
-                                            <option value="1">{{__("Yes")}}</option>
-                                            <option value="0">{{__("No")}}</option>
-                                        </select>
-                                    </div>
-                                    @error('correct')
-                                    <p class="help is-danger">{{ $errors->get('correct') }}</p>
-                                    @enderror
-                                </div>
-                            </td>
-
-                            <td>
-                                <div class="label">
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input
-                                            @class ([
-                                                'input',
-                                                'is-danger' => $errors->get('changed_to'),
-                                            ])
-                                            type="text"
-                                            id="changed_to"
-                                            name="changed_to_{{$i}}"
-                                            value="Test"
-                                        >
-                                    </div>
-                                    @error('changed_to')
-                                    <p class="help is-danger">{{ $errors->get('changed_to') }}</p>
-                                    @enderror
-                                </div>
-                            </td>
-
-                            <td>
-                                <div class="label">
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input
-                                            @class ([
-                                                'input',
-                                                'is-danger' => $errors->get('comment'),
-                                            ])
-                                            type="text"
-                                            id="comment"
-                                            name="comment_{{$i}}"
-                                            value="Test"
-                                        >
-                                    </div>
-                                    @error('comment')
-                                    <p class="help is-danger">{{ $errors->get('comment') }}</p>
-                                    @enderror
-                                </div>
-                            </td>
+                            <th><abbr title="correct">{{__("Correct (Y/N)")}}</abbr></th>
+                            <th><abbr title="changed_to">{{__("Changed to")}}</abbr></th>
+                            <th><abbr title="comment">{{__("Comment")}}</abbr></th>
                         </tr>
-                        @endif
-                    @endfor
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {{-- !! ROWS !! --}}
+                        @for($i=0; $i < count($rows); $i++)
+                            {{-- hidden fields --}}
+                            @if($category->id === $rows[$i]->column->category_id  )
+                                <tr>
+                                    <th>
+                                        {{ $rows[$i]->column->column_name() }}
+                                    </th>
+
+                                    <div class="control has-icons-left has-icons-right">
+                                        <input
+                                            @class ([
+                                                'input',
+                                                'is-danger' => $errors->get('column_id'),
+                                            ])
+                                            type="hidden"
+                                            id="column_id"
+                                            name="column_id_{{$i}}"
+                                            value=" {{ $i + 1}}"
+                                        >
+                                    </div>
+
+                                    {{-- input fields --}}
+                                    <td>@if($rows[$i]->correct)
+                                            Correct
+                                        @else
+                                            Incorrect
+                                        @endif</td>
+                                    <td>{{ $rows[$i]->changed_to }}</td>
+                                    <td>{{ $rows[$i]->treated }}</td>
+                                    <td>{{ $rows[$i]->humidity }}</td>
+                                    {{-- laat de lege staan aub --}}
+                                    <td style="border:none"></td>
+                                    {{-- input fields --}}
+                                    <td>
+                                        <div class="label">
+                                            <div class="select">
+                                                <select
+                                                    class="input @error('correct') is-danger @enderror"
+                                                    id="correct"
+                                                    name="correct_{{$i}}"
+                                                >
+                                                    <option value="1">{{__("Yes")}}</option>
+                                                    <option value="0">{{__("No")}}</option>
+                                                </select>
+                                            </div>
+                                            @error('correct')
+                                            <p class="help is-danger">{{ $errors->get('correct') }}</p>
+                                            @enderror
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="label">
+                                            <div class="control has-icons-left has-icons-right">
+                                                <input
+                                                    @class ([
+                                                        'input',
+                                                        'is-danger' => $errors->get('changed_to'),
+                                                    ])
+                                                    type="text"
+                                                    id="changed_to"
+                                                    name="changed_to_{{$i}}"
+                                                    value="Test"
+                                                >
+                                            </div>
+                                            @error('changed_to')
+                                            <p class="help is-danger">{{ $errors->get('changed_to') }}</p>
+                                            @enderror
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="label">
+                                            <div class="control has-icons-left has-icons-right">
+                                                <input
+                                                    @class ([
+                                                        'input',
+                                                        'is-danger' => $errors->get('comment'),
+                                                    ])
+                                                    type="text"
+                                                    id="comment"
+                                                    name="comment_{{$i}}"
+                                                    value="Test"
+                                                >
+                                            </div>
+                                            @error('comment')
+                                            <p class="help is-danger">{{ $errors->get('comment') }}</p>
+                                            @enderror
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endfor
+                        </tbody>
+                    </table>
                 @endforeach
                 <input type="submit" value="{{__("submit")}}"
                        class="button is-link"/>

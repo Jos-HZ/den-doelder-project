@@ -54,6 +54,20 @@
                     </div>
                 </div>
 
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <strong>{{__("Language")}}:</strong>
+                    <div class="form-group">
+                        <div class="select">
+                            <select id="language" name="language">
+                                <option value="nl">{{__("Dutch")}}</option>
+                                <option value="en">{{__("English")}}</option>
+                                <option value="pl">{{__("Polish")}}</option>
+                                <option value="ro">{{__("Romanian")}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
                 <input type="hidden" id="language" name="language" value= {{Auth::user()->language}}>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">

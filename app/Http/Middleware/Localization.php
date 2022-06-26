@@ -2,15 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
-use http\Cookie;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class Localization

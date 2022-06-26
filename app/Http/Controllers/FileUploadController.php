@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\File;
+use Illuminate\Http\Request;
 
 class FileUploadController extends Controller
 {

@@ -25,7 +25,7 @@ class ColumnSeeder extends Seeder
 
         $upper_deck_category_id = DB::table('categories')->where('category', 'upper_deck')->value('id');
 
-        foreach($upper_deck as $column) {
+        foreach ($upper_deck as $column) {
             DB::table('columns')->insert([
                 'column' => $column,
                 'category_id' => $upper_deck_category_id,
@@ -44,7 +44,7 @@ class ColumnSeeder extends Seeder
 
         $blocks_category_id = DB::table('categories')->where('category', 'blocks')->value('id');
 
-        foreach($blocks as $column) {
+        foreach ($blocks as $column) {
             DB::table('columns')->insert([
                 'column' => $column,
                 'category_id' => $blocks_category_id,
@@ -65,7 +65,7 @@ class ColumnSeeder extends Seeder
 
         $bottom_deck_category_id = DB::table('categories')->where('category', 'bottom_deck')->value('id');
 
-        foreach($bottom_deck as $column) {
+        foreach ($bottom_deck as $column) {
             DB::table('columns')->insert([
                 'column' => $column,
                 'category_id' => $bottom_deck_category_id,
@@ -86,7 +86,7 @@ class ColumnSeeder extends Seeder
 
         $remaining_columns_category_id = DB::table('categories')->where('category', 'remaining_columns')->value('id');
 
-        foreach($remaining_columns as $column) {
+        foreach ($remaining_columns as $column) {
             DB::table('columns')->insert([
                 'column' => $column,
                 'category_id' => $remaining_columns_category_id,

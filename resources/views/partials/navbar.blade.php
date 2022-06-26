@@ -28,16 +28,16 @@
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link has-text-white">
-                        {{__("Backlog")}}
+                        {{__("Log")}}
                     </a>
 
                     <div class="navbar-dropdown">
-                        <button class="navbar-item" onclick="location.href='{{ route('backlog.index') }}'">{{__('Error backlog')}}
-
+                        <button class="navbar-item" onclick="location.href='{{ route('backlog.index') }}'">Error log
                         </button>
-                        <button class="navbar-item" onclick="location.href='{{ route('placements.index') }}'">{{__('Location log')}}
+                        <button class="navbar-item" onclick="location.href='{{ route('placements.index') }}'">Location
+                            log
                         </button>
-                        <button class="navbar-item" onclick="location.href='{{ route('orders.data') }}'">{{__('Order backlog')}}
+                        <button class="navbar-item" onclick="location.href='{{ route('orders.data') }}'">Order log
                         </button>
                     </div>
                 </div>
@@ -51,13 +51,13 @@
 
             <div class="navbar-dropdown">
                 @include('partials/language_switcher')
-                <button class="navbar-item" onclick="location.href='{{ route('file-upload.index') }}'">{{__('Profile')}}</button>
+                <button class="navbar-item" onclick="location.href='{{ route('file-upload.index') }}'">PDF Upload
+                </button>
                 <form action="{{ route('destroy', 'logout') }}" method="POST">
                     @csrf
                     <button class="navbar-item" type="submit">
                         {{__("Logout")}}
                     </button>
-
                 </form>
             </div>
         </div>

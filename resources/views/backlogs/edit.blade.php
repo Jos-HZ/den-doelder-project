@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="container">
-            <h1>{{__("Order")}} {{ $backlog->order_id }} </h1>
+            <h1>{{__("Order" )}} {{ $backlog->order_id }} </h1>
             <form method="POST" action="{{route('backlog.update', $backlog)}}">
                 @csrf
                 @method('PUT')

@@ -5,7 +5,7 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="/css/app.css">
-    <script src="/js/javascript.js"></script>
+    {{--    <script src="/js/javascript.js"></script>--}}
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <script type="text/javascript" src="../../../public/js"></script>
