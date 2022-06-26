@@ -10,7 +10,7 @@
                 <thead>
                 <tr>
                     <th><abbr title="order_id">{{__("Order")}}</abbr></th>
-                    <th><abbr title="pallet_name">{{__('Name pallet')}}</abbr></th>
+                    <th><abbr title="pallet_name">{{__('Pallet name')}}</abbr></th>
                     <th><abbr title="description">{{__('Description')}}</abbr></th>
                     <th><abbr title="location">{{__("Location")}}</abbr></th>
                     <th><abbr title="quantity">{{__('Quantity')}}</abbr></th>
