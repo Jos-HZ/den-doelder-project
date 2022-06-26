@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <input type="file" name="file" placeholder="Choose file" accept=".pdf" id="file">
                     @error('file')
-                    <div class="alert alert-danger mt-1 mb-1">{{ __("$message") }}</div>
+                    <div class="alert alert-danger mt-1 mb-1"> {{$message }}</div>
                     @enderror
                 </div>
             </div>
