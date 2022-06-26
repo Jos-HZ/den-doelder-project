@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Error;
-use App\Models\Order;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
@@ -29,7 +27,6 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'file' => 'required|pdf|max:2048',
 
@@ -56,6 +53,7 @@ class ProfileController extends Controller
         }
     }
 
+
     /**
      * Validates the User
      *
@@ -69,20 +67,6 @@ class ProfileController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param User $user
-     * @return Application|Redirector|RedirectResponse
-     */
-    public function update(Request $request, User $user)
-    {
-        $user->update($this->validatedError($request));
-
-        return redirect(route('file-upload.index', $user));
     }
 
 }
