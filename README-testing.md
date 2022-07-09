@@ -70,8 +70,6 @@ The last test I made was to check if the backlog.index page is loaded correctly.
 
 <br></br>
 - --
-<br>
-
 ## Test plan B
 **<i>As an administrative assistant I want to check the order status so that I can check if the planning is intact.</i>**
 
