@@ -2,7 +2,6 @@
 
 # Testing - [Ivy Dekker](https://github.com/ivydk)
 ## Test plan A
-- --
 **<i>As a production worker I want to have an error button so that I can add the error to the backlog when an error occurs</i>**
 
 ### Acceptance criteria 
@@ -69,6 +68,7 @@ With these tests you can detect if the time is calculated correctly and if the t
 The feature test tests if the error is added to the backlog. I tested if the error is added to the backlog when the data is valid. I also tested if the error is not added to the backlog when the data is invalid.
 The last test I made was to check if the backlog.index page is loaded correctly.
 
+- --
 
 ## Test plan B
 **<i>As an administrative assistant I want to check the order status so that I can check if the planning is intact.</i>**
@@ -111,3 +111,14 @@ The last test I made was to check if the backlog.index page is loaded correctly.
 When I run
 `php artisan test --filter OrderTests` I get the following result: <br>
 ![order tests](https://github.com/Jos-HZ/den-doelder-project/blob/86a54df0279d60b03ef7a6c20143a1f38c755ddc/public/img/testing-ivy/orderTests.png)
+
+## Evaluation
+### Possible mistake/error that can be detected
+With these tests you can detect the following mistakes:
+- 
+
+### Possible mistake/error that can not be detected by your test(s)
+With these tests you can not detect the following mistakes:
+- 
+
+### Why everything works as expected
