@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Models\Order;
+use App\Models\ProductionLine;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -29,6 +31,12 @@ class BacklogTest extends TestCase
      */
     public function test_that_a_backlog_is_created()
     {
+        // Seed the prodctionlines table
+        $this->seed('ProductionLinesSeeder');
+
+        // Create a new order
+        $order = Order::factory()->create();
+
         // Arrange
         $route = route('backlog.store');
         $requestBody = [
@@ -36,7 +44,7 @@ class BacklogTest extends TestCase
             'date' => '2020-01-01',
             'description' => 'description test',
             'category' => 'mechanical',
-            'order_id' => 1,
+            'order_id' => $order->id,
         ];
 
         // Act

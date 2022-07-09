@@ -14,6 +14,20 @@ class Order extends Model
 
     private static array $whiteListFilter = ['production_line_id'];
 
+    protected $fillable = [
+        'ordernumber',
+        'pallettype',
+        'palletnumber',
+        'notes',
+        'production_line_id',
+        'error_status',
+        'production_done',
+        'start_time',
+        'conversion_time',
+        'resolved_at',
+        'status',
+    ];
+
     public function production()
     {
         return $this->belongsTo(ProductionLine::class);
@@ -29,7 +43,7 @@ class Order extends Model
         return $this->hasMany(Backlog::class);
     }
 
-    public function pre_control()
+    public function pre_control(): BelongsTo
     {
         return $this->belongsTo(PreControl::class);
     }

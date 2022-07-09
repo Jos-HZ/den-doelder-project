@@ -1,4 +1,5 @@
 
+
 # Testing - [Ivy Dekker](https://github.com/ivydk)
 ## Test plan A
 - --
@@ -66,7 +67,7 @@ With these tests you can not detect the following mistakes:
 ### Why everything works as expected
 With these tests you can detect if the time is calculated correctly and if the time is rounded to the nearest minute. I made 4 tests for this. I chose two random times, to check if the time is calculated correctly. I also chose the edge cases to check if the minute are rounded correctly.
 The feature test tests if the error is added to the backlog. I tested if the error is added to the backlog when the data is valid. I also tested if the error is not added to the backlog when the data is invalid.
-The last test i made was to check if the backlog.index page is loaded correctly.
+The last test I made was to check if the backlog.index page is loaded correctly.
 
 
 ## Test plan B
@@ -78,10 +79,10 @@ The last test i made was to check if the backlog.index page is loaded correctly.
 - Production worker needs to be able to set the order status (start, finished).
 
 ### Happy path
-3. The administrative assistant is on the orders index page
-4. They can click on a current order
-5. They go to the current order show page
-6. They can see the order status
+1. The administrative assistant is on the orders index page
+2. They can click on a current order
+3. They go to the current order show page
+4. They can see the order status
 
 ### Unhappy path
 1. The administrative assistant is on the orders index page
@@ -98,11 +99,11 @@ The last test i made was to check if the backlog.index page is loaded correctly.
 
 
 ## Unit test
-- conversion_time should be calculated correctly (time between start_time and production_time)
+- conversion_time should be calculated correctly (time between conversion_time and start_time)
   - :29 should be rounded down to the nearest minute
   - :30 should be rounded up to the nearest minute
   - :31 should be rounded up to the nearest minute
-- production_time should be calculated correctly (time between production_time and end_time)
+- production_time should be calculated correctly (time between start_time and end_time)
     - :29 should be rounded down to the nearest minute
     - :30 should be rounded up to the nearest minute
     - :31 should be rounded up to the nearest minute
