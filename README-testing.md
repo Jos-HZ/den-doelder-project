@@ -65,11 +65,13 @@ With these tests you can not detect the following mistakes:
 
 ### Why everything works as expected
 With these tests you can detect if the time is calculated correctly and if the time is rounded to the nearest minute. I made 4 tests for this. I chose two random times, to check if the time is calculated correctly. I also chose the edge cases to check if the minute are rounded correctly.
+
 The feature test tests if the error is added to the backlog. I tested if the error is added to the backlog when the data is valid. I also tested if the error is not added to the backlog when the data is invalid.
 The last test I made was to check if the backlog.index page is loaded correctly.
 
-<br></br>
 - --
+<br>
+
 ## Test plan B
 **<i>As an administrative assistant I want to check the order status so that I can check if the planning is intact.</i>**
 
@@ -115,10 +117,24 @@ When I run
 ## Evaluation
 ### Possible mistake/error that can be detected
 With these tests you can detect the following mistakes:
-- 
+- The conversion_time is not calculated correctly
+- The conversion_time is not rounded to the nearest minute
+- The production_time is not calculated correctly
+- The production_time is not rounded to the nearest minute
+- When the error is added to the backlog, the error_status is not set to **TRUE**
+- When the order is created, the order status is not set to **pending**
+- When the order is finished, the order status is not set to **completed**
+- When the order is has started conversion, the order status is not set to **conversion**
+- When the order is started, the order status is not set to **production**
+- When the order is finished, the order status is not set to **completed**
+ 
 
 ### Possible mistake/error that can not be detected by your test(s)
 With these tests you can not detect the following mistakes:
-- 
+- The wrong production_line_id is added to the db
+- The user pressed the button, but he should not have pressed it
 
 ### Why everything works as expected
+With these tests you can detect if the production_time and conversion_time is calculated correctly and if the time is rounded to the nearest minute. I made 4 tests for this for both the conversion_time and the production_time. I chose two random times, to check if the time is calculated correctly. I also chose the edge cases to check if the minute are rounded correctly.
+
+With the feature test I test if the correct status is assigned to the order.I tested if the order is started with the status **pending**. When the conversion is started the status is set to **conversion**. When the production is started the status is set to **production**. When the order is finished, the status is set to **completed**. I also tested if the error_status is set to **TRUE** when a backlog is created with the corresponding order_id.
