@@ -97,7 +97,6 @@ The last test I made was to check if the backlog.index page is loaded correctly.
 - When the order is finished, the order status is set to **completed**
 - When backlog is created error_status is set to TRUE
 
-
 ## Unit test
 - conversion_time should be calculated correctly (time between conversion_time and start_time)
   - :29 should be rounded down to the nearest minute
@@ -107,3 +106,8 @@ The last test I made was to check if the backlog.index page is loaded correctly.
     - :29 should be rounded down to the nearest minute
     - :30 should be rounded up to the nearest minute
     - :31 should be rounded up to the nearest minute
+
+## Test result
+When I run
+`php artisan test --filter OrderTests` I get the following result: <br>
+![order tests](https://github.com/Jos-HZ/den-doelder-project/blob/86a54df0279d60b03ef7a6c20143a1f38c755ddc/public/img/testing-ivy/orderTests.png)
