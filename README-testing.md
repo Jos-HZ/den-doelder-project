@@ -68,7 +68,7 @@ With these tests you can detect if the time is calculated correctly and if the t
 The feature test tests if the error is added to the backlog. I tested if the error is added to the backlog when the data is valid. I also tested if the error is not added to the backlog when the data is invalid.
 The last test I made was to check if the backlog.index page is loaded correctly.
 
-<br>
+<br></br>
 - --
 <br>
 
